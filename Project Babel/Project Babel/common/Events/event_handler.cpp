@@ -116,7 +116,7 @@ void EventHandler::Health(glm::vec2 position, Map *current_map, Stats *m_stats)
 {
 	if (e_map[(int)(position.x)][(int)(position.y)] == 3)
 	{
-		m_stats->GetHp()->Buff(10);
+		m_stats->GetHp()->Heal(10);
 		current_map->GetTilemap()->GetTiles()[(int)(position.x)][(int)(position.y)] = FLOOR_BLOCK;
 		e_map[(int)(position.x)][(int)(position.y)] = 0;
 		std::cout << "You drank the health potion\n";

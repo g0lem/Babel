@@ -39,7 +39,7 @@ void Combat::SetPlayerTarget(Player * player, EnemyManager * enemies)
 
 
 
-			if (player->GetAttackingState())
+			if (player->GetActionHandler()->GetAction() == ATTACKING)
 			{
 				player->GetDirection()->Compute(DIR_TYPE_4, player->GetPAttributes()->position,
 					enemies->GetEnemiesPointer()[0][i]->GetPAttributes()->target);
@@ -68,17 +68,18 @@ void Combat::PlayerAttack(GameObject * g_obj, Player * player, EnemyManager *ene
 
 
 
-	if (player->GetTarget() > NO_TARGET && player->GetAttackingState())
+	if (player->GetTarget() > NO_TARGET && 
+		player->GetActionHandler()->GetAction() == ATTACKING && 
+		player->GetActionHandler()->HasReachedLifetime(0.15f))
 	{
 
 
 
 
 		enemies->GetEnemiesPointer()[0][player->GetTarget()]->GetStats()->GetHp()->Damage(player->GetItems()[ITEM_SLOT_WEAPON]->attack);
-		player->SetAttackingState(false);
 		g_obj->GetTurnSystem()->ComputeAttack(player->GetItems()[ITEM_SLOT_WEAPON]->attack_speed);
-
-
+		player->GetActionHandler()->SetAction(NO_ACTION);
+		player->GetActionHandler()->Stop();
 
 
 	}

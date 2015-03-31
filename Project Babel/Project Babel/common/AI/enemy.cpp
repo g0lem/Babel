@@ -30,38 +30,30 @@ void Enemy::Init(EnemyData * data)
 
 void Enemy::Render(Controller * ctrl, ScreenUniformData * u_data, GameObject * g_obj, Map *map)
 {
-	if (g_obj->GetEnemyLoader()->GetData()->size() > 0 && map->GetFogofWar()->GetFogMartix()[(int)(p_attributes->position.x)][(int)(p_attributes->position.y)] == 0.f)
-	{
-		this->last_position = this->p_attributes->position;
 
 
 
-		u_data->ApplyMatrix(Translation(p_attributes->position * p_attributes->scale + g_obj->GetScroller()->GetOffset())*
-			Scale(p_attributes->scale));
 
-
-		u_data->SetAmbientLight(glm::vec3(1.0f, 1.0f, 1.0f));
-
-
-
-		GLuint dir = m_dir->Compute(DIR_TYPE_4, p_attributes->position, p_attributes->target);
+	this->last_position = this->p_attributes->position;
+	u_data->ApplyMatrix(Translation(p_attributes->position * p_attributes->scale + g_obj->GetScroller()->GetOffset())*
+		Scale(p_attributes->scale));
+	u_data->SetAmbientLight(glm::vec3(1.0f, 1.0f, 1.0f));
 
 
 
-		if (glm::distance(p_attributes->position, p_attributes->target) > p_attributes->speed*ctrl->GetFpsPointer()->Delta())
-			this->animations[dir]->Update(16.0f, ctrl->GetFpsPointer()->Delta());
+	GLuint dir = m_dir->Compute(DIR_TYPE_4, p_attributes->position, p_attributes->target);
+	if (glm::distance(p_attributes->position, p_attributes->target) > p_attributes->speed*ctrl->GetFpsPointer()->Delta())
+		this->animations[dir]->Update(16.0f, ctrl->GetFpsPointer()->Delta());
 
 
 
-		this->Update(g_obj, ctrl->GetFpsPointer()->Delta());
+	this->Update(g_obj, ctrl->GetFpsPointer()->Delta());
+	this->m_sprites[dir]->Render(this->animations[dir]->GetIFrames());
+	this->RenderMisc(u_data, g_obj);
 
 
-		this->HandleAutoPath(ctrl, g_obj);
 
-		this->m_sprites[dir]->Render(this->animations[dir]->GetIFrames());
-		this->RenderMisc(u_data, g_obj);
 
-	}
 }
 
 
@@ -211,20 +203,6 @@ void Enemy::LoadStats(EnemyData * data)
 }
 
 
-
-
-
-
-void Enemy::HandleAutoPath(Controller * ctrl, GameObject * g_obj)
-{
-
-
-
-
-
-
-
-}
 
 
 
