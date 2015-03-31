@@ -98,7 +98,7 @@ public:
 	inline Item**GetItems(){ return this->items; }
 	inline Direction * GetDirection(){ return this->m_dir; }
 	inline ActionHandler * GetActionHandler(){ return this->a_handler; }
-
+	inline EventHandler* GetEventHandler(){ return this->h_event; }
 
 };
 

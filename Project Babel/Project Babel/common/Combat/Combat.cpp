@@ -63,16 +63,26 @@ void Combat::SetPlayerTarget(Player * player, EnemyManager * enemies)
 
   
 
-void Combat::PlayerAttack(GameObject * g_obj, Player * player, EnemyManager *enemies)
+void Combat::PlayerAttack(GameObject * g_obj, Player * player, EnemyManager *enemies, Map *current_map)
 {
 
-
+	int random = 0, i_rand = 0;
+	int v[] = {HEALTH_POTION, DOOR_BLOCK};
 
 	if (player->GetTarget() > NO_TARGET && player->GetAttackingState())
 	{
 
+		
+		if (enemies->GetEnemiesPointer()[0][player->GetTarget()]->GetStats()->GetHp()->hp - player->GetItems()[ITEM_SLOT_WEAPON]->attack.x <= 0)
+		{
 
-
+		
+				i_rand = rand() % 2;
+				current_map->GetTilemap()->GetTiles()[(int)(enemies->GetEnemiesPointer()[0][player->GetTarget()]->GetPAttributes()->position.x)][(int)(enemies->GetEnemiesPointer()[0][player->GetTarget()]->GetPAttributes()->position.y)] = v[i_rand];
+				enemies->GetEnemiesPointer()[0][player->GetTarget()]->GetStats()->GetHp()->Damage(player->GetItems()[ITEM_SLOT_WEAPON]->attack);
+				player->GetEventHandler()->Init(current_map);
+			
+		}
 
 		enemies->GetEnemiesPointer()[0][player->GetTarget()]->GetStats()->GetHp()->Damage(player->GetItems()[ITEM_SLOT_WEAPON]->attack);
 		player->SetAttackingState(false);
@@ -96,7 +106,7 @@ void Combat::PlayerRelated(GameObject * g_obj, Player * player, EnemyManager * e
 
 
 	this->SetPlayerTarget(player, enemies);
-	this->PlayerAttack(g_obj, player, enemies);
+	this->PlayerAttack(g_obj, player, enemies, map);
 
 
 

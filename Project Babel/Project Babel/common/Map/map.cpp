@@ -51,6 +51,7 @@ void Map::GenerateContent(GameObject *g_obj)
 
 	g_obj->GetCollisionMap()->CreateOutOfMap(this->GetTilemap());
 
+
 	this->fog = new fog_of_war();
 	fog->Init(g_obj);
 	
