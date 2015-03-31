@@ -35,7 +35,7 @@ void EventHandler::Door(glm::vec2 position, Map *current_map, GameObject *g_obj)
 	int dj[] = { 0, 0, -1, 1 };
 	for (int k = 0; k < 4; k++)
 	{
-
+		
 		//open doors
 		if (e_map[(int)(position.x) - 1][(int)(position.y)] == 1)
 		{
@@ -112,11 +112,12 @@ void EventHandler::Door(glm::vec2 position, Map *current_map, GameObject *g_obj)
 	}
 }
 
-void EventHandler::Health(glm::vec2 position, Map *current_map, Stats *m_stats)
+void EventHandler::Health(glm::vec2 position, Map *current_map, Stats *m_stats, GameObject *g_obj)
 {
 	if (e_map[(int)(position.x)][(int)(position.y)] == 3)
 	{
-		m_stats->GetHp()->Buff(10);
+		//g_obj->GetItemList()->GetInventory().push_back(healthpotion);
+		m_stats->GetHp()->Heal(10);
 		current_map->GetTilemap()->GetTiles()[(int)(position.x)][(int)(position.y)] = FLOOR_BLOCK;
 		e_map[(int)(position.x)][(int)(position.y)] = 0;
 		std::cout << "You drank the health potion\n";
@@ -128,8 +129,11 @@ void EventHandler::Health(glm::vec2 position, Map *current_map, Stats *m_stats)
 
 void EventHandler::TriggerEvent(glm::vec2 position, Map *current_map, GameObject *g_obj, Stats *m_stats)
 {
+	//in g_obj e item_list-ul
+
+
 	this->Door(position, current_map, g_obj);
-	this->Health(position, current_map, m_stats);
+	this->Health(position, current_map, m_stats, g_obj);
 
 
 	if (e_map[(int)(position.x)][(int)(position.y)] == 2) //sa pui tool tip-ul Bursucului

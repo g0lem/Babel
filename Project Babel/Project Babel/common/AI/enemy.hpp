@@ -56,7 +56,7 @@ class Enemy
 
 	void RenderMisc(ScreenUniformData * u_data, GameObject * g_obj);
 	void RenderHpBar(ScreenUniformData * u_data, GameObject * g_obj);
-	void HandleAutoPath(Controller * ctrl, GameObject * g_obj);
+
 
 
 public:
