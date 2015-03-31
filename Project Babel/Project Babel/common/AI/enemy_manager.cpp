@@ -6,7 +6,7 @@
 
 
 
-void EnemyManager::Render(Controller * ctrl, ScreenUniformData * u_data, GameObject * g_obj)
+void EnemyManager::Render(Controller * ctrl, ScreenUniformData * u_data, GameObject * g_obj, Map *map)
 {
 
 	std::vector<glm::ivec2>list = g_obj->GetCollisionMap()->GetList();
@@ -24,8 +24,12 @@ void EnemyManager::Render(Controller * ctrl, ScreenUniformData * u_data, GameObj
 		{
 
 
+<<<<<<< HEAD
 
 			this->m_enemies[0][i]->Render(ctrl, u_data, g_obj);
+=======
+			this->m_enemies[0][i]->Render(ctrl, u_data, g_obj, map);
+>>>>>>> origin/master
 
 
 
@@ -104,10 +108,16 @@ void EnemyManager::CheckEnemiesState(GameObject * g_obj)
 void EnemyManager::Kill(GameObject * g_obj, GLuint enemy_id)
 {
 
-
-	glm::vec2 last_position = this->m_enemies[0][enemy_id]->GetLastPosition();
-	g_obj->GetCollisionMap()->GetTiles()[GLuint(last_position.x)][GLuint(last_position.y)] = 0;
-	this->m_enemies->erase(this->m_enemies->begin() + enemy_id);
-
+	if (this->m_enemies->size() > 2)
+	{
+		glm::vec2 last_position = this->m_enemies[0][enemy_id]->GetLastPosition();
+		g_obj->GetCollisionMap()->GetTiles()[GLuint(last_position.x)][GLuint(last_position.y)] = 0;
+		this->m_enemies->erase(this->m_enemies->begin() + enemy_id);
+	}
+	else
+	{
+		this->m_enemies->at(enemy_id)->GetPAttributes()->position.x = 0;
+		this->m_enemies->at(enemy_id)->GetPAttributes()->position.y = 0;
+	}
 
 }
