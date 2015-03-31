@@ -1,0 +1,40 @@
+0.Framework -- 90% { Sound -- 0%, Sound Streams -- 0% }
+<<<<<<< HEAD
+1.Map -- 35% { Room -- 60%, Rand -- 100%, RandObjs -- 0%, Hallways -- 0% }
+2.Movement -- 70%
+3.Objects
+4.Triggers
+=======
+1.Map -- 60% { Room -- 100%, Rand -- 100%, RandObjs -- 0%, Hallways -- 0% }
+2.Movement -- 70%
+3.Objects
+4.Rooms
+>>>>>>> origin/master
+5.Dungeon
+6.Field of view
+7.Combat
+8.User Interface
+9.Items
+10.Inventory
+<<<<<<< HEAD
+=======
+10.5.Triggers
+>>>>>>> origin/master
+11.Spells
+12.Ranged Combat
+13.Artificial Intelligence
+14.Items Progression
+15.Main Menu
+16.Saving
+17.Dungeon levels
+18.Character Progression
+
+<<<<<<< HEAD
+19.Better Graphics 3D pixel(some may say voxel)
+20.Real-time Combat TBC
+=======
+19.Better Graphics
+20.Real-time Combat
+21.More Levels
+22.Creating the binaries
+>>>>>>> origin/master

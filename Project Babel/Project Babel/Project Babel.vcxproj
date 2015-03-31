@@ -1,0 +1,245 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="common.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="common\AI\enemy.cpp" />
+    <ClCompile Include="common\AI\enemy_manager.cpp" />
+    <ClCompile Include="common\Combat\Combat.cpp" />
+    <ClCompile Include="common\Delta\animation.cpp" />
+    <ClCompile Include="common\Delta\auto_path.cpp" />
+    <ClCompile Include="common\Delta\movement.cpp" />
+    <ClCompile Include="common\Delta\one_direction.cpp" />
+    <ClCompile Include="common\Delta\pathfinder.cpp" />
+    <ClCompile Include="common\Delta\physical_attributes.cpp" />
+    <ClCompile Include="common\Effects\effects_handler.cpp" />
+    <ClCompile Include="common\Events\event_handler.cpp" />
+    <ClCompile Include="common\Framework\Controls\controls.cpp" />
+    <ClCompile Include="common\Framework\Font\text2D.cpp" />
+    <ClCompile Include="common\Framework\Font\text_render.cpp" />
+    <ClCompile Include="common\Framework\Math\2d_math.cpp" />
+    <ClCompile Include="common\Framework\Math\dice.cpp" />
+    <ClCompile Include="common\Framework\Shader\shader.cpp" />
+    <ClCompile Include="common\Framework\Sound\sound_manager.cpp" />
+    <ClCompile Include="common\Framework\Sprite\2d.cpp" />
+    <ClCompile Include="common\Framework\Sprite\sprite.cpp" />
+    <ClCompile Include="common\Framework\Sprite\uniform_2d.cpp" />
+    <ClCompile Include="common\Framework\Texture\texture.cpp" />
+    <ClCompile Include="common\Game Object\backpack_state.cpp" />
+    <ClCompile Include="common\Game Object\character_panel_state.cpp" />
+    <ClCompile Include="common\Game Object\collision_map.cpp" />
+    <ClCompile Include="common\Game Object\enemy_loader.cpp" />
+    <ClCompile Include="common\Game Object\game_object.cpp" />
+    <ClCompile Include="common\Game Object\miscellaneous.cpp" />
+    <ClCompile Include="common\Game Object\panel_state.cpp" />
+    <ClCompile Include="common\Game Object\scroller.cpp" />
+    <ClCompile Include="common\Game Object\tab_state.cpp" />
+    <ClCompile Include="common\Game Object\ui_intersect.cpp" />
+    <ClCompile Include="common\Game Object\ui_state.cpp" />
+    <ClCompile Include="common\Item\item.cpp" />
+    <ClCompile Include="common\Item\item_list.cpp" />
+    <ClCompile Include="common\Item\item_types.cpp" />
+    <ClCompile Include="common\Manager\font_manager.cpp" />
+    <ClCompile Include="common\Manager\game_render.cpp" />
+    <ClCompile Include="common\Manager\sprite_manager.cpp" />
+    <ClCompile Include="common\Map\fog_of_war.cpp" />
+    <ClCompile Include="common\Map\graph.cpp" />
+    <ClCompile Include="common\Map\map.cpp" />
+    <ClCompile Include="common\Map\map_helper1.cpp" />
+    <ClCompile Include="common\Map\map_helper2.cpp" />
+    <ClCompile Include="common\Map\map_helper3.cpp" />
+    <ClCompile Include="common\Map\room.cpp" />
+    <ClCompile Include="common\Map\tile_map.cpp" />
+    <ClCompile Include="common\Player\player.cpp" />
+    <ClCompile Include="common\splash_screen.cpp" />
+    <ClCompile Include="common\Stats\hp.cpp" />
+    <ClCompile Include="common\Stats\stats.cpp" />
+    <ClCompile Include="common\stats\xp.cpp" />
+    <ClCompile Include="common\Turns\turn.cpp" />
+    <ClCompile Include="common\UI\Action_sprite_render.cpp" />
+    <ClCompile Include="common\UI\CharacterPanelRender.cpp" />
+    <ClCompile Include="common\UI\menu_item.cpp" />
+    <ClCompile Include="common\UI\panel_render.cpp" />
+    <ClCompile Include="common\UI\UI_handler.cpp" />
+    <ClCompile Include="common\UI\ui_helper.cpp" />
+    <ClCompile Include="common\UI\ui_mover.cpp" />
+    <ClCompile Include="common\UI\UI_render.cpp" />
+    <ClCompile Include="common\Window Handler\application.cpp" />
+    <ClCompile Include="common\Window Handler\media_player.cpp" />
+    <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="common.hpp" />
+    <ClInclude Include="common\AI.hpp" />
+    <ClInclude Include="common\AI\enemy.hpp" />
+    <ClInclude Include="common\AI\enemy_manager.hpp" />
+    <ClInclude Include="common\Combat.hpp" />
+    <ClInclude Include="common\Combat\Combat.hpp" />
+    <ClInclude Include="common\Delta.hpp" />
+    <ClInclude Include="common\Delta\animation.hpp" />
+    <ClInclude Include="common\Delta\auto_path.hpp" />
+    <ClInclude Include="common\Delta\movement.hpp" />
+    <ClInclude Include="common\Delta\one_direction.hpp" />
+    <ClInclude Include="common\Delta\pathfinder.hpp" />
+    <ClInclude Include="common\Delta\physical_attributes.hpp" />
+    <ClInclude Include="common\Effects.hpp" />
+    <ClInclude Include="common\Effects\effects_handler.hpp" />
+    <ClInclude Include="common\Events.hpp" />
+    <ClInclude Include="common\Events\event_handler.hpp" />
+    <ClInclude Include="common\Framework.hpp" />
+    <ClInclude Include="common\Framework\Controls\controls.hpp" />
+    <ClInclude Include="common\Framework\Database\database.hpp" />
+    <ClInclude Include="common\Framework\Font\text2D.hpp" />
+    <ClInclude Include="common\Framework\Font\text_render.hpp" />
+    <ClInclude Include="common\Framework\Math\2d_math.hpp" />
+    <ClInclude Include="common\Framework\Math\dice.hpp" />
+    <ClInclude Include="common\Framework\Shader\shader.hpp" />
+    <ClInclude Include="common\Framework\Sound\sound_manager.hpp" />
+    <ClInclude Include="common\Framework\Sprite\2d.hpp" />
+    <ClInclude Include="common\Framework\Sprite\sprite.hpp" />
+    <ClInclude Include="common\Framework\Sprite\uniform_2d.hpp" />
+    <ClInclude Include="common\Framework\Texture\texture.hpp" />
+    <ClInclude Include="common\Game Object.hpp" />
+    <ClInclude Include="common\Game Object\backpack_state.hpp" />
+    <ClInclude Include="common\Game Object\character_panel_state.hpp" />
+    <ClInclude Include="common\Game Object\collision_map.hpp" />
+    <ClInclude Include="common\Game Object\enemy_loader.hpp" />
+    <ClInclude Include="common\Game Object\game_object.hpp" />
+    <ClInclude Include="common\Game Object\miscellaneous.hpp" />
+    <ClInclude Include="common\Game Object\panel_state.hpp" />
+    <ClInclude Include="common\Game Object\scroller.hpp" />
+    <ClInclude Include="common\Game Object\tab_state.hpp" />
+    <ClInclude Include="common\Game Object\ui_intersect.hpp" />
+    <ClInclude Include="common\Game Object\ui_state.hpp" />
+    <ClInclude Include="common\Item.hpp" />
+    <ClInclude Include="common\Item\item.hpp" />
+    <ClInclude Include="common\Item\item_list.hpp" />
+    <ClInclude Include="common\Item\item_types.hpp" />
+    <ClInclude Include="common\manager.hpp" />
+    <ClInclude Include="common\Manager\font_manager.hpp" />
+    <ClInclude Include="common\Manager\game_render.hpp" />
+    <ClInclude Include="common\Manager\sprite_manager.hpp" />
+    <ClInclude Include="common\Map.hpp" />
+    <ClInclude Include="common\Map\block.hpp" />
+    <ClInclude Include="common\Map\fog_of_war.hpp" />
+    <ClInclude Include="common\Map\graph.hpp" />
+    <ClInclude Include="common\Map\map.hpp" />
+    <ClInclude Include="common\Map\room.hpp" />
+    <ClInclude Include="common\Map\tile_map.hpp" />
+    <ClInclude Include="common\splash_screen.hpp" />
+    <ClInclude Include="common\stats\xp.hpp" />
+    <ClInclude Include="common\UI.hpp" />
+    <ClInclude Include="common\Player.hpp" />
+    <ClInclude Include="common\Player\player.hpp" />
+    <ClInclude Include="common\Stats.hpp" />
+    <ClInclude Include="common\Stats\hp.hpp" />
+    <ClInclude Include="common\Stats\stats.hpp" />
+    <ClInclude Include="common\Turns.hpp" />
+    <ClInclude Include="common\Turns\turn.hpp" />
+    <ClInclude Include="common\UI\Action_sprite_render.hpp" />
+    <ClInclude Include="common\UI\CharcaterPanelRender.hpp" />
+    <ClInclude Include="common\UI\menu_item.hpp" />
+    <ClInclude Include="common\UI\panel_render.hpp" />
+    <ClInclude Include="common\UI\UI_handler.hpp" />
+    <ClInclude Include="common\UI\ui_helper.hpp" />
+    <ClInclude Include="common\UI\ui_mover.hpp" />
+    <ClInclude Include="common\UI\UI_render.hpp" />
+    <ClInclude Include="common\Window Handler.hpp" />
+    <ClInclude Include="common\Window Handler\application.hpp" />
+    <ClInclude Include="common\Window Handler\media_player.hpp" />
+    <ClInclude Include="resource.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="icon.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="glfw1.bin" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{9D694652-8DD0-4779-9618-E52D81E34C81}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>ProjectBabel</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_CRT_SECURE_NO_WARNINGS;_DEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>..\..\Dependencies\include;.\</AdditionalIncludeDirectories>
+      <PrecompiledHeaderFile>common.hpp</PrecompiledHeaderFile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>..\..\Dependencies\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>sfml-system-d.lib;sfml-system.lib;sfml-audio-d.lib;sfml-audio.lib;openAL32.lib;RocketDebugger.lib;Shell.lib;RocketControls.lib;RocketCore.lib;FreeImaged.lib;freetype.lib;glfw3.lib;glew32.lib;glu32.lib;opengl32.lib;SQLite.lib;gdi32.lib;winmm.lib;user32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;_CRT_SECURE_NO_WARNINGS;NDEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>..\..\Dependencies\include</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>sfml-system.lib;sfml-system-d.lib;sfml-audio.lib;sfml-audio-d.lib;RocketDebugger.lib;Shell.lib;RocketControls.lib;RocketCore.lib;FreeImaged.lib;freetype.lib;glfw3.lib;glew32.lib;glu32.lib;opengl32.lib;SQLite.lib;gdi32.lib;winmm.lib;user32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\Dependencies\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

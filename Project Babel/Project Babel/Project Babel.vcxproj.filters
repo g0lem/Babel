@@ -1,0 +1,540 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Resource Files\icon">
+      <UniqueIdentifier>{e22cde37-e376-471e-aaf2-73d0eb5f6604}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="common">
+      <UniqueIdentifier>{0387cd83-1b78-49b3-a74c-0751b2525914}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="common\AI">
+      <UniqueIdentifier>{24dd23ed-1d54-4d36-92bb-1b06cb52b1cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="common\Combat">
+      <UniqueIdentifier>{38b6ccb2-adb8-42f7-8dfc-fcda5c573d1a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="common\Delta">
+      <UniqueIdentifier>{d3bdcac3-f2e6-46a0-b827-71e5117c5f4d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="common\Framework">
+      <UniqueIdentifier>{9bd00ef1-d8a6-4cd6-a304-f1a0baaab6fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="common\Game Object">
+      <UniqueIdentifier>{fe41852a-e350-4bfd-a8d1-f5e1d027f7a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="common\Item">
+      <UniqueIdentifier>{7b6e78ae-8e58-4342-8450-79cef45f27ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="common\Map">
+      <UniqueIdentifier>{e09509bb-9f0d-433e-b66b-5f4b6d7dfca6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="common\Player">
+      <UniqueIdentifier>{5b389db0-d631-4882-bc57-77f51b4e180a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="common\Turns">
+      <UniqueIdentifier>{93eae981-49e2-455a-8b1d-27678de987ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="common\Stats">
+      <UniqueIdentifier>{0bc61abe-befa-4a25-8ec2-5aa4c15219d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="common\Window Handler">
+      <UniqueIdentifier>{25ef3403-efe3-4fed-a952-00be5bcfe104}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="common\Framework\Controls">
+      <UniqueIdentifier>{959cda40-1d68-4914-b412-6a0e852db345}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="common\Framework\Database">
+      <UniqueIdentifier>{905606e2-f132-41da-a021-2102aeb46067}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="common\Framework\Math">
+      <UniqueIdentifier>{276c37dc-64bf-4464-a4f0-b9d762739a76}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="common\Framework\Sound">
+      <UniqueIdentifier>{62f9898a-99bf-459e-a405-a8b79218f0b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="common\Framework\Shader">
+      <UniqueIdentifier>{84b77951-9572-452c-a107-cca0d0109639}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="common\Framework\Sprite">
+      <UniqueIdentifier>{c5231ca1-9424-4ddb-a0ff-11ac863a7f59}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="common\Framework\Texture">
+      <UniqueIdentifier>{d41cd554-cf3e-45cd-acb4-1e1771baeb48}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="common\UI">
+      <UniqueIdentifier>{1ceeee64-bac9-436d-9903-2a58e136abdc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="common\Managers">
+      <UniqueIdentifier>{a4d0b330-6060-4766-813b-c27661a10bc6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="common\Framework\Font">
+      <UniqueIdentifier>{894e97de-a6de-4d04-8e22-853fe4a542ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Precompiled Headers">
+      <UniqueIdentifier>{1030a3ff-ff15-493e-81a1-9663b08aa0d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="&quot;Da&quot; Source">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="common\Events">
+      <UniqueIdentifier>{7037b39c-3d20-44de-817d-be7a77306ab3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="common\Effects">
+      <UniqueIdentifier>{b39098ab-ea07-4212-b96f-e4fd62aacac0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="common\SplashScreen">
+      <UniqueIdentifier>{868f8282-6d16-4547-9099-a9103b1741dc}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>"Da" Source</Filter>
+    </ClCompile>
+    <ClCompile Include="common.cpp">
+      <Filter>"Da" Source</Filter>
+    </ClCompile>
+    <ClCompile Include="common\AI\enemy.cpp">
+      <Filter>common\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="common\AI\enemy_manager.cpp">
+      <Filter>common\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="common\Combat\Combat.cpp">
+      <Filter>common\Combat</Filter>
+    </ClCompile>
+    <ClCompile Include="common\Delta\animation.cpp">
+      <Filter>common\Delta</Filter>
+    </ClCompile>
+    <ClCompile Include="common\Delta\movement.cpp">
+      <Filter>common\Delta</Filter>
+    </ClCompile>
+    <ClCompile Include="common\Delta\one_direction.cpp">
+      <Filter>common\Delta</Filter>
+    </ClCompile>
+    <ClCompile Include="common\Delta\pathfinder.cpp">
+      <Filter>common\Delta</Filter>
+    </ClCompile>
+    <ClCompile Include="common\Delta\physical_attributes.cpp">
+      <Filter>common\Delta</Filter>
+    </ClCompile>
+    <ClCompile Include="common\Item\item_list.cpp">
+      <Filter>common\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="common\Item\item_types.cpp">
+      <Filter>common\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="common\Item\item.cpp">
+      <Filter>common\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="common\Map\map_helper1.cpp">
+      <Filter>common\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="common\Map\map_helper2.cpp">
+      <Filter>common\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="common\Map\map_helper3.cpp">
+      <Filter>common\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="common\Map\room.cpp">
+      <Filter>common\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="common\Map\graph.cpp">
+      <Filter>common\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="common\Player\player.cpp">
+      <Filter>common\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="common\Stats\stats.cpp">
+      <Filter>common\Stats</Filter>
+    </ClCompile>
+    <ClCompile Include="common\Stats\hp.cpp">
+      <Filter>common\Stats</Filter>
+    </ClCompile>
+    <ClCompile Include="common\Turns\turn.cpp">
+      <Filter>common\Turns</Filter>
+    </ClCompile>
+    <ClCompile Include="common\Window Handler\media_player.cpp">
+      <Filter>common\Window Handler</Filter>
+    </ClCompile>
+    <ClCompile Include="common\Window Handler\application.cpp">
+      <Filter>common\Window Handler</Filter>
+    </ClCompile>
+    <ClCompile Include="common\Framework\Controls\controls.cpp">
+      <Filter>common\Framework\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="common\Framework\Font\text_render.cpp">
+      <Filter>common\Framework\Font</Filter>
+    </ClCompile>
+    <ClCompile Include="common\Framework\Font\text2D.cpp">
+      <Filter>common\Framework\Font</Filter>
+    </ClCompile>
+    <ClCompile Include="common\Framework\Math\dice.cpp">
+      <Filter>common\Framework\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="common\Framework\Math\2d_math.cpp">
+      <Filter>common\Framework\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="common\Framework\Shader\shader.cpp">
+      <Filter>common\Framework\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="common\Framework\Sound\sound_manager.cpp">
+      <Filter>common\Framework\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="common\Framework\Sprite\uniform_2d.cpp">
+      <Filter>common\Framework\Sprite</Filter>
+    </ClCompile>
+    <ClCompile Include="common\Framework\Sprite\2d.cpp">
+      <Filter>common\Framework\Sprite</Filter>
+    </ClCompile>
+    <ClCompile Include="common\Framework\Sprite\sprite.cpp">
+      <Filter>common\Framework\Sprite</Filter>
+    </ClCompile>
+    <ClCompile Include="common\Framework\Texture\texture.cpp">
+      <Filter>common\Framework\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="common\Manager\font_manager.cpp">
+      <Filter>common\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="common\Manager\sprite_manager.cpp">
+      <Filter>common\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="common\Manager\game_render.cpp">
+      <Filter>common\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="common\UI\UI_handler.cpp">
+      <Filter>common\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="common\UI\ui_helper.cpp">
+      <Filter>common\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="common\UI\ui_mover.cpp">
+      <Filter>common\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="common\UI\UI_render.cpp">
+      <Filter>common\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="common\UI\Action_sprite_render.cpp">
+      <Filter>common\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="common\UI\CharacterPanelRender.cpp">
+      <Filter>common\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="common\UI\menu_item.cpp">
+      <Filter>common\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="common\Game Object\backpack_state.cpp">
+      <Filter>common\Game Object</Filter>
+    </ClCompile>
+    <ClCompile Include="common\Game Object\character_panel_state.cpp">
+      <Filter>common\Game Object</Filter>
+    </ClCompile>
+    <ClCompile Include="common\Game Object\collision_map.cpp">
+      <Filter>common\Game Object</Filter>
+    </ClCompile>
+    <ClCompile Include="common\Game Object\game_object.cpp">
+      <Filter>common\Game Object</Filter>
+    </ClCompile>
+    <ClCompile Include="common\Game Object\miscellaneous.cpp">
+      <Filter>common\Game Object</Filter>
+    </ClCompile>
+    <ClCompile Include="common\Game Object\scroller.cpp">
+      <Filter>common\Game Object</Filter>
+    </ClCompile>
+    <ClCompile Include="common\Game Object\tab_state.cpp">
+      <Filter>common\Game Object</Filter>
+    </ClCompile>
+    <ClCompile Include="common\Game Object\ui_intersect.cpp">
+      <Filter>common\Game Object</Filter>
+    </ClCompile>
+    <ClCompile Include="common\Game Object\ui_state.cpp">
+      <Filter>common\Game Object</Filter>
+    </ClCompile>
+    <ClCompile Include="common\Game Object\panel_state.cpp">
+      <Filter>common\Game Object</Filter>
+    </ClCompile>
+    <ClCompile Include="common\UI\panel_render.cpp">
+      <Filter>common\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="common\Game Object\enemy_loader.cpp">
+      <Filter>common\Game Object</Filter>
+    </ClCompile>
+    <ClCompile Include="common\Delta\auto_path.cpp">
+      <Filter>common\Delta</Filter>
+    </ClCompile>
+    <ClCompile Include="common\Events\event_handler.cpp">
+      <Filter>common\Events</Filter>
+    </ClCompile>
+    <ClCompile Include="common\Effects\effects_handler.cpp">
+      <Filter>common\Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="common\splash_screen.cpp">
+      <Filter>common\SplashScreen</Filter>
+    </ClCompile>
+    <ClCompile Include="common\stats\xp.cpp">
+      <Filter>common\Stats</Filter>
+    </ClCompile>
+    <ClCompile Include="common\Map\map.cpp">
+      <Filter>common\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="common\Map\tile_map.cpp">
+      <Filter>common\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="common\Map\fog_of_war.cpp">
+      <Filter>common\Map</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="resource.h">
+      <Filter>Resource Files</Filter>
+    </ClInclude>
+    <ClInclude Include="common.hpp">
+      <Filter>"Da" Source</Filter>
+    </ClInclude>
+    <ClInclude Include="common\AI\enemy.hpp">
+      <Filter>common\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="common\AI\enemy_manager.hpp">
+      <Filter>common\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="common\Combat\Combat.hpp">
+      <Filter>common\Combat</Filter>
+    </ClInclude>
+    <ClInclude Include="common\Delta\animation.hpp">
+      <Filter>common\Delta</Filter>
+    </ClInclude>
+    <ClInclude Include="common\Delta\movement.hpp">
+      <Filter>common\Delta</Filter>
+    </ClInclude>
+    <ClInclude Include="common\Delta\one_direction.hpp">
+      <Filter>common\Delta</Filter>
+    </ClInclude>
+    <ClInclude Include="common\Delta\pathfinder.hpp">
+      <Filter>common\Delta</Filter>
+    </ClInclude>
+    <ClInclude Include="common\Delta\physical_attributes.hpp">
+      <Filter>common\Delta</Filter>
+    </ClInclude>
+    <ClInclude Include="common\Item\item_list.hpp">
+      <Filter>common\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="common\Item\item_types.hpp">
+      <Filter>common\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="common\Item\item.hpp">
+      <Filter>common\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="common\Map\room.hpp">
+      <Filter>common\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="common\Map\block.hpp">
+      <Filter>common\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="common\Map\graph.hpp">
+      <Filter>common\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="common\Player\player.hpp">
+      <Filter>common\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="common\Stats\stats.hpp">
+      <Filter>common\Stats</Filter>
+    </ClInclude>
+    <ClInclude Include="common\Stats\hp.hpp">
+      <Filter>common\Stats</Filter>
+    </ClInclude>
+    <ClInclude Include="common\Turns\turn.hpp">
+      <Filter>common\Turns</Filter>
+    </ClInclude>
+    <ClInclude Include="common\Window Handler\application.hpp">
+      <Filter>common\Window Handler</Filter>
+    </ClInclude>
+    <ClInclude Include="common\Window Handler\media_player.hpp">
+      <Filter>common\Window Handler</Filter>
+    </ClInclude>
+    <ClInclude Include="common\Framework\Controls\controls.hpp">
+      <Filter>common\Framework\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="common\Framework\Database\database.hpp">
+      <Filter>common\Framework\Database</Filter>
+    </ClInclude>
+    <ClInclude Include="common\Framework\Font\text_render.hpp">
+      <Filter>common\Framework\Font</Filter>
+    </ClInclude>
+    <ClInclude Include="common\Framework\Font\text2D.hpp">
+      <Filter>common\Framework\Font</Filter>
+    </ClInclude>
+    <ClInclude Include="common\Framework\Math\2d_math.hpp">
+      <Filter>common\Framework\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="common\Framework\Math\dice.hpp">
+      <Filter>common\Framework\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="common\Framework\Shader\shader.hpp">
+      <Filter>common\Framework\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="common\Framework\Sound\sound_manager.hpp">
+      <Filter>common\Framework\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="common\Framework\Sprite\uniform_2d.hpp">
+      <Filter>common\Framework\Sprite</Filter>
+    </ClInclude>
+    <ClInclude Include="common\Framework\Sprite\2d.hpp">
+      <Filter>common\Framework\Sprite</Filter>
+    </ClInclude>
+    <ClInclude Include="common\Framework\Sprite\sprite.hpp">
+      <Filter>common\Framework\Sprite</Filter>
+    </ClInclude>
+    <ClInclude Include="common\Framework\Texture\texture.hpp">
+      <Filter>common\Framework\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="common\Window Handler.hpp">
+      <Filter>Precompiled Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="common\AI.hpp">
+      <Filter>Precompiled Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="common\Combat.hpp">
+      <Filter>Precompiled Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="common\Delta.hpp">
+      <Filter>Precompiled Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="common\Framework.hpp">
+      <Filter>Precompiled Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="common\Game Object.hpp">
+      <Filter>Precompiled Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="common\Item.hpp">
+      <Filter>Precompiled Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="common\Map.hpp">
+      <Filter>Precompiled Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="common\Player.hpp">
+      <Filter>Precompiled Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="common\Stats.hpp">
+      <Filter>Precompiled Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="common\Turns.hpp">
+      <Filter>Precompiled Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="common\UI.hpp">
+      <Filter>Precompiled Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="common\manager.hpp">
+      <Filter>Precompiled Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="common\Manager\font_manager.hpp">
+      <Filter>common\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="common\Manager\sprite_manager.hpp">
+      <Filter>common\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="common\Manager\game_render.hpp">
+      <Filter>common\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="common\UI\UI_handler.hpp">
+      <Filter>common\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="common\UI\ui_helper.hpp">
+      <Filter>common\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="common\UI\ui_mover.hpp">
+      <Filter>common\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="common\UI\UI_render.hpp">
+      <Filter>common\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="common\UI\Action_sprite_render.hpp">
+      <Filter>common\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="common\UI\CharcaterPanelRender.hpp">
+      <Filter>common\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="common\UI\menu_item.hpp">
+      <Filter>common\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="common\Game Object\backpack_state.hpp">
+      <Filter>common\Game Object</Filter>
+    </ClInclude>
+    <ClInclude Include="common\Game Object\character_panel_state.hpp">
+      <Filter>common\Game Object</Filter>
+    </ClInclude>
+    <ClInclude Include="common\Game Object\collision_map.hpp">
+      <Filter>common\Game Object</Filter>
+    </ClInclude>
+    <ClInclude Include="common\Game Object\game_object.hpp">
+      <Filter>common\Game Object</Filter>
+    </ClInclude>
+    <ClInclude Include="common\Game Object\miscellaneous.hpp">
+      <Filter>common\Game Object</Filter>
+    </ClInclude>
+    <ClInclude Include="common\Game Object\scroller.hpp">
+      <Filter>common\Game Object</Filter>
+    </ClInclude>
+    <ClInclude Include="common\Game Object\tab_state.hpp">
+      <Filter>common\Game Object</Filter>
+    </ClInclude>
+    <ClInclude Include="common\Game Object\ui_intersect.hpp">
+      <Filter>common\Game Object</Filter>
+    </ClInclude>
+    <ClInclude Include="common\Game Object\ui_state.hpp">
+      <Filter>common\Game Object</Filter>
+    </ClInclude>
+    <ClInclude Include="common\Game Object\panel_state.hpp">
+      <Filter>common\Game Object</Filter>
+    </ClInclude>
+    <ClInclude Include="common\UI\panel_render.hpp">
+      <Filter>common\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="common\Game Object\enemy_loader.hpp">
+      <Filter>common\Game Object</Filter>
+    </ClInclude>
+    <ClInclude Include="common\Delta\auto_path.hpp">
+      <Filter>common\Delta</Filter>
+    </ClInclude>
+    <ClInclude Include="common\Events.hpp">
+      <Filter>Precompiled Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="common\Events\event_handler.hpp">
+      <Filter>common\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="common\Effects.hpp">
+      <Filter>Precompiled Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="common\Effects\effects_handler.hpp">
+      <Filter>common\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="common\splash_screen.hpp">
+      <Filter>common\SplashScreen</Filter>
+    </ClInclude>
+    <ClInclude Include="common\stats\xp.hpp">
+      <Filter>common\Stats</Filter>
+    </ClInclude>
+    <ClInclude Include="common\Map\fog_of_war.hpp">
+      <Filter>common\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="common\Map\map.hpp">
+      <Filter>common\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="common\Map\tile_map.hpp">
+      <Filter>common\Map</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="icon.rc">
+      <Filter>Resource Files\icon</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="glfw1.bin">
+      <Filter>Resource Files\icon</Filter>
+    </None>
+  </ItemGroup>
+</Project>

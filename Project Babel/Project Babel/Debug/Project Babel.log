@@ -1,0 +1,113 @@
+﻿Build started 3/30/2015 10:53:54 PM.
+     1>Project "C:\Users\ZexonPrime\Desktop\projectBabel\projectBabel\Project Babel\Project Babel\Project Babel.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I..\..\Dependencies\include /I.\ /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _CRT_SECURE_NO_WARNINGS /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"common.hpp" /Fp"Debug\Project Babel.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt common\Player\player.cpp
+         player.cpp
+     1>c:\users\zexonprime\desktop\projectbabel\projectbabel\project babel\project babel\common\player\player.cpp(74): warning C4244: 'argument' : conversion from 'GLdouble' to 'GLfloat', possible loss of data
+     1>c:\users\zexonprime\desktop\projectbabel\projectbabel\project babel\project babel\common\player\player.cpp(82): warning C4244: 'argument' : conversion from 'GLdouble' to 'GLfloat', possible loss of data
+     1>c:\users\zexonprime\desktop\projectbabel\projectbabel\project babel\project babel\common\player\player.cpp(86): warning C4244: 'argument' : conversion from 'GLdouble' to 'GLfloat', possible loss of data
+     1>c:\users\zexonprime\desktop\projectbabel\projectbabel\project babel\project babel\common\player\player.cpp(266): warning C4244: 'argument' : conversion from 'GLdouble' to 'GLfloat', possible loss of data
+     1>c:\users\zexonprime\desktop\projectbabel\projectbabel\project babel\project babel\common\player\player.cpp(307): warning C4244: '=' : conversion from 'float' to 'GLint', possible loss of data
+     1>c:\users\zexonprime\desktop\projectbabel\projectbabel\project babel\project babel\common\player\player.cpp(308): warning C4244: '=' : conversion from 'float' to 'GLint', possible loss of data
+       Link:
+         D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\ZexonPrime\Desktop\projectBabel\projectBabel\Project Babel\Debug\Project Babel.exe" /INCREMENTAL /NOLOGO /LIBPATH:..\..\Dependencies\lib "sfml-system-d.lib" "sfml-system.lib" "sfml-audio-d.lib" "sfml-audio.lib" openAL32.lib RocketDebugger.lib Shell.lib RocketControls.lib RocketCore.lib FreeImaged.lib freetype.lib glfw3.lib glew32.lib glu32.lib opengl32.lib SQLite.lib gdi32.lib winmm.lib user32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\ZexonPrime\Desktop\projectBabel\projectBabel\Project Babel\Debug\Project Babel.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\ZexonPrime\Desktop\projectBabel\projectBabel\Project Babel\Debug\Project Babel.lib" /MACHINE:X86 Debug\icon.res
+         Debug\common.obj
+         Debug\enemy.obj
+         Debug\enemy_manager.obj
+         Debug\Combat.obj
+         Debug\animation.obj
+         Debug\auto_path.obj
+         Debug\movement.obj
+         Debug\one_direction.obj
+         Debug\pathfinder.obj
+         Debug\physical_attributes.obj
+         Debug\effects_handler.obj
+         Debug\event_handler.obj
+         Debug\controls.obj
+         Debug\text2D.obj
+         Debug\text_render.obj
+         Debug\2d_math.obj
+         Debug\dice.obj
+         Debug\shader.obj
+         Debug\sound_manager.obj
+         Debug\2d.obj
+         Debug\sprite.obj
+         Debug\uniform_2d.obj
+         Debug\texture.obj
+         Debug\backpack_state.obj
+         Debug\character_panel_state.obj
+         Debug\collision_map.obj
+         Debug\enemy_loader.obj
+         Debug\game_object.obj
+         Debug\miscellaneous.obj
+         Debug\panel_state.obj
+         Debug\scroller.obj
+         Debug\tab_state.obj
+         Debug\ui_intersect.obj
+         Debug\ui_state.obj
+         Debug\item.obj
+         Debug\item_list.obj
+         Debug\item_types.obj
+         Debug\font_manager.obj
+         Debug\game_render.obj
+         Debug\sprite_manager.obj
+         Debug\fog_of_war.obj
+         Debug\graph.obj
+         Debug\map.obj
+         Debug\map_helper1.obj
+         Debug\map_helper2.obj
+         Debug\map_helper3.obj
+         Debug\room.obj
+         Debug\tile_map.obj
+         Debug\player.obj
+         Debug\splash_screen.obj
+         Debug\hp.obj
+         Debug\stats.obj
+         Debug\xp.obj
+         Debug\turn.obj
+         Debug\Action_sprite_render.obj
+         Debug\CharacterPanelRender.obj
+         Debug\menu_item.obj
+         Debug\panel_render.obj
+         Debug\UI_handler.obj
+         Debug\ui_helper.obj
+         Debug\ui_mover.obj
+         Debug\UI_render.obj
+         Debug\application.obj
+         Debug\media_player.obj
+         Debug\main.obj
+         SQLite.lib(sqlite3.obj) : MSIL .netmodule or module compiled with /GL found; restarting link with /LTCG; add /LTCG to the link command line to improve linker performance
+     1>LINK : warning LNK4075: ignoring '/INCREMENTAL' due to '/LTCG' specification
+     1>common.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/OPT:LBR' specification
+     1>LINK : warning LNK4098: defaultlib 'LIBCMTD' conflicts with use of other libs; use /NODEFAULTLIB:library
+     1>LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
+         Generating code
+         Finished generating code
+     1>freetype.lib(autofit.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(autofit.obj)' or at 'C:\Users\ZexonPrime\Desktop\projectBabel\projectBabel\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
+     1>freetype.lib(bdf.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(bdf.obj)' or at 'C:\Users\ZexonPrime\Desktop\projectBabel\projectBabel\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
+     1>freetype.lib(cff.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(cff.obj)' or at 'C:\Users\ZexonPrime\Desktop\projectBabel\projectBabel\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
+     1>freetype.lib(ftbase.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(ftbase.obj)' or at 'C:\Users\ZexonPrime\Desktop\projectBabel\projectBabel\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
+     1>freetype.lib(ftdebug.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(ftdebug.obj)' or at 'C:\Users\ZexonPrime\Desktop\projectBabel\projectBabel\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
+     1>freetype.lib(ftgzip.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(ftgzip.obj)' or at 'C:\Users\ZexonPrime\Desktop\projectBabel\projectBabel\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
+     1>freetype.lib(ftinit.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(ftinit.obj)' or at 'C:\Users\ZexonPrime\Desktop\projectBabel\projectBabel\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
+     1>freetype.lib(ftlzw.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(ftlzw.obj)' or at 'C:\Users\ZexonPrime\Desktop\projectBabel\projectBabel\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
+     1>freetype.lib(ftsystem.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(ftsystem.obj)' or at 'C:\Users\ZexonPrime\Desktop\projectBabel\projectBabel\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
+     1>freetype.lib(smooth.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(smooth.obj)' or at 'C:\Users\ZexonPrime\Desktop\projectBabel\projectBabel\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
+     1>freetype.lib(pcf.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(pcf.obj)' or at 'C:\Users\ZexonPrime\Desktop\projectBabel\projectBabel\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
+     1>freetype.lib(pfr.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(pfr.obj)' or at 'C:\Users\ZexonPrime\Desktop\projectBabel\projectBabel\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
+     1>freetype.lib(psaux.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(psaux.obj)' or at 'C:\Users\ZexonPrime\Desktop\projectBabel\projectBabel\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
+     1>freetype.lib(pshinter.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(pshinter.obj)' or at 'C:\Users\ZexonPrime\Desktop\projectBabel\projectBabel\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
+     1>freetype.lib(psmodule.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(psmodule.obj)' or at 'C:\Users\ZexonPrime\Desktop\projectBabel\projectBabel\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
+     1>freetype.lib(raster.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(raster.obj)' or at 'C:\Users\ZexonPrime\Desktop\projectBabel\projectBabel\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
+     1>freetype.lib(sfnt.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(sfnt.obj)' or at 'C:\Users\ZexonPrime\Desktop\projectBabel\projectBabel\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
+     1>freetype.lib(truetype.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(truetype.obj)' or at 'C:\Users\ZexonPrime\Desktop\projectBabel\projectBabel\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
+     1>freetype.lib(type1.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(type1.obj)' or at 'C:\Users\ZexonPrime\Desktop\projectBabel\projectBabel\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
+     1>freetype.lib(type1cid.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(type1cid.obj)' or at 'C:\Users\ZexonPrime\Desktop\projectBabel\projectBabel\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
+     1>freetype.lib(type42.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(type42.obj)' or at 'C:\Users\ZexonPrime\Desktop\projectBabel\projectBabel\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
+     1>freetype.lib(winfnt.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(winfnt.obj)' or at 'C:\Users\ZexonPrime\Desktop\projectBabel\projectBabel\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
+         Project Babel.vcxproj -> C:\Users\ZexonPrime\Desktop\projectBabel\projectBabel\Project Babel\Debug\Project Babel.exe
+     1>Done Building Project "C:\Users\ZexonPrime\Desktop\projectBabel\projectBabel\Project Babel\Project Babel\Project Babel.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:03.67

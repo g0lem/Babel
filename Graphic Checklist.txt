@@ -1,0 +1,7 @@
+Entities::{
+	Scorpion -- 100%
+	Cobweb -- 100%
+	Stairs -- 100%
+	Sandstone bricks -- 100%
+
+}
