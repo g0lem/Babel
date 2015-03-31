@@ -28,9 +28,9 @@ void Enemy::Init(EnemyData * data)
 
 
 
-void Enemy::Render(Controller * ctrl, ScreenUniformData * u_data, GameObject * g_obj)
+void Enemy::Render(Controller * ctrl, ScreenUniformData * u_data, GameObject * g_obj, Map *map)
 {
-	if (g_obj->GetEnemyLoader()->GetData()->size() > 0)
+	if (g_obj->GetEnemyLoader()->GetData()->size() > 0 && map->GetFogofWar()->GetFogMartix()[(int)(p_attributes->position.x)][(int)(p_attributes->position.y)] == 0.f)
 	{
 		this->last_position = this->p_attributes->position;
 

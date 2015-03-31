@@ -102,7 +102,7 @@ void SpriteManager::Render(Controller * ctrl, GameObject * g_obj)
 		this->player->Render(ctrl, this->GetScreenPointer(), g_obj, this->map);
 
 
-		this->m_enemies->Render(ctrl, this->GetScreenPointer(), g_obj);
+		this->m_enemies->Render(ctrl, this->GetScreenPointer(), g_obj, this->map);
 
 
 		this->m_combat->Action(ctrl, g_obj, this->player, this->m_enemies, this->map);

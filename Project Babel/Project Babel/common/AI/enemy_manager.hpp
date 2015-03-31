@@ -27,7 +27,7 @@ public:
 
 
 
-	void Render(Controller * ctrl, ScreenUniformData * u_data, GameObject * g_obj);
+	void Render(Controller * ctrl, ScreenUniformData * u_data, GameObject * g_obj, Map *map);
 
 
 

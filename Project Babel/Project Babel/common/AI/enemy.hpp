@@ -86,7 +86,7 @@ public:
 	void Init(EnemyData * data);
 
 
-	void Render(Controller * ctrl, ScreenUniformData * u_data, GameObject * g_obj);
+	void Render(Controller * ctrl, ScreenUniformData * u_data, GameObject * g_obj, Map *map);
 	void SetRandomPosition(Map * map);
 	void Update(GameObject * g_obj, GLfloat delta);
 

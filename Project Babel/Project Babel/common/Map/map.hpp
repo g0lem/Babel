@@ -32,7 +32,7 @@ public:
 
 	inline Tilemap * GetTilemap(){ return this->tilemap; }
 
-
+	inline fog_of_war *GetFogofWar(){ return this->fog; }
 
 	inline 	std::vector<Room*>* GetRoomsPointer(){ return this->rooms; }
 
