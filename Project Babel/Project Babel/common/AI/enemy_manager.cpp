@@ -9,8 +9,9 @@
 void EnemyManager::Render(Controller * ctrl, ScreenUniformData * u_data, GameObject * g_obj)
 {
 
-
-
+	std::vector<glm::ivec2>list = g_obj->GetCollisionMap()->GetList();
+	for (GLuint i = 0; i < list.size(); i++)
+		g_obj->GetCollisionMap()->GetTiles()[list[i].x][list[i].y] = 0;
 	g_obj->GetCollisionMap()->ResetList();
 
 
@@ -21,6 +22,7 @@ void EnemyManager::Render(Controller * ctrl, ScreenUniformData * u_data, GameObj
 		if (compare_vec2(this->m_enemies[0][i]->GetPAttributes()->position, glm::vec2(g_obj->GetScroller()->GetBeginLimit())) == V_GREATER
 			&& compare_vec2(this->m_enemies[0][i]->GetPAttributes()->position, glm::vec2(g_obj->GetScroller()->GetEndLimit())) == V_LESSER)
 		{
+
 
 
 			this->m_enemies[0][i]->Render(ctrl, u_data, g_obj);
@@ -65,6 +67,10 @@ void EnemyManager::Init(GLuint num, Map * map, GameObject * g_obj)
 
 	}
 
+
+	this->fog = new fog_of_war();
+	this->fog->Init(g_obj);
+	
 }
 
 

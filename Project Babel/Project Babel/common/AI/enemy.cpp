@@ -135,7 +135,7 @@ void Enemy::Update(GameObject * g_obj, GLfloat delta)
 
 	this->p_attributes->Update(delta);
 	g_obj->GetCollisionMap()->AddToList(glm::ivec2(this->p_attributes->target));
-
+	g_obj->GetCollisionMap()->GetTiles()[GLuint(this->p_attributes->target.x)][GLuint(this->p_attributes->target.y)] = 1;
 
 }
 

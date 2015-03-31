@@ -19,13 +19,13 @@ void Player::Load(GameObject * g_obj, Map * current_tilemap)
 	this->a_path = new AutoPath();
 	this->m_dir = new Direction();
 	this->m_stats = new Stats();
-	this->e_near = new EnemiesNear();
 	this->h_event = new EventHandler();
 	this->fog = new fog_of_war();
 	h_event->Init(current_tilemap);
 	fog->Init(g_obj);
 	this->t_clock = new sf::Clock();
 	this->last_wanted_position = glm::vec2(0, 0);
+	this->a_handler = new ActionHandler();
 
 
 	this->LoadItems(g_obj);
@@ -69,7 +69,7 @@ void Player::Render(Controller * ctrl, ScreenUniformData * u_data, GameObject * 
 
 
 
-	if (attributes->HasReachedTarget())
+	if (attributes->HasReachedTarget() && a_handler->IsStopped())
 		Move::TileMove(ctrl, g_obj, attributes->target);
 		this->attributes->Update(ctrl->GetFpsPointer()->Delta());
 		this->HandleAutoPath(ctrl, g_obj, current_map);
@@ -78,12 +78,22 @@ void Player::Render(Controller * ctrl, ScreenUniformData * u_data, GameObject * 
 
 
 
+		if (this->a_handler->IsStopped() && !this->attributes->HasReachedTarget())
+			this->a_handler->Start();
 
-		if (attributes->HasMovedATile(ctrl->GetFpsPointer()->Delta()))
-			g_obj->GetTurnSystem()->ComputeMovement(this->m_stats->base_movement_speed);
-		else
-			if (!attributes->HasReachedTarget())
-			this->walk_animation->Update(16.0f, ctrl->GetFpsPointer()->Delta());
+
+		if (!this->a_handler->IsStopped())
+		{
+			if (!this->a_handler->HasReachedLifetime(0.15f))
+				this->walk_animation->Update(16.0f, ctrl->GetFpsPointer()->Delta());
+			else
+			{
+				g_obj->GetTurnSystem()->ComputeMovement(this->m_stats->base_movement_speed);
+				this->a_handler->Stop();
+			}
+		}
+
+
 
 
 		
@@ -263,7 +273,7 @@ void Player::HandleAutoPath(Controller * ctrl, GameObject * g_obj, Map *current_
 		this->attributes->target = a_path->GetStep();
 		
 
-		if (attributes->HasMovedATile(ctrl->GetFpsPointer()->Delta()) || attributes->HasReachedTarget())
+		if (this->a_handler->HasReachedLifetime(0.15f) || attributes->HasReachedTarget())
 		{
 			a_path->Advance();
 			a_path->Start(g_obj, attributes->target, last_wanted_position);

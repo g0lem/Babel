@@ -178,15 +178,9 @@ void Combat::AquireEnemyTarget(Player * player, EnemyManager * enemies)
 
 
 		if (glm::distance(player->GetPAttributes()->position, current_enemy->GetPAttributes()->position) < MIN_AQUIRE_DISTANCE)
-		{
 			current_enemy->SetTargetPosition(player->GetPAttributes()->target);
-			player->GetEnemiesNear()->Add();
-		}
-		else
-		{
-			current_enemy->SetTargetPosition(vec2_0);
-			player->GetEnemiesNear()->Remove();
-		}
+		if (glm::distance(player->GetPAttributes()->position, current_enemy->GetPAttributes()->position) > 2.0f * MIN_AQUIRE_DISTANCE)
+			current_enemy->SetTargetPosition(player->GetPAttributes()->target);
 
 
 
@@ -212,7 +206,7 @@ void Combat::EnemyAttack(GameObject * g_obj, Player * player, EnemyManager *enem
 		Enemy * current_enemy = enemies->GetEnemiesPointer()[0][i];
 
 
-		if (current_enemy->GetTarget() > NO_TARGET)
+		if (current_enemy->GetTarget() > NO_TARGET && current_enemy->GetPAttributes()->HasReachedTarget())
 		{
 
 
@@ -247,7 +241,7 @@ void Combat::EnemyMovement(Controller * ctrl, GameObject * g_obj, Player * playe
 
 
 
-	if (player->GetPAttributes()->HasMovedATile(ctrl->GetFpsPointer()->Delta()))
+	if (player->GetActionHandler()->HasReachedLifetime(0.15f))
 		enemies->GetEnemiesPointer()[0][0]->GetTurnLogic()->Advance();
 
 
@@ -276,7 +270,7 @@ void Combat::EnemyMovement(Controller * ctrl, GameObject * g_obj, Player * playe
 
 
 
-				a_path->GetPathfinder()->Init(g_obj, attr->position, enemy->GetTargetPosition());
+				a_path->Start(g_obj, enemy->GetPAttributes()->position, enemy->GetTargetPosition());
 				a_path->Reset();
 
 

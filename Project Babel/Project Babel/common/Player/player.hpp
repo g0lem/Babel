@@ -15,26 +15,26 @@
 
 
 
-
-class EnemiesNear
+class ActionHandler
 {
 
 
-	GLint counter;
+	GLfloat timer;
 
 
 public:
 
 
-	inline EnemiesNear(){ this->Init(); }
-	inline void Init(){ this->counter = 0; }
-	inline void Add(){ this->counter++; }
-	inline void Remove(){ this->counter--; }
-	inline GLboolean HasFriends(){ return this->counter > 0; }
-
+	inline ActionHandler(){ this->Init(); }
+	inline void Init(){ this->timer = 0.0f; }
+	inline void Start(){ this->timer = glfwGetTime(); }
+	inline void Stop(){ this->timer = 0.0f; }
+	inline GLboolean HasReachedLifetime(GLfloat life_time){ return glfwGetTime() - this->timer > life_time; }
+	inline GLboolean IsStopped(){ return this->timer == 0.0f; }
 
 
 };
+
 
 
 
@@ -60,10 +60,9 @@ class Player
 	sf::Clock *t_clock;
 
 
-
+	ActionHandler * a_handler;
 	glm::vec2 last_wanted_position;
 	Item **items;
-	EnemiesNear * e_near;
 
 	
 
@@ -94,11 +93,11 @@ public:
 	inline void SetAttackingState(GLboolean attacking){ this->attacking = attacking; }
 	inline GLint GetTarget(){ return this->target; }
 	inline void SetTarget(GLint target){ this->target = target; }
-	inline EnemiesNear * GetEnemiesNear(){ return this->e_near; }
 	inline PhysicalAttributes*GetPAttributes(){ return this->attributes; }
 	inline Stats * GetStats(){ return this->m_stats; }
 	inline Item**GetItems(){ return this->items; }
 	inline Direction * GetDirection(){ return this->m_dir; }
+	inline ActionHandler * GetActionHandler(){ return this->a_handler; }
 
 
 };
