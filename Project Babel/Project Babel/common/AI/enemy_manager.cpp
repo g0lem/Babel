@@ -44,7 +44,7 @@ void EnemyManager::Render(Controller * ctrl, ScreenUniformData * u_data, GameObj
 
 
 
-	this->CheckEnemiesState(g_obj);
+	this->CheckEnemiesState(g_obj, map);
 
 
 
@@ -83,7 +83,7 @@ void EnemyManager::Init(GLuint num, Map * map, GameObject * g_obj)
 
 
 
-void EnemyManager::CheckEnemiesState(GameObject * g_obj)
+void EnemyManager::CheckEnemiesState(GameObject * g_obj, Map *map)
 {
 
 
@@ -95,7 +95,7 @@ void EnemyManager::CheckEnemiesState(GameObject * g_obj)
 		{
 
 
-			this->Kill(g_obj, i);
+			this->Kill(g_obj, i, map);
 
 
 		}
@@ -109,7 +109,7 @@ void EnemyManager::CheckEnemiesState(GameObject * g_obj)
 
 
 
-void EnemyManager::Kill(GameObject * g_obj, GLuint enemy_id)
+void EnemyManager::Kill(GameObject * g_obj, GLuint enemy_id, Map *map)
 {
 
 	if (this->m_enemies->size() > 2)
@@ -120,8 +120,8 @@ void EnemyManager::Kill(GameObject * g_obj, GLuint enemy_id)
 	}
 	else
 	{
-		this->m_enemies->at(enemy_id)->GetPAttributes()->position.x = 0;
-		this->m_enemies->at(enemy_id)->GetPAttributes()->position.y = 0;
+		this->m_enemies->at(enemy_id)->GetStats()->GetHp()->hp = this->m_enemies->at(enemy_id)->GetStats()->GetHp()->max_hp;
+		this->m_enemies->at(enemy_id)->SetRandomPosition(map);
 	}
 
 }

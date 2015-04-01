@@ -37,6 +37,7 @@ class ItemList
 
 	Sprite *m_sprite;
 
+	void AddPotions();
 
 public:
 
