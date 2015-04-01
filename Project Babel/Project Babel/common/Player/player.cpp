@@ -55,9 +55,6 @@ void Player::Render(Controller * ctrl, ScreenUniformData * u_data, GameObject * 
 
 
 
-	if (this->able_to_move)
-	{
-
 
 		if (ctrl->GetKeyOnce(GLFW_KEY_SPACE) && this->target > NO_TARGET && a_handler->IsStopped())
 		{
@@ -75,15 +72,8 @@ void Player::Render(Controller * ctrl, ScreenUniformData * u_data, GameObject * 
 		this->attributes->Update(ctrl->GetFpsPointer()->Delta());
 		this->HandleAutoPath(ctrl, g_obj, current_map);
 
-	}
-	else
-	{
-
-		this->a_handler->SetAction(NO_ACTION);
-		this->a_handler->Stop();
 
 
-	}
 
 
 	Move::UpdateScroller(ctrl, g_obj, attributes->position, attributes->scale);
@@ -101,15 +91,15 @@ void Player::Render(Controller * ctrl, ScreenUniformData * u_data, GameObject * 
 
 
 		if (this->a_handler->IsStopped() && !this->walk_animation->Finished() && this->walk_animation->Started())
-			this->walk_animation->Update(16.0f, ctrl->GetFpsPointer()->Delta());
+			this->walk_animation->Update(60.0f, ctrl->GetFpsPointer()->Delta());
 
 
 
 
 		if (!this->a_handler->IsStopped() && this->a_handler->GetAction() == MOVING)
 		{
-			if (!this->a_handler->HasReachedLifetime(0.15f))
-				this->walk_animation->Update(16.0f, ctrl->GetFpsPointer()->Delta());
+			if (!this->a_handler->HasReachedLifetime(TIME_FOR_ACTION))
+				this->walk_animation->Update(60.0f, ctrl->GetFpsPointer()->Delta());
 			else
 			{
 				g_obj->GetTurnSystem()->ComputeMovement(this->m_stats->base_movement_speed);
@@ -193,7 +183,7 @@ void Player::LoadPhysicalAttributes(Map * current_tilemap)
 	this->attributes->scale = glm::vec2(64.0f, 64.0f);
 	this->attributes->position = glm::vec2(current_tilemap->GetRoomsPointer()[0][0]->GetInternalCenter());
 	this->attributes->target = this->attributes->position;
-	this->attributes->speed = 7.5f;
+	this->attributes->speed = 10.0f;
 	this->attributes->rotation_angle = 0.0f;
 
 

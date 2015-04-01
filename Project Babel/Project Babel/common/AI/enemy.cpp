@@ -42,13 +42,23 @@ void Enemy::Render(Controller * ctrl, ScreenUniformData * u_data, GameObject * g
 
 
 	GLuint dir = m_dir->Compute(DIR_TYPE_4, p_attributes->position, p_attributes->target);
-	if (!a_handler->IsStopped() && a_handler->GetAction() == MOVING)
-		this->animations[dir]->Update(16.0f, ctrl->GetFpsPointer()->Delta());
+	if ((!a_handler->IsStopped() && a_handler->GetAction() == MOVING) || this->animations[dir]->Started())
+		this->animations[dir]->Update(GLfloat(this->animations[dir]->GetNumFrames())*7.5f, ctrl->GetFpsPointer()->Delta());
+	else if ((!a_handler->IsStopped() && a_handler->GetAction() == ATTACKING) || this->animations[dir + 4]->Started())
+		this->animations[dir + 4]->Update(GLfloat(this->animations[dir + 4]->GetNumFrames())*7.5f, ctrl->GetFpsPointer()->Delta());
 
 
 
 	this->Update(g_obj, ctrl->GetFpsPointer()->Delta());
-	this->m_sprites[dir]->Render(this->animations[dir]->GetIFrames());
+
+
+
+	if (a_handler->GetAction() == ATTACKING)
+		this->m_sprites[dir + 4]->Render(this->animations[dir + 4]->GetIFrames());
+	else
+		this->m_sprites[dir]->Render(this->animations[dir]->GetIFrames());
+
+
 	this->RenderMisc(u_data, g_obj);
 
 
@@ -112,7 +122,7 @@ void Enemy::LoadPhysicalAttributes()
 	this->p_attributes = new PhysicalAttributes();
 	this->p_attributes->position = this->p_attributes->target = vec2_0;
 	this->p_attributes->scale = glm::vec2(64.0f, 64.0f);
-	this->p_attributes->speed = 7.5f;
+	this->p_attributes->speed = 10.0f;
 	this->p_attributes->rotation_angle - 0.0f;
 
 

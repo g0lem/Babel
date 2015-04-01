@@ -10,6 +10,9 @@
 
 
 
+#define TIME_FOR_ACTION 0.10f
+
+
 
 class ActionHandler
 {

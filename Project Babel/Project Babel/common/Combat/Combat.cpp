@@ -71,7 +71,7 @@ void Combat::PlayerAttack(GameObject * g_obj, Player * player, EnemyManager *ene
 
 	if (player->GetTarget() > NO_TARGET && 
 		player->GetActionHandler()->GetAction() == ATTACKING && 
-		player->GetActionHandler()->HasReachedLifetime(0.15f))
+		player->GetActionHandler()->HasReachedLifetime(TIME_FOR_ACTION))
 	{
 
 		
@@ -273,7 +273,8 @@ void Combat::EnemyAttack(GameObject * g_obj, Player * player, EnemyManager *enem
 
 
 
-		if (current_enemy->GetActionHandler()->GetAction() == ATTACKING && current_enemy->GetActionHandler()->HasReachedLifetime(0.15f))
+		if (current_enemy->GetActionHandler()->GetAction() == ATTACKING && 
+			current_enemy->GetActionHandler()->HasReachedLifetime(TIME_FOR_ACTION))
 		{
 		
 
@@ -378,7 +379,7 @@ void Combat::EnemyMovement(Controller * ctrl, GameObject * g_obj, Player * playe
 				}
 	
 
-				if (a_handler->HasReachedLifetime(0.15f))
+				if (a_handler->HasReachedLifetime(TIME_FOR_ACTION))
 				{
 			
 					turns->ComputeMovement(-stats->base_movement_speed);
