@@ -1,11 +1,10 @@
-﻿Build started 3/31/2015 2:22:41 PM.
-     1>Project "C:\Users\Aaether\Desktop\the-correct-one\Project Babel\Project Babel\Project Babel.vcxproj" on node 2 (Build target(s)).
+﻿Build started 4/1/2015 1:03:12 AM.
+     1>Project "D:\GitHub\the-correct-one\Project Babel\Project Babel\Project Babel.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I..\..\Dependencies\include /I.\ /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _CRT_SECURE_NO_WARNINGS /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"common.hpp" /Fp"Debug\Project Babel.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt common\Combat\Combat.cpp
-         Combat.cpp
-     1>c:\users\aaether\desktop\the-correct-one\project babel\project babel\common\combat\combat.cpp(308): warning C4244: 'argument' : conversion from 'GLdouble' to 'GLfloat', possible loss of data
+         D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I..\..\Dependencies\include /I.\ /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _CRT_SECURE_NO_WARNINGS /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"common.hpp" /Fp"Debug\Project Babel.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt common\UI\panel_render.cpp
+         panel_render.cpp
        Link:
-         D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Aaether\Desktop\the-correct-one\Project Babel\Debug\Project Babel.exe" /INCREMENTAL /NOLOGO /LIBPATH:..\..\Dependencies\lib "sfml-system-d.lib" "sfml-system.lib" "sfml-audio-d.lib" "sfml-audio.lib" openAL32.lib RocketDebugger.lib Shell.lib RocketControls.lib RocketCore.lib FreeImaged.lib freetype.lib glfw3.lib glew32.lib glu32.lib opengl32.lib SQLite.lib gdi32.lib winmm.lib user32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Aaether\Desktop\the-correct-one\Project Babel\Debug\Project Babel.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Aaether\Desktop\the-correct-one\Project Babel\Debug\Project Babel.lib" /MACHINE:X86 Debug\icon.res
+         D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\GitHub\the-correct-one\Project Babel\Debug\Project Babel.exe" /INCREMENTAL /NOLOGO /LIBPATH:..\..\Dependencies\lib "sfml-system-d.lib" "sfml-system.lib" "sfml-audio-d.lib" "sfml-audio.lib" openAL32.lib RocketDebugger.lib Shell.lib RocketControls.lib RocketCore.lib FreeImaged.lib freetype.lib glfw3.lib glew32.lib glu32.lib opengl32.lib SQLite.lib gdi32.lib winmm.lib user32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\GitHub\the-correct-one\Project Babel\Debug\Project Babel.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\GitHub\the-correct-one\Project Babel\Debug\Project Babel.lib" /MACHINE:X86 Debug\icon.res
          Debug\common.obj
          Debug\enemy.obj
          Debug\enemy_manager.obj
@@ -29,11 +28,12 @@
          Debug\sprite.obj
          Debug\uniform_2d.obj
          Debug\texture.obj
-         Debug\backpack_state.obj
+         Debug\inventory_state.obj
          Debug\character_panel_state.obj
          Debug\collision_map.obj
          Debug\enemy_loader.obj
          Debug\game_object.obj
+         Debug\menu_state.obj
          Debug\miscellaneous.obj
          Debug\panel_state.obj
          Debug\scroller.obj
@@ -60,9 +60,10 @@
          Debug\stats.obj
          Debug\xp.obj
          Debug\turn.obj
-         Debug\Action_sprite_render.obj
          Debug\CharacterPanelRender.obj
+         Debug\inventory.obj
          Debug\menu_item.obj
+         Debug\menu_render.obj
          Debug\panel_render.obj
          Debug\UI_handler.obj
          Debug\ui_helper.obj
@@ -78,32 +79,31 @@
      1>LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
          Generating code
          Finished generating code
-     1>SQLite.lib(sqlite3.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'SQLite.lib(sqlite3.obj)' or at 'C:\Users\Aaether\Desktop\the-correct-one\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
-     1>freetype.lib(autofit.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(autofit.obj)' or at 'C:\Users\Aaether\Desktop\the-correct-one\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
-     1>freetype.lib(bdf.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(bdf.obj)' or at 'C:\Users\Aaether\Desktop\the-correct-one\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
-     1>freetype.lib(cff.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(cff.obj)' or at 'C:\Users\Aaether\Desktop\the-correct-one\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
-     1>freetype.lib(ftbase.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(ftbase.obj)' or at 'C:\Users\Aaether\Desktop\the-correct-one\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
-     1>freetype.lib(ftdebug.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(ftdebug.obj)' or at 'C:\Users\Aaether\Desktop\the-correct-one\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
-     1>freetype.lib(ftgzip.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(ftgzip.obj)' or at 'C:\Users\Aaether\Desktop\the-correct-one\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
-     1>freetype.lib(ftinit.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(ftinit.obj)' or at 'C:\Users\Aaether\Desktop\the-correct-one\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
-     1>freetype.lib(ftlzw.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(ftlzw.obj)' or at 'C:\Users\Aaether\Desktop\the-correct-one\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
-     1>freetype.lib(ftsystem.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(ftsystem.obj)' or at 'C:\Users\Aaether\Desktop\the-correct-one\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
-     1>freetype.lib(smooth.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(smooth.obj)' or at 'C:\Users\Aaether\Desktop\the-correct-one\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
-     1>freetype.lib(pcf.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(pcf.obj)' or at 'C:\Users\Aaether\Desktop\the-correct-one\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
-     1>freetype.lib(pfr.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(pfr.obj)' or at 'C:\Users\Aaether\Desktop\the-correct-one\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
-     1>freetype.lib(psaux.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(psaux.obj)' or at 'C:\Users\Aaether\Desktop\the-correct-one\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
-     1>freetype.lib(pshinter.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(pshinter.obj)' or at 'C:\Users\Aaether\Desktop\the-correct-one\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
-     1>freetype.lib(psmodule.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(psmodule.obj)' or at 'C:\Users\Aaether\Desktop\the-correct-one\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
-     1>freetype.lib(raster.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(raster.obj)' or at 'C:\Users\Aaether\Desktop\the-correct-one\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
-     1>freetype.lib(sfnt.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(sfnt.obj)' or at 'C:\Users\Aaether\Desktop\the-correct-one\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
-     1>freetype.lib(truetype.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(truetype.obj)' or at 'C:\Users\Aaether\Desktop\the-correct-one\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
-     1>freetype.lib(type1.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(type1.obj)' or at 'C:\Users\Aaether\Desktop\the-correct-one\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
-     1>freetype.lib(type1cid.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(type1cid.obj)' or at 'C:\Users\Aaether\Desktop\the-correct-one\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
-     1>freetype.lib(type42.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(type42.obj)' or at 'C:\Users\Aaether\Desktop\the-correct-one\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
-     1>freetype.lib(winfnt.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(winfnt.obj)' or at 'C:\Users\Aaether\Desktop\the-correct-one\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
-         Project Babel.vcxproj -> C:\Users\Aaether\Desktop\the-correct-one\Project Babel\Debug\Project Babel.exe
-     1>Done Building Project "C:\Users\Aaether\Desktop\the-correct-one\Project Babel\Project Babel\Project Babel.vcxproj" (Build target(s)).
+     1>freetype.lib(autofit.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(autofit.obj)' or at 'D:\GitHub\the-correct-one\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
+     1>freetype.lib(bdf.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(bdf.obj)' or at 'D:\GitHub\the-correct-one\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
+     1>freetype.lib(cff.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(cff.obj)' or at 'D:\GitHub\the-correct-one\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
+     1>freetype.lib(ftbase.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(ftbase.obj)' or at 'D:\GitHub\the-correct-one\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
+     1>freetype.lib(ftdebug.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(ftdebug.obj)' or at 'D:\GitHub\the-correct-one\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
+     1>freetype.lib(ftgzip.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(ftgzip.obj)' or at 'D:\GitHub\the-correct-one\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
+     1>freetype.lib(ftinit.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(ftinit.obj)' or at 'D:\GitHub\the-correct-one\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
+     1>freetype.lib(ftlzw.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(ftlzw.obj)' or at 'D:\GitHub\the-correct-one\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
+     1>freetype.lib(ftsystem.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(ftsystem.obj)' or at 'D:\GitHub\the-correct-one\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
+     1>freetype.lib(smooth.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(smooth.obj)' or at 'D:\GitHub\the-correct-one\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
+     1>freetype.lib(pcf.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(pcf.obj)' or at 'D:\GitHub\the-correct-one\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
+     1>freetype.lib(pfr.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(pfr.obj)' or at 'D:\GitHub\the-correct-one\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
+     1>freetype.lib(psaux.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(psaux.obj)' or at 'D:\GitHub\the-correct-one\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
+     1>freetype.lib(pshinter.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(pshinter.obj)' or at 'D:\GitHub\the-correct-one\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
+     1>freetype.lib(psmodule.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(psmodule.obj)' or at 'D:\GitHub\the-correct-one\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
+     1>freetype.lib(raster.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(raster.obj)' or at 'D:\GitHub\the-correct-one\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
+     1>freetype.lib(sfnt.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(sfnt.obj)' or at 'D:\GitHub\the-correct-one\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
+     1>freetype.lib(truetype.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(truetype.obj)' or at 'D:\GitHub\the-correct-one\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
+     1>freetype.lib(type1.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(type1.obj)' or at 'D:\GitHub\the-correct-one\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
+     1>freetype.lib(type1cid.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(type1cid.obj)' or at 'D:\GitHub\the-correct-one\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
+     1>freetype.lib(type42.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(type42.obj)' or at 'D:\GitHub\the-correct-one\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
+     1>freetype.lib(winfnt.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(winfnt.obj)' or at 'D:\GitHub\the-correct-one\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
+         Project Babel.vcxproj -> D:\GitHub\the-correct-one\Project Babel\Debug\Project Babel.exe
+     1>Done Building Project "D:\GitHub\the-correct-one\Project Babel\Project Babel\Project Babel.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:09.19
+Time Elapsed 00:00:03.24

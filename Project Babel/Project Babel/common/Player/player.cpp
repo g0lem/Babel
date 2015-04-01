@@ -226,9 +226,11 @@ GLboolean Player::CheckAdvance(Controller * ctrl, GameObject * g_obj)
 
 		}
 
+		
 
 		}
-
+	if (g_obj->GetUIState()->GetMenuState()->GetState() == ACTIVE)
+		advance = false;
 
 
 	return advance;
@@ -273,7 +275,7 @@ void Player::HandleAutoPath(Controller * ctrl, GameObject * g_obj, Map *current_
 		this->attributes->target = a_path->GetStep();
 		
 
-		if (this->a_handler->HasReachedLifetime(0.15f) || attributes->HasReachedTarget())
+		if (attributes->HasMovedATile(ctrl->GetFpsPointer()->Delta()) || attributes->HasReachedTarget())
 		{
 			a_path->Advance();
 			a_path->Start(g_obj, attributes->target, last_wanted_position);

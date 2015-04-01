@@ -5,10 +5,8 @@
 #define ACTIVE 1
 #define NOT_ACTIVE 0
 
-
-
-#define BACKPACK_KEY GLFW_KEY_C
-
+#define MENU_KEY GLFW_KEY_ESCAPE
+#define INVENTORY_KEY GLFW_KEY_1
 
 
 
@@ -17,9 +15,13 @@ class UIState
 
 
 
-	CharPanState * char_panel;
+	//CharPanState * char_panel;
 
 	panel_state *p_state;
+
+	MenuState *m_state;
+
+	InventoryState *i_state;
 
 	UI_intersect * inter_handler;
 
@@ -33,7 +35,7 @@ class UIState
 public:
 
 
-	inline CharPanState*GetCharPanState(){ return this->char_panel; }
+	//inline CharPanState*GetCharPanState(){ return this->char_panel; }
 
 
 	inline UI_intersect * GetInterHandler(){ return this->inter_handler; }
@@ -42,6 +44,10 @@ public:
 	inline UIState(){ this->Init(); }
 
 	inline panel_state *GetPanelState(){ return this->p_state; }
+
+	inline MenuState *GetMenuState(){ return this->m_state; }
+
+	inline InventoryState *GetInventoryState(){ return this->i_state; }
 
 	void Init();
 

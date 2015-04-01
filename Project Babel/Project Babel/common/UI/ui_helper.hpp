@@ -5,10 +5,35 @@
 #define NONE 0
 #define HOVER 1
 #define PRESSED 2
+#define RIGHT_CLICKED 3
 
 struct PanelProperties
 {
 	
+};
+
+struct InventoryProperties
+{
+	glm::vec2 box_position;
+	glm::vec2 box_size;
+
+	glm::vec2 text_position;
+	glm::vec2 text_size;
+
+	glm::vec2 armor_text_position;
+	glm::vec2 armor_text_size;
+	glm::vec2 armor_slot_position;
+	glm::vec2 armor_slot_size;
+
+	glm::vec2 weapon_text_position;
+	glm::vec2 weapon_text_size;
+	glm::vec2 weapon_slot_position;
+	glm::vec2 weapon_slot_size;
+
+	glm::vec2 xbutton_position;
+	glm::vec2 xbutton_size;
+
+	glm::vec2 inventory_slot_size;
 };
 
 
@@ -81,7 +106,7 @@ public:
 
 
 	static GLuint GetButtonAction(Controller * ctrl,Property * m_prop);
-
+	static int GetItemAction(Controller *ctrl, Property *m_prop);
 
 
 };

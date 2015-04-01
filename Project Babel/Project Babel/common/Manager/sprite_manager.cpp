@@ -88,7 +88,7 @@ void SpriteManager::Render(Controller * ctrl, GameObject * g_obj)
 		this->s_screen->Render(ctrl, this->GetScreenPointer());
 
 
-		if (ctrl->GetKey(GLFW_KEY_ENTER) == 1)
+		if (ctrl->GetKey(GLFW_KEY_ENTER) == 1 || ctrl->GetKey(GLFW_KEY_SPACE) == 1 || ctrl->GetKey(GLFW_KEY_ESCAPE) == 1)
 			this->s_screen->m_screens->at(0)->alpha = 0;
 	}
 	else

@@ -7,6 +7,8 @@ class panel_state
 
 	int state;
 
+	int *buttons_state;
+
 
 public:
 
@@ -25,6 +27,8 @@ public:
 	inline int GetState(){ return this->state; }
 
 	inline void SetState(int state){ this->state = state; }
+
+	inline int *GetButtonsState(){ return this->buttons_state; }
 
 
 };

@@ -12,9 +12,10 @@
 class PanelRender
 {
 
-	Sprite * button_skins;
+	Sprite * button_skins, *top_skins;
 
 	Button ** a_button;
+	Button ** top_buttons;
 
 	glm::vec2 wireframe_position;
 	glm::vec2 wireframe_size;
@@ -40,8 +41,8 @@ class PanelRender
 
 	bool turn;
 
-	bool pressed = false;
-
+	bool MenuPressed = false;
+	bool InventoryPressed = false;
 	sf::Clock *t_clock;
 
 public:
@@ -52,5 +53,6 @@ public:
 
 	void Render(Controller *ctrl, ScreenUniformData *u_data, GameObject *g_obj);
 
+	void Update(Controller *ctrl);
 };
 

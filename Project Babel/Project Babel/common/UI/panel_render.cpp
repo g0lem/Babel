@@ -40,16 +40,64 @@ void PanelRender::LoadButtonsSprite()
 	Property * m_prop = new Property();
 	m_prop->size = this->menu_size;
 	m_prop->color = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
-	m_prop->position = this->menu_position;
+	m_prop->position = vec2_0;
 
 	a_button[0] = new Button(m_prop);
+
+	this->top_skins = new Sprite();
+
+	tex_str[0] = "inspectbutton.png";
+	tex_str[1] = "storybutton.png";
+	tex_str[2] = "backpackbutton.png";
+	tex_str[3] = "skipbutton.png";
+
+
+	this->top_skins->Load(4, "data/UI/CPanel/", tex_str);
+
+
+	this->top_buttons = new Button*[4];
+	
+	for (int i = 0; i < 4; i++)
+	{
+		Property * m_prop = new Property();
+		m_prop->size =glm::vec2(54, 27);
+		m_prop->color = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
+		if (i != 0)
+			m_prop->position = glm::vec2(top_buttons[i -1]->GetProperties()->position.x + 54, 0);
+		else
+			m_prop->position = vec2_0;
+		top_buttons[i] = new Button(m_prop);
+
+
+	}
 }
 
+void PanelRender::Update(Controller *ctrl)
+{
+	
+	340, 9;
 
+	wireframe_position = glm::vec2((ctrl->GetWindowWidth() - wireframe_size.x)/2, 0);
+
+	a_button[0]->GetProperties()->position = glm::vec2((ctrl->GetWindowWidth() - wireframe_size.x) / 2 + 459, 11);
+
+	top_buttons[0]->GetProperties()->position = glm::vec2((ctrl->GetWindowWidth() - wireframe_size.x) / 2 + 340, 9);
+	top_buttons[1]->GetProperties()->position = glm::vec2((ctrl->GetWindowWidth() - wireframe_size.x) / 2 + 394, 9);
+	top_buttons[2]->GetProperties()->position = glm::vec2(a_button[0]->GetProperties()->position.x + 54, 9);
+	top_buttons[3]->GetProperties()->position = glm::vec2(top_buttons[2]->GetProperties()->position.x + 54, 9);
+
+	xp_bar_position = glm::vec2((ctrl->GetWindowWidth() - wireframe_size.x) / 2+ 128, 41);
+
+	hp_bar_position = glm::vec2((ctrl->GetWindowWidth() - wireframe_size.x) / 2+ 514, 41);
+	
+}
 
 
 void PanelRender::Render(Controller *ctrl, ScreenUniformData *u_data, GameObject *g_obj)
 {
+
+	this->Update(ctrl);
+
 	u_data->SetAmbientLight(glm::vec4(1.f, 1.f, 1.f, 1.f));
 
 
@@ -58,20 +106,19 @@ void PanelRender::Render(Controller *ctrl, ScreenUniformData *u_data, GameObject
 	this->a_button[0]->Render(ctrl, u_data, this->button_skins, 0, g_obj->GetUIState()->GetPanelState()->GetState());
 	
 
-	if (t_clock->getElapsedTime().asSeconds() > 0.2f)
 		if (g_obj->GetUIState()->GetPanelState()->GetState() == 2)
 		{
-			if (pressed == false){
-				g_obj->GetUIState()->GetCharPanState()->SetState(ACTIVE);
-				pressed = true;
+			if (MenuPressed == false){
+				g_obj->GetUIState()->GetMenuState()->SetState(ACTIVE);
+				MenuPressed = true;
 			}
 			else
 			{
-				g_obj->GetUIState()->GetCharPanState()->SetState(NOT_ACTIVE);
-				pressed = false;
+				g_obj->GetUIState()->GetMenuState()->SetState(NOT_ACTIVE);
+				MenuPressed = false;
 			}
 
-			t_clock->restart();
+			
 		}
 
 
@@ -83,6 +130,46 @@ void PanelRender::Render(Controller *ctrl, ScreenUniformData *u_data, GameObject
 	this->button_skins->Render(WIREFRAME);
 
 
+	for (int i = 0; i < 4; i++)
+	{
+		
+		g_obj->GetUIState()->GetPanelState()->GetButtonsState()[i] = UI_helper::GetButtonAction(ctrl, this->top_buttons[i]->GetProperties());
+
+
+
+		this->top_buttons[i]->Render(ctrl, u_data, this->top_skins, i, g_obj->GetUIState()->GetPanelState()->GetButtonsState()[i]);
+
+
+	}
+
+	if (g_obj->GetUIState()->GetInventoryState()->GetButtonStates()[16] == 2 && g_obj->GetUIState()->GetInventoryState()->GetState() == ACTIVE)
+	{
+		g_obj->GetUIState()->GetInventoryState()->SetState(NOT_ACTIVE);
+		InventoryPressed = !InventoryPressed;
+	}
+	else
+	{
+
+
+		if (t_clock->getElapsedTime().asSeconds() > 0.2f)
+			if (g_obj->GetUIState()->GetPanelState()->GetButtonsState()[2] == 2)
+			{
+			if (InventoryPressed == false){
+				g_obj->GetUIState()->GetInventoryState()->SetState(ACTIVE);
+				InventoryPressed = true;
+
+			}
+			else
+			{
+				g_obj->GetUIState()->GetInventoryState()->SetState(NOT_ACTIVE);
+				InventoryPressed = false;
+			}
+
+			t_clock->restart();
+			}
+
+	}
+	u_data->SetAmbientLight(glm::vec3(1.f, 1.f, 1.f));
 	
 	glm::vec2 hp_factor = glm::vec2(GLfloat(g_obj->GetPanelState()->hp) / GLfloat(g_obj->GetPanelState()->max_hp), 1.0f);
 	u_data->ApplyMatrix(Translation(this->hp_bar_position)*Scale(this->hp_bar_size*hp_factor));

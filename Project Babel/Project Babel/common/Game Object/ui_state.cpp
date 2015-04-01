@@ -11,11 +11,15 @@ void UIState::Init()
 
 
 
-	this->char_panel = new CharPanState();
+	//this->char_panel = new CharPanState();
 
 
 
 	this->inter_handler = new UI_intersect();
+
+	this->m_state = new MenuState();
+
+	this->i_state = new InventoryState();
 
 	this->p_state = new panel_state();
 }
@@ -28,9 +32,9 @@ void UIState::ProcessKeys(Controller * ctrl)
 {
 
 
-	if (ctrl->GetKeyOnce(BACKPACK_KEY))
-		this->char_panel->SetState(!this->char_panel->GetState());
-
+	if (ctrl->GetKeyOnce(MENU_KEY))
+		this->m_state->SetState(!this->m_state->GetState());
+	
 
 }
 
@@ -44,14 +48,14 @@ void UIState::ManageQuits()
 
 
 
-	if (this->GetCharPanState()->GetState() == NOT_ACTIVE)
+	if (this->GetInventoryState()->GetState() == NOT_ACTIVE)
 	{
-		if (this->GetCharPanState()->GetColID() != NOT_SET)
+		if (this->GetInventoryState()->GetColID() != NOT_SET)
 		{
 
 
-			this->GetInterHandler()->GetInters()->erase(this->GetInterHandler()->GetInters()->begin() + this->GetCharPanState()->GetColID());
-			this->GetCharPanState()->SetColID(NOT_SET);
+			this->GetInterHandler()->GetInters()->erase(this->GetInterHandler()->GetInters()->begin() + this->GetInventoryState()->GetColID());
+			this->GetInventoryState()->setColID(NOT_SET);
 
 
 		}

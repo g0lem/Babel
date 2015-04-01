@@ -10,9 +10,13 @@ class UIRender : public Aaether2D
 
 	CharPanRender * char_panel;
 
-	ActionSpriteRender * action_sr;
+	//ActionSpriteRender * action_sr;
 
 	PanelRender * panel_r;
+
+	Inventory * inventory_r;
+
+	MenuRender * menu_r;
 
 	public:
 

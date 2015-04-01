@@ -52,7 +52,7 @@ void SplashScreen::Render(Controller *ctrl, ScreenUniformData *u_data)
 		
 		
 
-		u_data->ApplyMatrix(Translation(position)*Scale(scale));
+		u_data->ApplyMatrix(Translation(vec2_0)*Scale(ctrl->GetWindowSize()));
 		EffectsHandler::FadeOut(u_data, m_screen, index, m_screens->at(index)->alpha);
 			
 			

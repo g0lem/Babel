@@ -253,7 +253,7 @@ void CharPanRender::RenderButtons(Controller * ctrl, ScreenUniformData * u_data,
 
 
 
-	for (GLuint i = 0; i < NUM_BUTTONS; i++)
+	/*for (GLuint i = 0; i < NUM_BUTTONS; i++)
 	{
 
 
@@ -265,11 +265,11 @@ void CharPanRender::RenderButtons(Controller * ctrl, ScreenUniformData * u_data,
 			g_obj->GetUIState()->GetCharPanState()->GetBackpackState()->GetButtonStates()[i]);
 
 		
-	}
+	}*/
 
 	// Tooltip
 
-	for (int i = 0; i < NUM_BUTTONS; i++)
+	/*for (int i = 0; i < NUM_BUTTONS; i++)
 	{
 
 		if (g_obj->GetUIState()->GetCharPanState()->GetBackpackState()->GetButtonStates()[i] == HOVER)
@@ -281,7 +281,7 @@ void CharPanRender::RenderButtons(Controller * ctrl, ScreenUniformData * u_data,
 
 
 
-	}
+	}*/
 
 
 
@@ -293,7 +293,7 @@ void CharPanRender::RenderTopButtons(Controller *ctrl, ScreenUniformData *u_data
 
 
 
-	for (int i = 0; i < TABS; i++)
+	/*for (int i = 0; i < TABS; i++)
 	{
 		g_obj->GetUIState()->GetCharPanState()->GetTabsState()->GetTabsState()[i] = UI_helper::GetButtonAction(ctrl, this->t_button[i]->GetProperties());
 
@@ -304,7 +304,7 @@ void CharPanRender::RenderTopButtons(Controller *ctrl, ScreenUniformData *u_data
 			g_obj->GetUIState()->GetCharPanState()->GetTabsState()->GetTabsState()[i]);
 
 
-	}
+	}*/
 
 
 
@@ -319,7 +319,7 @@ void CharPanRender::AddIntersect(GameObject * g_obj)
 
 
 
-	if (g_obj->GetUIState()->GetCharPanState()->GetColID() == NOT_SET)
+/*	if (g_obj->GetUIState()->GetCharPanState()->GetColID() == NOT_SET)
 	{
 
 
@@ -336,7 +336,7 @@ void CharPanRender::AddIntersect(GameObject * g_obj)
 
 
 
-	}
+	}*/
 
 
 
@@ -352,7 +352,7 @@ void CharPanRender::MoveObject(Controller * ctrl, GameObject * g_obj)
 
 
 
-	glm::vec2 new_pos = this->mover->GetTranslation(ctrl, this->position, this->scale);
+	/*glm::vec2 new_pos = this->mover->GetTranslation(ctrl, this->position, this->scale);
 
 	if (glm::distance(new_pos, position) > 0)
 	{
@@ -364,7 +364,7 @@ void CharPanRender::MoveObject(Controller * ctrl, GameObject * g_obj)
 
 		position = new_pos;
 
-	}
+	}*/
 
 
 

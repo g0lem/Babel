@@ -218,17 +218,11 @@
     <ClCompile Include="common\UI\UI_render.cpp">
       <Filter>common\UI</Filter>
     </ClCompile>
-    <ClCompile Include="common\UI\Action_sprite_render.cpp">
-      <Filter>common\UI</Filter>
-    </ClCompile>
     <ClCompile Include="common\UI\CharacterPanelRender.cpp">
       <Filter>common\UI</Filter>
     </ClCompile>
     <ClCompile Include="common\UI\menu_item.cpp">
       <Filter>common\UI</Filter>
-    </ClCompile>
-    <ClCompile Include="common\Game Object\backpack_state.cpp">
-      <Filter>common\Game Object</Filter>
     </ClCompile>
     <ClCompile Include="common\Game Object\character_panel_state.cpp">
       <Filter>common\Game Object</Filter>
@@ -286,6 +280,18 @@
     </ClCompile>
     <ClCompile Include="common\Map\fog_of_war.cpp">
       <Filter>common\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="common\UI\menu_render.cpp">
+      <Filter>common\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="common\Game Object\menu_state.cpp">
+      <Filter>common\Game Object</Filter>
+    </ClCompile>
+    <ClCompile Include="common\UI\inventory.cpp">
+      <Filter>common\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="common\Game Object\inventory_state.cpp">
+      <Filter>common\Game Object</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -451,17 +457,11 @@
     <ClInclude Include="common\UI\UI_render.hpp">
       <Filter>common\UI</Filter>
     </ClInclude>
-    <ClInclude Include="common\UI\Action_sprite_render.hpp">
-      <Filter>common\UI</Filter>
-    </ClInclude>
     <ClInclude Include="common\UI\CharcaterPanelRender.hpp">
       <Filter>common\UI</Filter>
     </ClInclude>
     <ClInclude Include="common\UI\menu_item.hpp">
       <Filter>common\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="common\Game Object\backpack_state.hpp">
-      <Filter>common\Game Object</Filter>
     </ClInclude>
     <ClInclude Include="common\Game Object\character_panel_state.hpp">
       <Filter>common\Game Object</Filter>
@@ -525,6 +525,18 @@
     </ClInclude>
     <ClInclude Include="common\Map\tile_map.hpp">
       <Filter>common\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="common\UI\menu_render.hpp">
+      <Filter>common\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="common\Game Object\menu_state.hpp">
+      <Filter>common\Game Object</Filter>
+    </ClInclude>
+    <ClInclude Include="common\UI\inventory.hpp">
+      <Filter>common\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="common\Game Object\inventory_state.hpp">
+      <Filter>common\Game Object</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

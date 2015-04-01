@@ -78,8 +78,7 @@ void Application::Run()
 
 
 
-	} while (!this->GetKey(GLFW_KEY_ESCAPE) &&
-		glfwWindowShouldClose(this->GetWindow()) == 0);
+	} while (g_object->GetUIState()->GetMenuState()->GetButtonStates()[2] != PRESSED && glfwWindowShouldClose(this->GetWindow()) == 0);
 
 
 }

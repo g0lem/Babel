@@ -4,7 +4,7 @@
 
 
 
-void CharPanState::Init()
+/*void CharPanState::Init()
 {
 
 
@@ -23,6 +23,6 @@ void CharPanState::Init()
 	this->col_id = NOT_SET;
 
 
-}
+}*/
 
 
