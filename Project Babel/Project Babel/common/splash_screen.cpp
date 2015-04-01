@@ -35,6 +35,7 @@ void SplashScreen::Load()
 		t_splash->turn = true;
 		t_splash->type = 0;
 		t_splash->finished = false;
+		t_splash->speed = 255.f;
 		m_screens->push_back(t_splash);
 	}
 	
@@ -45,7 +46,7 @@ bool SplashScreen::Update()
 
 	for (int index = 0; index < NUM_SCREENS; index++)
 	{
-		if (m_screens->at(index)->alpha > 0.1f)
+		if (m_screens->at(index)->finished == false)
 			return false;
 	}
 
@@ -55,22 +56,19 @@ bool SplashScreen::Update()
 void SplashScreen::Render(Controller *ctrl, ScreenUniformData *u_data)
 {
 	
-	for (int index = 0; index < NUM_SCREENS;)
+	if (currentFrame < NUM_SCREENS)
 	{
-		
-		
-		while (m_screens->at(index)->finished == false)
+		u_data->ApplyMatrix(Translation(vec2_0)*Scale(ctrl->GetWindowSize()));
+		m_effects->FadeOut(u_data, m_screen, currentFrame, m_screens->at(currentFrame)->speed, m_screens->at(currentFrame)->alpha);
+
+
+
+		if (m_screens->at(currentFrame)->alpha < 0.1f)
 		{
-			u_data->ApplyMatrix(Translation(vec2_0)*Scale(ctrl->GetWindowSize()));
-			m_effects->FadeOut(u_data, m_screen, index, 255.f, m_screens->at(index)->alpha);
-
-
-
-			if (m_screens->at(index)->alpha < 0.1f)
-				m_screens->at(index)->finished = true;
+			m_screens->at(currentFrame)->finished = true;
+			currentFrame++;
 		}
-		
-		
+
 
 		u_data->SetAmbientLight(glm::vec4(1.0f, 1.0f, 1.0f, 1.0f));
 	}
