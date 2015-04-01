@@ -23,6 +23,8 @@ class UIState
 
 	InventoryState *i_state;
 
+	StoryState * s_state;
+
 	UI_intersect * inter_handler;
 
 
@@ -35,9 +37,6 @@ class UIState
 public:
 
 
-	//inline CharPanState*GetCharPanState(){ return this->char_panel; }
-
-
 	inline UI_intersect * GetInterHandler(){ return this->inter_handler; }
 
 
@@ -48,6 +47,8 @@ public:
 	inline MenuState *GetMenuState(){ return this->m_state; }
 
 	inline InventoryState *GetInventoryState(){ return this->i_state; }
+
+	inline StoryState *GetStoryState(){ return this->s_state; }
 
 	void Init();
 

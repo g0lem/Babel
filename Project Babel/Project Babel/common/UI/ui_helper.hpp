@@ -7,9 +7,26 @@
 #define PRESSED 2
 #define RIGHT_CLICKED 3
 
-struct PanelProperties
+struct StoryProperties
 {
-	
+	glm::vec2 storybox_position;
+	glm::vec2 storybox_size;
+
+	glm::vec2 conscious_position;
+	glm::vec2 conscious_size;
+
+	glm::vec2 storylogo_position;
+	glm::vec2 storylogo_size;
+
+	glm::vec2 story_text_position;
+	glm::vec2 story_text_size;
+
+	glm::vec2 exit_position;
+	glm::vec2 exit_size;
+
+	glm::vec2 letter_size;
+	glm::vec2 inventory_size;
+
 };
 
 struct InventoryProperties

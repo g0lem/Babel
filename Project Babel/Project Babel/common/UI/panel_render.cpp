@@ -169,6 +169,33 @@ void PanelRender::Render(Controller *ctrl, ScreenUniformData *u_data, GameObject
 			}
 
 	}
+	if (g_obj->GetUIState()->GetStoryState()->GetButtonState()[12] == 2 && g_obj->GetUIState()->GetStoryState()->GetState() == ACTIVE)
+	{
+		g_obj->GetUIState()->GetStoryState()->SetState(NOT_ACTIVE);
+		StoryPressed = !StoryPressed;
+	}
+	else
+	{
+
+
+		if (t_clock->getElapsedTime().asSeconds() > 0.2f)
+			if (g_obj->GetUIState()->GetPanelState()->GetButtonsState()[1] == 2)
+			{
+			if (StoryPressed == false){
+				g_obj->GetUIState()->GetStoryState()->SetState(ACTIVE);
+				StoryPressed = true;
+
+			}
+			else
+			{
+				g_obj->GetUIState()->GetStoryState()->SetState(NOT_ACTIVE);
+				StoryPressed = false;
+			}
+
+			t_clock->restart();
+			}
+
+	}
 	u_data->SetAmbientLight(glm::vec3(1.f, 1.f, 1.f));
 	
 	glm::vec2 hp_factor = glm::vec2(GLfloat(g_obj->GetPanelState()->hp) / GLfloat(g_obj->GetPanelState()->max_hp), 1.0f);

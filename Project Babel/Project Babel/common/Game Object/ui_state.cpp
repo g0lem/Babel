@@ -11,8 +11,6 @@ void UIState::Init()
 
 
 
-	//this->char_panel = new CharPanState();
-
 
 
 	this->inter_handler = new UI_intersect();
@@ -22,6 +20,8 @@ void UIState::Init()
 	this->i_state = new InventoryState();
 
 	this->p_state = new panel_state();
+
+	this->s_state = new StoryState();
 }
 
 
@@ -60,6 +60,20 @@ void UIState::ManageQuits()
 
 		}
 	}
+
+	if (this->GetStoryState()->GetState() == NOT_ACTIVE)
+	{
+		if (this->GetStoryState()->GetColID() != NOT_SET)
+		{
+
+
+			this->GetInterHandler()->GetInters()->erase(this->GetInterHandler()->GetInters()->begin() + this->GetStoryState()->GetColID());
+			this->GetStoryState()->setColID(NOT_SET);
+
+
+		}
+	}
+
 
 
 }

@@ -6,7 +6,7 @@
 #include "UI/panel_render.hpp"
 #include "UI/ui_mover.hpp"
 #include "UI/inventory.hpp"
-#include "UI/CharcaterPanelRender.hpp"
+#include "UI/story_render.hpp"
 #include "UI/menu_render.hpp"
 #include "UI/UI_render.hpp"
 #include "UI/UI_handler.hpp"

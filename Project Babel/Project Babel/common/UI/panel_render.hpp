@@ -43,6 +43,7 @@ class PanelRender
 
 	bool MenuPressed = false;
 	bool InventoryPressed = false;
+	bool StoryPressed = false;
 	sf::Clock *t_clock;
 
 public:

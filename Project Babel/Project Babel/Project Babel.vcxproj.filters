@@ -218,9 +218,6 @@
     <ClCompile Include="common\UI\UI_render.cpp">
       <Filter>common\UI</Filter>
     </ClCompile>
-    <ClCompile Include="common\UI\CharacterPanelRender.cpp">
-      <Filter>common\UI</Filter>
-    </ClCompile>
     <ClCompile Include="common\UI\menu_item.cpp">
       <Filter>common\UI</Filter>
     </ClCompile>
@@ -237,9 +234,6 @@
       <Filter>common\Game Object</Filter>
     </ClCompile>
     <ClCompile Include="common\Game Object\scroller.cpp">
-      <Filter>common\Game Object</Filter>
-    </ClCompile>
-    <ClCompile Include="common\Game Object\tab_state.cpp">
       <Filter>common\Game Object</Filter>
     </ClCompile>
     <ClCompile Include="common\Game Object\ui_intersect.cpp">
@@ -292,6 +286,12 @@
     </ClCompile>
     <ClCompile Include="common\Game Object\inventory_state.cpp">
       <Filter>common\Game Object</Filter>
+    </ClCompile>
+    <ClCompile Include="common\Game Object\story_state.cpp">
+      <Filter>common\Game Object</Filter>
+    </ClCompile>
+    <ClCompile Include="common\UI\story_render.cpp">
+      <Filter>common\UI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -457,9 +457,6 @@
     <ClInclude Include="common\UI\UI_render.hpp">
       <Filter>common\UI</Filter>
     </ClInclude>
-    <ClInclude Include="common\UI\CharcaterPanelRender.hpp">
-      <Filter>common\UI</Filter>
-    </ClInclude>
     <ClInclude Include="common\UI\menu_item.hpp">
       <Filter>common\UI</Filter>
     </ClInclude>
@@ -476,9 +473,6 @@
       <Filter>common\Game Object</Filter>
     </ClInclude>
     <ClInclude Include="common\Game Object\scroller.hpp">
-      <Filter>common\Game Object</Filter>
-    </ClInclude>
-    <ClInclude Include="common\Game Object\tab_state.hpp">
       <Filter>common\Game Object</Filter>
     </ClInclude>
     <ClInclude Include="common\Game Object\ui_intersect.hpp">
@@ -537,6 +531,12 @@
     </ClInclude>
     <ClInclude Include="common\Game Object\inventory_state.hpp">
       <Filter>common\Game Object</Filter>
+    </ClInclude>
+    <ClInclude Include="common\Game Object\story_state.hpp">
+      <Filter>common\Game Object</Filter>
+    </ClInclude>
+    <ClInclude Include="common\UI\story_render.hpp">
+      <Filter>common\UI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
