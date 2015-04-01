@@ -37,6 +37,7 @@ class Player
 
 	ActionHandler * a_handler;
 	glm::vec2 last_wanted_position;
+	GLboolean able_to_move;
 	Item **items;
 
 	
@@ -72,6 +73,9 @@ public:
 	inline Direction * GetDirection(){ return this->m_dir; }
 	inline ActionHandler * GetActionHandler(){ return this->a_handler; }
 	inline EventHandler* GetEventHandler(){ return this->h_event; }
+	inline GLboolean GetMoveAbility(){ return this->able_to_move; }
+	inline void SetMoveAbility(GLboolean able_to_move){ this->able_to_move = able_to_move; }
+
 
 };
 

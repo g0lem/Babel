@@ -19,6 +19,7 @@ class Combat
 
 	void SetPlayerTarget(Player * player, EnemyManager * enemies);
 	void PlayerAttack(GameObject * g_obj, Player * player, EnemyManager *enemies, Map *current_map);
+	void CheckPlayerMoveAbility(Player * player, EnemyManager * enemies);
 	void PlayerRelated(GameObject * g_obj, Player * player, EnemyManager * enemies, Map * map);
 
 

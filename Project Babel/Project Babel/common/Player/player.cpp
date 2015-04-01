@@ -26,6 +26,7 @@ void Player::Load(GameObject * g_obj, Map * current_tilemap)
 	this->t_clock = new sf::Clock();
 	this->last_wanted_position = glm::vec2(0, 0);
 	this->a_handler = new ActionHandler();
+	this->able_to_move = false;
 
 
 	this->LoadItems(g_obj);
@@ -41,7 +42,7 @@ void Player::Load(GameObject * g_obj, Map * current_tilemap)
 void Player::Render(Controller * ctrl, ScreenUniformData * u_data, GameObject * g_obj, Map * current_map)
 {
 
-	
+
 
 
 	u_data->ApplyMatrix(Translation(GridPosition(attributes->position*attributes->scale + g_obj->GetScroller()->GetOffset(), attributes->scale))*
@@ -50,33 +51,52 @@ void Player::Render(Controller * ctrl, ScreenUniformData * u_data, GameObject * 
 
 
 
-	
 
 
 
 
-	
-	if (ctrl->GetKeyOnce(GLFW_KEY_SPACE) && this->target > NO_TARGET && a_handler->IsStopped())
+	if (this->able_to_move)
 	{
 
-		a_handler->SetAction(ATTACKING);
-		a_handler->Start();
-		
+
+		if (ctrl->GetKeyOnce(GLFW_KEY_SPACE) && this->target > NO_TARGET && a_handler->IsStopped())
+		{
+
+			a_handler->SetAction(ATTACKING);
+			a_handler->Start();
+
+		}
+
+
+
+		if (attributes->HasReachedTarget() && a_handler->IsStopped())
+			Move::TileMove(ctrl, g_obj, attributes->target);
+
+		this->attributes->Update(ctrl->GetFpsPointer()->Delta());
+		this->HandleAutoPath(ctrl, g_obj, current_map);
+
+	}
+	else
+	{
+
+		this->a_handler->SetAction(NO_ACTION);
+		this->a_handler->Stop();
+
+
 	}
 
 
-
-	if (attributes->HasReachedTarget() && a_handler->IsStopped())
-		Move::TileMove(ctrl, g_obj, attributes->target);
-		this->attributes->Update(ctrl->GetFpsPointer()->Delta());
-		this->HandleAutoPath(ctrl, g_obj, current_map);
-		Move::UpdateScroller(ctrl, g_obj, attributes->position, attributes->scale);
+	Move::UpdateScroller(ctrl, g_obj, attributes->position, attributes->scale);
 
 
 
 
-		if (this->a_handler->IsStopped() && !this->attributes->HasReachedTarget())
-			this->a_handler->Start();
+	if (this->a_handler->IsStopped() && !this->attributes->HasReachedTarget())
+	{
+		this->a_handler->Start();
+		this->a_handler->SetAction(MOVING);
+	}
+
 
 
 
@@ -86,7 +106,7 @@ void Player::Render(Controller * ctrl, ScreenUniformData * u_data, GameObject * 
 
 
 
-		if (!this->a_handler->IsStopped())
+		if (!this->a_handler->IsStopped() && this->a_handler->GetAction() == MOVING)
 		{
 			if (!this->a_handler->HasReachedLifetime(0.15f))
 				this->walk_animation->Update(16.0f, ctrl->GetFpsPointer()->Delta());

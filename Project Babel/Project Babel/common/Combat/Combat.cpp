@@ -102,13 +102,49 @@ void Combat::PlayerAttack(GameObject * g_obj, Player * player, EnemyManager *ene
 
 
 
+void Combat::CheckPlayerMoveAbility(Player * player, EnemyManager * enemies)
+{
+
+
+	GLboolean advance = true;
+
+
+
+	for (GLuint i = 0; i < enemies->GetEnemiesPointer()->size(); i++)
+	{
+
+
+
+		if (!enemies->GetEnemiesPointer()[0][i]->GetActionHandler()->IsStopped())
+		{
+
+			advance = false;
+			break;
+
+		}
+
+
+
+
+	}
+
+
+	player->SetMoveAbility(advance);
+
+
+
+}
+
+
+
+
 void Combat::PlayerRelated(GameObject * g_obj, Player * player, EnemyManager * enemies, Map * map)
 {
 
 
+	this->CheckPlayerMoveAbility(player, enemies);
 	this->SetPlayerTarget(player, enemies);
 	this->PlayerAttack(g_obj, player, enemies, map);
-
 
 
 }
