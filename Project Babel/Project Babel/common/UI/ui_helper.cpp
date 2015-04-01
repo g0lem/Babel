@@ -10,13 +10,15 @@ GLuint UI_helper::GetButtonAction(Controller * ctrl, Property * m_prop)
 	return NONE;
 
 
-	if (ctrl->GetMouseButton(GLFW_MOUSE_BUTTON_LEFT))
+	if (ctrl->GetMouseButtonOnce(GLFW_MOUSE_BUTTON_LEFT))
 		return PRESSED;
 	else
 		return HOVER;
 
 
 }
+
+
 
 int UI_helper::GetItemAction(Controller * ctrl, Property * m_prop)
 {
@@ -32,3 +34,4 @@ int UI_helper::GetItemAction(Controller * ctrl, Property * m_prop)
 
 
 }
+

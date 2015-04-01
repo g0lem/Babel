@@ -59,12 +59,14 @@ void Application::Run()
 
 		this->Enable();
 
+
 		
 		g_render->Render(this, g_object);
 
+
+
 		if (g_render->GetDrawCode() == true)
 			ui->Render(this, g_object);
-
 
 
 		g_object->GetUIState()->Update(this);
