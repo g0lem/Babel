@@ -4,6 +4,40 @@
 
 
 
+#define NO_ACTION -1
+#define MOVING 0
+#define ATTACKING 1
+
+
+
+
+class ActionHandler
+{
+
+
+	GLfloat timer;
+	GLint action;
+
+
+public:
+
+
+	inline ActionHandler(){ this->Init(); }
+	inline void Init(){ this->timer = 0.0f; this->action = NO_ACTION; }
+	inline void Start(){ this->timer = glfwGetTime(); }
+	inline void Stop(){ this->timer = 0.0f; }
+	inline GLboolean HasReachedLifetime(GLfloat life_time){ return glfwGetTime() - this->timer > life_time; }
+	inline GLboolean IsStopped(){ return this->timer == 0.0f; }
+	inline void SetAction(GLint action){ this->action = action; }
+	inline GLint GetAction(){ return this->action; }
+
+
+
+};
+
+
+
+
 
 
 class TurnSystem

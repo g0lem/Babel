@@ -9,7 +9,7 @@
 #define M_PI 3.14159265358979323846
 #endif
 
-#define BLIND_COLOR glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
+#define BLIND_COLOR glm::vec4(1.0f, 1.0f, 1.0f, 1.0f)
 
 
 typedef char GLchar;
@@ -22,17 +22,9 @@ class FPS
 
 
 	GLfloat fps;
-
-
 	GLint frames;
-
-
 	GLdouble lastTime;
-
-
 	GLdouble lastTime2;
-
-
 	GLdouble deltaTime, returnable_deltaTime;
 
 
@@ -122,85 +114,31 @@ public:
 
 	
 	inline GLuint GetKey(GLuint code){ return Controller::keys[code]; }
-
-
-
 	inline GLuint GetKeyOnce(GLuint code){ GLuint result = (Controller::keys[code] == 1); if (result)Controller::keys[code]++; return result; }
-
-
-
 	inline glm::vec2 GetMousePosition(){ return Controller::mouse_position; }
-
-
-
 	inline GLuint GetMouseButton(GLuint code){ return Controller::mouse_buttons[code]; }
-
-
-
 	inline GLuint GetMouseButtonOnce(GLuint code){ GLuint result = (Controller::mouse_buttons[code] == 1); if (result)Controller::mouse_buttons[code]++; return result; }
-
-
-
-
 	inline FPS*GetFpsPointer(){ return this->fps; }
-
-
-
 	inline glm::vec2 GetWindowSize(){ return glm::vec2(this->window_width, this->window_height); }
-
-
-
 	inline GLint GetWindowWidth(){ return this->window_width; }
-
-
-	
 	inline GLint GetWindowHeight(){ return this->window_height; }
-
-
-
 	inline void SetFullscreenKey(GLuint key){ this->Controller::fullscreen_key = key; }
-
-
-
 	inline GLFWwindow * GetWindow(){ return this->window; }
-
-
-
 	inline Controller() { this->Init(); }
-
-
-
 	inline GLfloat returnFps(){ return this->fps->Get(); }
-
-
-
 	static GLboolean CreateWindow(GLuint window_width, GLuint window_height,
 		GLboolean fullscreen,
 		char * title,
 		GLuint opengl_major_version,
 		GLuint opengl_minor_version);
 
-
-
-
-
-
 	void Init();
-
-
-
-
-
 	void Enable();
 
 
 
 
 	void Clean();
-
-
-
-
 	inline  ~Controller(){ this->Clean(); }
 	
 

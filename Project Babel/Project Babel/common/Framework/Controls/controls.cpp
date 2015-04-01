@@ -173,10 +173,6 @@ void Controller::Enable()
 
 
 	this->fps->FirstPass();
-
-
-
-
 	this->fps->Compute();
 
 
@@ -190,9 +186,7 @@ void FPS::FirstPass()
 
 
 	GLdouble currentTime = glfwGetTime();
-
 	deltaTime = returnable_deltaTime = GLfloat(currentTime - lastTime2);
-
 	lastTime2 = glfwGetTime();
 
 
@@ -206,20 +200,18 @@ void FPS::Compute(){
 
 
 	frames++;
-
 	GLdouble currentTime = glfwGetTime();
-
 	deltaTime = GLfloat(currentTime - lastTime);
 
-	if (deltaTime > 1.0f){
+
+	if (deltaTime > 1.0f)
+	{
 
 		fps = GLfloat(frames) / deltaTime;
-
 		lastTime = currentTime;
-
 		frames = 0;
-
 		lastTime = currentTime;
+
 	}
 
 

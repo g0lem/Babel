@@ -31,11 +31,9 @@ void EnemyManager::Render(Controller * ctrl, ScreenUniformData * u_data, GameObj
 
 
 
-			//this->m_enemies[0][i]->Render(ctrl, u_data, g_obj, map);
-
 
 			glm::ivec2 e_pos = glm::ivec2(this->m_enemies[0][i]->GetPAttributes()->position);
-			if (map->GetFogofWar()->GetFogMartix()[(int)(e_pos.x)][(int)(e_pos.y)] <= 0.5f)
+			if (map->GetFogofWar()->GetFogMartix()[(int)(e_pos.x)][(int)(e_pos.y)] >= 0.5f)
 				this->m_enemies[0][i]->Render(ctrl, u_data, g_obj, map); 
 
 

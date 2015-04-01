@@ -46,6 +46,7 @@ class Enemy
 	glm::vec2 target_position;
 	GLint target;
 	TurnSystem * turn_system;
+	ActionHandler * a_handler;
 
 
 
@@ -79,7 +80,7 @@ public:
 	inline TurnSystem * GetTurnSystem(){ return this->turn_system; }
 	inline AutoPath*GetAutoPath(){ return this->a_path; }
 	inline Direction * GetDirection(){ return this->m_dir; }
-
+	inline ActionHandler * GetActionHandler(){return this->a_handler;}
 
 
 	inline Enemy(EnemyData * data){ this->Init(data); }

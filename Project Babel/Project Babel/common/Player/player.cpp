@@ -79,6 +79,13 @@ void Player::Render(Controller * ctrl, ScreenUniformData * u_data, GameObject * 
 			this->a_handler->Start();
 
 
+
+		if (this->a_handler->IsStopped() && !this->walk_animation->Finished() && this->walk_animation->Started())
+			this->walk_animation->Update(16.0f, ctrl->GetFpsPointer()->Delta());
+
+
+
+
 		if (!this->a_handler->IsStopped())
 		{
 			if (!this->a_handler->HasReachedLifetime(0.15f))
@@ -100,6 +107,7 @@ void Player::Render(Controller * ctrl, ScreenUniformData * u_data, GameObject * 
 			this->m_sprite[m_dir->Compute(DIR_TYPE_4, attributes->position, attributes->target)]->Render(this->walk_animation->GetIFrames());
 		else
 			this->m_sprite[4]->Render(m_dir->Compute(DIR_TYPE_4, attributes->position, attributes->target));
+
 
 		this->UpdateUI(g_obj);
 		

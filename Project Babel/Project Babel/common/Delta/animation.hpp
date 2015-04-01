@@ -8,10 +8,6 @@ class Animation
 
 
 	GLfloat frames;
-
-
-
-
 	GLuint num_frames;
 
 
@@ -26,14 +22,11 @@ public:
 
 
 	inline GLboolean Finished(){ return this->frames >= this->num_frames; }
+	inline GLboolean Started(){ return this->frames > 0.0f; }
 
 
 	inline Animation(GLuint num_frames){ this->Init(num_frames); }
-
-
 	void Init(GLuint num_frames);
-
-
 	void Update(GLfloat speed, GLfloat delta);
 
 

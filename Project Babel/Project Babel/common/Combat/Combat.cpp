@@ -217,21 +217,36 @@ void Combat::EnemyAttack(GameObject * g_obj, Player * player, EnemyManager *enem
 		Enemy * current_enemy = enemies->GetEnemiesPointer()[0][i];
 
 
-		if (current_enemy->GetTarget() > NO_TARGET && current_enemy->GetPAttributes()->HasReachedTarget())
+		if (current_enemy->GetTarget() > NO_TARGET && current_enemy->GetActionHandler()->IsStopped())
 		{
 
 
-			while (current_enemy->GetTurnSystem()->GetTurns() >= 1.0f/current_enemy->GetStats()->base_attack_speed)
+			if (current_enemy->GetTurnSystem()->GetTurns() >= 1.0f/current_enemy->GetStats()->base_attack_speed)
 			{
 
 
 				current_enemy->GetDirection()->Compute(DIR_TYPE_4, current_enemy->GetPAttributes()->position, current_enemy->GetTargetPosition());
-				player->GetStats()->GetHp()->Damage(current_enemy->GetStats()->base_attack);
-				current_enemy->GetTurnSystem()->ComputeAttack(-current_enemy->GetStats()->base_attack_speed);
+				current_enemy->GetActionHandler()->SetAction(ATTACKING);
+				current_enemy->GetActionHandler()->Start();
+
 
 			}
 
 
+		}
+
+
+
+		if (current_enemy->GetActionHandler()->GetAction() == ATTACKING && current_enemy->GetActionHandler()->HasReachedLifetime(0.15f))
+		{
+		
+
+			player->GetStats()->GetHp()->Damage(current_enemy->GetStats()->base_attack);
+			current_enemy->GetTurnSystem()->ComputeAttack(-current_enemy->GetStats()->base_attack_speed);
+			current_enemy->GetActionHandler()->SetAction(NO_ACTION);
+			current_enemy->GetActionHandler()->Stop();
+		
+		
 		}
 
 
@@ -252,7 +267,7 @@ void Combat::EnemyMovement(Controller * ctrl, GameObject * g_obj, Player * playe
 
 
 
-	if (player->GetActionHandler()->HasReachedLifetime(0.15f))
+	if (player->GetPAttributes()->HasReachedTarget())
 		enemies->GetEnemiesPointer()[0][0]->GetTurnLogic()->Advance();
 
 
@@ -266,7 +281,7 @@ void Combat::EnemyMovement(Controller * ctrl, GameObject * g_obj, Player * playe
 		TurnSystem * turns = enemy->GetTurnSystem();
 		AutoPath * a_path = enemy->GetAutoPath();
 		Stats * stats = enemy->GetStats();
-
+		ActionHandler * a_handler = enemy->GetActionHandler();
 
 
 
@@ -275,7 +290,8 @@ void Combat::EnemyMovement(Controller * ctrl, GameObject * g_obj, Player * playe
 
 			if (attr->position == attr->target &&
 				enemy->GetTargetPosition() != vec2_0 &&
-				turns->GetTurns() >= 1.0f / stats->base_movement_speed)
+				turns->GetTurns() >= 1.0f / stats->base_movement_speed
+				&& a_handler->IsStopped())
 			{
 
 
@@ -286,12 +302,15 @@ void Combat::EnemyMovement(Controller * ctrl, GameObject * g_obj, Player * playe
 
 
 
+
 				if (a_path->GetPathfinder()->GetPathFound())
 				{
 
 
 					a_path->SetPath(a_path->GetPathfinder()->GetPath());
 					a_path->Advance();
+
+
 
 
 				}
@@ -314,13 +333,23 @@ void Combat::EnemyMovement(Controller * ctrl, GameObject * g_obj, Player * playe
 				attr->target = a_path->GetStep();
 				g_obj->GetCollisionMap()->AddToList(glm::ivec2(attr->target));
 
+
+
+				if (a_handler->IsStopped())
+				{
+					a_handler->Start();
+					a_handler->SetAction(MOVING);
+				}
 	
 
-				if (attr->HasMovedATile(ctrl->GetFpsPointer()->Delta()))
+				if (a_handler->HasReachedLifetime(0.15f))
 				{
 			
 					turns->ComputeMovement(-stats->base_movement_speed);
 					enemy->GetTurnLogic()->Advance();
+
+					a_handler->Stop();
+					a_handler->SetAction(NO_ACTION);
 				}
 
 
@@ -378,7 +407,7 @@ void Combat::Action(Controller * ctrl,GameObject * g_obj, Player * player, Enemy
 
 
 
-	g_obj->GetTurnSystem()->Advance();
+	g_obj->GetTurnSystem()->Reset();
 
 
 }

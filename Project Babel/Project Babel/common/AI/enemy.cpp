@@ -21,7 +21,7 @@ void Enemy::Init(EnemyData * data)
 	this->target_position = vec2_0;
 	this->target = NO_TARGET;
 	this->t_logic = new TurnLogic();
-
+	this->a_handler = new ActionHandler();
 
 
 }
@@ -37,12 +37,12 @@ void Enemy::Render(Controller * ctrl, ScreenUniformData * u_data, GameObject * g
 	this->last_position = this->p_attributes->position;
 	u_data->ApplyMatrix(Translation(p_attributes->position * p_attributes->scale + g_obj->GetScroller()->GetOffset())*
 		Scale(p_attributes->scale));
-	u_data->SetAmbientLight(glm::vec3(1.0f, 1.0f, 1.0f));
+	u_data->SetAmbientLight(BLIND_COLOR);
 
 
 
 	GLuint dir = m_dir->Compute(DIR_TYPE_4, p_attributes->position, p_attributes->target);
-	if (glm::distance(p_attributes->position, p_attributes->target) > p_attributes->speed*ctrl->GetFpsPointer()->Delta())
+	if (!a_handler->IsStopped() && a_handler->GetAction() == MOVING)
 		this->animations[dir]->Update(16.0f, ctrl->GetFpsPointer()->Delta());
 
 
