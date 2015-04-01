@@ -217,3 +217,8 @@ void ItemList::AddDroppedItem(int x, int y, Item *item)
 	dropped_items.push_back(dropped_item);
 
 }
+
+void ItemList::AddtoInventory(Item *item)
+{
+	this->Inventory.push_back(item);
+}

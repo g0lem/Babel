@@ -84,7 +84,7 @@ void Combat::PlayerAttack(GameObject * g_obj, Player * player, EnemyManager *ene
 		
 			
 				g_obj->GetItemList()->AddDroppedItem((int)(enemies->GetEnemiesPointer()[0][player->GetTarget()]->GetPAttributes()->position.x), (int)(enemies->GetEnemiesPointer()[0][player->GetTarget()]->GetPAttributes()->position.y), item);
-		        std::cout << g_obj->GetItemList()->GetDroppedItems().size()<<"\n";
+		       // std::cout << g_obj->GetItemList()->GetDroppedItems().size()<<"\n";
 				enemies->GetEnemiesPointer()[0][player->GetTarget()]->GetStats()->GetHp()->Damage(player->GetItems()[ITEM_SLOT_WEAPON]->attack);
 				player->GetEventHandler()->Init(current_map, g_obj);
 			

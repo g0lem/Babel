@@ -50,6 +50,8 @@ public:
 
 	void AddDroppedItem(int x, int y, Item *item);
 
+	void AddtoInventory(Item *item);
+
 	int listed_name(std::string name);
 
 	void LoadSprites();
