@@ -46,9 +46,6 @@ void Player::Render(Controller * ctrl, ScreenUniformData * u_data, GameObject * 
 
 	u_data->ApplyMatrix(Translation(GridPosition(attributes->position*attributes->scale + g_obj->GetScroller()->GetOffset(), attributes->scale))*
 		Scale(attributes->scale));
-
-
-
 	u_data->SetAmbientLight(glm::vec3(1.0f, 1.0f, 1.0f));
 
 
@@ -59,11 +56,11 @@ void Player::Render(Controller * ctrl, ScreenUniformData * u_data, GameObject * 
 
 
 	
-	if (ctrl->GetKeyOnce(GLFW_KEY_SPACE) && this->target > NO_TARGET && a_path->Finished())
+	if (ctrl->GetKeyOnce(GLFW_KEY_SPACE) && this->target > NO_TARGET && a_handler->IsStopped())
 	{
-		this->attacking = true;
-		
-			this->m_sprite[4]->Render(m_dir->Compute(DIR_TYPE_4, attributes->position, attributes->target));
+
+		a_handler->SetAction(ATTACKING);
+		a_handler->Start();
 		
 	}
 
@@ -99,11 +96,11 @@ void Player::Render(Controller * ctrl, ScreenUniformData * u_data, GameObject * 
 		
 
 
-		if (this->attacking == false)
+		if (a_handler->GetAction() != ATTACKING)
 			this->m_sprite[m_dir->Compute(DIR_TYPE_4, attributes->position, attributes->target)]->Render(this->walk_animation->GetIFrames());
-		else{
-				this->m_sprite[4]->Render(m_dir->Compute(DIR_TYPE_4, attributes->position, attributes->target));
-		}
+		else
+			this->m_sprite[4]->Render(m_dir->Compute(DIR_TYPE_4, attributes->position, attributes->target));
+
 		this->UpdateUI(g_obj);
 		
 
@@ -311,8 +308,6 @@ void Player::LoadStats()
 
 void Player::UpdateUI(GameObject * g_obj)
 {
-
-
 	g_obj->GetPanelState()->hp = this->m_stats->GetHp()->hp;
 	g_obj->GetPanelState()->max_hp = this->m_stats->GetHp()->max_hp;
 	

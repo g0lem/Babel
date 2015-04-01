@@ -14,6 +14,7 @@ class ItemList
 	//Item ** list;
 
 	std::vector <Item*> list;
+	std::vector <Item*> Inventory;
 
 	void LoadItems();
 
@@ -40,6 +41,8 @@ public:
 
 
 	inline std::vector <Item*> GetList(){ return this->list; }
+
+	inline std::vector <Item*> GetInventory(){ return this->Inventory; }
 
 
 	inline ItemList(){ this->Init(); }

@@ -39,7 +39,7 @@ void Combat::SetPlayerTarget(Player * player, EnemyManager * enemies)
 
 
 
-			if (player->GetAttackingState())
+			if (player->GetActionHandler()->GetAction() == ATTACKING)
 			{
 				player->GetDirection()->Compute(DIR_TYPE_4, player->GetPAttributes()->position,
 					enemies->GetEnemiesPointer()[0][i]->GetPAttributes()->target);
@@ -63,22 +63,33 @@ void Combat::SetPlayerTarget(Player * player, EnemyManager * enemies)
 
   
 
-void Combat::PlayerAttack(GameObject * g_obj, Player * player, EnemyManager *enemies)
+void Combat::PlayerAttack(GameObject * g_obj, Player * player, EnemyManager *enemies, Map *current_map)
 {
 
+	int random = 0, i_rand = 0;
+	int v[] = {HEALTH_POTION, DOOR_BLOCK};
 
-
-	if (player->GetTarget() > NO_TARGET && player->GetAttackingState())
+	if (player->GetTarget() > NO_TARGET && 
+		player->GetActionHandler()->GetAction() == ATTACKING && 
+		player->GetActionHandler()->HasReachedLifetime(0.15f))
 	{
 
+		
+		if (enemies->GetEnemiesPointer()[0][player->GetTarget()]->GetStats()->GetHp()->hp - player->GetItems()[ITEM_SLOT_WEAPON]->attack.x <= 0)
+		{
 
-
+		
+				i_rand = rand() % 2;
+				current_map->GetTilemap()->GetTiles()[(int)(enemies->GetEnemiesPointer()[0][player->GetTarget()]->GetPAttributes()->position.x)][(int)(enemies->GetEnemiesPointer()[0][player->GetTarget()]->GetPAttributes()->position.y)] = v[i_rand];
+				enemies->GetEnemiesPointer()[0][player->GetTarget()]->GetStats()->GetHp()->Damage(player->GetItems()[ITEM_SLOT_WEAPON]->attack);
+				player->GetEventHandler()->Init(current_map);
+			
+		}
 
 		enemies->GetEnemiesPointer()[0][player->GetTarget()]->GetStats()->GetHp()->Damage(player->GetItems()[ITEM_SLOT_WEAPON]->attack);
-		player->SetAttackingState(false);
 		g_obj->GetTurnSystem()->ComputeAttack(player->GetItems()[ITEM_SLOT_WEAPON]->attack_speed);
-
-
+		player->GetActionHandler()->SetAction(NO_ACTION);
+		player->GetActionHandler()->Stop();
 
 
 	}
@@ -96,7 +107,7 @@ void Combat::PlayerRelated(GameObject * g_obj, Player * player, EnemyManager * e
 
 
 	this->SetPlayerTarget(player, enemies);
-	this->PlayerAttack(g_obj, player, enemies);
+	this->PlayerAttack(g_obj, player, enemies, map);
 
 
 

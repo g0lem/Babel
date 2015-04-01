@@ -14,23 +14,33 @@
 
 
 
+#define NO_ACTION -1
+#define MOVING 0
+#define ATTACKING 1
+
+
+
 
 class ActionHandler
 {
 
 
 	GLfloat timer;
+	GLint action;
 
 
 public:
 
 
 	inline ActionHandler(){ this->Init(); }
-	inline void Init(){ this->timer = 0.0f; }
+	inline void Init(){ this->timer = 0.0f; this->action = NO_ACTION; }
 	inline void Start(){ this->timer = glfwGetTime(); }
 	inline void Stop(){ this->timer = 0.0f; }
 	inline GLboolean HasReachedLifetime(GLfloat life_time){ return glfwGetTime() - this->timer > life_time; }
 	inline GLboolean IsStopped(){ return this->timer == 0.0f; }
+	inline void SetAction(GLuint action){ this->action = action; }
+	inline GLuint GetAction(){ return this->action; }
+
 
 
 };
@@ -54,7 +64,6 @@ class Player
 
 	PhysicalAttributes * attributes;
 	Stats * m_stats;
-	GLboolean attacking;
 	GLint target;
 
 	sf::Clock *t_clock;
@@ -89,8 +98,6 @@ public:
 
 	void Load(GameObject * g_obj, Map * current_tilemap);
 	void Render(Controller * ctrl, ScreenUniformData *u_data, GameObject * g_obj, Map * current_map);
-	inline GLboolean GetAttackingState(){ return this->attacking; }
-	inline void SetAttackingState(GLboolean attacking){ this->attacking = attacking; }
 	inline GLint GetTarget(){ return this->target; }
 	inline void SetTarget(GLint target){ this->target = target; }
 	inline PhysicalAttributes*GetPAttributes(){ return this->attributes; }
@@ -98,7 +105,7 @@ public:
 	inline Item**GetItems(){ return this->items; }
 	inline Direction * GetDirection(){ return this->m_dir; }
 	inline ActionHandler * GetActionHandler(){ return this->a_handler; }
-
+	inline EventHandler* GetEventHandler(){ return this->h_event; }
 
 };
 

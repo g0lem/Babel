@@ -156,7 +156,7 @@ float **fog_of_war::GetFOW(GameObject *g_obj, glm::ivec2 position)
 
 
 
-
+	
 
 	//Cadranul 1\\
 			

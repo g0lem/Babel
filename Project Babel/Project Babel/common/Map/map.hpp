@@ -37,7 +37,6 @@ public:
 	inline 	std::vector<Room*>* GetRoomsPointer(){ return this->rooms; }
 
 
-
 private:
 
 
