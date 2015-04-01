@@ -2,29 +2,29 @@
 
 
 
-class EffectsHandler
+class EffectsHandler:public Controller
 {
 	
-
 public:
 	
-	inline static void FadeOut(ScreenUniformData *u_data, Sprite * m_sprite, int frame, float &alpha){
+	inline void FadeOut(ScreenUniformData *u_data, Sprite * m_sprite, int frame, float speed, float &alpha){
 
 		u_data->SetAmbientLight(glm::vec4(1.f, 1.f, 1.f, alpha));
 		m_sprite->Render(frame);
-		alpha -= 1 / 255.f;
+
+		alpha -= 1 / speed;
 		
 	}
 
-	inline static void FadeIn(ScreenUniformData *u_data, Sprite * m_sprite, int frame, float &alpha){
+	inline void FadeIn(ScreenUniformData *u_data, Sprite * m_sprite, int frame,float speed, float &alpha){
 
 		u_data->SetAmbientLight(glm::vec4(1.f, 1.f, 1.f, alpha));
 		m_sprite->Render(frame);
-		alpha += 1 / 255.f;
+		alpha += 1 / speed;
 
 	}
 
-	inline static void Blink(ScreenUniformData *u_data, Sprite * m_sprite, int frame, float &alpha, bool &turn){
+	inline void Blink(ScreenUniformData *u_data, Sprite * m_sprite, int frame, float &alpha,float speed, bool &turn){
 
 		if (alpha < 0.1f)
 			turn = false;
@@ -36,9 +36,9 @@ public:
 		m_sprite->Render(frame);
 
 		if (turn == false)
-			alpha += 1 / 255.f;
+			alpha += 1 / speed;
 		else
-			alpha -= 1 / 255.f;
+			alpha -= 1 / speed;
 
 
 	}

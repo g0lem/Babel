@@ -16,9 +16,12 @@ public:
 		float alpha;
 		bool turn;
 		int type;
+		bool finished;
 
 
 	};
+
+	EffectsHandler *m_effects;
 
 	std::vector<splash*> *m_screens;
 

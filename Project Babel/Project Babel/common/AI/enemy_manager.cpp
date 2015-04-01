@@ -25,13 +25,10 @@ void EnemyManager::Render(Controller * ctrl, ScreenUniformData * u_data, GameObj
 
 
 
-<<<<<<< HEAD
 
 
 			this->m_enemies[0][i]->Render(ctrl, u_data, g_obj, map);
 
-=======
->>>>>>> origin/master
 
 
 			//this->m_enemies[0][i]->Render(ctrl, u_data, g_obj, map);
