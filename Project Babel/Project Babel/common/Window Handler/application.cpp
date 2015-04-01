@@ -30,13 +30,11 @@ void Application::Init()
 
 
 	g_object = new GameObject();
-
 	sound_m = new SoundManager();
-
 	g_render = new GameRender(g_object);
-
-
 	ui = new UIHandler();
+
+
 
 
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
