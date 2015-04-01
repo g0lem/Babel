@@ -51,6 +51,8 @@ public:
 
 	void Init();
 
+
+	
 	
 
 std::string item_name;

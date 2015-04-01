@@ -196,9 +196,8 @@ void Player::LoadPhysicalAttributes(Map * current_tilemap)
 void Player::LoadItems(GameObject * g_obj)
 {
 
-
-
 	this->items = new Item*[5];
+
 	this->items[ITEM_SLOT_WEAPON] = g_obj->GetItemList()->GetList()[0];
 
 
