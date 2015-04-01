@@ -52,7 +52,6 @@
 #include "common/AI.hpp"
 #include "common/UI.hpp"
 
-
 #include "common/Player.hpp"
 #include "common/Combat.hpp"
 #include "common/splash_screen.hpp"

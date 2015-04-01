@@ -68,6 +68,7 @@
     <ClCompile Include="common\Stats\stats.cpp" />
     <ClCompile Include="common\stats\xp.cpp" />
     <ClCompile Include="common\Turns\turn.cpp" />
+    <ClCompile Include="common\UI\floating_text.cpp" />
     <ClCompile Include="common\UI\inventory.cpp" />
     <ClCompile Include="common\UI\menu_item.cpp" />
     <ClCompile Include="common\UI\menu_render.cpp" />
@@ -150,6 +151,7 @@
     <ClInclude Include="common\Stats\stats.hpp" />
     <ClInclude Include="common\Turns.hpp" />
     <ClInclude Include="common\Turns\turn.hpp" />
+    <ClInclude Include="common\UI\floating_text.hpp" />
     <ClInclude Include="common\UI\inventory.hpp" />
     <ClInclude Include="common\UI\menu_item.hpp" />
     <ClInclude Include="common\UI\menu_render.hpp" />

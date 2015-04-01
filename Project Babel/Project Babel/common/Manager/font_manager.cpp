@@ -48,8 +48,8 @@ void FontManager::Render(Controller * ctrl)
 
 	this->BindRun(ctrl->GetWindowWidth(), ctrl->GetWindowHeight());
 
-
-   
+	//TextRender::SetColor(0.5, 0.5, 0.5);
+	this->font->Print("text", ctrl->GetWindowSize().x / 2, ctrl->GetWindowSize().y / 2, 72);
 	//printf("%.2f\n", ctrl->returnFps());
 
 

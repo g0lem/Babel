@@ -1,6 +1,6 @@
 #pragma once
 
-
+#include "UI/floating_text.hpp"
 #include "UI/ui_helper.hpp"
 #include "UI/menu_item.hpp"
 #include "UI/panel_render.hpp"

@@ -1,6 +1,9 @@
 #pragma once
 
-
+#define UP 0
+#define DOWN 1
+#define LEFT 2
+#define RIGHT 3
 
 class EffectsHandler:public Controller
 {
@@ -41,6 +44,21 @@ public:
 			alpha -= 1 / speed;
 
 
+	}
+
+	inline void TextFade(char* text, glm::vec2 &position, Font *font,int size, int direction, float &alpha, float speed, ScreenUniformData *u_data)
+	{
+		u_data->SetAmbientLight(glm::vec4(1.f, 1.f, 1.f, alpha));
+		font->Print(text, position.x, position.y, size);
+		if (direction == UP)
+			position.y -= 1 / speed;
+		else if (direction == LEFT)
+			position.x -= 1 / speed;
+		else if (direction == RIGHT)
+			position.y += 1 / speed;
+		else if (direction == DOWN)
+			position.x += 1 / speed;
+		alpha -= 1 / speed;
 	}
 
 };

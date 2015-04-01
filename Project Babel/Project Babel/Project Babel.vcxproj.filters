@@ -293,6 +293,9 @@
     <ClCompile Include="common\UI\story_render.cpp">
       <Filter>common\UI</Filter>
     </ClCompile>
+    <ClCompile Include="common\UI\floating_text.cpp">
+      <Filter>common\UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h">
@@ -536,6 +539,9 @@
       <Filter>common\Game Object</Filter>
     </ClInclude>
     <ClInclude Include="common\UI\story_render.hpp">
+      <Filter>common\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="common\UI\floating_text.hpp">
       <Filter>common\UI</Filter>
     </ClInclude>
   </ItemGroup>
