@@ -33,5 +33,8 @@ public:
 	void Init();
 
 
+	inline UI_mover * GetMover(){ return this->mover; }
+
+
 };
 

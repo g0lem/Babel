@@ -220,6 +220,8 @@ GLboolean Player::CheckAdvance(Controller * ctrl, GameObject * g_obj)
 
 		Golem * g = g_obj->GetUIState()->GetInterHandler()->GetInters()[0][i];
 
+		if (!g)
+			continue;
 
 		if (g->id == RECT)
 		{

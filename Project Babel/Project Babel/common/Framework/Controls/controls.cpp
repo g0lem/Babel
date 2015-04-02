@@ -20,7 +20,7 @@ GLuint Controller::opengl_minor_version = 0;
 GLFWwindow*Controller::window = 0;
 glm::vec2 Controller::mouse_position = glm::vec2(0.0f, 0.0f);
 GLuint Controller::mouse_buttons[] = { 0 };
-
+GLboolean Controller::has_been_resized = 0;
 
 
 GLboolean Controller::CreateWindow(GLuint window_width, GLuint window_height,
@@ -284,6 +284,7 @@ void Controller::resize_callback(GLFWwindow* window, GLint width, GLint height)
 	glViewport(0, 0, width, height);
 	Controller::window_width = width;
 	Controller::window_height = height;
+	Controller::has_been_resized = true;
 
 }
 

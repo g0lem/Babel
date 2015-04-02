@@ -4,7 +4,7 @@
 
 class StoryState
 {
-	int state, col_id;
+	int state;
 
 	int *buttons_state;
 
@@ -21,8 +21,6 @@ public:
 
 	inline int *GetButtonState(){ return this->buttons_state; }
  
-	inline int GetColID(){ return this->col_id; }
-	inline void setColID(int col_id){ this->col_id = col_id; }
 
 
 };

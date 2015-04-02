@@ -10,8 +10,6 @@ void InventoryState::Init()
 
 	this->State = NOT_ACTIVE;
 
-	this->col_id = NOT_SET;
-
 
 
 }

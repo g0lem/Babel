@@ -17,8 +17,7 @@ void PanelRender::Init()
 	hp_bar_position = glm::vec2(514, 41);
 	hp_bar_size = glm::vec2(314, 20);
 
-	for (GLuint i = 0; i < 4; i++)
-		sets[i] = NOT_SET;
+
 
 
 	LoadButtonsSprite();
@@ -92,17 +91,47 @@ void PanelRender::Update(Controller *ctrl, GameObject * g_obj)
 	top_buttons[3]->GetProperties()->position = glm::vec2(top_buttons[2]->GetProperties()->position.x + 54, 9);
 
 
+	
+	if (ctrl->HasBeenResized())
+	{
+
+
+		delete g_obj->GetUIState()->GetInterHandler()->GetInters()[0][MENU_BUTTON];
+		g_obj->GetUIState()->GetInterHandler()->GetInters()[0][MENU_BUTTON] = NULL;
+
+
+		for (GLuint i = 0; i < 4; i++)
+		{
+			delete g_obj->GetUIState()->GetInterHandler()->GetInters()[0][i + 2];
+			g_obj->GetUIState()->GetInterHandler()->GetInters()[0][i + 2] = NULL;
+		}
+
+		ctrl->SetResized(false);
+
+	}
+
+
+	if (!g_obj->GetUIState()->GetInterHandler()->GetInters()[0][MENU_BUTTON])
+	{
+		Golem *g = new Golem();
+		g->id = RECT;
+		g->position = a_button[0]->GetProperties()->position;
+		g->size = glm::vec2(42, 42);
+		g_obj->GetUIState()->GetInterHandler()->GetInters()[0][MENU_BUTTON] = g;
+	}
+
+
 	for (GLuint i = 0; i < 4; i++)
-		if (sets[i] == NOT_SET)
+		if (!g_obj->GetUIState()->GetInterHandler()->GetInters()[0][i+2])
 		{
 		Golem *g = new Golem();
 		g->id = RECT;
 		g->position = top_buttons[i]->GetProperties()->position;
 		g->size = glm::vec2(54, 27);
-		g_obj->GetUIState()->GetInterHandler()->GetInters()->push_back(g);
-		sets[i] = g_obj->GetUIState()->GetInterHandler()->GetInters()->size() - 1;
+		g_obj->GetUIState()->GetInterHandler()->GetInters()[0][i + 2] = g;
 		}
 
+		
 
 
 
@@ -115,39 +144,42 @@ void PanelRender::Update(Controller *ctrl, GameObject * g_obj)
 void PanelRender::Render(Controller *ctrl, ScreenUniformData *u_data, GameObject *g_obj)
 {
 
+
 	this->Update(ctrl, g_obj);
 
-	u_data->SetAmbientLight(glm::vec4(1.f, 1.f, 1.f, 1.f));
-	g_obj->GetUIState()->GetPanelState()->SetState(UI_helper::GetButtonAction(ctrl, this->a_button[0]->GetProperties()));
-	this->a_button[0]->Render(ctrl, u_data, this->button_skins, 0, g_obj->GetUIState()->GetPanelState()->GetState());
-	
+
+
+
+	{//MENU BUTTON
+
+		u_data->SetAmbientLight(glm::vec4(1.f, 1.f, 1.f, 1.f));
+
+
+		g_obj->GetUIState()->GetPanelState()->SetState(UI_helper::GetButtonAction(ctrl, this->a_button[0]->GetProperties()));
+		this->a_button[0]->Render(ctrl, u_data, this->button_skins, 0, g_obj->GetUIState()->GetPanelState()->GetState());
 
 
 		if (g_obj->GetUIState()->GetPanelState()->GetState() == PRESSED)
-		{
-			if (MenuPressed == false){
-				g_obj->GetUIState()->GetMenuState()->SetState(ACTIVE);
-				MenuPressed = true;
-			}
-			else
-			{
-				g_obj->GetUIState()->GetMenuState()->SetState(NOT_ACTIVE);
-				MenuPressed = false;
-			}
-
-			
-		}
+			g_obj->GetUIState()->GetMenuState()->SetState(g_obj->GetUIState()->GetMenuState()->GetState());
 
 
+	}
 
-	u_data->SetAmbientLight(glm::vec4(1.f, 1.f, 1.f, 1.f));
-	u_data->ApplyMatrix(Translation(this->wireframe_position)*Scale(this->wireframe_size));
-	this->button_skins->Render(WIREFRAME);
+
+	{//WIREFRAME
+
+		u_data->SetAmbientLight(glm::vec4(1.f, 1.f, 1.f, 1.f));
+		u_data->ApplyMatrix(Translation(this->wireframe_position)*Scale(this->wireframe_size));
+		this->button_skins->Render(WIREFRAME);
+
+
+	}
 
 
 
 
-	for (int i = 0; i < 4; i++)
+
+	for (int i = 0; i < 4; i++)//BUTTONS
 	{
 		
 
@@ -160,59 +192,102 @@ void PanelRender::Render(Controller *ctrl, ScreenUniformData *u_data, GameObject
 
 
 
+	{//INVENTARY AND STORY
 
 
-	if (g_obj->GetUIState()->GetInventoryState()->GetButtonStates()[16] == PRESSED &&
-		g_obj->GetUIState()->GetInventoryState()->GetState())
-	{
 
-		g_obj->GetUIState()->GetInventoryState()->SetState(NOT_ACTIVE);
-		g_obj->GetUIState()->GetInventoryState()->GetButtonStates()[16] = NONE;
+		if (g_obj->GetUIState()->GetInventoryState()->GetButtonStates()[16] == PRESSED &&
+			g_obj->GetUIState()->GetInventoryState()->GetState())
+		{
+
+			g_obj->GetUIState()->GetInventoryState()->SetState(NOT_ACTIVE);
+
+			if (g_obj->GetUIState()->GetInterHandler()->GetInters()[0][INVENTARY_INTER] != NULL)
+			{
+				delete g_obj->GetUIState()->GetInterHandler()->GetInters()[0][INVENTARY_INTER];
+				g_obj->GetUIState()->GetInterHandler()->GetInters()[0][INVENTARY_INTER] = NULL;
+			}
+
+
+		}
+
+
+
+		if (g_obj->GetUIState()->GetPanelState()->GetButtonsState()[2] == PRESSED)
+		{
+
+			g_obj->GetUIState()->GetInventoryState()->SetState(!g_obj->GetUIState()->GetInventoryState()->GetState());
+
+
+			if (g_obj->GetUIState()->GetInterHandler()->GetInters()[0][INVENTARY_INTER] != NULL)
+			{
+				delete g_obj->GetUIState()->GetInterHandler()->GetInters()[0][INVENTARY_INTER];
+				g_obj->GetUIState()->GetInterHandler()->GetInters()[0][INVENTARY_INTER] = NULL;
+			}
+
+		}
+
+
+
+
+
+		if (g_obj->GetUIState()->GetStoryState()->GetButtonState()[12] == PRESSED &&
+			g_obj->GetUIState()->GetStoryState()->GetState())
+		{
+
+			g_obj->GetUIState()->GetStoryState()->SetState(NOT_ACTIVE);
+
+			if (g_obj->GetUIState()->GetInterHandler()->GetInters()[0][STORY_INTER] != NULL)
+			{
+				delete g_obj->GetUIState()->GetInterHandler()->GetInters()[0][STORY_INTER];
+				g_obj->GetUIState()->GetInterHandler()->GetInters()[0][STORY_INTER] = NULL;
+			}
+
+
+		}
+
+
+
+		if (g_obj->GetUIState()->GetPanelState()->GetButtonsState()[1] == PRESSED)
+		{
+
+			g_obj->GetUIState()->GetStoryState()->SetState(!g_obj->GetUIState()->GetStoryState()->GetState());
+
+
+			if (g_obj->GetUIState()->GetInterHandler()->GetInters()[0][STORY_INTER] != NULL)
+			{
+				delete g_obj->GetUIState()->GetInterHandler()->GetInters()[0][STORY_INTER];
+				g_obj->GetUIState()->GetInterHandler()->GetInters()[0][STORY_INTER] = NULL;
+			}
+
+
+
+		}
+
 
 
 	}
 
 
-
-	if (g_obj->GetUIState()->GetPanelState()->GetButtonsState()[2] == PRESSED)
-		g_obj->GetUIState()->GetInventoryState()->SetState(!g_obj->GetUIState()->GetInventoryState()->GetState());
-	
+	{//HP AND XP BARS
 
 
+		u_data->SetAmbientLight(glm::vec3(1.f, 1.f, 1.f));
 
 
-	if (g_obj->GetUIState()->GetStoryState()->GetButtonState()[12] == PRESSED &&
-		g_obj->GetUIState()->GetStoryState()->GetState())
-	{
+		glm::vec2 hp_factor = glm::vec2(GLfloat(g_obj->GetPanelState()->hp) / GLfloat(g_obj->GetPanelState()->max_hp), 1.0f);
+		u_data->ApplyMatrix(Translation(this->hp_bar_position)*Scale(this->hp_bar_size*hp_factor));
+		this->button_skins->Render(HEALTHBAR);
 
 
-		g_obj->GetUIState()->GetStoryState()->SetState(NOT_ACTIVE);
-		g_obj->GetUIState()->GetStoryState()->GetButtonState()[12] = NONE;
+		u_data->ApplyMatrix(Translation(this->xp_bar_position)*Scale(this->xp_bar_size));
+
+
+		this->button_skins->Render(XPBAR);
+
 
 
 	}
-
-
-
-	if (g_obj->GetUIState()->GetPanelState()->GetButtonsState()[1] == PRESSED)
-		g_obj->GetUIState()->GetStoryState()->SetState(!g_obj->GetUIState()->GetStoryState()->GetState());
-
-
-
-
-	u_data->SetAmbientLight(glm::vec3(1.f, 1.f, 1.f));
-	
-	glm::vec2 hp_factor = glm::vec2(GLfloat(g_obj->GetPanelState()->hp) / GLfloat(g_obj->GetPanelState()->max_hp), 1.0f);
-	u_data->ApplyMatrix(Translation(this->hp_bar_position)*Scale(this->hp_bar_size*hp_factor));
-	this->button_skins->Render(HEALTHBAR);
-
-
-	u_data->ApplyMatrix(Translation(this->xp_bar_position)*Scale(this->xp_bar_size));
-
-
-	this->button_skins->Render(XPBAR);
-
-
 
 	
 }

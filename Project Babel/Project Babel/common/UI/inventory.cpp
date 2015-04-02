@@ -124,17 +124,19 @@ void Inventory::Update()
 
 void Inventory::Render(Controller *ctrl, ScreenUniformData *u_data, GameObject *g_obj)
 {
-	
+
+
 
 	this->MoveObject(ctrl, g_obj);
-
 	this->AddIntersect(g_obj);
 
-	
+
 
 	RenderStaticItems(ctrl, u_data, g_obj);
-
 	this->Update();
+
+
+
 
 	for (int i = 0; i < 16; i++)
 	{
@@ -156,8 +158,11 @@ void Inventory::AddIntersect(GameObject *g_obj)
 {
 
 
-	if (g_obj->GetUIState()->GetInventoryState()->GetColID() == NOT_SET)
+
+
+	if (!g_obj->GetUIState()->GetInterHandler()->GetInters()[0][INVENTARY_INTER])
 	{
+	
 		Golem *g = new Golem();
 
 		g->id = RECT;
@@ -165,8 +170,7 @@ void Inventory::AddIntersect(GameObject *g_obj)
 		g->size = this->box_size;
 
 
-		g_obj->GetUIState()->GetInterHandler()->GetInters()->push_back(g);
-		g_obj->GetUIState()->GetInventoryState()->setColID(g_obj->GetUIState()->GetInterHandler()->GetInters()->size() - 1);
+		g_obj->GetUIState()->GetInterHandler()->GetInters()[0][INVENTARY_INTER] = g;
 	}
 
 
@@ -178,15 +182,26 @@ void Inventory::MoveObject(Controller *ctrl, GameObject *g_obj)
 
 
 
-	glm::vec2 position = this->mover->GetTranslation(ctrl, this->box_position, this->box_size);
-
-
-	if (glm::distance(position, this->box_position) > 0)
+	if (g_obj->GetUIState()->GetInterHandler()->GetInters()[0][INVENTARY_INTER] != NULL)
 	{
-		g_obj->GetUIState()->GetInterHandler()->GetInters()->erase(g_obj->GetUIState()->GetInterHandler()->GetInters()->begin() +
-			g_obj->GetUIState()->GetInventoryState()->GetColID());
-		g_obj->GetUIState()->GetInventoryState()->setColID(NOT_SET);
 
-		this->box_position = position;
+
+
+		glm::vec2 position = this->mover->GetTranslation(ctrl, this->box_position, this->box_size);
+
+
+
+		if (glm::distance(position, this->box_position) > 0)
+		{
+			delete g_obj->GetUIState()->GetInterHandler()->GetInters()[0][INVENTARY_INTER];
+			g_obj->GetUIState()->GetInterHandler()->GetInters()[0][INVENTARY_INTER] = NULL;
+
+			this->box_position = position;
+		}
+
 	}
+
+
+
+
 }

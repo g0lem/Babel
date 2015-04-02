@@ -128,13 +128,18 @@ void StoryRender::Update()
 void StoryRender::Render(Controller *ctrl, ScreenUniformData *u_data, GameObject *g_obj)
 {
 
-	this->MoveObject(ctrl, g_obj);
 
+
+	this->MoveObject(ctrl, g_obj);
 	this->AddIntersect(g_obj);
 
-	RenderStaticItems(ctrl, u_data, g_obj);
 
+
+	RenderStaticItems(ctrl, u_data, g_obj);
 	this->Update();
+
+
+
 
 	for (int i = 0; i < 12; i++)
 	{
@@ -147,14 +152,19 @@ void StoryRender::Render(Controller *ctrl, ScreenUniformData *u_data, GameObject
 		this->t_skins->Render(i);
 	}
 
-	g_obj->GetUIState()->GetStoryState()->GetButtonState()[12] = UI_helper::GetButtonAction(ctrl, this->exit[0]->GetProperties());
 
+
+
+	g_obj->GetUIState()->GetStoryState()->GetButtonState()[12] = UI_helper::GetButtonAction(ctrl, this->exit[0]->GetProperties());
 	this->exit[0]->Render(ctrl, u_data, this->b_skins, 1, g_obj->GetUIState()->GetStoryState()->GetButtonState()[12]);
+
+
+
 }
 
 void StoryRender::AddIntersect(GameObject *g_obj)
 {
-	if (g_obj->GetUIState()->GetStoryState()->GetColID() == NOT_SET)
+	if (g_obj->GetUIState()->GetInterHandler()->GetInters()[0][STORY_INTER] == NULL)
 	{
 		Golem *g = new Golem();
 
@@ -163,8 +173,7 @@ void StoryRender::AddIntersect(GameObject *g_obj)
 		g->size = this->storybox_size;
 
 
-		g_obj->GetUIState()->GetInterHandler()->GetInters()->push_back(g);
-		g_obj->GetUIState()->GetStoryState()->setColID(g_obj->GetUIState()->GetInterHandler()->GetInters()->size() - 1);
+		g_obj->GetUIState()->GetInterHandler()->GetInters()[0][STORY_INTER] = g;
 	}
 
 
@@ -181,10 +190,12 @@ void StoryRender::MoveObject(Controller *ctrl, GameObject *g_obj)
 
 	if (glm::distance(position, this->storybox_position) > 0)
 	{
-		g_obj->GetUIState()->GetInterHandler()->GetInters()->erase(g_obj->GetUIState()->GetInterHandler()->GetInters()->begin() +
-			g_obj->GetUIState()->GetStoryState()->GetColID());
-		g_obj->GetUIState()->GetStoryState()->setColID(NOT_SET);
+		delete g_obj->GetUIState()->GetInterHandler()->GetInters()[0][STORY_INTER];
+		g_obj->GetUIState()->GetInterHandler()->GetInters()[0][STORY_INTER] = NULL;
 
 		this->storybox_position = position;
 	}
+
+
+
 }

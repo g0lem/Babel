@@ -48,33 +48,6 @@ void UIState::ManageQuits()
 
 
 
-	if (this->GetInventoryState()->GetState() == NOT_ACTIVE)
-	{
-		if (this->GetInventoryState()->GetColID() != NOT_SET)
-		{
-
-
-			this->GetInterHandler()->GetInters()->erase(this->GetInterHandler()->GetInters()->begin() + this->GetInventoryState()->GetColID());
-			this->GetInventoryState()->setColID(NOT_SET);
-
-
-		}
-	}
-
-	if (this->GetStoryState()->GetState() == NOT_ACTIVE)
-	{
-		if (this->GetStoryState()->GetColID() != NOT_SET)
-		{
-
-
-			this->GetInterHandler()->GetInters()->erase(this->GetInterHandler()->GetInters()->begin() + this->GetStoryState()->GetColID());
-			this->GetStoryState()->setColID(NOT_SET);
-
-
-		}
-	}
-
-
 
 }
 

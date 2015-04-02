@@ -15,7 +15,6 @@ class InventoryState
 
 	bool State;
 
-	int col_id;
 
 
 public:
@@ -36,8 +35,7 @@ public:
 	inline bool GetState(){ return this->State; }
 	inline void SetState(bool state){ this->State = state; }
 
-	inline int GetColID(){ return this->col_id; }
-	inline void setColID(int col_id){ this->col_id = col_id; }
+
 
 };
 

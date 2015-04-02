@@ -10,6 +10,17 @@
 
 
 
+#define INVENTARY_INTER 0
+#define STORY_INTER 1
+#define BUTTON_1 2
+#define BUTTON_2 3
+#define BUTTON_3 4
+#define BUTTON_4 5
+#define MENU_BUTTON 6
+
+
+
+
 struct Golem
 {
 

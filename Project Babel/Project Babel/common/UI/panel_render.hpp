@@ -36,8 +36,6 @@ class PanelRender
 
 
 
-	bool MenuPressed = false;
-	GLint sets[4];
 
 
 public:
