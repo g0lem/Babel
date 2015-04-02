@@ -151,8 +151,9 @@ void EventHandler::PickUp(glm::vec2 position, Map *current_map, GameObject *g_ob
 			{
 				g_obj->GetItemList()->AddtoInventory(g_obj->GetItemList()->GetDroppedItems()[i]->item);
 				//printf("pickup %d\n", g_obj->GetItemList()->GetInventory().size());
-				g_obj->GetItemList()->GetDroppedItems()[i]->x = -1;
-				g_obj->GetItemList()->GetDroppedItems()[i]->y = -1;
+				g_obj->GetItemList()->DeleteFromDroppedList(i);
+				/*g_obj->GetItemList()->GetDroppedItems()[i]->x = -1;
+				g_obj->GetItemList()->GetDroppedItems()[i]->y = -1;*/
 			}
 		}
 		e_map[(int)(position.x)][(int)(position.y)] = 0;

@@ -56,6 +56,9 @@ public:
 
 	void LoadSprites();
 
+	void DeleteFromInventory(int i){ this->Inventory.erase(Inventory.begin() + i); }
+
+	void DeleteFromDroppedList(int i){ this->dropped_items.erase(dropped_items.begin() + i); }
 
 	inline std::vector <Item*> GetList(){ return this->list; }
 

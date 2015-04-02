@@ -114,9 +114,7 @@ void Tilemap::Render(Controller * ctrl, ScreenUniformData * u_data, Sprite * m_s
 		x = item_list->GetDroppedItems()[i]->x;
 		y = item_list->GetDroppedItems()[i]->y;
 
-		if (x != -1 && y != -1)
-		{
-
+	
 
 
 			glm::vec3 temp = glm::vec3(1.0f) * (1 - fog[x][y]);
@@ -125,7 +123,7 @@ void Tilemap::Render(Controller * ctrl, ScreenUniformData * u_data, Sprite * m_s
 			item_list->GetSprite()->Render(item_list->GetDroppedItems()[i]->item->frame);
 
 
-		}
+		
 
 
 	}
