@@ -7,9 +7,11 @@
 void Combat::Init()
 {
 
+	this->f_ont = new FontManager();
 
+	this->font = f_ont->GetFont();
 
-
+	this->ftext = new FloatingText();
 
 }
 
@@ -66,8 +68,9 @@ void Combat::SetPlayerTarget(Player * player, EnemyManager * enemies)
 void Combat::PlayerAttack(GameObject * g_obj, Player * player, EnemyManager *enemies, Map *current_map)
 {
 
-	int random = 0, i_rand = 0;
-	int v[] = {HEALTH_POTION, DOOR_BLOCK};
+	Item *item;
+	
+	item = g_obj->GetItemList()->GetList()[rand()%g_obj->GetItemList()->GetList().size()];
 
 	if (player->GetTarget() > NO_TARGET && 
 		player->GetActionHandler()->GetAction() == ATTACKING && 
@@ -79,14 +82,16 @@ void Combat::PlayerAttack(GameObject * g_obj, Player * player, EnemyManager *ene
 		{
 
 		
-				i_rand = rand() % 2;
-				current_map->GetTilemap()->GetTiles()[(int)(enemies->GetEnemiesPointer()[0][player->GetTarget()]->GetPAttributes()->position.x)][(int)(enemies->GetEnemiesPointer()[0][player->GetTarget()]->GetPAttributes()->position.y)] = v[i_rand];
+			
+				g_obj->GetItemList()->AddDroppedItem((int)(enemies->GetEnemiesPointer()[0][player->GetTarget()]->GetPAttributes()->position.x), (int)(enemies->GetEnemiesPointer()[0][player->GetTarget()]->GetPAttributes()->position.y), item);
+		       // std::cout << g_obj->GetItemList()->GetDroppedItems().size()<<"\n";
 				enemies->GetEnemiesPointer()[0][player->GetTarget()]->GetStats()->GetHp()->Damage(player->GetItems()[ITEM_SLOT_WEAPON]->attack);
-				player->GetEventHandler()->Init(current_map);
+				player->GetEventHandler()->Init(current_map, g_obj);
 			
 		}
 
 		enemies->GetEnemiesPointer()[0][player->GetTarget()]->GetStats()->GetHp()->Damage(player->GetItems()[ITEM_SLOT_WEAPON]->attack);
+		//ftext->Add(font, "test", player->GetPAttributes()->position, 32, 0, 5, 1);
 		g_obj->GetTurnSystem()->ComputeAttack(player->GetItems()[ITEM_SLOT_WEAPON]->attack_speed);
 		player->GetActionHandler()->SetAction(NO_ACTION);
 		player->GetActionHandler()->Stop();

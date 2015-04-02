@@ -37,6 +37,7 @@ class ItemList
 
 	Sprite *m_sprite;
 
+	void AddPotions();
 
 public:
 
@@ -48,6 +49,8 @@ public:
 	void read_names();
 
 	void AddDroppedItem(int x, int y, Item *item);
+
+	void AddtoInventory(Item *item);
 
 	int listed_name(std::string name);
 

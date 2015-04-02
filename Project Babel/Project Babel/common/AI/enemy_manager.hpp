@@ -16,10 +16,10 @@ class EnemyManager
 
 
 
-	void CheckEnemiesState(GameObject * g_obj);
+	void CheckEnemiesState(GameObject * g_obj, Map *map);
 
 
-	void Kill(GameObject * g_obj, GLuint enemy_id);
+	void Kill(GameObject * g_obj, GLuint enemy_id, Map *map);
 
 
 	fog_of_war *fog;

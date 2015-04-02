@@ -144,6 +144,15 @@ void Inventory::Render(Controller *ctrl, ScreenUniformData *u_data, GameObject *
 		g_obj->GetUIState()->GetInventoryState()->GetButtonStates()[i] = UI_helper::GetItemAction(ctrl, this->m_inventory[i]->GetProperties());
 
 		this->m_inventory[i]->RenderItem(ctrl, u_data, this->skins, 0, g_obj->GetUIState()->GetInventoryState()->GetButtonStates()[i]);
+
+		std::cout << g_obj->GetItemList()->GetInventory().size()<<std::endl;
+
+		if (i < g_obj->GetItemList()->GetInventory().size())
+		{
+			std::cout << "da\n";
+			u_data->ApplyMatrix(Translation(this->m_inventory[i]->GetProperties()->position)*Scale(this->m_inventory[i]->GetProperties()->size));
+			g_obj->GetItemList()->GetSprite()->Render(g_obj->GetItemList()->GetInventory()[i]->type);
+		}
 	}
 
 

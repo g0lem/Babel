@@ -27,6 +27,13 @@ void SpriteManager::Init(GameObject * g_obj)
 	this->player = new Player();
 	this->player->Load(g_obj, this->map);
 	this->m_enemies = new EnemyManager(10, this->map, g_obj);
+
+	this->m_effects = new EffectsHandler();
+
+	this->font = new Font();
+
+	this->font->Create("data/fonts/arial.ttf", 48);
+
 	this->m_combat = new Combat();
 
 
@@ -79,11 +86,13 @@ void SpriteManager::Render(Controller * ctrl, GameObject * g_obj)
 	}
 	else
 	{
+		g_obj->GetScroller()->ComputeScreenLimits(ctrl, this->map->GetTilemap()->GetSize(), this->map->GetTilemap()->GetTileScale());
+
 
 
 		g_obj->GetScroller()->ComputeScreenLimits(ctrl, this->map->GetTilemap()->GetSize(), this->map->GetTilemap()->GetTileScale());
 		this->map->Render(ctrl, this->GetScreenPointer(), g_obj, player->GetPAttributes()->position);
-
+		
 
 		this->player->Render(ctrl, this->GetScreenPointer(), g_obj, this->map);
 		this->m_enemies->Render(ctrl, this->GetScreenPointer(), g_obj, this->map);

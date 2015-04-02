@@ -18,18 +18,25 @@ class FontManager : private TextRender
 
 	Font *font;
 
+	float alpha = 1.f;
+
+	glm::vec2 position;
+
+	FloatingText *fText;
+
 
 public:
-
 
 	inline FontManager(){ this->Init(); }
 
 
 	inline ~FontManager(){ this->Clean(); }
 
+
 	
 	void Init();
 
+	inline Font *GetFont(){ return this->font; }
 
 	void Render(Controller * ctrl);
 
