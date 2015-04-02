@@ -12,13 +12,16 @@ uniform vec4 AmbientLight;
 
 
 in vec2 UV;
+in vec2 nUV;
+
 
 void main()
 {
 
-
+    if (nUV.x == 0 && nUV.y == 0)
 	color = texture2D(texture, UV) * AmbientLight;
-
+	else
+	color = vec4(0,0,0,texture2D(texture,UV).r);
 
 
 }

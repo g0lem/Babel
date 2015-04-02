@@ -131,24 +131,19 @@ void Sprite::Render(GLuint current_frame)
 {
 
 
-	glBindBuffer(GL_ARRAY_BUFFER, this->m_VBO);
-
-
-	glActiveTexture(GL_TEXTURE0);
-
-
-	glBindTexture(GL_TEXTURE_2D, this->textures[current_frame]);
-
-
-	glDrawArrays(GL_TRIANGLES, 0, 6);
-
-
-	glBindTexture(GL_TEXTURE_2D, 0);
-
-
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
+	this->RenderTexture(this->textures[current_frame]);
 
 }
 
 
+void Sprite::RenderTexture(GLuint texture)
+{
 
+	glBindBuffer(GL_ARRAY_BUFFER, this->m_VBO);
+	glActiveTexture(GL_TEXTURE0);
+	glBindTexture(GL_TEXTURE_2D, texture);
+	glDrawArrays(GL_TRIANGLES, 0, 6);
+	glBindTexture(GL_TEXTURE_2D, 0);
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
+
+}

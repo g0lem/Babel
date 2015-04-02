@@ -37,7 +37,7 @@ public:
 
 	void Render(Controller * ctrl, ScreenUniformData * u_data, Sprite * m_sprite,
 		glm::ivec2 begin_limit, glm::ivec2 end_limit,
-		glm::vec2 offset, float **fog, ItemList *item_list);
+		glm::vec2 offset, GLuint texture, ItemList *item_list);
 
 
 	inline glm::ivec2 GetSize(){ return this->size; }
