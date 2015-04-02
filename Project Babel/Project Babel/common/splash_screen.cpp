@@ -23,9 +23,9 @@ void SplashScreen::Load()
 
 	char **textures = new char*[3];
 
-	textures[0] = "cerberus.png";
-	textures[1] = "logo1.png";
-	textures[2] = "splash1.png";
+	textures[0] = "splash1.png";
+	textures[1] = "cerberus.png";
+	textures[2] = "logo1.png";
 
 	m_screen->Load(3, "data/SplashScreen/", textures);
 	for (int i = 0; i < NUM_SCREENS; i++)

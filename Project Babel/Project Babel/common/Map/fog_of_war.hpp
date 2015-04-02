@@ -1,4 +1,10 @@
 #pragma once
+
+
+
+
+
+
 class fog_of_war
 {
 	float **s_map;

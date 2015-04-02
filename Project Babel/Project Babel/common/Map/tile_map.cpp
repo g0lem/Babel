@@ -72,9 +72,9 @@ void Tilemap::Init()
 
 
 
-void Tilemap::Render(Controller * ctrl, ScreenUniformData * u_data, Sprite * m_sprite, 
+void Tilemap::Render(Controller * ctrl, ScreenUniformData * u_data, Sprite * m_sprite,
 	glm::ivec2 begin_limit, glm::ivec2 end_limit,
-	glm::vec2 offset, GLuint texture, ItemList *item_list)
+	glm::vec2 offset, GLuint texture, float ** fog, ItemList *item_list)
 {
 
 
@@ -88,16 +88,16 @@ void Tilemap::Render(Controller * ctrl, ScreenUniformData * u_data, Sprite * m_s
 		{
 
 
-	
 
-				u_data->SetAmbientLight(glm::vec4(1.0f, 1.0f, 1.0f,1.0f));
+
+
+				u_data->SetNewUV(glm::vec2(i - 1, j));
+				dark->RenderTexture(texture);
+				u_data->SetNewUV(glm::vec2(-1, -1));
+				u_data->SetAmbientLight(glm::vec4(1.0f, 1.0f, 1.0f, 1.0f));
 				u_data->ApplyMatrix(Translation(glm::vec2(i, j)*tile_scale + offset)*Scale(tile_scale));
 				m_sprite->Render(this->tiles[i][j]);
-				u_data->SetNewUV(glm::vec2(i, j));
-				dark->RenderTexture(texture);
-				u_data->SetNewUV(glm::vec2(0, 0));
-
-
+		
 
 
 		}
@@ -106,7 +106,7 @@ void Tilemap::Render(Controller * ctrl, ScreenUniformData * u_data, Sprite * m_s
 
 	}
 
-	/*
+
 	int x, y;
 	
 	for (int i = 0; i < item_list->GetDroppedItems().size(); i++)
@@ -116,43 +116,21 @@ void Tilemap::Render(Controller * ctrl, ScreenUniformData * u_data, Sprite * m_s
 
 		if (x != -1 && y != -1)
 		{
-			if (this->tiles[x][y] != NO_BLOCK && fog[x][y] == 0.0f)
-			{
-
-
-				u_data->SetAmbientLight(glm::vec4(1.0f, 1.0f, 1.0f, 1.0f));
-				u_data->ApplyMatrix(Translation(glm::vec2(x, y)*tile_scale + offset)*Scale(tile_scale));
-				item_list->GetSprite()->Render(item_list->GetDroppedItems()[i]->item->type);
 
 
 
+			glm::vec3 temp = glm::vec3(1.0f) * (1 - fog[x][y]);
+			u_data->SetAmbientLight(glm::vec4(temp.x, temp.y, temp.y, 1.0f));
+			u_data->ApplyMatrix(Translation(glm::vec2(x, y)*tile_scale + offset)*Scale(tile_scale));
+			item_list->GetSprite()->Render(item_list->GetDroppedItems()[i]->item->type);
 
-			}
-
-			if (this->tiles[x][y] != NO_BLOCK && fog[x][y] == 0.5f)
-			{
-				u_data->SetAmbientLight(glm::vec4(1.0f, 1.0f, 1.0f, 0.5f));
-				u_data->ApplyMatrix(Translation(glm::vec2(x, y)*tile_scale + offset)*Scale(tile_scale));
-				item_list->GetSprite()->Render(item_list->GetDroppedItems()[i]->item->type);
-			}
-
-			if (this->tiles[x][y] == NO_BLOCK || fog[x][y] == 0.9f)
-			{
-
-
-				u_data->SetAmbientLight(glm::vec4(1.0f, 1.0f, 1.0f, 0.2f));
-				u_data->ApplyMatrix(Translation(glm::vec2(x, y)*tile_scale + offset)*Scale(tile_scale));
-				item_list->GetSprite()->Render(item_list->GetDroppedItems()[i]->item->type);
-
-
-
-
-			}
 
 		}
+
+
 	}
 
-	*/
+
 
 
 }

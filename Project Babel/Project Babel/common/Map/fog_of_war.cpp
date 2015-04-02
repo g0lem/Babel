@@ -3,9 +3,9 @@
 
 #define RANGE 7
 #define LIT 0.0f
-#define SEMILIT 0.2f
+#define SEMILIT 0.75f
 #define UNSEEN 0.5f
-#define DARK 0.9f
+#define DARK 1.0f
 
 void fog_of_war::Init(GameObject *g_obj)
 {

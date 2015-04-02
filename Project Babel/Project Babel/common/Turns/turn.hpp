@@ -71,7 +71,7 @@ public:
 	inline void Advance(){ if (this->turns >= 1.0f)this->turns--; }
 	inline void Add(GLfloat turns){ this->turns += turns; }
 	inline void Update(TurnSystem * other){ if (this->turns > other->GetTurns())other->Add(this->turns - other->GetTurns()); }
-
+	inline void Wait(){ this->turns++; }
 
 
 

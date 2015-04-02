@@ -52,7 +52,7 @@ public:
 	GLboolean Intersects(Room * other);
 
 
-	inline GLboolean InsideMap(GLuint width, GLuint height){ return points[1].x <= width && points[1].y <= height; }
+	inline GLboolean InsideMap(GLuint width, GLuint height){ return points[1].x < width && points[1].y <= height; }
 
 
 	inline GLint**GetTileMapPointer(){ return this->tile_map; }

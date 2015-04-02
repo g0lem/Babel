@@ -74,8 +74,12 @@ void Map::Render(Controller * ctrl, ScreenUniformData * u_data, GameObject * g_o
 
 
 	this->tilemap->Render(ctrl, u_data, this->m_sprite,
-		g_obj->GetScroller()->GetBeginLimit(),g_obj->GetScroller()->GetEndLimit(),
-		g_obj->GetScroller()->GetOffset(), fog->GetTexture(), g_obj->GetItemList());
+		g_obj->GetScroller()->GetBeginLimit(),
+		g_obj->GetScroller()->GetEndLimit(),
+		g_obj->GetScroller()->GetOffset(),
+		fog->GetTexture(), 
+		fog->GetFOW(g_obj,glm::ivec2(position)),
+		g_obj->GetItemList());
 
 
 

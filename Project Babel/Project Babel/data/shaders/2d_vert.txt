@@ -21,7 +21,7 @@ void main()
 
 	gl_Position =  ortho*vec4(NewPositions,1);
 
-	if (newUV.x == 0 && newUV.y == 0)
+	if (newUV.x == -1 && newUV.y == -1)
 	UV = Positions;
 	else
 	{
