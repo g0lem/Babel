@@ -24,11 +24,13 @@ class Tilemap
 
 	GLint **tiles;
 
+	Sprite *dark;
+	
 
 
 public:
 
-
+	void SmootherFOW(float **fog, glm::ivec2 position, ScreenUniformData * u_data);
 
 	void Init();
 

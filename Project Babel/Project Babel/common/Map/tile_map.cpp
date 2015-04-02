@@ -60,6 +60,12 @@ void Tilemap::Init()
 	this->GenerateTileMap();
 
 
+	this->dark = new Sprite();
+	char ** tex_str = new char*[1];
+	tex_str[0] = "dark.png";
+
+	dark->Load(1, "data/tiles/", tex_str);
+
 }
 
 
@@ -136,10 +142,51 @@ void Tilemap::Render(Controller * ctrl, ScreenUniformData * u_data, Sprite * m_s
 				u_data->ApplyMatrix(Translation(glm::vec2(x, y)*tile_scale + offset)*Scale(tile_scale));
 				item_list->GetSprite()->Render(item_list->GetDroppedItems()[i]->item->type);
 			}
+
+			if (this->tiles[x][y] == NO_BLOCK || fog[x][y] == 0.9f)
+			{
+
+
+				u_data->SetAmbientLight(glm::vec4(1.0f, 1.0f, 1.0f, 0.2f));
+				u_data->ApplyMatrix(Translation(glm::vec2(x, y)*tile_scale + offset)*Scale(tile_scale));
+				item_list->GetSprite()->Render(item_list->GetDroppedItems()[i]->item->type);
+
+
+
+
+			}
+
 		}
 	}
 
 
 
 
+}
+
+
+
+
+
+void Tilemap::SmootherFOW(float **fog, glm::ivec2 position, ScreenUniformData * u_data)
+{
+
+	for (int z = 0; z < 6; z++)
+	{
+		if (z >= 0 && position.x + z < this->size.x && position.y + z < this->size.y)
+		{
+			//prima parte
+			if (fog[position.x + z][position.y + z] == 0.0f && fog[position.x + z][position.y + z - 1] == 0.0f)
+				for (int i = 0; i < 8; i++)
+					for (int j = 7 - i; j >= i; j--)
+					{
+				u_data->SetAmbientLight(glm::vec4(1.0f, 1.0f, 1.0f, 0.95f));
+				u_data->ApplyMatrix(Translation(glm::vec2(position.x + i, position.y + j)*glm::vec2(8,8))*Scale(8, 8));
+				this->dark->Render(0);
+					}
+			//if (fog[position.x + i][position.y + i] == 0.0f && fog[position.x + i][position.y + i + 1] == 0.0f)
+			//smooth pe stanga
+		}
+
+	}
 }
