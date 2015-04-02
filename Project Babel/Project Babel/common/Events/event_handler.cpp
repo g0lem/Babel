@@ -1,5 +1,9 @@
 #include "common.hpp"
 
+
+
+
+
 void EventHandler::Init(Map *current_map, GameObject *g_obj)
 {
 	e_map = new int*[current_map->GetTilemap()->GetSize().x];
@@ -139,14 +143,14 @@ void EventHandler::PickUp(glm::vec2 position, Map *current_map, GameObject *g_ob
 {
 	if (e_map[(int)(position.x)][(int)(position.y)] == 4)
 	{
-		std::cout << g_obj->GetItemList()->GetDroppedItems().size() << "\n";
+		//std::cout << g_obj->GetItemList()->GetDroppedItems().size() << "\n";
 		for (int i = 0; i < g_obj->GetItemList()->GetDroppedItems().size(); i++)
 		{
-			std::cout << i << "\n";
+			//std::cout << i << "\n";
 			if (g_obj->GetItemList()->GetDroppedItems()[i]->x == (int)(position.x) && g_obj->GetItemList()->GetDroppedItems()[i]->y == (int)(position.y))
 			{
 				g_obj->GetItemList()->AddtoInventory(g_obj->GetItemList()->GetDroppedItems()[i]->item);
-				printf("pickup %d\n", g_obj->GetItemList()->GetInventory().size());
+				//printf("pickup %d\n", g_obj->GetItemList()->GetInventory().size());
 				g_obj->GetItemList()->GetDroppedItems()[i]->x = -1;
 				g_obj->GetItemList()->GetDroppedItems()[i]->y = -1;
 			}

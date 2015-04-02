@@ -160,7 +160,7 @@ void PanelRender::Render(Controller *ctrl, ScreenUniformData *u_data, GameObject
 
 
 		if (g_obj->GetUIState()->GetPanelState()->GetState() == PRESSED)
-			g_obj->GetUIState()->GetMenuState()->SetState(g_obj->GetUIState()->GetMenuState()->GetState());
+			g_obj->GetUIState()->GetMenuState()->SetState(!g_obj->GetUIState()->GetMenuState()->GetState());
 
 
 	}

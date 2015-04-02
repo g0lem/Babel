@@ -7,11 +7,7 @@
 void Combat::Init()
 {
 
-	this->f_ont = new FontManager();
 
-	this->font = f_ont->GetFont();
-
-	this->ftext = new FloatingText();
 
 }
 
@@ -91,7 +87,7 @@ void Combat::PlayerAttack(GameObject * g_obj, Player * player, EnemyManager *ene
 		}
 
 		enemies->GetEnemiesPointer()[0][player->GetTarget()]->GetStats()->GetHp()->Damage(player->GetItems()[ITEM_SLOT_WEAPON]->attack);
-		//ftext->Add(font, "test", player->GetPAttributes()->position, 32, 0, 5, 1);
+		g_obj->GetTextObject()->Add(g_obj->GetFontList()->GetFont(), "test", player->GetPAttributes()->position, 32, 0, 5, 1);
 		g_obj->GetTurnSystem()->ComputeAttack(player->GetItems()[ITEM_SLOT_WEAPON]->attack_speed);
 		player->GetActionHandler()->SetAction(NO_ACTION);
 		player->GetActionHandler()->Stop();

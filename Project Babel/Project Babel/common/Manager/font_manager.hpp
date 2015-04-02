@@ -16,33 +16,16 @@ class FontManager : private TextRender
 	char text[256];
 
 
-	Font *font;
-
-	float alpha = 1.f;
-
-	glm::vec2 position;
-
 	FloatingText *fText;
 
 
 public:
 
-	inline FontManager(){ this->Init(); }
-
-
+	inline FontManager(GameObject * g_obj){ this->Init(g_obj); }
 	inline ~FontManager(){ this->Clean(); }
-
-
-	
-	void Init();
-
-	inline Font *GetFont(){ return this->font; }
-
-	void Render(Controller * ctrl);
-
-
+    void Init(GameObject * g_obj);
+	void Render(Controller * ctrl, GameObject * g_obj);
 	void Clean();
-
 
 };
 

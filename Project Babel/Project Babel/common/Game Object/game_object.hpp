@@ -34,6 +34,8 @@ class GameObject
 
 
 	EnemyLoader * e_loader;
+	TextObject * t_object;
+	FontList * f_list;
 
 
 public:
@@ -51,7 +53,8 @@ public:
 	inline TurnSystem * GetTurnSystem(){ return this->t_system; }
 	inline panel_state*GetPanelState(){ return this->p_state; }
 	inline EnemyLoader * GetEnemyLoader(){ return this->e_loader; }
-
+	inline TextObject * GetTextObject(){ return this->t_object; }
+	inline FontList * GetFontList(){ return this->f_list; }
 
 
 	void Init();

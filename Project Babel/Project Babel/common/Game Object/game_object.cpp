@@ -19,7 +19,8 @@ void GameObject::Init()
 	this->ui_state = new UIState();
 	this->p_state = new panel_state();
 	this->e_loader = new EnemyLoader();
-
+	this->t_object = new TextObject();
+	this->f_list = new FontList();
 
 }
 

@@ -13,5 +13,6 @@
 #include "Game Object/tab_state.hpp"
 #include "Game Object/menu_state.hpp"
 #include "Game Object/ui_state.hpp"
+#include "Game Object/TextObject.hpp"
 #include "Game Object/game_object.hpp"
 

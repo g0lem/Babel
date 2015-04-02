@@ -22,15 +22,6 @@ class Combat
 	void CheckPlayerMoveAbility(Player * player, EnemyManager * enemies);
 	void PlayerRelated(GameObject * g_obj, Player * player, EnemyManager * enemies, Map * map);
 
-	FloatingText *ftext;
-	Font *font;
-	float alpha;
-	glm::vec2 position;
-	float size;
-	int direction;
-	float speed;
-
-	FontManager *f_ont;
 
 	void SortThingsOut(Player * player, EnemyManager * enemies);
 	void SetEnemyTarget(Player * player, EnemyManager * enemies);

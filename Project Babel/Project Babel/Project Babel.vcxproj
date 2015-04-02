@@ -46,6 +46,7 @@
     <ClCompile Include="common\Game Object\panel_state.cpp" />
     <ClCompile Include="common\Game Object\scroller.cpp" />
     <ClCompile Include="common\Game Object\story_state.cpp" />
+    <ClCompile Include="common\Game Object\TextObject.cpp" />
     <ClCompile Include="common\Game Object\ui_intersect.cpp" />
     <ClCompile Include="common\Game Object\ui_state.cpp" />
     <ClCompile Include="common\Item\item.cpp" />
@@ -124,6 +125,7 @@
     <ClInclude Include="common\Game Object\panel_state.hpp" />
     <ClInclude Include="common\Game Object\scroller.hpp" />
     <ClInclude Include="common\Game Object\story_state.hpp" />
+    <ClInclude Include="common\Game Object\TextObject.hpp" />
     <ClInclude Include="common\Game Object\ui_intersect.hpp" />
     <ClInclude Include="common\Game Object\ui_state.hpp" />
     <ClInclude Include="common\Item.hpp" />

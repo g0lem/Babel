@@ -1,22 +1,12 @@
 #pragma once
 
+
+
 class FloatingText:public TextRender
 {
 
 	EffectsHandler * m_effects;
 
-	struct fText
-	{
-		char *text;
-		float alpha;
-		glm::vec2 position;
-		Font *font;
-		float size;
-		int direction;
-		float speed;
-	};
-
-	std::vector<fText*> *text_vec;
 
 	int currentSize = 1;
 
@@ -27,32 +17,19 @@ public:
 
 	void Init();
 
-	inline void Clean(){
-		this->text_vec->clear();
-	}
 
-	inline void Add(Font *font, char *text, glm::vec2 position, float size, int direction, float speed, float alpha){ 
-		fText *t_text = new fText();
-		t_text->text = text;
-		t_text->alpha = alpha;
-		t_text->position = position;
-		t_text->font = font;
-		t_text->size = size;
-		t_text->direction = direction;
-		t_text->speed = speed;
 
-  		this->text_vec->push_back(t_text);
-		printf("%i\n", this->text_vec->size());
-	}
 
-	std::vector<fText*> *GetTextVector(){ return this->text_vec; }
-
-	inline void Update()
+	inline void Update(GameObject * g_obj)
 	{
-		for (int i = 0; i < text_vec->size(); i++)
+
+		std::vector<fText*>* t_list = g_obj->GetTextObject()->GetTexts();
+
+
+		for (int i = 0; i < t_list->size(); i++)
 		{
-			if (text_vec->at(i)->alpha < 0.5f){
-				this->text_vec->erase(this->text_vec->begin() + i);
+			if (t_list->at(i)->alpha < 0.5f){
+			    t_list->erase(t_list->begin() + i);
 				currentSize--;
 			}
 		}
@@ -61,8 +38,13 @@ public:
 
 	}
 	
-	inline void HandleText(int i){
+	inline void HandleText(int i, GameObject * g_obj){
 		
+
+		std::vector<fText*>* text_vec = g_obj->GetTextObject()->GetTexts();
+
+
+
 		if (i < text_vec->size())
 		{
 				m_effects->TextFade(text_vec->at(i)->font,
@@ -77,17 +59,24 @@ public:
 		}
 	}
 
-	inline void Render()
+
+
+
+	inline void Render(GameObject * g_obj)
 	{
-		if (text_vec->size() > 0)
+
+		std::vector<fText*>* t_list = g_obj->GetTextObject()->GetTexts();
+
+
+		if (t_list->size() > 0)
 		{
-			Update();
+			Update(g_obj);
 
 			for (int i = 0; i < currentSize; i++)
 			{
-				HandleText(i);
+				HandleText(i, g_obj);
 
-				if (text_vec->at(i)->alpha < 0.5f && currentSize < text_vec->size())
+				if (t_list->at(i)->alpha < 0.5f && currentSize < t_list->size())
 					currentSize++;
 
 

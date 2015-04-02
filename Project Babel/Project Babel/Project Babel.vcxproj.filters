@@ -296,6 +296,9 @@
     <ClCompile Include="common\UI\floating_text.cpp">
       <Filter>common\UI</Filter>
     </ClCompile>
+    <ClCompile Include="common\Game Object\TextObject.cpp">
+      <Filter>common\Game Object</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h">
@@ -543,6 +546,9 @@
     </ClInclude>
     <ClInclude Include="common\UI\floating_text.hpp">
       <Filter>common\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="common\Game Object\TextObject.hpp">
+      <Filter>common\Game Object</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

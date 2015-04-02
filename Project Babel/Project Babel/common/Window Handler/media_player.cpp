@@ -10,7 +10,7 @@ void MediaPlayer::Init()
 
 	g_object = new GameObject();
 
-	f_manager = new FontManager();
+	f_manager = new FontManager(g_object);
 
 	s_manager = new SoundManager();
 
