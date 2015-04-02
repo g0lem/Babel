@@ -73,7 +73,7 @@ void Map::Render(Controller * ctrl, ScreenUniformData * u_data, GameObject * g_o
 		g_obj->GetScroller()->GetBeginLimit(),g_obj->GetScroller()->GetEndLimit(),
 		g_obj->GetScroller()->GetOffset(), fog->GetFOW(g_obj,glm::ivec2(position)), g_obj->GetItemList());
 
-
+	this->tilemap->SmootherFOW(fog->GetFOW(g_obj, glm::ivec2(position)), glm::ivec2(position), u_data);
 
 
 
