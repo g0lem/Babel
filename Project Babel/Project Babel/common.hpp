@@ -37,6 +37,7 @@
 
 
 #include "common/Framework.hpp"
+
 #include "common/Stats.hpp"
 #include "common/Item.hpp"
 #include "common/Turns.hpp"
@@ -51,7 +52,7 @@
 #include "common/Events.hpp"
 #include "common/AI.hpp"
 #include "common/UI.hpp"
-
+#include "common/Manager/font_manager.hpp"
 #include "common/Player.hpp"
 #include "common/Combat.hpp"
 #include "common/splash_screen.hpp"

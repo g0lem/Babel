@@ -18,9 +18,9 @@ void FontManager::Init()
 
 	this->font->Create("data/fonts/choco.ttf", 48);
 
-	this->position = glm::vec2(540.f, 350.f);
-	this->alpha = 1.0f;
+	this->fText = new FloatingText();
 
+	//fText->Add(font, "0", glm::vec2(540, 360), 32, 0, 5, 1);
 
 	this->UnbindCreate();
 
@@ -41,16 +41,6 @@ void FontManager::Clean()
 
 }
 
-void localTextFade(Font *font, char* text, glm::vec2 &position, int size)
-{
-	//u_data->SetAmbientLight(glm::vec4(1.f, 1.f, 1.f, alpha));
-
-	position.y -= 1 / 255.f;
-
-	font->Print(text, position.x, position.y, size);
-	printf("%f", position.y);
-}
-
 
 
 void FontManager::Render(Controller * ctrl)
@@ -59,10 +49,7 @@ void FontManager::Render(Controller * ctrl)
 
 	this->BindRun(ctrl->GetWindowWidth(), ctrl->GetWindowHeight());
 
-
-	TextRender::SetColor(1.f, 1.f, 1.f, 1.f);
-	this->m_effects->TextFade(font, "test",this, position, 32, UP, 5.f, alpha);
-
+	this->fText->Render();
 
 	this->UnbindRun();
 

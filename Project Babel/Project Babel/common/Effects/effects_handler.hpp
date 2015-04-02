@@ -50,13 +50,13 @@ public:
 	{
 		tr->SetColor(1.f, 1.f, 1.f, alpha);
 		if (direction == UP)
-			position.y += 1 / speed;
+			position.y += 2 / speed;
 		else if (direction == LEFT)
-			position.x -= 1 / speed;
+			position.x -= 2 / speed;
 		else if (direction == RIGHT)
-			position.x += 1 / speed;
+			position.x += 2 / speed;
 		else if (direction == DOWN)
-			position.y -= 1 / speed;
+			position.y -= 2 / speed;
 
 		alpha -= 1/75.f;
 		font->Print(text, position.x, position.y, size);
