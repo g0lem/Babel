@@ -147,7 +147,7 @@ void EventHandler::PickUp(glm::vec2 position, Map *current_map, GameObject *g_ob
 		for (int i = 0; i < g_obj->GetItemList()->GetDroppedItems().size(); i++)
 		{
 			//std::cout << i << "\n";
-			if (g_obj->GetItemList()->GetDroppedItems()[i]->x == (int)(position.x) && g_obj->GetItemList()->GetDroppedItems()[i]->y == (int)(position.y))
+			if (g_obj->GetItemList()->GetInventory().size() < 16 && g_obj->GetItemList()->GetDroppedItems()[i]->x == (int)(position.x) && g_obj->GetItemList()->GetDroppedItems()[i]->y == (int)(position.y))
 			{
 				g_obj->GetItemList()->AddtoInventory(g_obj->GetItemList()->GetDroppedItems()[i]->item);
 				//printf("pickup %d\n", g_obj->GetItemList()->GetInventory().size());
