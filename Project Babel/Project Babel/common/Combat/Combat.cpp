@@ -61,7 +61,7 @@ void Combat::SetPlayerTarget(Player * player, EnemyManager * enemies)
 
   
 
-void Combat::PlayerAttack(GameObject * g_obj, Player * player, EnemyManager *enemies, Map *current_map)
+void Combat::PlayerAttack(Controller * ctrl,GameObject * g_obj, Player * player, EnemyManager *enemies, Map *current_map)
 {
 
 	Item *item;
@@ -86,13 +86,42 @@ void Combat::PlayerAttack(GameObject * g_obj, Player * player, EnemyManager *ene
 			
 		}
 
-		enemies->GetEnemiesPointer()[0][player->GetTarget()]->GetStats()->GetHp()->Damage(player->GetItems()[ITEM_SLOT_WEAPON]->attack);
-		g_obj->GetTextObject()->Add(g_obj->GetFontList()->GetFont(), "test", player->GetPAttributes()->position, 32, 0, 5, 1);
-		g_obj->GetTurnSystem()->ComputeAttack(player->GetItems()[ITEM_SLOT_WEAPON]->attack_speed);
+
+
+
+		
+        g_obj->GetTurnSystem()->ComputeAttack(player->GetItems()[ITEM_SLOT_WEAPON]->attack_speed);
 		player->GetActionHandler()->SetAction(NO_ACTION);
 		player->GetActionHandler()->Stop();
 
 
+
+		{
+
+			PhysicalAttributes * e_attr = enemies->GetEnemiesPointer()[0][player->GetTarget()]->GetPAttributes();
+			glm::vec2 text_pos = e_attr->target *
+				e_attr->scale +
+				g_obj->GetScroller()->GetOffset();
+			text_pos.y = ctrl->GetWindowHeight() - text_pos.y;
+
+
+
+
+			GLint dmg = enemies->GetEnemiesPointer()[0][player->GetTarget()]->GetStats()->GetHp()->Damage(player->GetItems()[ITEM_SLOT_WEAPON]->attack);
+			char *buffer = new char[256];
+			_itoa(dmg, buffer, 10);
+			
+
+			g_obj->GetTextObject()->Add(g_obj->GetFontList()->GetFont(),
+				buffer,
+				text_pos,
+				glm::vec4(1.0f, 0.0f, 0.0f, 1.0f),
+				40,
+				UP,
+				100);
+
+
+		}
 	}
 
 
@@ -139,13 +168,13 @@ void Combat::CheckPlayerMoveAbility(Player * player, EnemyManager * enemies)
 
 
 
-void Combat::PlayerRelated(GameObject * g_obj, Player * player, EnemyManager * enemies, Map * map)
+void Combat::PlayerRelated(Controller * ctrl, GameObject * g_obj, Player * player, EnemyManager * enemies, Map * map)
 {
 
 
 	this->CheckPlayerMoveAbility(player, enemies);
 	this->SetPlayerTarget(player, enemies);
-	this->PlayerAttack(g_obj, player, enemies, map);
+	this->PlayerAttack(ctrl, g_obj, player, enemies, map);
 
 
 }
@@ -440,7 +469,7 @@ void Combat::Action(Controller * ctrl,GameObject * g_obj, Player * player, Enemy
 
 
 	
-	this->PlayerRelated(g_obj, player, enemies, map);
+	this->PlayerRelated(ctrl, g_obj, player, enemies, map);
 	this->EnemyRelated(ctrl,g_obj, player, enemies, map);
 
 

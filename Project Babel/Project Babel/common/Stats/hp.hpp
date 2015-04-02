@@ -18,7 +18,7 @@ public:
 	inline void Buff(GLuint hp){ this->hp += hp; this->max_hp += hp; }
 	inline void HealToFull(){ this->hp = this->max_hp; }
 	inline void Heal(GLuint hp){ if (this->max_hp - this->hp < hp)this->HealToFull(); else this->hp += hp; }
-	inline void Damage(glm::vec2 attack){ this->hp -= glm::min(this->hp, Rand(attack.x, attack.y)); }
+	inline GLint Damage(glm::vec2 attack){ GLint dmg = glm::min(this->hp, Rand(attack.x, attack.y)); hp -= dmg; return dmg; }
 
 };
 

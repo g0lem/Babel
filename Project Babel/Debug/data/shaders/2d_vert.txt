@@ -1,0 +1,27 @@
+#version 330 core
+
+
+layout(location = 0) in vec2 Positions;
+
+
+out vec2 UV;
+
+
+uniform mat3 TransformMatrix;
+uniform mat4 ortho;
+
+
+void main()
+{
+
+   
+
+    vec3 NewPositions = TransformMatrix*vec3(Positions,1);
+
+	gl_Position =  ortho*vec4(NewPositions,1);
+
+	UV = Positions;
+
+
+}
+

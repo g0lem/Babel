@@ -8,6 +8,8 @@ class fog_of_war
 public:
 	void Init(GameObject *g_obj);
 	float **GetFOW(GameObject *g_obj, glm::ivec2 position);
+	unsigned char*GetBuffer(GameObject * g_obj, glm::ivec2 position);
+
 	float **GetFogMartix(){ return this->s_map; }
 	void Render(Controller * ctrl, ScreenUniformData * u_data, glm::vec2 position, GameObject *g_obj);
 };

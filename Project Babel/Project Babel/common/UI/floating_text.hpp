@@ -2,11 +2,11 @@
 
 
 
-class FloatingText:public TextRender
+class FloatingText
 {
 
 	EffectsHandler * m_effects;
-
+	int k = 0;
 
 	int currentSize = 1;
 
@@ -28,7 +28,7 @@ public:
 
 		for (int i = 0; i < t_list->size(); i++)
 		{
-			if (t_list->at(i)->alpha < 0.5f){
+			if (t_list->at(i)->color.a < 0.5f){
 			    t_list->erase(t_list->begin() + i);
 				currentSize--;
 			}
@@ -38,7 +38,7 @@ public:
 
 	}
 	
-	inline void HandleText(int i, GameObject * g_obj){
+	inline void HandleText(int i, GameObject * g_obj, TextRender * tr,Controller * ctrl){
 		
 
 		std::vector<fText*>* text_vec = g_obj->GetTextObject()->GetTexts();
@@ -47,14 +47,15 @@ public:
 
 		if (i < text_vec->size())
 		{
-				m_effects->TextFade(text_vec->at(i)->font,
+				m_effects->TextFade(ctrl,
+				text_vec->at(i)->font,
 				text_vec->at(i)->text,
-				this,
+				tr,
 				text_vec->at(i)->position,
+				text_vec->at(i)->color,
 				text_vec->at(i)->size,
 				text_vec->at(i)->direction,
-				text_vec->at(i)->speed,
-				text_vec->at(i)->alpha);
+				text_vec->at(i)->speed);
 
 		}
 	}
@@ -62,28 +63,31 @@ public:
 
 
 
-	inline void Render(GameObject * g_obj)
+	inline void Render(GameObject * g_obj, TextRender * tr, Controller * ctrl)
 	{
+
+
+
+
 
 		std::vector<fText*>* t_list = g_obj->GetTextObject()->GetTexts();
 
 
 		if (t_list->size() > 0)
 		{
-			Update(g_obj);
-
-			for (int i = 0; i < currentSize; i++)
-			{
-				HandleText(i, g_obj);
-
-				if (t_list->at(i)->alpha < 0.5f && currentSize < t_list->size())
-					currentSize++;
 
 
-			}
+			HandleText(0, g_obj, tr, ctrl);
+
+			if (t_list->at(0)->color.a < 0.5f)
+				t_list->erase(t_list->begin());
+
+
 		}
 
+
 	}
+
 
 };
 
