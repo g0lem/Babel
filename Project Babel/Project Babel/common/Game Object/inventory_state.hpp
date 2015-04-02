@@ -11,7 +11,7 @@ class InventoryState
 
 
 
-	GLuint * button_states;
+	GLint * button_states;
 
 	bool State;
 
@@ -22,7 +22,7 @@ public:
 
 
 	
-	inline GLuint * GetButtonStates(){ return this->button_states; }
+	inline GLint * GetButtonStates(){ return this->button_states; }
 
 
 

@@ -117,6 +117,10 @@ void EventHandler::Health(glm::vec2 position, Map *current_map, Stats *m_stats, 
 	if (e_map[(int)(position.x)][(int)(position.y)] == 3)
 	{
 		//g_obj->GetItemList()->GetInventory().push_back(healthpotion);
+
+		//testing the dropping
+		g_obj->GetItemList()->AddDroppedItem((int)(position.x), (int)(position.y), g_obj->GetItemList()->GetList()[0]);
+
 		m_stats->GetHp()->Heal(10);
 		current_map->GetTilemap()->GetTiles()[(int)(position.x)][(int)(position.y)] = FLOOR_BLOCK;
 		e_map[(int)(position.x)][(int)(position.y)] = 0;

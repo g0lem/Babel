@@ -44,14 +44,14 @@ void UIRender::Render(Controller *ctrl,GameObject *g_obj)
 		
 	if (g_obj->GetUIState()->GetMenuState()->GetState() == NOT_ACTIVE)
 	{
-		if (g_obj->GetUIState()->GetInventoryState()->GetState())
+
+
+		if (g_obj->GetUIState()->GetInventoryState()->GetState() == ACTIVE)
 			this->inventory_r->Render(ctrl, this->GetScreenPointer(), g_obj);
-		else
-		{
-			this->inventory_r->box_position = glm::vec2(ctrl->GetWindowWidth() / 2 - ctrl->GetWindowWidth() / 4, ctrl->GetWindowHeight() / 2 - ctrl->GetWindowHeight() / 4);
-			//this->inventory_r->MoveObject(ctrl, g_obj);
-			//this->inventory_r->AddIntersect(g_obj);
-		}
+
+
+
+
 
 		if (g_obj->GetUIState()->GetStoryState()->GetState())
 			this->story_r->Render(ctrl, this->GetScreenPointer(), g_obj);

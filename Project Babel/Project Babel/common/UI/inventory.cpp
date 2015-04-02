@@ -144,14 +144,18 @@ void Inventory::Render(Controller *ctrl, ScreenUniformData *u_data, GameObject *
 		this->m_inventory[i]->RenderItem(ctrl, u_data, this->skins, 0, g_obj->GetUIState()->GetInventoryState()->GetButtonStates()[i]);
 	}
 
-	g_obj->GetUIState()->GetInventoryState()->GetButtonStates()[16] = UI_helper::GetButtonAction(ctrl, this->exit[0]->GetProperties());
 
+
+
+	g_obj->GetUIState()->GetInventoryState()->GetButtonStates()[16] = UI_helper::GetButtonAction(ctrl, this->exit[0]->GetProperties());
 	this->exit[0]->Render(ctrl, u_data, this->skins, 7, g_obj->GetUIState()->GetInventoryState()->GetButtonStates()[16]);
 
 }
 
 void Inventory::AddIntersect(GameObject *g_obj)
 {
+
+
 	if (g_obj->GetUIState()->GetInventoryState()->GetColID() == NOT_SET)
 	{
 		Golem *g = new Golem();

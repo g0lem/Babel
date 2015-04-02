@@ -7,9 +7,9 @@ void ItemList::Init()
 {
 
 	namelist = new std::vector < names * > ;
-
+	
 	this->LoadItems();
-
+    this->LoadSprites();
 	
 
 
@@ -189,3 +189,24 @@ std::string ItemList::NameGenerator(std::string type)
 
 }
 
+
+void ItemList::LoadSprites()
+{
+	char ** tex_str = new char*[2];
+	tex_str[0] = "hammer.png";
+	tex_str[1] = "sword.png";
+	this->m_sprite = new Sprite();
+
+	this->m_sprite->Load(2, "data/items/", tex_str);
+}
+
+
+void ItemList::AddDroppedItem(int x, int y, Item *item)
+{
+	Dropped *dropped_item = new Dropped();
+	dropped_item->x = x;
+	dropped_item->y = y;
+	dropped_item->item = item;
+	dropped_items.push_back(dropped_item);
+
+}

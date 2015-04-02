@@ -196,9 +196,8 @@ void Player::LoadPhysicalAttributes(Map * current_tilemap)
 void Player::LoadItems(GameObject * g_obj)
 {
 
-
-
 	this->items = new Item*[5];
+
 	this->items[ITEM_SLOT_WEAPON] = g_obj->GetItemList()->GetList()[0];
 
 
@@ -214,8 +213,6 @@ GLboolean Player::CheckAdvance(Controller * ctrl, GameObject * g_obj)
 	GLboolean advance = true;
 
 
-
-	if (advance)
 		for (GLuint i = 0; i < g_obj->GetUIState()->GetInterHandler()->GetInters()->size(); i++)
 
 		{
@@ -227,8 +224,12 @@ GLboolean Player::CheckAdvance(Controller * ctrl, GameObject * g_obj)
 		if (g->id == RECT)
 		{
 
-			advance = !Contains::Rectangle(ctrl->GetMousePosition(), g->position, g->size);
-			break;
+			if (Contains::Rectangle(ctrl->GetMousePosition(), g->position, g->size))
+			{
+				advance = false;
+				break;
+			}
+
 
 		}
 
@@ -236,8 +237,11 @@ GLboolean Player::CheckAdvance(Controller * ctrl, GameObject * g_obj)
 		{
 
 
-			advance = !Contains::Circle(ctrl->GetMousePosition(), g->position, g->size);
-			break;
+			if (Contains::Circle(ctrl->GetMousePosition(), g->position, g->size))
+			{
+				advance = false;
+				break;
+			}
 
 		}
 
@@ -248,7 +252,10 @@ GLboolean Player::CheckAdvance(Controller * ctrl, GameObject * g_obj)
 		advance = false;
 
 
+
+
 	return advance;
+
 
 
 }
@@ -266,7 +273,8 @@ void Player::HandleAutoPath(Controller * ctrl, GameObject * g_obj, Map *current_
 	
 
 	
-	if (ctrl->GetMouseButtonOnce(GLFW_MOUSE_BUTTON_LEFT) && this->CheckAdvance(ctrl, g_obj))
+	if (CheckAdvance(ctrl, g_obj))
+	if (ctrl->GetMouseButtonOnce(GLFW_MOUSE_BUTTON_LEFT))
 	{
 
 		this->last_wanted_position = Move::GetMapPosition(g_obj, ctrl->GetMousePosition(), attributes->scale);
