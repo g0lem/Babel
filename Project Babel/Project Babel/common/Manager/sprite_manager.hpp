@@ -19,6 +19,12 @@ class SpriteManager : private Aaether2D
 
 	EnemyManager * m_enemies;
 
+	EffectsHandler *m_effects;
+
+	Font *font;
+
+	float alpha = 1.f;
+
 
 	Combat * m_combat;
 

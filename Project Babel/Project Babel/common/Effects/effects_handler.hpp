@@ -5,7 +5,7 @@
 #define LEFT 2
 #define RIGHT 3
 
-class EffectsHandler:public Controller
+class EffectsHandler
 {
 	
 public:
@@ -46,19 +46,20 @@ public:
 
 	}
 
-	inline void TextFade(char* text, glm::vec2 &position, Font *font,int size, int direction, float &alpha, float speed, ScreenUniformData *u_data)
+	inline void TextFade(Font *font, char* text, TextRender *tr, glm::vec2 &position, int size, int direction, float speed, float &alpha)
 	{
-		u_data->SetAmbientLight(glm::vec4(1.f, 1.f, 1.f, alpha));
-		font->Print(text, position.x, position.y, size);
+		tr->SetColor(1.f, 1.f, 1.f, alpha);
 		if (direction == UP)
-			position.y -= 1 / speed;
+			position.y += 1 / speed;
 		else if (direction == LEFT)
 			position.x -= 1 / speed;
 		else if (direction == RIGHT)
-			position.y += 1 / speed;
-		else if (direction == DOWN)
 			position.x += 1 / speed;
-		alpha -= 1 / speed;
+		else if (direction == DOWN)
+			position.y -= 1 / speed;
+
+		alpha -= 1/75.f;
+		font->Print(text, position.x, position.y, size);
 	}
 
 };

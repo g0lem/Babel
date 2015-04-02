@@ -39,8 +39,8 @@ public:
 
 		for (int i = 0; i < text_vec->size(); i++)
 		{
-			m_effects->TextFade(text_vec->at(i)->text, text_vec->at(i)->position, text_vec->at(i)->font,
-				text_vec->at(i)->size, text_vec->at(i)->direction, text_vec->at(i)->alpha, text_vec->at(i)->speed, this->GetScreenPointer());
+		//	m_effects->TextFade(text_vec->at(i)->text, text_vec->at(i)->position, text_vec->at(i)->font,
+				//text_vec->at(i)->size, text_vec->at(i)->direction, text_vec->at(i)->alpha, text_vec->at(i)->speed);
 
 		}
 
