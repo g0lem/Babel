@@ -27,16 +27,18 @@ void EventHandler::Load(Map *current_map, GameObject *g_obj)
 		if (current_map->GetTilemap()->GetTiles()[i][j] == DOOR_BLOCK)
 			e_map[i][j] = 1;
 
-		if (current_map->GetTilemap()->GetTiles()[i][j] == TABLET)
-			e_map[i][j] = 2;
-
-		if (current_map->GetTilemap()->GetTiles()[i][j] == HEALTH_POTION)
-			e_map[i][j] = 3;
 		}
 
 	for (int i = 0; i < g_obj->GetItemList()->GetDroppedItems().size(); i++)
 		if (g_obj->GetItemList()->GetDroppedItems()[i]->x >= 0 && g_obj->GetItemList()->GetDroppedItems()[i]->y >=0)
 		e_map[g_obj->GetItemList()->GetDroppedItems()[i]->x][g_obj->GetItemList()->GetDroppedItems()[i]->y] = 5;
+
+	std::cout << "Marimea: " << g_obj->GetItemList()->GetObjects().size()<<"\n";
+
+	for (int i = 0; i < g_obj->GetItemList()->GetObjects().size(); i++)
+		e_map[(int)(g_obj->GetItemList()->GetObjects()[i]->position.x)][(int)(g_obj->GetItemList()->GetObjects()[i]->position.y)] = 2;
+
+	
 
 
 
@@ -143,17 +145,16 @@ void EventHandler::PickUp(glm::vec2 position, Map *current_map, GameObject *g_ob
 {
 	if (e_map[(int)(position.x)][(int)(position.y)] == 5)
 	{
-		//std::cout << g_obj->GetItemList()->GetDroppedItems().size() << "\n";
+
 		for (int i = 0; i < g_obj->GetItemList()->GetDroppedItems().size(); i++)
 		{
-			//std::cout << i << "\n";
+			
 			if (g_obj->GetItemList()->GetInventory().size() < 16 && g_obj->GetItemList()->GetDroppedItems()[i]->x == (int)(position.x) && g_obj->GetItemList()->GetDroppedItems()[i]->y == (int)(position.y))
 			{
 				g_obj->GetItemList()->AddtoInventory(g_obj->GetItemList()->GetDroppedItems()[i]->item);
-				//printf("pickup %d\n", g_obj->GetItemList()->GetInventory().size());
+				
 				g_obj->GetItemList()->DeleteFromDroppedList(i);
-				/*g_obj->GetItemList()->GetDroppedItems()[i]->x = -1;
-				g_obj->GetItemList()->GetDroppedItems()[i]->y = -1;*/
+			
 			}
 		}
 		e_map[(int)(position.x)][(int)(position.y)] = 0;
@@ -167,7 +168,7 @@ void EventHandler::TriggerEvent(glm::vec2 position, Map *current_map, GameObject
 {
 	//in g_obj e item_list-ul
 
-
+	
 	this->Door(position, current_map, g_obj);
 	this->Health(position, current_map, m_stats, g_obj);
 	this->PickUp(position, current_map, g_obj);
