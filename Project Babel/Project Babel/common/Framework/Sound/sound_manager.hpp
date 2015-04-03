@@ -3,8 +3,24 @@
 
 
 
-#define MAX_SOUNDS 3
+#define MAX_SOUNDS 15
 #define MAX_MUSIC 3
+
+
+#define AMBIENCE1 0
+#define AMBIENCE2 1
+#define AMBIENCE3 2
+#define AMBIENCE4 3
+#define ATTACK1 4
+#define ATTACK2 5
+#define ATTACK3 6
+#define EQUIPITEM 7
+#define MENUPRESSBUTTON 8
+#define OPENDOOR 9
+#define OPENINVENTORY 10
+#define SCORPIONATTACK 11
+#define SCORPIONDIE 12
+#define WALKSOUND 13
 
 
 class SoundManager
@@ -89,9 +105,11 @@ public:
 
 	void PlaySound(char *p_sound);
 
+	void PlaySound(int index);
 
 	void PlayMusic(char *p_music);
 
+	void PlayMusic(int index);
 
 	// getLoop
 
