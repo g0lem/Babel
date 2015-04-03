@@ -99,7 +99,7 @@ void ItemList::LoadItems()
 	m_item->frame = 1;
 	m_item->type = ITEM_TYPE_WEAPON;
 	m_item->attack_speed = 1.0f;
-	m_item->attack = glm::vec2(2, 6);
+	m_item->attack = glm::vec2(6, 6);
 	this->list.push_back(m_item);
 
 
@@ -108,7 +108,7 @@ void ItemList::LoadItems()
 	m_item->frame = 2;
 	m_item->type = ITEM_TYPE_WEAPON;
 	m_item->attack_speed = 1.0f;
-	m_item->attack = glm::vec2(3, 10);
+	m_item->attack = glm::vec2(10, 10);
 	this->list.push_back(m_item);
 
 

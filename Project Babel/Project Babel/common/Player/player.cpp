@@ -145,6 +145,12 @@ void Player::Render(SoundManager *sm, Controller * ctrl, ScreenUniformData * u_d
 			this->m_sprite[4]->Render(m_dir->Compute(DIR_TYPE_4, attributes->position, attributes->target));
 
 
+		
+
+
+
+
+
 		this->UpdateUI(g_obj);
 		
 
@@ -228,6 +234,11 @@ void Player::LoadItems(GameObject * g_obj)
 		this->items = new Item*[1];
 		this->items[ITEM_SLOT_WEAPON] = g_obj->GetItemList()->weapon;
 		g_obj->GetItemList()->must_load = false;
+	}
+	if (g_obj->GetItemList()->must_heal)
+	{
+		this->GetStats()->GetHp()->Buff(8);
+		g_obj->GetItemList()->must_heal = false;
 	}
 
 

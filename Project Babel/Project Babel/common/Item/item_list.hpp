@@ -53,6 +53,7 @@ public:
 
 
 	GLboolean must_load = true;
+	GLboolean must_heal = false;
 	Item * weapon = NULL;
 	std::string NameGenerator(std::string type);
 
