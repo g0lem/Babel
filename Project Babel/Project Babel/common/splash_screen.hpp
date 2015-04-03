@@ -42,7 +42,7 @@ public:
 	inline int GetCurrentFrame(){ return this->currentFrame; }
 
 	inline void SkipFrame(){ 
-			this->m_screens->at(currentFrame)->speed /= 5;
+			this->m_screens->at(currentFrame)->speed *= 5;
 		 }
 
 	bool Update();

@@ -149,7 +149,7 @@ void Inventory::Render(Controller *ctrl, ScreenUniformData *u_data, GameObject *
 
 		if (i < g_obj->GetItemList()->GetInventory().size())
 		{
-			u_data->ApplyMatrix(Translation(this->m_inventory[i]->GetProperties()->position)*Scale(this->m_inventory[i]->GetProperties()->size));
+			u_data->ApplyMatrix(Translation(this->m_inventory[i]->GetProperties()->position + glm::vec2(6, 6))*Scale(glm::vec2(28, 28)));
 			g_obj->GetItemList()->GetSprite()->Render(g_obj->GetItemList()->GetInventory()[i]->type);
 		}
 	}
