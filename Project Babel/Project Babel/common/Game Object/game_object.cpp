@@ -10,7 +10,7 @@ void GameObject::Init()
 {
 
 
-
+	rebuild = false;
 	this->m_scroller = new Scroller();
 	this->c_map = new CollisionMap();
 	this->m_misc = new Miscellaneous();
@@ -24,6 +24,15 @@ void GameObject::Init()
 
 }
 
+void GameObject::Advance()
+{
+	rebuild = false;
+
+
+	this->c_map = new CollisionMap();
+	this->e_loader = new EnemyLoader();
+
+}
 
 
 void GameObject::Clean()

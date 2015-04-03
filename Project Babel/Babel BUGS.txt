@@ -8,4 +8,5 @@
 7.2 bug-ul 7.1 se intampla si daca mobul este pe un tile din jurul unei usi
 8. mobii zboara pe harta cateodata ( probabil cand nu mi sunt alti mobi pe harta si se pauneaza altii noi )
 9. cateoadata poti sa vezi mobii cum se spauneaza , adica ii vezi cum apar pe harta ( s-a intamplat decat o singura data )
-10. sub tablet trebuie sa se randeze un floor-ul
+10. sub tablet trebuie sa se randeze un floor-ul -- fixed
+11. Game breaking bug - sansa mica sa iti faca std::vector-ul fite

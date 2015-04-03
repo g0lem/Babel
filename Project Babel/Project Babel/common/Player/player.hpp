@@ -63,6 +63,7 @@ public:
 
 
 	void Load(GameObject * g_obj, Map * current_tilemap);
+	void Advance(GameObject * g_obj, Map * current_tilemap);
 	void Render(SoundManager *sm, Controller * ctrl, ScreenUniformData *u_data, GameObject * g_obj, Map * current_map);
 	inline GLint GetTarget(){ return this->target; }
 	inline void SetTarget(GLint target){ this->target = target; }

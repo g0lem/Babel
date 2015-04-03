@@ -35,6 +35,7 @@ public:
 
 	inline ~SpriteManager(){ this->Clean(); }
 
+	void Advance(GameObject * g_obj);
 
 
 	void Init(GameObject * g_obj);

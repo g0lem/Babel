@@ -68,6 +68,8 @@ private:
 
 	void AddTablets(GameObject *g_obj);
 
+	void AddStairs(GameObject *g_obj);
+
 	void AddPotions();
 
 	void FirstTunnelPass();

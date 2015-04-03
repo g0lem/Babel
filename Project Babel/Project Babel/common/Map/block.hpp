@@ -22,6 +22,7 @@
 
 //object IDs
 #define TABLET_ID 0
+#define STAIRS_ID 1
 
 
 

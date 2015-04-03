@@ -220,14 +220,15 @@ void ItemList::LoadSprites()
 	this->m_sprite->Load(3, "data/items/", tex_str);
 
 
-	char ** tex_str2 = new char*[1];
+	char ** tex_str2 = new char*[2];
 
 	tex_str2[0] = "tablet.png";
-	
+	tex_str2[1] = "stairs.png";
+
 
 	this->s_objects= new Sprite();
 
-	this->s_objects->Load(1, "data/tiles/", tex_str2);
+	this->s_objects->Load(2, "data/tiles/", tex_str2);
 
 }
 

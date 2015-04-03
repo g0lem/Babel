@@ -37,9 +37,11 @@ class GameObject
 	TextObject * t_object;
 	FontList * f_list;
 
+	
+
 
 public:
-
+    bool rebuild;
 
 	inline GameObject(){ this->Init(); }
 	inline ~GameObject(){ this->Clean(); }
@@ -62,6 +64,7 @@ public:
 
 	void Clean();
 
+	void Advance();
 
 
 

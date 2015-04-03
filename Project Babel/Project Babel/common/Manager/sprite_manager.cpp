@@ -47,6 +47,50 @@ void SpriteManager::Init(GameObject * g_obj)
 
 
 
+
+void SpriteManager::Advance(GameObject * g_obj)
+{
+
+
+	this->BindCreate("data/shaders/2d_vert.txt", "data/shaders/2d_frag.txt");
+
+
+
+
+	this->map = new Map();
+	
+
+
+
+	this->map->Init(g_obj);
+	g_obj->GetCollisionMap()->CreateOutOfMap(this->map->GetTilemap());
+
+
+
+	
+	this->player->Advance(g_obj, this->map);
+	
+	this->m_enemies = new EnemyManager(10, this->map, g_obj);
+
+	this->m_effects = new EffectsHandler();
+
+	this->font = new Font();
+
+	this->font->Create("data/fonts/arial.ttf", 48);
+
+	this->m_combat = new Combat();
+
+
+
+	this->UnbindCreate();
+
+
+
+
+}
+
+
+
 void SpriteManager::Clean()
 {
 

@@ -35,6 +35,31 @@ void Player::Load(GameObject * g_obj, Map * current_tilemap)
 
 }
 
+void Player::Advance(GameObject * g_obj, Map * current_tilemap)
+{
+
+
+	this->LoadPhysicalAttributes(current_tilemap);
+
+
+	this->a_path = new AutoPath();
+	this->m_dir = new Direction();
+	this->h_event = new EventHandler();
+	h_event->Init(current_tilemap, g_obj);
+	this->t_clock = new sf::Clock();
+	this->last_wanted_position = glm::vec2(0, 0);
+	this->a_handler = new ActionHandler();
+	this->able_to_move = false;
+
+
+	this->LoadItems(g_obj);
+	
+
+
+
+}
+
+
 
 
 
