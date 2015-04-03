@@ -32,12 +32,6 @@ void SoundManager::Init()
 void SoundManager::loadSounds(char** path)
 {
 
-
-<<<<<<< HEAD
-	soundpath[0] = "data/media/sounds/attack2.wav";
-
-
-=======
 	path[0] = "data/media/sounds/ambience1.flac";
 	path[1] = "data/media/sounds/ambience2.wav";
 	path[2] = "data/media/sounds/ambience3.flag";
@@ -52,10 +46,22 @@ void SoundManager::loadSounds(char** path)
 	path[11] = "data/media/sounds/scorpionattack.wav";
 	path[12] = "data/media/sounds/scorpiondie.wav";
 	path[13] = "data/media/sounds/walksound.ogg";
->>>>>>> parent of 0939384... ma bad
 
-	AddSound(soundpath[0], "Attack");
 
+	AddSound(path[0], "Ambience1");
+	AddSound(path[1], "Ambience2");
+	AddSound(path[2], "Ambience3");
+	AddSound(path[3], "Ambience1");
+	AddSound(path[4], "Attack1");
+	AddSound(path[5], "Attack2");
+	AddSound(path[6], "Attack3");
+	AddSound(path[7], "Equip Item");
+	AddSound(path[8], "Menu press button");
+	AddSound(path[9], "Open Door");
+	AddSound(path[10], "Open Inventory");
+	AddSound(path[11], "Scorpion Attack");
+	AddSound(path[12], "Scorpion Die");
+	AddSound(path[13], "Walksound");
 
 }
 
@@ -184,7 +190,7 @@ void SoundManager::PlaySound(char* p_sound)
 	if (!s_playing.playing)
 	{
 
-		this->m_sounds->at(GetSoundIndex(p_sound))->sound->play();
+ 		this->m_sounds->at(GetSoundIndex(p_sound))->sound->play();
 
 		s_playing.playing = true;
 
@@ -201,6 +207,35 @@ void SoundManager::PlaySound(char* p_sound)
 
 
 		s_playing.name = p_sound;
+
+
+	}
+
+
+}
+
+void SoundManager::PlaySound(int index)
+{
+	if (!s_playing.playing)
+	{
+
+		this->m_sounds->at(index)->sound->play();
+
+		//s_playing.playing = true;
+
+	}
+	else
+	{
+
+		//printf("%c, is currently playing, switching to %c\n", this->m_sounds->at(GetSoundIndex(s_playing.name))->name, p_sound);
+
+
+		setSoundStatus(s_playing.name, Paused);
+
+		this->m_sounds->at(index)->sound->play();
+
+
+		//s_playing.name = p_sound;
 
 
 	}

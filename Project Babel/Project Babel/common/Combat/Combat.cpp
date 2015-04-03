@@ -124,7 +124,7 @@ void Combat::PlayerAttack(SoundManager * sm,Controller * ctrl,GameObject * g_obj
 				500);
 
 
-			sm->PlaySound("Attack");
+			sm->PlaySound(ATTACK2);
 
 
 		}
