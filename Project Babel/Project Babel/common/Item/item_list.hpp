@@ -12,15 +12,17 @@ class ItemList
 
 
 	//Item ** list;
-	struct Dropped
+	struct Object
 	{
 		int x, y;
 		Item* item;
 	};
 
 	
-	std::vector<Dropped*> dropped_items;
+	std::vector<Object*> dropped_items;
 
+	std::vector<Object*> environment;
+	
 	std::vector <Item*> list;
 	std::vector <Item*> Inventory;
 
@@ -65,7 +67,7 @@ public:
 
 	inline std::vector <Item*> GetInventory(){ return this->Inventory; }
 
-	inline std::vector <Dropped*> GetDroppedItems(){ return this->dropped_items; }
+	inline std::vector <Object*> GetDroppedItems(){ return this->dropped_items; }
 
 	inline Sprite *GetSprite(){ return this->m_sprite; }
 

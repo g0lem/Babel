@@ -211,7 +211,7 @@ void ItemList::LoadSprites()
 
 void ItemList::AddDroppedItem(int x, int y, Item *item)
 {
-	Dropped *dropped_item = new Dropped();
+	Object *dropped_item = new Object();
 	dropped_item->x = x;
 	dropped_item->y = y;
 	dropped_item->item = item;

@@ -317,12 +317,12 @@ void Map::AddDoors()
 	}
 
 
-	this->AddTablets();
-	this->AddPotions();
+	/*this->AddTablets();
+	this->AddPotions();*/
 
 }
 
-
+/*
 void Map::AddTablets()
 {
 	srand(time(NULL));
@@ -356,3 +356,4 @@ void Map::AddPotions()
 	}
 }
 
+*/
