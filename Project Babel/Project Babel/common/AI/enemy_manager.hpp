@@ -22,7 +22,7 @@ class EnemyManager
 	void Kill(GameObject * g_obj, GLuint enemy_id, Map *map);
 
 
-	fog_of_war *fog;
+
 
 
 

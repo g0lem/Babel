@@ -87,8 +87,7 @@ void EnemyManager::Init(GLuint num, Map * map, GameObject * g_obj)
 	}
 
 
-	this->fog = new fog_of_war();
-	this->fog->Init(g_obj);
+	
 	
 }
 

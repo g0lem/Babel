@@ -20,9 +20,7 @@ void Player::Load(GameObject * g_obj, Map * current_tilemap)
 	this->m_dir = new Direction();
 	this->m_stats = new Stats();
 	this->h_event = new EventHandler();
-	this->fog = new fog_of_war();
 	h_event->Init(current_tilemap, g_obj);
-	fog->Init(g_obj);
 	this->t_clock = new sf::Clock();
 	this->last_wanted_position = glm::vec2(0, 0);
 	this->a_handler = new ActionHandler();
