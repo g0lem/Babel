@@ -1,0 +1,11 @@
+1. se spauneaza o usa daca apas pe "e" cand sunt langa un item
+2. pot sa iau iteme chiar daca am inventarul full  --- fixed
+3.1 daca apas pe W/A/S/D si E in acelasi timp pot sa merge pe o usa si pot sa o inchid dupa mine (asta doar daca usa era initial deschisa)
+3.2 repeatera bug-ului 3.1 duce la blocarea usii  , aceasta nemairaspunzand la intercatiuni (nu pot sa o mai deschid/inchid)
+5. daca ma lupt cu un mob si atac prea repede (asta am observat eu dupa ce am incercat de mai multe ori , dar nu stiu daca asta e chiar cauza) playerul se blockeaza pe animatia de atac si nu se mai poate misca din WASD/Arrow keys , doar din mouse. Daca ma duc langa un mob dupa ce se intampla bug-ul asta , playerul ataca mobul automat si animatia se reseteaza si totul revine la normal
+6. daca ma misc din WASD/Arror keys este posibil sa ma misc pe acelasi tile cu un mob
+7.1 daca aduc un mob pe o usa , apoi o inchid si dupa incep sa il atac usa se va "deschide" , adica lumina va trece prin ea , player-ul si mobii pot trece prin ea , dar textura usii este de usa inchisa
+7.2 bug-ul 7.1 se intampla si daca mobul este pe un tile din jurul unei usi
+8. mobii zboara pe harta cateodata ( probabil cand nu mi sunt alti mobi pe harta si se pauneaza altii noi )
+9. cateoadata poti sa vezi mobii cum se spauneaza , adica ii vezi cum apar pe harta ( s-a intamplat decat o singura data )
+10. sub tablet trebuie sa se randeze un floor-ul
