@@ -33,9 +33,26 @@ void SoundManager::loadSounds(char** path)
 {
 
 
+<<<<<<< HEAD
 	soundpath[0] = "data/media/sounds/attack2.wav";
 
 
+=======
+	path[0] = "data/media/sounds/ambience1.flac";
+	path[1] = "data/media/sounds/ambience2.wav";
+	path[2] = "data/media/sounds/ambience3.flag";
+	path[3] = "data/media/sounds/ambience4.wav";
+	path[4] = "data/media/sounds/attack1.wav";
+	path[5] = "data/media/sounds/attack2.wav";
+	path[6] = "data/media/sounds/attack3.wav";
+	path[7] = "data/media/sounds/equipitem.wav";
+	path[8] = "data/media/sounds/menupressbutton.wav";
+	path[9] = "data/media/sounds/opendoor.wav";
+	path[10] = "data/media/sounds/openinventory.wav";
+	path[11] = "data/media/sounds/scorpionattack.wav";
+	path[12] = "data/media/sounds/scorpiondie.wav";
+	path[13] = "data/media/sounds/walksound.ogg";
+>>>>>>> parent of 0939384... ma bad
 
 	AddSound(soundpath[0], "Attack");
 
