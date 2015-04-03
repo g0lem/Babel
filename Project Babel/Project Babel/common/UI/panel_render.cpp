@@ -285,9 +285,11 @@ void PanelRender::Render(Controller *ctrl, ScreenUniformData *u_data, GameObject
 		this->button_skins->Render(HEALTHBAR);
 
 
-		u_data->ApplyMatrix(Translation(this->xp_bar_position)*Scale(this->xp_bar_size));
 
 
+		glm::vec2 xp_factor = glm::vec2(GLfloat(g_obj->GetPanelState()->xp) / GLfloat(g_obj->GetPanelState()->max_xp), 1.0f);
+		u_data->ApplyMatrix(Translation(this->xp_bar_position + glm::vec2(this->xp_bar_size.x - (this->xp_bar_size*xp_factor).x, 0))
+			*Scale(this->xp_bar_size*xp_factor));
 		this->button_skins->Render(XPBAR);
 
 

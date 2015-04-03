@@ -42,7 +42,13 @@ void FontManager::Render(Controller * ctrl, GameObject * g_obj)
 	this->BindRun(ctrl->GetWindowWidth(), ctrl->GetWindowHeight());
 
 
+
+
+
 	this->fText->Render(g_obj, this, ctrl);
+
+
+
 
 
 	this->UnbindRun();

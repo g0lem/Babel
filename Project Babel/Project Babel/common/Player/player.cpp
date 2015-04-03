@@ -19,6 +19,7 @@ void Player::Load(GameObject * g_obj, Map * current_tilemap)
 	this->a_path = new AutoPath();
 	this->m_dir = new Direction();
 	this->m_stats = new Stats();
+	this->m_stats->GetXp()->lvl = 1;
 	this->h_event = new EventHandler();
 	this->fog = new fog_of_war();
 	h_event->Init(current_tilemap, g_obj);
@@ -347,6 +348,8 @@ void Player::UpdateUI(GameObject * g_obj)
 	
 	g_obj->GetPanelState()->xp = this->m_stats->GetXp()->xp;
 	g_obj->GetPanelState()->max_xp = this->m_stats->GetXp()->max_xp;
+	g_obj->GetPanelState()->level = this->m_stats->GetHp()->hp;
+
 }
 
 

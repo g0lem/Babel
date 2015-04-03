@@ -10,8 +10,6 @@ class GameRender
 	SpriteManager * s_manager;
 
 
-	FontManager * f_manager;
-
 
 
 public:
@@ -27,7 +25,7 @@ public:
 
 
 
-	void Clean(){ delete this->s_manager; delete this->f_manager; }
+	void Clean(){ delete this->s_manager;  }
 
 
 

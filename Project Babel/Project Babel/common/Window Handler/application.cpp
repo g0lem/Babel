@@ -33,7 +33,7 @@ void Application::Init()
 	sound_m = new SoundManager();
 	g_render = new GameRender(g_object);
 	ui = new UIHandler();
-
+	f_m = new FontManager(g_object);
 
 
 
@@ -60,18 +60,17 @@ void Application::Run()
 		this->Enable();
 
 
-		
+
 		g_render->Render(sound_m, this, g_object);
 
 
 
 		if (g_render->GetDrawCode() == true)
+		{
 			ui->Render(this, g_object);
-
-
-		g_object->GetUIState()->Update(this);
-			
-		
+			f_m->Render(this, g_object);
+			g_object->GetUIState()->Update(this);
+		}
 
 		glfwSwapBuffers(this->GetWindow());
 		glfwPollEvents();

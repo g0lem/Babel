@@ -107,8 +107,21 @@ void Combat::PlayerAttack(SoundManager * sm,Controller * ctrl,GameObject * g_obj
 			text_pos.x += e_attr->scale.x / 2.0f;
 
 
-
+			GLint hp = enemies->GetEnemiesPointer()[0][player->GetTarget()]->GetStats()->GetHp()->hp;
 			GLint dmg = enemies->GetEnemiesPointer()[0][player->GetTarget()]->GetStats()->GetHp()->Damage(player->GetItems()[ITEM_SLOT_WEAPON]->attack);
+
+
+
+			if (dmg >= hp)
+				player->GetStats()->GetXp()->xp++;
+			if (player->GetStats()->GetXp()->xp >= player->GetStats()->GetXp()->max_xp)
+			{
+				player->GetStats()->GetXp()->lvl++;
+				player->GetStats()->GetXp()->xp = 0;
+			}
+
+
+
 			char *buffer = new char[256];
 			_itoa(dmg, buffer, 10);
 			
@@ -124,7 +137,7 @@ void Combat::PlayerAttack(SoundManager * sm,Controller * ctrl,GameObject * g_obj
 				500);
 
 
-			sm->PlaySound("Attack");
+			//sm-
 
 
 		}

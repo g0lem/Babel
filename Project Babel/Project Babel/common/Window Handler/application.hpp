@@ -25,7 +25,7 @@ class Application : private Controller
 
 	UIHandler * ui;
 
-	
+	FontManager * f_m;
 
 public:
 
