@@ -59,15 +59,29 @@ void EnemyManager::Init(GLuint num, Map * map, GameObject * g_obj)
 	this->m_enemies->resize(num);
 
 
+	GLint num_e = 0;
 
 
-	for (GLuint i = 0; i < this->m_enemies->size(); i++)
+	while (num_e < num)
 	{
 
+		this->m_enemies[0][num_e] = new Enemy(g_obj->GetEnemyLoader()->GetData()[0][0]);
+		this->m_enemies[0][num_e]->SetRandomPosition(map);
+		this->m_enemies[0][num_e]->Update(g_obj, 0);
+		glm::vec2 t_pos = this->m_enemies[0][num_e]->GetPAttributes()->position;
+		GLboolean ok = true;
+		for (GLuint i = 0; i < num_e; i++)
+			if (t_pos == this->m_enemies[0][i]->GetPAttributes()->position)
+			{
+			this->Kill(g_obj, num_e, map);
+			ok = false;
+			break;
+			}
 
-		this->m_enemies[0][i] = new Enemy(g_obj->GetEnemyLoader()->GetData()[0][0]);
-		this->m_enemies[0][i]->SetRandomPosition(map);
-		this->m_enemies[0][i]->Update(g_obj, 0);
+		if (glm::distance(glm::vec2(map->GetRoomsPointer()[0][0]->GetInternalCenter()), t_pos) < 6.0f)
+			ok = false;
+		if (ok)
+			num_e++;
 
 
 	}

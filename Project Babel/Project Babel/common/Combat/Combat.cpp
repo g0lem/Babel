@@ -61,7 +61,7 @@ void Combat::SetPlayerTarget(Player * player, EnemyManager * enemies)
 
   
 
-void Combat::PlayerAttack(Controller * ctrl,GameObject * g_obj, Player * player, EnemyManager *enemies, Map *current_map)
+void Combat::PlayerAttack(SoundManager * sm,Controller * ctrl,GameObject * g_obj, Player * player, EnemyManager *enemies, Map *current_map)
 {
 
 	Item *item;
@@ -118,10 +118,13 @@ void Combat::PlayerAttack(Controller * ctrl,GameObject * g_obj, Player * player,
 			g_obj->GetTextObject()->Add(g_obj->GetFontList()->GetFont(),
 				buffer,
 				text_pos,
-				glm::vec4(1.0f, 0.0f, 0.0f, 0.70f),
+				glm::vec4(1.0f, 0.0f, 0.0f, 1.0f),
 				40,
 				UP,
-				250);
+				500);
+
+
+			sm->PlaySound("Attack");
 
 
 		}
@@ -164,13 +167,13 @@ void Combat::CheckPlayerMoveAbility(Player * player, EnemyManager * enemies)
 
 
 
-void Combat::PlayerRelated(Controller * ctrl, GameObject * g_obj, Player * player, EnemyManager * enemies, Map * map)
+void Combat::PlayerRelated(SoundManager * sm,Controller *ctrl, GameObject * g_obj, Player * player, EnemyManager * enemies, Map * map)
 {
 
 
 	this->CheckPlayerMoveAbility(player, enemies);
 	this->SetPlayerTarget(player, enemies);
-	this->PlayerAttack(ctrl, g_obj, player, enemies, map);
+	this->PlayerAttack(sm,ctrl, g_obj, player, enemies, map);
 
 
 }
@@ -331,10 +334,10 @@ void Combat::EnemyAttack(Controller * ctrl, GameObject * g_obj, Player * player,
 			g_obj->GetTextObject()->Add(g_obj->GetFontList()->GetFont(),
 				buffer,
 				text_pos,
-				glm::vec4(1.0f, 0.0f, 0.0f, 0.70f),
+				glm::vec4(1.0f, 0.0f, 0.0f, 1.0f),
 				40,
 				UP,
-				250);
+				500);
 
 
 		
@@ -491,12 +494,12 @@ void Combat::EnemyRelated(Controller * ctrl, GameObject * g_obj, Player * player
 
 
 
-void Combat::Action(Controller * ctrl,GameObject * g_obj, Player * player, EnemyManager * enemies, Map * map)
+void Combat::Action(SoundManager * sm, Controller * ctrl, GameObject * g_obj, Player * player, EnemyManager * enemies, Map * map)
 {
 
 
 	
-	this->PlayerRelated(ctrl, g_obj, player, enemies, map);
+	this->PlayerRelated(sm,ctrl, g_obj, player, enemies, map);
 	this->EnemyRelated(ctrl,g_obj, player, enemies, map);
 
 

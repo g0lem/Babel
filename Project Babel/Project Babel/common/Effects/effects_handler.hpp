@@ -73,7 +73,7 @@ public:
 		else if (direction == DOWN)
 			position.y -= speed;
 
-		color.a -= ctrl->GetFpsPointer()->Delta();
+		color.a -= 5.0f*ctrl->GetFpsPointer()->Delta();
 		font->Print(text, position.x, position.y, size);
 	}
 

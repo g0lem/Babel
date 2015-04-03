@@ -43,7 +43,7 @@ public:
 	void Clean();
 
 
-	void Render(Controller * ctrl, GameObject * g_obj);
+	void Render(SoundManager * sm, Controller * ctrl, GameObject * g_obj);
 
 
 };

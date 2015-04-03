@@ -67,7 +67,7 @@ void SpriteManager::Clean()
 
 
 
-void SpriteManager::Render(Controller * ctrl, GameObject * g_obj)
+void SpriteManager::Render(SoundManager * sm, Controller * ctrl, GameObject * g_obj)
 {
 
 
@@ -96,7 +96,7 @@ void SpriteManager::Render(Controller * ctrl, GameObject * g_obj)
 
 		this->player->Render(ctrl, this->GetScreenPointer(), g_obj, this->map);
 		this->m_enemies->Render(ctrl, this->GetScreenPointer(), g_obj, this->map);
-		this->m_combat->Action(ctrl, g_obj, this->player, this->m_enemies, this->map);
+		this->m_combat->Action(sm,ctrl, g_obj, this->player, this->m_enemies, this->map);
 
 
 		this->s_screen->Render(ctrl, this->GetScreenPointer());

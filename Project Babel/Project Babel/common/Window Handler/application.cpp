@@ -61,7 +61,7 @@ void Application::Run()
 
 
 		
-		g_render->Render(this, g_object);
+		g_render->Render(sound_m, this, g_object);
 
 
 

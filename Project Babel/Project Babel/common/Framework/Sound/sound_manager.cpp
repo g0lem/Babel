@@ -33,15 +33,11 @@ void SoundManager::loadSounds(char** path)
 {
 
 
-	soundpath[0] = "data/media/sounds/charge.wav";
-	soundpath[1] = "data/media/sounds/horn.wav";
-	soundpath[2] = "data/media/sounds/welcome.wav";
+	soundpath[0] = "data/media/sounds/attack2.wav";
 
 
 
-	AddSound(soundpath[0], "Charge");
-	AddSound(soundpath[1], "Horn");
-	AddSound(soundpath[2], "Welcome");
+	AddSound(soundpath[0], "Attack");
 
 
 }

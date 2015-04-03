@@ -36,7 +36,7 @@ public:
 
 	bool GetDrawCode(){ return this->s_manager->s_screen->Update(); }
 
-	void Render(Controller * ctrl, GameObject * g_obj);
+	void Render(SoundManager * sm, Controller * ctrl, GameObject * g_obj);
 
 
 
