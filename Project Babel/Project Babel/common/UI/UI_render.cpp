@@ -25,7 +25,7 @@ void UIRender::Init(char * vertex_shader, char * fragment_shader)
 
 
 
-void UIRender::Render(Controller *ctrl,GameObject *g_obj)
+void UIRender::Render(SoundManager *sm, Controller *ctrl, GameObject *g_obj)
 {
 
 
@@ -49,7 +49,7 @@ void UIRender::Render(Controller *ctrl,GameObject *g_obj)
 
 
 		if (g_obj->GetUIState()->GetInventoryState()->GetState() == ACTIVE)
-			this->inventory_r->Render(ctrl, this->GetScreenPointer(), g_obj);
+			this->inventory_r->Render(sm, ctrl, this->GetScreenPointer(), g_obj);
 		else
 		{
 			this->inventory_r->GetMover()->Reset();
@@ -66,7 +66,7 @@ void UIRender::Render(Controller *ctrl,GameObject *g_obj)
 			this->story_r->storybox_position = glm::vec2(ctrl->GetWindowWidth() / 2 + ctrl->GetWindowWidth() / 4, ctrl->GetWindowHeight() / 2 - ctrl->GetWindowHeight() / 4);
 		}
 
-		this->panel_r->Render(ctrl, this->GetScreenPointer(), g_obj);
+		this->panel_r->Render(sm, ctrl, this->GetScreenPointer(), g_obj);
 
 
 	

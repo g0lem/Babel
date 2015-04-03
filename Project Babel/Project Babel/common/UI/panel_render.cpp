@@ -141,7 +141,7 @@ void PanelRender::Update(Controller *ctrl, GameObject * g_obj)
 }
 
 
-void PanelRender::Render(Controller *ctrl, ScreenUniformData *u_data, GameObject *g_obj)
+void PanelRender::Render(SoundManager *sm, Controller *ctrl, ScreenUniformData *u_data, GameObject *g_obj)
 {
 
 
@@ -160,8 +160,10 @@ void PanelRender::Render(Controller *ctrl, ScreenUniformData *u_data, GameObject
 
 
 		if (g_obj->GetUIState()->GetPanelState()->GetState() == PRESSED)
+		{
+			sm->PlaySound(MENUPRESSBUTTON);
 			g_obj->GetUIState()->GetMenuState()->SetState(!g_obj->GetUIState()->GetMenuState()->GetState());
-
+		}
 
 	}
 

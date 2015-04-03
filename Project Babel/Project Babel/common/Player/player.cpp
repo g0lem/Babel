@@ -21,9 +21,7 @@ void Player::Load(GameObject * g_obj, Map * current_tilemap)
 	this->m_stats = new Stats();
 	this->m_stats->GetXp()->lvl = 1;
 	this->h_event = new EventHandler();
-	this->fog = new fog_of_war();
 	h_event->Init(current_tilemap, g_obj);
-	fog->Init(g_obj);
 	this->t_clock = new sf::Clock();
 	this->last_wanted_position = glm::vec2(0, 0);
 	this->a_handler = new ActionHandler();
@@ -40,7 +38,7 @@ void Player::Load(GameObject * g_obj, Map * current_tilemap)
 
 
 
-void Player::Render(Controller * ctrl, ScreenUniformData * u_data, GameObject * g_obj, Map * current_map)
+void Player::Render(SoundManager *sm, Controller * ctrl, ScreenUniformData * u_data, GameObject * g_obj, Map * current_map)
 {
 
 
@@ -73,7 +71,7 @@ void Player::Render(Controller * ctrl, ScreenUniformData * u_data, GameObject * 
 			Move::TileMove(ctrl, g_obj, attributes->target);
 
 		this->attributes->Update(ctrl->GetFpsPointer()->Delta());
-		this->HandleAutoPath(ctrl, g_obj, current_map);
+		this->HandleAutoPath(sm, ctrl, g_obj, current_map);
 
 
 
@@ -269,7 +267,7 @@ GLboolean Player::CheckAdvance(Controller * ctrl, GameObject * g_obj)
 }
 
 
-void Player::HandleAutoPath(Controller * ctrl, GameObject * g_obj, Map *current_map)
+void Player::HandleAutoPath(SoundManager *sm, Controller * ctrl, GameObject * g_obj, Map *current_map)
 {
 
 
@@ -309,6 +307,7 @@ void Player::HandleAutoPath(Controller * ctrl, GameObject * g_obj, Map *current_
 		if (attributes->HasMovedATile(ctrl->GetFpsPointer()->Delta()) || attributes->HasReachedTarget())
 		{
 			a_path->Advance();
+			sm->PlaySound(WALKSOUND);
 			if (!able_to_move)
 			a_path->Start(g_obj, attributes->target, last_wanted_position);
 		}

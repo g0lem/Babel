@@ -15,11 +15,11 @@ void UIHandler::Init()
 
 
 
-void UIHandler::Render(Controller * ctrl, GameObject * g_obj)
+void UIHandler::Render(SoundManager *sm, Controller * ctrl, GameObject * g_obj)
 {
 
 
-	this->ui_render->Render(ctrl, g_obj);
+	this->ui_render->Render(sm, ctrl, g_obj);
 
 
 

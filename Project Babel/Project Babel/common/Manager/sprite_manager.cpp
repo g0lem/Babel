@@ -94,8 +94,8 @@ void SpriteManager::Render(SoundManager * sm, Controller * ctrl, GameObject * g_
 		this->map->Render(ctrl, this->GetScreenPointer(), g_obj, player->GetPAttributes()->position);
 		
 
-		this->player->Render(ctrl, this->GetScreenPointer(), g_obj, this->map);
-		this->m_enemies->Render(ctrl, this->GetScreenPointer(), g_obj, this->map);
+		this->player->Render(sm, ctrl, this->GetScreenPointer(), g_obj, this->map);
+		this->m_enemies->Render(sm, ctrl, this->GetScreenPointer(), g_obj, this->map);
 		this->m_combat->Action(sm,ctrl, g_obj, this->player, this->m_enemies, this->map);
 
 

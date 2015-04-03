@@ -36,7 +36,7 @@ void EventHandler::Load(Map *current_map, GameObject *g_obj)
 
 	for (int i = 0; i < g_obj->GetItemList()->GetDroppedItems().size(); i++)
 		if (g_obj->GetItemList()->GetDroppedItems()[i]->x >= 0 && g_obj->GetItemList()->GetDroppedItems()[i]->y >=0)
-		e_map[g_obj->GetItemList()->GetDroppedItems()[i]->x][g_obj->GetItemList()->GetDroppedItems()[i]->y] = 4;
+		e_map[g_obj->GetItemList()->GetDroppedItems()[i]->x][g_obj->GetItemList()->GetDroppedItems()[i]->y] = 5;
 
 
 
@@ -141,7 +141,7 @@ void EventHandler::Health(glm::vec2 position, Map *current_map, Stats *m_stats, 
 
 void EventHandler::PickUp(glm::vec2 position, Map *current_map, GameObject *g_obj)
 {
-	if (e_map[(int)(position.x)][(int)(position.y)] == 4)
+	if (e_map[(int)(position.x)][(int)(position.y)] == 5)
 	{
 		//std::cout << g_obj->GetItemList()->GetDroppedItems().size() << "\n";
 		for (int i = 0; i < g_obj->GetItemList()->GetDroppedItems().size(); i++)

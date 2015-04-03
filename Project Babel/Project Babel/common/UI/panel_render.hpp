@@ -43,7 +43,7 @@ public:
 
 	inline PanelRender() { this->Init(); }
 	void Init();
-	void Render(Controller *ctrl, ScreenUniformData *u_data, GameObject *g_obj);
+	void Render(SoundManager *sm, Controller *ctrl, ScreenUniformData *u_data, GameObject *g_obj);
 
 
 

@@ -129,7 +129,7 @@ void Inventory::Update()
 	
 }
 
-void Inventory::Render(Controller *ctrl, ScreenUniformData *u_data, GameObject *g_obj)
+void Inventory::Render(SoundManager *sm, Controller *ctrl, ScreenUniformData *u_data, GameObject *g_obj)
 {
 
 
@@ -159,12 +159,11 @@ void Inventory::Render(Controller *ctrl, ScreenUniformData *u_data, GameObject *
 
 			if (g_obj->GetUIState()->GetInventoryState()->GetButtonStates()[i] == PRESSED)
 			{
-				printf("test\n");
 
 				if (g_obj->GetItemList()->GetInventory()[i]->type == 1 && this->EquippedWeapon == false)
 				{
 
-
+					sm->PlaySound(EQUIPITEM);
 
 					this->weapon = g_obj->GetItemList()->GetSprite();
 					this->WeaponFrame = g_obj->GetItemList()->GetInventory()[i]->frame;
@@ -202,6 +201,8 @@ void Inventory::Render(Controller *ctrl, ScreenUniformData *u_data, GameObject *
 
 		if (g_obj->GetUIState()->GetInventoryState()->GetButtonStates()[17] == PRESSED)
 		{
+			sm->PlaySound(EQUIPITEM);
+
 			this->EquippedWeapon = false;
 			this->w_scale = vec2_0;
 			g_obj->GetItemList()->AddtoInventory(weapon_item);
