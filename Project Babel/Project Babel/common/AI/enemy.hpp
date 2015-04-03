@@ -38,7 +38,7 @@ class Enemy
 	Animation ** animations;
 	AutoPath * a_path;
 	Direction * m_dir;
-
+	glm::vec4 color;
 
 
 	TurnLogic * t_logic;

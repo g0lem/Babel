@@ -37,7 +37,7 @@ void Enemy::Render(Controller * ctrl, ScreenUniformData * u_data, GameObject * g
 	this->last_position = this->p_attributes->position;
 	u_data->ApplyMatrix(Translation(p_attributes->position * p_attributes->scale + g_obj->GetScroller()->GetOffset())*
 		Scale(p_attributes->scale));
-	u_data->SetAmbientLight(BLIND_COLOR);
+	u_data->SetAmbientLight(color * (glm::abs(1.5f*glm::sin(glfwGetTime()*5.0f)) + 0.6f));
 
 
 
@@ -106,7 +106,14 @@ void Enemy::SetRandomPosition(Map * map)
 		if (result >= 0 && result < SOLID_LIMIT)
 		ok = true;
 
-
+		GLint r = Rand(10);
+		if (r > 0 || r == 0)
+		{
+			color = glm::vec4(GLfloat(Rand(10)) / 10, GLfloat(Rand(10)) / 10, GLfloat(Rand(10)) / 10, 1.0f)*GLfloat(Rand(10) + 1);
+			this->m_stats->GetHp()->Buff(Rand(8));
+		}
+		else
+			color = glm::vec4(1, 1, 1, 1);
 
 	}
 

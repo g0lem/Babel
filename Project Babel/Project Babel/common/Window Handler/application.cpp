@@ -66,20 +66,13 @@ void Application::Run()
 
 
 		if (g_render->GetDrawCode() == true)
-<<<<<<< HEAD
 		{
-			ui->Render(this, g_object);
+			ui->Render(sound_m,this, g_object);
 			f_m->Render(this, g_object);
 			g_object->GetUIState()->Update(this);
 		}
-=======
-			ui->Render(this->sound_m, this, g_object);
 
 
-		g_object->GetUIState()->Update(this);
-			
-		
->>>>>>> origin/master
 
 		glfwSwapBuffers(this->GetWindow());
 		glfwPollEvents();

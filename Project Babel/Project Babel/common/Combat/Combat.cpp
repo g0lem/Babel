@@ -75,19 +75,7 @@ void Combat::PlayerAttack(SoundManager * sm,Controller * ctrl,GameObject * g_obj
 	{
 
 		
-		if (enemies->GetEnemiesPointer()[0][player->GetTarget()]->GetStats()->GetHp()->hp - player->GetItems()[ITEM_SLOT_WEAPON]->attack.x <= 0)
-		{
-
 		
-			
-				g_obj->GetItemList()->AddDroppedItem((int)(enemies->GetEnemiesPointer()[0][player->GetTarget()]->GetPAttributes()->position.x), (int)(enemies->GetEnemiesPointer()[0][player->GetTarget()]->GetPAttributes()->position.y), item);
-		       // std::cout << g_obj->GetItemList()->GetDroppedItems().size()<<"\n";
-				enemies->GetEnemiesPointer()[0][player->GetTarget()]->GetStats()->GetHp()->Damage(player->GetItems()[ITEM_SLOT_WEAPON]->attack);
-				player->GetEventHandler()->Init(current_map, g_obj);
-			
-		}
-
-
 
 
 
@@ -113,11 +101,19 @@ void Combat::PlayerAttack(SoundManager * sm,Controller * ctrl,GameObject * g_obj
 
 
 			if (dmg >= hp)
+			{
 				player->GetStats()->GetXp()->xp++;
+				g_obj->GetItemList()->AddDroppedItem((int)(enemies->GetEnemiesPointer()[0][player->GetTarget()]->GetPAttributes()->position.x), (int)(enemies->GetEnemiesPointer()[0][player->GetTarget()]->GetPAttributes()->position.y), item);
+				// std::cout << g_obj->GetItemList()->GetDroppedItems().size()<<"\n";
+				enemies->GetEnemiesPointer()[0][player->GetTarget()]->GetStats()->GetHp()->Damage(player->GetItems()[ITEM_SLOT_WEAPON]->attack);
+				player->GetEventHandler()->Init(current_map, g_obj);
+			}
+
 			if (player->GetStats()->GetXp()->xp >= player->GetStats()->GetXp()->max_xp)
 			{
 				player->GetStats()->GetXp()->lvl++;
 				player->GetStats()->GetXp()->xp = 0;
+
 			}
 
 
@@ -138,11 +134,8 @@ void Combat::PlayerAttack(SoundManager * sm,Controller * ctrl,GameObject * g_obj
 				350);
 
 
-<<<<<<< HEAD
-			//sm-
-=======
+
 			sm->PlaySound(ATTACK2);
->>>>>>> origin/master
 
 
 		}
@@ -337,14 +330,15 @@ void Combat::EnemyAttack(SoundManager *sm, Controller * ctrl, GameObject * g_obj
 			glm::vec2 text_pos = e_attr->position *
 				e_attr->scale +
 				g_obj->GetScroller()->GetOffset();
-			text_pos.y = ctrl->GetWindowHeight() - text_pos.y;
-			text_pos.x += e_attr->scale.x / 2.0f;
+			text_pos.y = ctrl->GetWindowHeight() - text_pos.y + 6;
+			text_pos.x += e_attr->scale.x + 10;
 
 
 
 			GLint dmg = player->GetStats()->GetHp()->Damage(current_enemy->GetStats()->base_attack);
 			char *buffer = new char[256];
 			_itoa(dmg, buffer, 10);
+			strcat(buffer, " DMG");
 
 			sm->PlaySound(SCORPIONATTACK);
 
@@ -355,9 +349,9 @@ void Combat::EnemyAttack(SoundManager *sm, Controller * ctrl, GameObject * g_obj
 				buffer,
 				text_pos,
 				glm::vec4(1.0f, 0.0f, 0.0f, 1.0f),
-				40,
+				20,
 				UP,
-				500);
+				350);
 
 
 		
