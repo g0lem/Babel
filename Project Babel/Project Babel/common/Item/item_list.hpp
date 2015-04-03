@@ -71,6 +71,9 @@ public:
 	void LoadObjects();
 
 	void SpawnObject(int id, glm::vec2 position);
+	
+	void ClearObjects();
+	void ClearDroppedItems();
 
 	void DeleteFromInventory(int i){ this->Inventory.erase(Inventory.begin() + i); }
 

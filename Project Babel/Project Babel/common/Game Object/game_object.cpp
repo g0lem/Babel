@@ -28,9 +28,13 @@ void GameObject::Advance()
 {
 	rebuild = false;
 
-
+	
 	this->c_map = new CollisionMap();
 	this->e_loader = new EnemyLoader();
+
+
+	this->GetItemList()->ClearObjects();
+	this->GetItemList()->ClearDroppedItems(); 
 
 }
 

@@ -33,8 +33,15 @@ void ItemList::SpawnObject(int id, glm::vec2 position)
 	this->objectlist.push_back(obj);
 }
 
+void ItemList::ClearObjects()
+{
+	this->objectlist.clear();
+}
 
-
+void ItemList::ClearDroppedItems()
+{
+	this->dropped_items.clear();
+}
 
 void ItemList::LoadItems()
 {
