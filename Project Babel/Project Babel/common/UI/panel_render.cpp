@@ -266,6 +266,11 @@ void PanelRender::Render(Controller *ctrl, ScreenUniformData *u_data, GameObject
 
 
 
+		if (g_obj->GetUIState()->GetPanelState()->GetButtonsState()[3] == PRESSED)
+			g_obj->GetTurnSystem()->Wait();
+
+
+
 	}
 
 

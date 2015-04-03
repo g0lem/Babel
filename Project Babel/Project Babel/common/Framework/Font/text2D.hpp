@@ -50,6 +50,7 @@ public:
 
 	GLvoid Create(char * texturePath, GLuint size);
 	GLvoid Print(const GLchar * text, GLint x, GLint y, GLint size);
+	GLfloat GetLength(const GLchar * text, GLint size);
 	GLvoid Clean();
 
 

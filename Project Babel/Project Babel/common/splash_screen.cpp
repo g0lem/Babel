@@ -20,10 +20,18 @@ void SplashScreen::Load()
 
 	m_screen = new Sprite();
 
+<<<<<<< HEAD
 	char **textures = new char*[NUM_SCREENS-1];
 	textures[0] = "cerberus.png";
 	textures[1] = "logo1.png";
 	textures[2] = "splash1.png";
+=======
+	char **textures = new char*[3];
+
+	textures[0] = "splash1.png";
+	textures[1] = "cerberus.png";
+	textures[2] = "logo1.png";
+>>>>>>> origin/master
 
 	m_screen->Load(NUM_SCREENS, "data/SplashScreen/", textures);
 	for (int i = 0; i < NUM_SCREENS; i++)

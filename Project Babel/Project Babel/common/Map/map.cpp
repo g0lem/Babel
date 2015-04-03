@@ -69,11 +69,22 @@ void Map::Render(Controller * ctrl, ScreenUniformData * u_data, GameObject * g_o
 	
 	//this->fog->Render(ctrl, u_data, glm::vec2((g_obj->GetScroller()->GetBeginLimit() + g_obj->GetScroller()->GetEndLimit())/2), g_obj);
 
-	this->tilemap->Render(ctrl, u_data, this->m_sprite,
-		g_obj->GetScroller()->GetBeginLimit(),g_obj->GetScroller()->GetEndLimit(),
-		g_obj->GetScroller()->GetOffset(), fog->GetFOW(g_obj,glm::ivec2(position)), g_obj->GetItemList());
 
-	this->tilemap->SmootherFOW(fog->GetFOW(g_obj, glm::ivec2(position)), glm::ivec2(position), u_data);
+	fog->MakeTexture(g_obj, glm::ivec2(position));
+
+
+	this->tilemap->Render(ctrl, u_data, this->m_sprite,
+		g_obj->GetScroller()->GetBeginLimit(),
+		g_obj->GetScroller()->GetEndLimit(),
+		g_obj->GetScroller()->GetOffset(),
+		fog->GetTexture(), 
+		fog->GetFOW(g_obj,glm::ivec2(position)),
+		g_obj->GetItemList());
+
+
+
+
+	//this->tilemap->SmootherFOW(fog->GetFOW(g_obj, glm::ivec2(position)), glm::ivec2(position), u_data);
 
 
 

@@ -3,9 +3,9 @@
 
 #define RANGE 7
 #define LIT 0.0f
-#define SEMILIT 0.2f
+#define SEMILIT 0.75f
 #define UNSEEN 0.5f
-#define DARK 0.9f
+#define DARK 1.0f
 
 void fog_of_war::Init(GameObject *g_obj)
 {
@@ -307,3 +307,54 @@ void fog_of_war::Render(Controller * ctrl, ScreenUniformData * u_data, glm::vec2
 
 	this->Advance(g_obj);
 }
+
+
+
+unsigned char* fog_of_war::GetBuffer(GameObject * g_obj, glm::ivec2 position)
+{
+
+
+	glm::ivec2 size = g_obj->GetCollisionMap()->GetSize();
+
+	unsigned char * buffer = new unsigned char[size.x * size.y];
+
+
+
+	float** temp = this->GetFOW(g_obj, position);
+
+
+	for (GLuint j = 0; j < size.y; j++)
+		for (GLuint i = 0; i < size.x; i++)
+			buffer[j*size.x + i] = unsigned char(temp[i][j]*255.0f);
+ 
+
+
+
+	return buffer;
+
+}
+
+
+
+
+void fog_of_war::MakeTexture(GameObject * g_obj, glm::ivec2 position)
+{
+
+	glDeleteTextures(1, &this->tex_id);
+
+	unsigned char * buffer = this->GetBuffer(g_obj, position);
+	glm::ivec2 size = g_obj->GetCollisionMap()->GetSize();
+
+
+	glGenTextures(1, &this->tex_id);
+	glBindTexture(GL_TEXTURE_2D, this->tex_id);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RED, size.x, size.y, 0, GL_RED, GL_UNSIGNED_BYTE, buffer);
+
+
+}
+

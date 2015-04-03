@@ -561,4 +561,12 @@
       <Filter>Resource Files\icon</Filter>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="data\shaders\2d_frag.txt">
+      <Filter>common\Framework\Sprite</Filter>
+    </Text>
+    <Text Include="data\shaders\2d_vert.txt">
+      <Filter>common\Framework\Sprite</Filter>
+    </Text>
+  </ItemGroup>
 </Project>

@@ -29,7 +29,7 @@ public:
 	
 
 	void Render(GLuint current_frame);
-
+	void RenderTexture(GLuint texture);
 
 
 };

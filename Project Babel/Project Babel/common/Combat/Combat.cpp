@@ -99,11 +99,11 @@ void Combat::PlayerAttack(Controller * ctrl,GameObject * g_obj, Player * player,
 		{
 
 			PhysicalAttributes * e_attr = enemies->GetEnemiesPointer()[0][player->GetTarget()]->GetPAttributes();
-			glm::vec2 text_pos = e_attr->target *
+			glm::vec2 text_pos = e_attr->position *
 				e_attr->scale +
 				g_obj->GetScroller()->GetOffset();
 			text_pos.y = ctrl->GetWindowHeight() - text_pos.y;
-
+			text_pos.x += e_attr->scale.x / 2.0f;
 
 
 
@@ -112,13 +112,15 @@ void Combat::PlayerAttack(Controller * ctrl,GameObject * g_obj, Player * player,
 			_itoa(dmg, buffer, 10);
 			
 
+			text_pos.x -= g_obj->GetFontList()->GetFont()->GetLength(buffer, 40)/2.0f;
+
 			g_obj->GetTextObject()->Add(g_obj->GetFontList()->GetFont(),
 				buffer,
 				text_pos,
-				glm::vec4(1.0f, 0.0f, 0.0f, 1.0f),
+				glm::vec4(1.0f, 0.0f, 0.0f, 0.70f),
 				40,
 				UP,
-				100);
+				250);
 
 
 		}
@@ -272,7 +274,7 @@ void Combat::AquireEnemyTarget(Player * player, EnemyManager * enemies)
 
 
 
-void Combat::EnemyAttack(GameObject * g_obj, Player * player, EnemyManager *enemies)
+void Combat::EnemyAttack(Controller * ctrl, GameObject * g_obj, Player * player, EnemyManager *enemies)
 {
 
 
@@ -308,10 +310,39 @@ void Combat::EnemyAttack(GameObject * g_obj, Player * player, EnemyManager *enem
 		{
 		
 
-			player->GetStats()->GetHp()->Damage(current_enemy->GetStats()->base_attack);
+
 			current_enemy->GetTurnSystem()->ComputeAttack(-current_enemy->GetStats()->base_attack_speed);
 			current_enemy->GetActionHandler()->SetAction(NO_ACTION);
 			current_enemy->GetActionHandler()->Stop();
+
+
+
+
+			PhysicalAttributes * e_attr = player->GetPAttributes();
+			glm::vec2 text_pos = e_attr->position *
+				e_attr->scale +
+				g_obj->GetScroller()->GetOffset();
+			text_pos.y = ctrl->GetWindowHeight() - text_pos.y;
+			text_pos.x += e_attr->scale.x / 2.0f;
+
+
+
+			GLint dmg = player->GetStats()->GetHp()->Damage(current_enemy->GetStats()->base_attack);
+			char *buffer = new char[256];
+			_itoa(dmg, buffer, 10);
+
+
+			text_pos.x -= g_obj->GetFontList()->GetFont()->GetLength(buffer, 40) / 2.0f;
+
+			g_obj->GetTextObject()->Add(g_obj->GetFontList()->GetFont(),
+				buffer,
+				text_pos,
+				glm::vec4(1.0f, 0.0f, 0.0f, 0.70f),
+				40,
+				UP,
+				250);
+
+
 		
 		
 		}
@@ -334,7 +365,7 @@ void Combat::EnemyMovement(Controller * ctrl, GameObject * g_obj, Player * playe
 
 
 
-	if (player->GetPAttributes()->HasReachedTarget())
+	if (player->GetPAttributes()->HasReachedTarget() && player->GetActionHandler()->GetAction() != ATTACKING)
 		enemies->GetEnemiesPointer()[0][0]->GetTurnLogic()->Advance();
 
 
@@ -455,7 +486,7 @@ void Combat::EnemyRelated(Controller * ctrl, GameObject * g_obj, Player * player
 	this->SortThingsOut(player, enemies);
 	this->SetEnemyTarget(player, enemies);
 	this->AquireEnemyTarget(player, enemies);
-	this->EnemyAttack(g_obj, player, enemies);
+	this->EnemyAttack(ctrl, g_obj, player, enemies);
 	this->EnemyMovement(ctrl, g_obj, player, enemies);
 
 

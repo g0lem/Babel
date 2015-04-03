@@ -241,6 +241,24 @@ GLvoid Font::Print(const GLchar * text, GLint x, GLint y, GLint size){
 
 
 
+GLfloat Font::GetLength(const GLchar * text, GLint size)
+{
+
+
+	GLuint length = strlen(text);
+	GLfloat character_offset = 0;
+
+
+	for (GLuint i = 0; i < length; i++)
+	character_offset += GLfloat(this->glyph_offset[text[i]])*(GLfloat(size) / GLfloat(this->glyph_width));
+	
+
+	return GLfloat(length*size) - character_offset;
+
+
+}
+
+
 
 GLvoid Font::Clean()
 {
