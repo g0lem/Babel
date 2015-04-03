@@ -161,7 +161,7 @@ void Inventory::Render(Controller *ctrl, ScreenUniformData *u_data, GameObject *
 			{
 				printf("test\n");
 
-				if (g_obj->GetItemList()->GetInventory()[i]->type == 1)
+				if (g_obj->GetItemList()->GetInventory()[i]->type == 1 && this->EquippedWeapon == false)
 				{
 
 
@@ -175,7 +175,8 @@ void Inventory::Render(Controller *ctrl, ScreenUniformData *u_data, GameObject *
 					this->EquippedWeapon = true;
 
 					this->weapon_item = g_obj->GetItemList()->GetInventory()[i];
-
+					g_obj->GetItemList()->weapon = this->weapon_item;
+					g_obj->GetItemList()->must_load = true;
 					g_obj->GetItemList()->DeleteFromInventory(i);
 
 				}
@@ -204,6 +205,8 @@ void Inventory::Render(Controller *ctrl, ScreenUniformData *u_data, GameObject *
 			this->EquippedWeapon = false;
 			this->w_scale = vec2_0;
 			g_obj->GetItemList()->AddtoInventory(weapon_item);
+			g_obj->GetItemList()->weapon = g_obj->GetItemList()->GetList()[0];
+			g_obj->GetItemList()->must_load = true;
 		}
 
 	}

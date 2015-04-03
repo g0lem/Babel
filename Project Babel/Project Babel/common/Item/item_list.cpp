@@ -74,21 +74,29 @@ void ItemList::LoadItems()
 
 
 	Item * m_item = new Item;
-
 	m_item->Init();
-	m_item->attack = glm::vec2(5, 5);
-	m_item->attack_speed = 2.f;
-
+	m_item->attack = glm::vec2(1, 4);
+	m_item->attack_speed = 1.0f;
 	this->list.push_back(m_item);
+	this->weapon = m_item;
 
+
+
+	m_item = new Item;
+	m_item->Init();
 	m_item->frame = 1;
 	m_item->type = ITEM_TYPE_WEAPON;
-
+	m_item->attack_speed = 1.0f;
+	m_item->attack = glm::vec2(2, 6);
 	this->list.push_back(m_item);
 
+
+	m_item = new Item;
+	m_item->Init();
 	m_item->frame = 2;
 	m_item->type = ITEM_TYPE_WEAPON;
-
+	m_item->attack_speed = 1.0f;
+	m_item->attack = glm::vec2(3, 10);
 	this->list.push_back(m_item);
 
 

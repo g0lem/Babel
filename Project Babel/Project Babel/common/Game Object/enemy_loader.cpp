@@ -68,7 +68,7 @@ void EnemyLoader::Init()
 	temp->m_stats->base_attack = glm::vec2(0.0f, 1.0f);
 	temp->m_stats->base_attack_speed = 1.0f;
 	temp->m_stats->base_movement_speed = 1.0f;
-	temp->m_stats->GetHp()->Buff(8);
+	temp->m_stats->GetHp()->Buff(15);
 	
 
 

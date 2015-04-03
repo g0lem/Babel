@@ -43,6 +43,8 @@ void Player::Render(Controller * ctrl, ScreenUniformData * u_data, GameObject * 
 {
 
 
+	this->LoadItems(g_obj);
+
 
 
 	u_data->ApplyMatrix(Translation(GridPosition(attributes->position*attributes->scale + g_obj->GetScroller()->GetOffset(), attributes->scale))*
@@ -196,10 +198,13 @@ void Player::LoadPhysicalAttributes(Map * current_tilemap)
 void Player::LoadItems(GameObject * g_obj)
 {
 
-	this->items = new Item*[5];
-
-	this->items[ITEM_SLOT_WEAPON] = g_obj->GetItemList()->GetList()[0];
-
+	
+	if (g_obj->GetItemList()->must_load)
+	{
+		this->items = new Item*[1];
+		this->items[ITEM_SLOT_WEAPON] = g_obj->GetItemList()->weapon;
+		g_obj->GetItemList()->must_load = false;
+	}
 
 
 }
@@ -303,6 +308,7 @@ void Player::HandleAutoPath(Controller * ctrl, GameObject * g_obj, Map *current_
 		if (attributes->HasMovedATile(ctrl->GetFpsPointer()->Delta()) || attributes->HasReachedTarget())
 		{
 			a_path->Advance();
+			if (!able_to_move)
 			a_path->Start(g_obj, attributes->target, last_wanted_position);
 		}
 
@@ -325,7 +331,7 @@ void Player::LoadStats()
 	this->m_stats->GetHp()->Buff(20);
 	this->m_stats->base_movement_speed = 1.0f;
 
-	this->m_stats->GetXp()->max_xp = 0;
+	this->m_stats->GetXp()->max_xp = 7;
 	this->m_stats->GetXp()->xp = 0;
 
 

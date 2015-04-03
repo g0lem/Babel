@@ -109,16 +109,11 @@ void EnemyManager::CheckEnemiesState(GameObject * g_obj, Map *map)
 void EnemyManager::Kill(GameObject * g_obj, GLuint enemy_id, Map *map)
 {
 
-	if (this->m_enemies->size() > 2)
-	{
+
 		glm::vec2 last_position = this->m_enemies[0][enemy_id]->GetLastPosition();
 		g_obj->GetCollisionMap()->GetTiles()[GLuint(last_position.x)][GLuint(last_position.y)] = 0;
 		this->m_enemies->erase(this->m_enemies->begin() + enemy_id);
-	}
-	else
-	{
-		this->m_enemies->at(enemy_id)->GetStats()->GetHp()->hp = this->m_enemies->at(enemy_id)->GetStats()->GetHp()->max_hp;
-		this->m_enemies->at(enemy_id)->SetRandomPosition(map);
-	}
+
+
 
 }

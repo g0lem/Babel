@@ -68,6 +68,7 @@ void Combat::PlayerAttack(Controller * ctrl,GameObject * g_obj, Player * player,
 	
 	item = g_obj->GetItemList()->GetList()[rand()%g_obj->GetItemList()->GetList().size()];
 
+
 	if (player->GetTarget() > NO_TARGET && 
 		player->GetActionHandler()->GetAction() == ATTACKING && 
 		player->GetActionHandler()->HasReachedLifetime(TIME_FOR_ACTION))
@@ -89,7 +90,7 @@ void Combat::PlayerAttack(Controller * ctrl,GameObject * g_obj, Player * player,
 
 
 
-		
+
         g_obj->GetTurnSystem()->ComputeAttack(player->GetItems()[ITEM_SLOT_WEAPON]->attack_speed);
 		player->GetActionHandler()->SetAction(NO_ACTION);
 		player->GetActionHandler()->Stop();
@@ -141,22 +142,15 @@ void Combat::CheckPlayerMoveAbility(Player * player, EnemyManager * enemies)
 	GLboolean advance = true;
 
 
-
 	for (GLuint i = 0; i < enemies->GetEnemiesPointer()->size(); i++)
 	{
 
 
-
-		if (!enemies->GetEnemiesPointer()[0][i]->GetActionHandler()->IsStopped())
+		if (glm::distance(player->GetPAttributes()->position, enemies->GetEnemiesPointer()->at(i)->GetPAttributes()->position) < 4.0f)
 		{
-
 			advance = false;
 			break;
-
 		}
-
-
-
 
 	}
 
@@ -365,7 +359,9 @@ void Combat::EnemyMovement(Controller * ctrl, GameObject * g_obj, Player * playe
 
 
 
-	if (player->GetPAttributes()->HasReachedTarget() && player->GetActionHandler()->GetAction() != ATTACKING)
+	if (player->GetPAttributes()->HasReachedTarget() &&
+		player->GetActionHandler()->GetAction() != ATTACKING &&
+		enemies->GetEnemiesPointer()->size() > 0)
 		enemies->GetEnemiesPointer()[0][0]->GetTurnLogic()->Advance();
 
 

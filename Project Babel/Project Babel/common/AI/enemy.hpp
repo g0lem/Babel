@@ -49,7 +49,6 @@ class Enemy
 	ActionHandler * a_handler;
 
 
-
 	void LoadSprites(EnemyData * data);
 	void LoadStats(EnemyData*data);
 	void LoadPhysicalAttributes();

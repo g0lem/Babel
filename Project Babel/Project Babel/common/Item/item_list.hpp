@@ -42,7 +42,8 @@ class ItemList
 public:
 
 
-
+	GLboolean must_load = true;
+	Item * weapon = NULL;
 	std::string NameGenerator(std::string type);
 
 
