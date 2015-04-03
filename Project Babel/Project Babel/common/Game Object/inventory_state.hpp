@@ -4,6 +4,9 @@
 
 #define NOT_SET -1
 
+#define WEAPON_STATE 17
+#define ARMOR_STATE 18
+
 
 class InventoryState
 {

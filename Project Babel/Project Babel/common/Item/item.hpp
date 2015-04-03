@@ -1,9 +1,6 @@
 #ifndef ITEM_HPP
 #define ITEM_HPP
 
-
-
-
 class Item
 {
 
@@ -41,7 +38,10 @@ public:
 
 
 
-	GLint type;
+	GLint frame;
+
+
+	int type;
 
 
 
@@ -63,7 +63,7 @@ std::string item_name;
 
 
 
-	Item GenerateItem(int type);
+	Item GenerateItem(int frame);
 
 
 

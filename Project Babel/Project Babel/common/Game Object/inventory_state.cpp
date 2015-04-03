@@ -6,7 +6,7 @@ void InventoryState::Init()
 {
 
 
-	this->button_states = new GLint[17];
+	this->button_states = new GLint[19];
 
 	this->State = NOT_ACTIVE;
 

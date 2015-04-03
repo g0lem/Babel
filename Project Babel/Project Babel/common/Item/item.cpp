@@ -20,6 +20,8 @@ void Item::Init()
 	this->effect = 0;
 
 
+	this->frame = 0;
+
 	this->type = 0;
 
 }
@@ -31,7 +33,7 @@ void Item::Set(GLfloat attack_speed,
 	GLfloat armor_penetration,
 	GLfloat armor,
 	GLint effect,
-	GLint type)
+	GLint frame)
 {
 
 
@@ -50,7 +52,7 @@ void Item::Set(GLfloat attack_speed,
 	this->effect = effect;
 
 
-	this->type = type;
+	this->frame = frame;
 
 
 }
@@ -69,7 +71,7 @@ void Item::Set(GLfloat attack_speed,
 
 
 
-Item Item::GenerateItem(int type)
+Item Item::GenerateItem(int frame)
 {
 	
 	
@@ -92,7 +94,7 @@ Item Item::GenerateItem(int type)
 		
 		while (sqlite3_step(res) == SQLITE_ROW)
 		{
-			if (type == sqlite3_column_int(res, 0))
+			if (frame == sqlite3_column_int(res, 0))
 			{
 				new_item.attack_speed = Rand(sqlite3_column_int(res, 2), sqlite3_column_int(res, 3));
 				new_item.attack.x = sqlite3_column_int(res, 4);
@@ -102,7 +104,7 @@ Item Item::GenerateItem(int type)
 				new_item.level = Rand(sqlite3_column_int(res, 10), sqlite3_column_int(res, 11));
 				
 				//std::cout << sqlite3_column_int(res, 3) << " " << sqlite3_column_int(res, 4) << std::endl;
-				new_item.type = type;
+				new_item.frame = frame;
 			}
 		}
 		std::cout << "Attack Speed: "<< new_item.attack_speed <<std::endl;

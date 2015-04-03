@@ -29,9 +29,9 @@ void SplashScreen::Load()
 	for (int i = 0; i < NUM_SCREENS; i++)
 	{
 		splash *t_splash = new splash();
-		t_splash->alpha = 1.f;
+		t_splash->alpha = 0;
 		t_splash->turn = true;
-		t_splash->type = 2;
+		t_splash->type = 1;
 		t_splash->finished = false;
 		t_splash->speed = 1;
 		m_screens->push_back(t_splash);

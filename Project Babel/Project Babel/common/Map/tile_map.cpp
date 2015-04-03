@@ -122,7 +122,7 @@ void Tilemap::Render(Controller * ctrl, ScreenUniformData * u_data, Sprite * m_s
 			glm::vec3 temp = glm::vec3(1.0f) * (1 - fog[x][y]);
 			u_data->SetAmbientLight(glm::vec4(temp.x, temp.y, temp.y, 1.0f));
 			u_data->ApplyMatrix(Translation(glm::vec2(x, y)*tile_scale + offset)*Scale(tile_scale));
-			item_list->GetSprite()->Render(item_list->GetDroppedItems()[i]->item->type);
+			item_list->GetSprite()->Render(item_list->GetDroppedItems()[i]->item->frame);
 
 
 		}

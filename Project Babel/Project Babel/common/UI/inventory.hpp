@@ -6,7 +6,9 @@ class Inventory: public InventoryProperties
 {
 	Sprite *skins, *item_skins;
 
-	Button ** m_inventory, **exit;
+	Sprite *weapon, *armor;
+
+	Button ** m_inventory, **exit, **w_button;
 
 	UI_mover * mover;
 
@@ -19,6 +21,13 @@ class Inventory: public InventoryProperties
 	void RenderStaticItems(Controller *ctrl, ScreenUniformData *u_data, GameObject *g_obj);
 
 	void Update();
+
+	bool EquippedWeapon = false;
+
+	glm::vec2 w_position;
+	glm::vec2 w_scale;
+
+	int WeaponFrame;
 
 	
 

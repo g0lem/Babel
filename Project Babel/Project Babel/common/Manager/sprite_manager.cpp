@@ -79,7 +79,7 @@ void SpriteManager::Render(Controller * ctrl, GameObject * g_obj)
 
 
 		this->s_screen->Render(ctrl, this->GetScreenPointer());
-		if (ctrl->GetKeyOnce(GLFW_KEY_ENTER) == 1 || ctrl->GetKeyOnce(GLFW_KEY_SPACE) == 1 || ctrl->GetKeyOnce(GLFW_KEY_ESCAPE) == 1)
+		if (ctrl->GetKeyOnce(GLFW_KEY_ENTER) == 1)
 			this->s_screen->SkipFrame();
 
 

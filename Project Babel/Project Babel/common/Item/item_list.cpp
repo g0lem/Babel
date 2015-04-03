@@ -30,7 +30,7 @@ void ItemList::LoadItems()
 
    
 
-	Item *new_item = new Item;
+	/*Item *new_item = new Item;
 	read_names();
 
 
@@ -53,43 +53,44 @@ void ItemList::LoadItems()
 
 	while (sqlite3_step(res) == SQLITE_ROW)
 	{
-		
-		    
-		
-		    new_item->type = sqlite3_column_int(res, 0);
+		    new_item->frame = sqlite3_column_int(res, 0);
 			new_item->attack_speed = Rand(sqlite3_column_int(res, 2), sqlite3_column_int(res, 3));
 			new_item->attack.x = sqlite3_column_int(res, 4);
 			new_item->attack.y = sqlite3_column_int(res, 5);
 			new_item->armor = Rand(sqlite3_column_int(res, 6), sqlite3_column_int(res, 7));
 			new_item->dodge = Rand(sqlite3_column_int(res, 8), sqlite3_column_int(res, 9));
 			new_item->level = Rand(sqlite3_column_int(res, 10), sqlite3_column_int(res, 11));
-			//new_item->item_name = NameGenerator(new_item->type);
-			std::cout <<"TEST:"<< NameGenerator("sword")<<"\n";
-
-			//std::cout << sqlite3_column_int(res, 3) << " " << sqlite3_column_int(res, 4) << std::endl;
+		
 			this->list.push_back(new_item);
 
-			// test
-			    /*std::cout << "AS:" << new_item->attack_speed << std::endl;
-				std::cout << "AT:" << new_item->attack.x << " " << new_item->attack.y << std::endl;
-				std::cout << "AM:" << new_item->armor << std::endl;
-				std::cout << "DG:" << new_item->dodge << std::endl;
-				std::cout << "LV:" << new_item->level<< std::endl;
-				std::cout << "NM:" << new_item->item_name<< std::endl;
-				std::cout << "\n\n\n\n *************************************** \n\n\n\n";*/
 
-
-			
-
-
-				new_item = new Item;
-
-		
+		new_item = new Item;
 	}
 	
 
 	sqlite3_finalize(res);
-	sqlite3_close(db);
+	sqlite3_close(db);*/
+
+
+
+	Item * m_item = new Item;
+
+	m_item->Init();
+	m_item->attack = glm::vec2(5, 5);
+	m_item->attack_speed = 2.f;
+
+	this->list.push_back(m_item);
+
+	m_item->frame = 1;
+	m_item->type = ITEM_TYPE_WEAPON;
+
+	this->list.push_back(m_item);
+
+	m_item->frame = 2;
+	m_item->type = ITEM_TYPE_WEAPON;
+
+	this->list.push_back(m_item);
+
 
 }
 
@@ -124,23 +125,19 @@ void ItemList::read_names()
 	{
 
 		buf << sqlite3_column_text(res, 2);
-		//is visited == 0
 		if (listed_name(buf.str()) == -1)
 		{
 			new_name = new names;
 
 			new_name->type = buf.str();
-			//std::cout << buf.str() << std::endl;
 			buf.str("");
 
 			buf << sqlite3_column_text(res, 1);
 			new_name->prefix.push_back(buf.str());
-			//std::cout << buf.str() << std::endl;
 			buf.str("");
 
 			buf << sqlite3_column_text(res, 3);
 			new_name->sufix.push_back(buf.str());
-			//std::cout << buf.str() << std::endl;
 			buf.str("");
 
 			namelist->push_back(new_name);
@@ -148,17 +145,14 @@ void ItemList::read_names()
 		else
 		{
 			index = listed_name(buf.str());
-			//std::cout << buf.str() << std::endl;
 			buf.str("");
 
 			buf << sqlite3_column_text(res, 1);
 			namelist->at(index)->prefix.push_back(buf.str());
-			//std::cout << buf.str() << std::endl;
 			buf.str("");
 
 			buf << sqlite3_column_text(res, 3);
 			namelist->at(index)->sufix.push_back(buf.str());
-			//std::cout << buf.str() << std::endl;
 			buf.str("");
 
 		}
@@ -178,9 +172,6 @@ std::string ItemList::NameGenerator(std::string type)
 
 	std::ostringstream buf;
 
-	//srand(Rand(1000));
-	
-
 	random = Rand(namelist->at(index)->prefix.size());
 	buf << namelist->at(index)->prefix[random] << " ";
 	buf << type << " ";
@@ -199,9 +190,11 @@ std::string ItemList::NameGenerator(std::string type)
 void ItemList::LoadSprites()
 {
 	char ** tex_str = new char*[3];
+
 	tex_str[0] = "potion.png";
 	tex_str[1] = "hammer.png";
 	tex_str[2] = "sword.png";
+
 	this->m_sprite = new Sprite();
 
 	this->m_sprite->Load(3, "data/items/", tex_str);
