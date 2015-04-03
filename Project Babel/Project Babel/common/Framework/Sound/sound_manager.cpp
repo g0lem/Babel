@@ -10,7 +10,7 @@ void SoundManager::Init()
 	s_playing.playing = false;
 
 
-	this->soundpath = new char*[1];
+	this->soundpath = new char*[MAX_SOUNDS];
 
 	this->musicpath = new char*[MAX_MUSIC];
 
@@ -29,42 +29,16 @@ void SoundManager::Init()
 
 }
 
-
-
 void SoundManager::loadSounds(char** path)
 {
 
 
-	path[0] = "data/media/sounds/ambience1.flac";
-	path[1] = "data/media/sounds/ambience2.wav";
-	path[2] = "data/media/sounds/ambience3.flag";
-	path[3] = "data/media/sounds/ambience4.wav";
-	path[4] = "data/media/sounds/attack1.wav";
-	path[5] = "data/media/sounds/attack2.wav";
-	path[6] = "data/media/sounds/attack3.wav";
-	path[7] = "data/media/sounds/equipitem.wav";
-	path[8] = "data/media/sounds/menupressbutton.wav";
-	path[9] = "data/media/sounds/opendoor.wav";
-	path[10] = "data/media/sounds/openinventory.wav";
-	path[11] = "data/media/sounds/scorpionattack.wav";
-	path[12] = "data/media/sounds/scorpiondie.wav";
-	path[13] = "data/media/sounds/walksound.ogg";
+	soundpath[0] = "data/media/sounds/attack2.wav";
 
 
-	AddSound(path[0], "Ambience1");
-	AddSound(path[1], "Ambience2");
-	AddSound(path[2], "Ambience3");
-	AddSound(path[3], "Ambience1");
-	AddSound(path[4], "Attack1");
-	AddSound(path[5], "Attack2");
-	AddSound(path[6], "Attack3");
-	AddSound(path[7], "Equip Item");
-	AddSound(path[8], "Menu press button");
-	AddSound(path[9], "Open Door");
-	AddSound(path[10], "Open Inventory");
-	AddSound(path[11], "Scorpion Attack");
-	AddSound(path[12], "Scorpion Die");
-	AddSound(path[13], "Walksound");
+
+	AddSound(soundpath[0], "Attack");
+
 
 }
 
@@ -74,12 +48,16 @@ void SoundManager::loadMusic(char** path)
 
 
 
-	path[0] = "data/media/sounds/attack2.wav";
+	musicpath[0] = "data/media/music/spooky.ogg";
+	musicpath[1] = "data/media/music/hills.ogg";
+	musicpath[2] = "data/media/music/tut3.ogg";
 
 
 
 
-	AddMusic(path[0], "attack");
+	AddMusic(musicpath[0], "Spooky Scary Skeletons");
+	AddMusic(musicpath[1], "Green Hills");
+	AddMusic(musicpath[2], "Tutorial 3");
 
 
 
@@ -211,33 +189,6 @@ void SoundManager::PlaySound(char* p_sound)
 	}
 
 
-}
-
-void SoundManager::PlaySound(int index)
-{
-	if (!s_playing.playing)
-	{
-
-		this->m_sounds->at(index)->sound->play();
-
-		s_playing.playing = true;
-
-	}
-	else
-	{
-
-		//printf("%c, is currently playing, switching to %c\n", this->m_sounds->at(GetSoundIndex(s_playing.name))->name, p_sound);
-
-
-		//setSoundStatus(s_playing.name, Paused);
-
-		this->m_sounds->at(index)->sound->play();
-
-
-		//s_playing.name = p_sound;
-
-
-	}
 }
 
 
