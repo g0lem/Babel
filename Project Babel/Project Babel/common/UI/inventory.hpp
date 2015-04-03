@@ -29,6 +29,8 @@ class Inventory: public InventoryProperties
 
 	int WeaponFrame;
 
+	Item * weapon_item;
+
 	
 
 	

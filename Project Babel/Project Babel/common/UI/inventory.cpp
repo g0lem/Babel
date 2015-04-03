@@ -174,7 +174,9 @@ void Inventory::Render(Controller *ctrl, ScreenUniformData *u_data, GameObject *
 
 					this->EquippedWeapon = true;
 
-					//g_obj->GetItemList()->GetInventory().erase(g_obj->GetItemList()->GetInventory().begin() + i);
+					this->weapon_item = g_obj->GetItemList()->GetInventory()[i];
+
+					g_obj->GetItemList()->DeleteFromInventory(i);
 
 				}
 			}
@@ -201,6 +203,7 @@ void Inventory::Render(Controller *ctrl, ScreenUniformData *u_data, GameObject *
 		{
 			this->EquippedWeapon = false;
 			this->w_scale = vec2_0;
+			g_obj->GetItemList()->AddtoInventory(weapon_item);
 		}
 
 	}

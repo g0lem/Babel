@@ -27,7 +27,7 @@ int UI_helper::GetItemAction(Controller * ctrl, Property * m_prop)
 		return NONE;
 
 
-	if (ctrl->GetMouseButton(GLFW_MOUSE_BUTTON_RIGHT))
+	if (ctrl->GetMouseButtonOnce(GLFW_MOUSE_BUTTON_RIGHT))
 		return PRESSED;
 	else
 		return HOVER;
