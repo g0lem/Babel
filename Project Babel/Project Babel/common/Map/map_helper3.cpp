@@ -317,15 +317,14 @@ void Map::AddDoors()
 	}
 
 
-	/*this->AddTablets();
-	this->AddPotions();*/
+
+	//this->AddPotions();
 
 }
 
-/*
-void Map::AddTablets()
+
+void Map::AddTablets(GameObject *g_obj)
 {
-	srand(time(NULL));
 	int x, y;
 	int tablets_added=0;
 	while (tablets_added < 1)
@@ -334,12 +333,12 @@ void Map::AddTablets()
 		y = rand() % (tilemap->GetSize().y);
 		if (this->tilemap->GetTiles()[x][y] == 0)
 		{
-			tilemap->GetTiles()[x][y] = TABLET;
+			g_obj->GetItemList()->SpawnObject(TABLET_ID, glm::vec2(x, y));
 			tablets_added++;
 		}
 	}
 }
-
+/*
 void Map::AddPotions()
 {
 	int x, y;
@@ -350,7 +349,7 @@ void Map::AddPotions()
 		y = rand() % (tilemap->GetSize().y);
 		if (this->tilemap->GetTiles()[x][y] == 0)
 		{
-			tilemap->GetTiles()[x][y] = HEALTH_POTION;
+			ItemList::AddDroppedItem(TABLET_ID, glm::vec2(x, y));
 			potions_added++;
 		}
 	}

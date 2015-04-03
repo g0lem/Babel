@@ -8,20 +8,27 @@
 
 class ItemList
 {
-
+	
 
 
 	//Item ** list;
-	struct Object
+
+	struct Dropped
 	{
 		int x, y;
 		Item* item;
 	};
 
+	struct Object
+	{
+		glm::vec2 position;
+		int id;
+	};
 	
-	std::vector<Object*> dropped_items;
+	std::vector<Dropped*> dropped_items;
 
-	std::vector<Object*> environment;
+	std::vector<Object*> objectlist;
+	
 	
 	std::vector <Item*> list;
 	std::vector <Item*> Inventory;
@@ -38,6 +45,7 @@ class ItemList
 	std::vector<names*> *namelist;
 
 	Sprite *m_sprite;
+	Sprite *s_objects;
 
 	void AddPotions();
 
@@ -59,6 +67,10 @@ public:
 
 	void LoadSprites();
 
+	void LoadObjects();
+
+	void SpawnObject(int id, glm::vec2 position);
+
 	void DeleteFromInventory(int i){ this->Inventory.erase(Inventory.begin() + i); }
 
 	void DeleteFromDroppedList(int i){ this->dropped_items.erase(dropped_items.begin() + i); }
@@ -67,9 +79,13 @@ public:
 
 	inline std::vector <Item*> GetInventory(){ return this->Inventory; }
 
-	inline std::vector <Object*> GetDroppedItems(){ return this->dropped_items; }
+	inline std::vector <Dropped*> GetDroppedItems(){ return this->dropped_items; }
+
+	inline std::vector <Object*> GetObjects(){ return this->objectlist; }
 
 	inline Sprite *GetSprite(){ return this->m_sprite; }
+
+	inline Sprite *GetObjectSprite(){ return this->s_objects; }
 
 	inline ItemList(){ this->Init(); }
 

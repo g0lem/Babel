@@ -66,7 +66,7 @@ private:
 
 	void AddTunnel(glm::ivec2 point_a, glm::ivec2 point_b);
 
-	void AddTablets();
+	void AddTablets(GameObject *g_obj);
 
 	void AddPotions();
 

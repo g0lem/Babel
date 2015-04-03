@@ -24,6 +24,18 @@ void ItemList::AddPotions()
 
 }
 
+
+void ItemList::SpawnObject(int id, glm::vec2 position)
+{
+	Object *obj = new Object();
+	obj->position = position;
+	obj->id = id;
+	this->objectlist.push_back(obj);
+}
+
+
+
+
 void ItemList::LoadItems()
 {
 	//this->AddPotions();
@@ -206,12 +218,23 @@ void ItemList::LoadSprites()
 	this->m_sprite = new Sprite();
 
 	this->m_sprite->Load(3, "data/items/", tex_str);
+
+
+	char ** tex_str2 = new char*[1];
+
+	tex_str2[0] = "tablet.png";
+	
+
+	this->s_objects= new Sprite();
+
+	this->s_objects->Load(1, "data/tiles/", tex_str2);
+
 }
 
 
 void ItemList::AddDroppedItem(int x, int y, Item *item)
 {
-	Object *dropped_item = new Object();
+	Dropped *dropped_item = new Dropped();
 	dropped_item->x = x;
 	dropped_item->y = y;
 	dropped_item->item = item;
