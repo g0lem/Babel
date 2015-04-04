@@ -63,7 +63,7 @@ void SpriteManager::Advance(GameObject * g_obj)
 
 
 
-	this->map->Init(g_obj);
+	this->map->InitBoss(g_obj);
 
 g_obj->GetCollisionMap()->CreateOutOfMap(this->map->GetTilemap());
 	this->player->Advance(g_obj, this->map);
