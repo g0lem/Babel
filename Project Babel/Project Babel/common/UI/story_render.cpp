@@ -20,6 +20,8 @@ void StoryRender::Init()
 	letter_size = glm::vec2(34, 34);
 	inventory_size = glm::vec2(40, 40);
 
+	this->textsize = glm::vec2(190, 147);
+
 	LoadSprites();
 
 	LoadButtons();
@@ -32,10 +34,14 @@ void StoryRender::LoadSprites()
 	this->skins = new Sprite();
 	this->b_skins = new Sprite();
 	this->t_skins = new Sprite();
+	this->story = new Sprite();
+	this->cons = new Sprite();
 
 	char **textures = new char*[4];
 	char **btextures = new char*[2];
 	char **ttextures = new char*[12];
+	char **story = new char*[2];
+	char **cons = new char*[2];
 
 	textures[0] = "storybox2.png";
 	textures[1] = "consciousplaceholder.png";
@@ -59,9 +65,16 @@ void StoryRender::LoadSprites()
 	ttextures[11] = "12.png";
 	ttextures[0] = "1.png";
 
+	story[0] = "tablet1descript.png";
+	story[1] = "tablet2descript.png";
+	cons[0] = "tablet1consc.png";
+	cons[1] = "tablet2consc.png";
+
 	this->skins->Load(4, "data/UI/Story/", textures);
 	this->b_skins->Load(2, "data/UI/Story/", btextures);
 	this->t_skins->Load(12, "data/UI/Story/", ttextures);
+	this->story->Load(2, "data/UI/Story/", story);
+	this->cons->Load(2, "data/UI/Story/", cons);
 }
 
 void StoryRender::LoadButtons()
@@ -76,7 +89,7 @@ void StoryRender::LoadButtons()
 
 		Property * m_prop = new Property();
 		m_prop->size = inventory_size;
-		m_prop->color = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
+		m_prop->color = glm::vec4(0.4f, 0.4f, 0.4f, 1.0f);
 
 		tablets[i] = new Button(m_prop);
 
@@ -99,18 +112,31 @@ void StoryRender::RenderStaticItems(Controller *ctrl, ScreenUniformData *u_data,
 
 	u_data->ApplyMatrix(Translation(this->storybox_position)*Scale(this->storybox_size));
 	this->skins->Render(0);
-
-	u_data->ApplyMatrix(Translation(this->storybox_position + this->conscious_position)*Scale(this->conscious_size));
-	this->skins->Render(1);
-
-	u_data->ApplyMatrix(Translation(this->storybox_position + this->storylogo_position)*Scale(this->storylogo_size));
-	this->skins->Render(2);
+	
 
 	u_data->ApplyMatrix(Translation(this->storybox_position + this->story_text_position)*Scale(this->story_text_size));
 	this->skins->Render(3);
+
+	if (RenderCons == true && RenderText == true){
+		u_data->ApplyMatrix(Translation(this->storybox_position + glm::vec2(storybox_size.x, 110) / 2.f - glm::vec2(this->textsize.x / 2.f, 0))*Scale(this->textsize));
+		this->story->Render(currentTextFrame);
+
+		u_data->ApplyMatrix(Translation(this->storybox_position + glm::vec2(storybox_size.x, 310)/2.f - glm::vec2(this->textsize.x/2.f, 0))*Scale(this->textsize));
+		this->cons->Render(currentConsFrame);
+	}
+	else
+	{
+		u_data->ApplyMatrix(Translation(this->storybox_position + this->conscious_position)*Scale(this->conscious_size));
+		this->skins->Render(1);
+
+		u_data->ApplyMatrix(Translation(this->storybox_position + this->storylogo_position)*Scale(this->storylogo_size));
+		this->skins->Render(2);
+
+	}
+
 }
 
-void StoryRender::Update()
+void StoryRender::Update(GameObject *g_obj)
 {
 		for (GLuint j = 0; j < 3; j++)
 		{
@@ -119,6 +145,9 @@ void StoryRender::Update()
 			{
 
 				this->tablets[j * 4 + i]->GetProperties()->position = this->storybox_position + glm::vec2(33, 265) + glm::vec2(i, j)*this->inventory_size;
+
+				
+
 			}
 		}
 
@@ -136,20 +165,45 @@ void StoryRender::Render(Controller *ctrl, ScreenUniformData *u_data, GameObject
 
 
 	RenderStaticItems(ctrl, u_data, g_obj);
-	this->Update();
+	this->Update(g_obj);
 
 
 
 
 	for (int i = 0; i < 12; i++)
 	{
-
 		g_obj->GetUIState()->GetStoryState()->GetButtonState()[i] = UI_helper::GetButtonAction(ctrl, this->tablets[i]->GetProperties());
+
+		
+
+		if (i < g_obj->GetTablets()->size())
+		{
+			if (g_obj->GetTablets()->at(i)->state != 1)
+			{
+				this->tablets[i]->GetProperties()->color = glm::vec4(0.4f, 0.4f, 0.4f, 1.0f);
+			}
+			else
+			{
+
+				this->tablets[i]->GetProperties()->color = BLIND_COLOR;
+				if (g_obj->GetUIState()->GetStoryState()->GetButtonState()[i] == PRESSED)
+				{
+					this->RenderCons = true;
+					this->RenderText = true;
+
+					this->currentTextFrame = i;
+					this->currentConsFrame = i;
+				}
+			}
+		}
+		
 
 		this->tablets[i]->RenderItem(ctrl, u_data, this->b_skins, 0, g_obj->GetUIState()->GetStoryState()->GetButtonState()[i]);
 
 		u_data->ApplyMatrix(Translation(this->tablets[i]->GetProperties()->position + glm::vec2(3, 3))*Scale(letter_size));
 		this->t_skins->Render(i);
+		
+		
 	}
 
 

@@ -33,7 +33,7 @@ void EventHandler::Load(Map *current_map, GameObject *g_obj)
 		if (g_obj->GetItemList()->GetDroppedItems()[i]->x >= 0 && g_obj->GetItemList()->GetDroppedItems()[i]->y >=0)
 		e_map[g_obj->GetItemList()->GetDroppedItems()[i]->x][g_obj->GetItemList()->GetDroppedItems()[i]->y] = 5;
 
-	std::cout << "Marimea: " << g_obj->GetItemList()->GetObjects().size()<<"\n";
+	//std::cout << "Marimea: " << g_obj->GetItemList()->GetObjects().size()<<"\n";
 
 	for (int i = 0; i < g_obj->GetItemList()->GetObjects().size(); i++)
 	{
@@ -173,20 +173,17 @@ void EventHandler::NextLvl(glm::vec2 position, Map *current_map, GameObject *g_o
 	{
 		if (g_obj->GetItemList()->GetObjects()[i]->position == position && g_obj->GetItemList()->GetObjects()[i]->id == STAIRS_ID)
 		{
-			std::cout << "YAY, STAIRS\n";
+			//std::cout << "YAY, STAIRS\n";
 			g_obj->rebuild = true;
 		}
 			
 	}
 }
 
-
-
 void EventHandler::TriggerEvent(glm::vec2 position, Map *current_map, GameObject *g_obj, Stats *m_stats)
 {
 	//in g_obj e item_list-ul
 
-	
 	this->Door(position, current_map, g_obj);
 	this->Health(position, current_map, m_stats, g_obj);
 	this->PickUp(position, current_map, g_obj);
@@ -194,7 +191,30 @@ void EventHandler::TriggerEvent(glm::vec2 position, Map *current_map, GameObject
 
 
 	if (e_map[(int)(position.x)][(int)(position.y)] == 2) //sa pui tool tip-ul Bursucului
-		std::cout << "YOU MUST SEEK GOD!\n";
+	{
+		n_check = false;
+		for (int i = 0; i < g_obj->GetTablets()->size(); i++)
+		{
+			if (g_obj->GetTablets()->at(i)->pos == position)
+				n_check = true;
+		}
+
+		if (n_check == false)
+		{
+			untablet *u_t = new untablet;
+			g_obj->unlockedtablets++;
+
+			u_t->frameCon = g_obj->unlockedtablets;
+			u_t->frameText = g_obj->unlockedtablets;
+			u_t->id = g_obj->unlockedtablets;
+			u_t->state = 1;
+			u_t->pos = position;
+
+			g_obj->GetTablets()->push_back(u_t);
+
+		}
+
+	}
 
 
 }

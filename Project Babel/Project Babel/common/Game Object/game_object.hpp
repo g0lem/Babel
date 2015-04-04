@@ -7,7 +7,14 @@
 
 #ifndef GAME_OBJECT_HPP
 #define GAME_OBJECT_HPP
-
+struct untablet
+{
+	int frameText;
+	int frameCon;
+	int id;
+	glm::vec2 pos;
+	int state;
+};
 
 class GameObject
 {
@@ -37,6 +44,7 @@ class GameObject
 	TextObject * t_object;
 	FontList * f_list;
 
+
 	
 
 
@@ -46,6 +54,9 @@ public:
 	inline GameObject(){ this->Init(); }
 	inline ~GameObject(){ this->Clean(); }
 
+	
+
+	int unlockedtablets = 0;
 
 	inline UIState * GetUIState(){ return this->ui_state; }
 	inline Scroller * GetScroller(){ return this->m_scroller; }
@@ -61,6 +72,9 @@ public:
 
 	void Init();
 
+	std::vector<untablet*> *u_t;
+
+	inline std::vector<untablet*> *GetTablets(){ return this->u_t; }
 
 	void Clean();
 

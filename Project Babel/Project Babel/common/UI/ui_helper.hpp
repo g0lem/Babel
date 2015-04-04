@@ -122,7 +122,7 @@ public:
 
 
 
-	static GLuint GetButtonAction(Controller * ctrl,Property * m_prop);
+	static GLuint GetButtonAction(Controller * ctrl, Property * m_prop);
 	static int GetItemAction(Controller *ctrl, Property *m_prop);
 
 
@@ -138,7 +138,7 @@ struct ttvec
 	bool status;
 	int frame;
 	bool renderstring;
-	
+
 };
 
 #define TOOLTIP_ACTIVE 1
@@ -174,10 +174,17 @@ public:
 		this->tooltips = new std::vector < ttvec* >;
 		this->t_sprite = new Sprite();
 
-		char **textures = new char*[1];
-		textures[0] = "tooltip.png";
+		char **textures = new char*[8];
+		textures[0] = "menutooltip.png";
+		textures[1] = "inventorytooltip.png";
+		textures[2] = "inspecttooltip.png";
+		textures[3] = "storytooltip.png";
+		textures[4] = "skipturntooltip.png";
+		textures[5] = "weapontooltip.png";
+		textures[6] = "armortooltip.png";
+		textures[7] = "potiontooltip.png";
 
-		this->t_sprite->Load(1, "data/UI/", textures);
+		this->t_sprite->Load(8, "data/UI/", textures);
 
 	}
 
@@ -204,6 +211,11 @@ public:
 
 	}
 
+	inline void UpdateSize(int index, glm::vec2 size)
+	{
+		this->tooltips->at(index)->size = size;
+	}
+
 	inline void UpdatePosition(int index, glm::vec2 position)
 	{
 
@@ -219,11 +231,11 @@ public:
 	inline void RenderText(GameObject *g_obj, Controller *ctrl)
 	{
 
-		int i = this->GetRenderingIndex();
+		/*int i = this->GetRenderingIndex();
 		if (tooltips->at(i)->status == TOOLTIP_ACTIVE && tooltips->at(i)->renderstring == true)
 		{
-			g_obj->GetFontList()->GetFont()->Print(this->tooltips->at(i)->string, this->tooltips->at(i)->stringposition.x, this->tooltips->at(i)->stringposition.y, 17);
-		}
+		g_obj->GetFontList()->GetFont()->Print(this->tooltips->at(i)->string, this->tooltips->at(i)->stringposition.x, this->tooltips->at(i)->stringposition.y, 17);
+		}*/
 
 	}
 
