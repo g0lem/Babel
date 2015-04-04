@@ -40,8 +40,7 @@ void Player::Advance(GameObject * g_obj, Map * current_tilemap)
 
 
 	this->LoadPhysicalAttributes(current_tilemap);
-	this->attributes->position.x = 10;
-	this->attributes->position.y = 10;
+	this->SetTarget(-1);
 
 	this->a_path = new AutoPath();
 	this->m_dir = new Direction();
