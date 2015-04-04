@@ -23,6 +23,21 @@ void Map::Init(GameObject *g_obj)
 }
 
 
+void Map::InitBoss(GameObject *g_obj)
+{
+
+
+	this->BossSprites();
+
+
+
+	this->GenerateBossRoom(g_obj);
+
+
+
+
+}
+
 
 
 
@@ -64,6 +79,63 @@ void Map::GenerateContent(GameObject *g_obj)
 
 }
 
+void Map::GenerateBossRoom(GameObject *g_obj)
+{
+	this->tilemap = new Tilemap();
+
+	this->tilemap->Init();
+
+	//this->AddRooms(1);
+	this->AddBossRoom();
+	
+
+	
+
+	this->tilemap->GenerateBossRoom();
+
+
+
+	g_obj->GetCollisionMap()->CreateOutOfMap(this->GetTilemap());
+
+
+	this->fog = new fog_of_war();
+	fog->Init(g_obj);
+	fog->GetFOW(g_obj, glm::ivec2(10, 10));
+
+
+
+	/*this->tilemap = new Tilemap();
+
+	this->tilemap->Init();
+
+
+	this->AddRooms(2);
+
+
+	this->m_graph = new Graph(this->rooms->size());
+
+
+	this->FirstTunnelPass();
+
+
+	this->SecondTunnelPass();
+
+
+	this->AddDoors();
+
+
+	this->AddTablets(g_obj);
+	this->AddStairs(g_obj);
+
+
+	g_obj->GetCollisionMap()->CreateOutOfMap(this->GetTilemap());
+
+
+	this->fog = new fog_of_war();
+	fog->Init(g_obj);
+	*/
+
+}
 
 
 

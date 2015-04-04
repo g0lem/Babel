@@ -51,6 +51,27 @@ void Room::Create(glm::vec2 start_point, GLfloat width, GLfloat height)
 
 }
 
+void Room::CreateBossRoom()
+{
+
+
+
+	this->points[0] = vec2_0;
+	this->points[1] = vec2_0 + glm::vec2(20, 20);
+
+
+	this->center = GetCenter(this->points);
+
+	this->width = 20;
+
+	this->height = 20;
+
+
+}
+
+
+
+
 
 GLboolean Room::Intersects(Room * other)
 {

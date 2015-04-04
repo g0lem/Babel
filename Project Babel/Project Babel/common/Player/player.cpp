@@ -40,7 +40,8 @@ void Player::Advance(GameObject * g_obj, Map * current_tilemap)
 
 
 	this->LoadPhysicalAttributes(current_tilemap);
-
+	this->attributes->position.x = 10;
+	this->attributes->position.y = 10;
 
 	this->a_path = new AutoPath();
 	this->m_dir = new Direction();
@@ -50,6 +51,10 @@ void Player::Advance(GameObject * g_obj, Map * current_tilemap)
 	this->last_wanted_position = glm::vec2(0, 0);
 	this->a_handler = new ActionHandler();
 	this->able_to_move = false;
+
+
+    
+	
 
 
 	this->LoadItems(g_obj);
@@ -69,6 +74,7 @@ void Player::Render(SoundManager *sm, Controller * ctrl, ScreenUniformData * u_d
 
 	this->LoadItems(g_obj);
 
+	std::cout << this->attributes->position.x << " " << this->attributes->position.y << std::endl;
 
 
 	u_data->ApplyMatrix(Translation(GridPosition(attributes->position*attributes->scale + g_obj->GetScroller()->GetOffset(), attributes->scale))*

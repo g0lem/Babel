@@ -54,7 +54,8 @@ void SpriteManager::Advance(GameObject * g_obj)
 
 	this->BindCreate("data/shaders/2d_vert.txt", "data/shaders/2d_frag.txt");
 
-
+	
+	
 
 
 	this->map = new Map();
@@ -63,12 +64,14 @@ void SpriteManager::Advance(GameObject * g_obj)
 
 
 	this->map->Init(g_obj);
-	g_obj->GetCollisionMap()->CreateOutOfMap(this->map->GetTilemap());
+	
+g_obj->GetCollisionMap()->CreateOutOfMap(this->map->GetTilemap());
 
+this->player->Advance(g_obj, this->map);
 
 
 	
-	this->player->Advance(g_obj, this->map);
+	
 	
 	this->m_enemies = new EnemyManager(10, this->map, g_obj, 0);
 
@@ -114,7 +117,7 @@ void SpriteManager::Clean()
 void SpriteManager::Render(SoundManager * sm, Controller * ctrl, GameObject * g_obj)
 {
 
-
+	g_obj->GetCollisionMap()->CreateOutOfMap(this->map->GetTilemap());
 	this->BindRun(ctrl->GetWindowWidth(), ctrl->GetWindowHeight());
 
 
@@ -136,7 +139,7 @@ void SpriteManager::Render(SoundManager * sm, Controller * ctrl, GameObject * g_
 
 		g_obj->GetScroller()->ComputeScreenLimits(ctrl, this->map->GetTilemap()->GetSize(), this->map->GetTilemap()->GetTileScale());
 		this->map->Render(ctrl, this->GetScreenPointer(), g_obj, player->GetPAttributes()->position);
-		
+
 
 		this->player->Render(sm, ctrl, this->GetScreenPointer(), g_obj, this->map);
 		this->m_enemies->Render(sm, ctrl, this->GetScreenPointer(), g_obj, this->map);
