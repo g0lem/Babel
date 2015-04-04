@@ -22,6 +22,8 @@ class EnemyLoader
 
 	std::vector<EnemyData*>*data;
 
+	int type = 0;
+
 
 public:
 
@@ -32,7 +34,7 @@ public:
 
 	inline EnemyLoader(){ this->Init(); }
 
-
+	inline int GetType(){ return this->type; }
 
 	void Init();
 

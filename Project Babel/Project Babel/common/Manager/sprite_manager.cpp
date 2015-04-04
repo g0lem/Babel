@@ -26,7 +26,7 @@ void SpriteManager::Init(GameObject * g_obj)
 
 	this->player = new Player();
 	this->player->Load(g_obj, this->map);
-	this->m_enemies = new EnemyManager(10, this->map, g_obj);
+	this->m_enemies = new EnemyManager(10, this->map, g_obj, 0);
 
 	this->m_effects = new EffectsHandler();
 
@@ -70,7 +70,7 @@ void SpriteManager::Advance(GameObject * g_obj)
 	
 	this->player->Advance(g_obj, this->map);
 	
-	this->m_enemies = new EnemyManager(10, this->map, g_obj);
+	this->m_enemies = new EnemyManager(10, this->map, g_obj, 0);
 
 	this->m_effects = new EffectsHandler();
 

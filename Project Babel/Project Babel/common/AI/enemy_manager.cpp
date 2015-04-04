@@ -50,7 +50,7 @@ void EnemyManager::Render(SoundManager *sm, Controller * ctrl, ScreenUniformData
 
 
 
-void EnemyManager::Init(GLuint num, Map * map, GameObject * g_obj)
+void EnemyManager::Init(GLuint num, Map * map, GameObject * g_obj, int type)
 {
 
 
@@ -64,8 +64,7 @@ void EnemyManager::Init(GLuint num, Map * map, GameObject * g_obj)
 
 	while (num_e < num)
 	{
-
-		this->m_enemies[0][num_e] = new Enemy(g_obj->GetEnemyLoader()->GetData()[0][0]);
+		this->m_enemies[0][num_e] = new Enemy(g_obj->GetEnemyLoader()->GetData()[0][type]);
 		this->m_enemies[0][num_e]->SetRandomPosition(map);
 		this->m_enemies[0][num_e]->Update(g_obj, 0);
 		glm::vec2 t_pos = this->m_enemies[0][num_e]->GetPAttributes()->position;
@@ -82,12 +81,7 @@ void EnemyManager::Init(GLuint num, Map * map, GameObject * g_obj)
 			ok = false;
 		if (ok)
 			num_e++;
-
-
 	}
-
-
-	
 	
 }
 
