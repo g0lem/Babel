@@ -355,6 +355,22 @@ void Map::AddStairs(GameObject *g_obj)
 	}
 }
 
+void Map::AddSpikes(GameObject *g_obj)
+{
+	int x, y;
+	int tablets_added = 0;
+	while (tablets_added < 4)
+	{
+		x = rand() % (tilemap->GetSize().x);
+		y = rand() % (tilemap->GetSize().y);
+		if (this->tilemap->GetTiles()[x][y] == 0)
+		{
+			g_obj->GetItemList()->SpawnObject(SPIKES_ID, glm::vec2(x, y));
+			tablets_added++;
+		}
+	}
+}
+
 
 
 /*
@@ -375,3 +391,5 @@ void Map::AddPotions()
 }
 
 */
+
+

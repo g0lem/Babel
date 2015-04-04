@@ -12,7 +12,11 @@ class EventHandler
 	void PickUp(glm::vec2 position, Map *current_map, GameObject *g_obj);
 	void NextLvl(glm::vec2 position, Map *current_map, GameObject *g_obj);
 	void Health(glm::vec2 position, Map *current_map, Stats *m_stats, GameObject *g_obj);
+<<<<<<< HEAD
 	bool n_check = false;
+=======
+	void Trap(glm::vec2 position, Map *current_map, GameObject *g_obj);
+>>>>>>> origin/master
 
 public:
 	void Init(Map *current_map, GameObject *g_obj);

@@ -51,7 +51,7 @@ class Player
 	void LoadPhysicalAttributes(Map * current_tilemap);
 	void LoadStats();
 	void LoadItems(GameObject * g_obj);
-
+	
 
 
 	void UpdateUI(GameObject * g_obj);
@@ -61,7 +61,7 @@ public:
 
 
 
-
+	void SetPosition(glm::vec2 position){ this->attributes->position = position; }
 	void Load(GameObject * g_obj, Map * current_tilemap);
 	void Advance(GameObject * g_obj, Map * current_tilemap);
 	void Render(SoundManager *sm, Controller * ctrl, ScreenUniformData *u_data, GameObject * g_obj, Map * current_map);

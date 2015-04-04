@@ -227,11 +227,11 @@ void ItemList::LoadSprites()
 	this->m_sprite->Load(3, "data/items/", tex_str);
 
 
-	char ** tex_str2 = new char*[2];
+	char ** tex_str2 = new char*[3];
 
 	tex_str2[0] = "tablet.png";
 	tex_str2[1] = "stairs.png";
-
+	tex_str2[2] = "spikes.png";
 
 	this->s_objects= new Sprite();
 

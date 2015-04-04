@@ -43,6 +43,47 @@ void Tilemap::GenerateTileMap()
 }
 
 
+void Tilemap::GenerateBossRoom()
+{
+
+	this->size.x = 20;
+	this->size.y = 20;
+
+	std::ifstream f("boss_map.txt");
+
+
+	this->tiles = new GLint*[this->size.x];
+	for (GLuint i = 0; i < this->size.x; i++)
+		this->tiles[i] = new GLint[this->size.y];
+
+
+
+	for (GLuint j = 0; j < this->size.y; j++)
+	{
+
+
+		for (GLuint i = 0; i < this->size.x; i++)
+
+
+		{
+
+			
+			f>>tiles[i][j];
+			
+
+		}
+		std::cout << "\n";
+
+
+
+	}
+
+
+
+}
+
+
+
 
 
 
@@ -58,6 +99,30 @@ void Tilemap::Init()
 
 
 	this->GenerateTileMap();
+
+
+	this->dark = new Sprite();
+
+
+	/*	char ** tex_str = new char*[1];
+	tex_str[0] = "dark.png";
+
+	dark->Load(1, "data/tiles/", tex_str);
+	*/
+}
+
+void Tilemap::InitBoss()
+{
+
+
+	this->tile_scale = glm::vec2(64.0f, 64.0f);
+
+
+	this->size = glm::ivec2(20, 20);
+
+
+
+	this->GenerateBossRoom();
 
 
 	this->dark = new Sprite();

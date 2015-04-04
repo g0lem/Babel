@@ -22,13 +22,13 @@ public:
 	void Render(Controller * ctrl, ScreenUniformData * u_data, GameObject * g_obj, glm::vec2 position);
 
 
-
+	void InitBoss(GameObject *g_obj);
 	void Init(GameObject *g_obj);
 
 
 	void TransformAndApplyRoomToTileMap(Room * room, Tilemap * tilemap, GLuint transform_flag);
 
-
+	
 
 	inline Tilemap * GetTilemap(){ return this->tilemap; }
 
@@ -62,13 +62,20 @@ private:
 
 
 	void GenerateContent(GameObject *g_obj);
+	
+	void GenerateBossRoom(GameObject *g_obj);
 
+	
+	
+	void BossSprites();
 
 	void AddTunnel(glm::ivec2 point_a, glm::ivec2 point_b);
 
 	void AddTablets(GameObject *g_obj);
 
 	void AddStairs(GameObject *g_obj);
+
+	void AddSpikes(GameObject *g_obj);
 
 	void AddPotions();
 
@@ -79,7 +86,7 @@ private:
 
 
 	void AddRooms(GLuint expected_rooms);
-
+	void AddBossRoom();
 
 	void AddDoors();
 

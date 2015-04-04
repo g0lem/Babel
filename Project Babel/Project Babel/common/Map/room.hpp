@@ -45,6 +45,7 @@ public:
 
 	void Create(glm::vec2 start_point, GLfloat width, GLfloat height);
 
+	void CreateBossRoom();
 
 	void Transform(GLuint transform_flag);
 

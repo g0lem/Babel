@@ -38,6 +38,10 @@ public:
 
 	void Init();
 
+	void InitBoss();
+
+
+	void GenerateBossRoom();
 
 	void Render(Controller * ctrl, ScreenUniformData * u_data, Sprite * m_sprite,
 		glm::ivec2 begin_limit, glm::ivec2 end_limit,
