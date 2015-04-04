@@ -349,6 +349,12 @@ int SoundManager::getSoundStatus(char* name)
 
 }
 
+int SoundManager::getSoundStatus(int index)
+{
+
+	return this->m_sounds->at(index)->sound->getStatus();
+}
+
 int SoundManager::getMusicStatus(char* name)
 {
 

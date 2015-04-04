@@ -307,7 +307,8 @@ void Player::HandleAutoPath(SoundManager *sm, Controller * ctrl, GameObject * g_
 		if (attributes->HasMovedATile(ctrl->GetFpsPointer()->Delta()) || attributes->HasReachedTarget())
 		{
 			a_path->Advance();
-			sm->PlaySound(WALKSOUND);
+			if (sm->getSoundStatus(WALKSOUND) != 2)
+				sm->PlaySound(WALKSOUND);
 			if (!able_to_move)
 			a_path->Start(g_obj, attributes->target, last_wanted_position);
 		}

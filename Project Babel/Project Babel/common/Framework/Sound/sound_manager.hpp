@@ -130,6 +130,8 @@ public:
 	// getStatus
 
 	int getSoundStatus(char *name);
+	int getSoundStatus(int index);
+
 
 	int getMusicStatus(char *name);
 
