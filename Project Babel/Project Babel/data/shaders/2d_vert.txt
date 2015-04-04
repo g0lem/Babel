@@ -10,7 +10,7 @@ out vec2 nUV;
 
 uniform mat3 TransformMatrix;
 uniform mat4 ortho;
-uniform vec2 newUV;
+uniform vec4 newUV;
 
 void main()
 {
@@ -25,12 +25,12 @@ void main()
 	UV = Positions;
 	else
 	{
-	vec2 size = vec2(48,48);
-	UV = Positions*1.0/size + newUV/size;
+	vec2 size = vec2(newUV.z,newUV.w);
+	UV = Positions*1.0/size + vec2(newUV.x,newUV.y)/size;
 	}
 
 
-	nUV = newUV;
+	nUV = vec2(newUV.x,newUV.y);
 
 
 }

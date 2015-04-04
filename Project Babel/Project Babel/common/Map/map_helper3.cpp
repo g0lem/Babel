@@ -349,10 +349,11 @@ void Map::AddStairs(GameObject *g_obj)
 		y = rand() % (tilemap->GetSize().y);
 		if (this->tilemap->GetTiles()[x][y] == 0)
 		{
-			g_obj->GetItemList()->SpawnObject(STAIRS_ID, glm::vec2(x, y));
+			g_obj->GetItemList()->SpawnObject(STAIRS_ID, (glm::vec2)(this->GetRoomsPointer()[0][1]->GetInternalCenter()));
 			tablets_added++;
 		}
 	}
+	
 }
 
 void Map::AddSpikes(GameObject *g_obj)

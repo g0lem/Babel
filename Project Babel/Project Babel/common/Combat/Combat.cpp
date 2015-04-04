@@ -103,7 +103,7 @@ void Combat::PlayerAttack(SoundManager * sm,Controller * ctrl,GameObject * g_obj
 			if (dmg >= hp)
 			{
 				player->GetStats()->GetXp()->xp++;
-				if (rand() % 10>6)
+				if (rand() % 10>3)
 				g_obj->GetItemList()->AddDroppedItem((int)(enemies->GetEnemiesPointer()[0][player->GetTarget()]->GetPAttributes()->position.x), (int)(enemies->GetEnemiesPointer()[0][player->GetTarget()]->GetPAttributes()->position.y), item);
 				// std::cout << g_obj->GetItemList()->GetDroppedItems().size()<<"\n";
 				enemies->GetEnemiesPointer()[0][player->GetTarget()]->GetStats()->GetHp()->Damage(player->GetItems()[ITEM_SLOT_WEAPON]->attack);
@@ -444,7 +444,7 @@ void Combat::EnemyMovement(Controller * ctrl, GameObject * g_obj, Player * playe
 
 				attr->target = a_path->GetStep();
 				g_obj->GetCollisionMap()->AddToList(glm::ivec2(attr->target));
-
+				g_obj->GetCollisionMap()->GetTiles()[glm::ivec2(attr->target).x][glm::ivec2(attr->target).y] = 1;
 
 
 				if (a_handler->IsStopped())

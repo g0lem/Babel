@@ -90,7 +90,6 @@ void Map::GenerateBossRoom(GameObject *g_obj)
 	
 
 	
-
 	this->tilemap->GenerateBossRoom();
 
 
