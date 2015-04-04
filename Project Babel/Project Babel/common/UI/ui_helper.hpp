@@ -127,3 +127,127 @@ public:
 
 
 };
+
+struct ttvec
+{
+	glm::vec2 size;
+	glm::vec2 position;
+	char *string;
+	int stringsize;
+	glm::vec2 stringposition;
+	bool status;
+	int frame;
+	bool renderstring;
+	
+};
+
+#define TOOLTIP_ACTIVE 1
+#define TOOLTIP_NOT_ACTIVE 0
+
+#define MENU 1
+#define INSPECT 2
+#define STORY 3
+#define INVENTORY 4
+#define PASSTURN 5
+
+#define WEAPON 6
+#define ARMOR 7
+
+#define INVENTORY_START 8
+#define INVENTORY_STOP 24
+
+class Tooltip
+{
+
+	Sprite *t_sprite;
+
+	std::vector<ttvec*> *tooltips;
+
+	int r_index;
+
+public:
+
+
+	inline Tooltip(){ this->Init(); }
+
+	inline void Init(){
+		this->tooltips = new std::vector < ttvec* >;
+		this->t_sprite = new Sprite();
+
+		char **textures = new char*[1];
+		textures[0] = "tooltip.png";
+
+		this->t_sprite->Load(1, "data/UI/", textures);
+
+	}
+
+	inline std::vector<ttvec*> *GetTooltips(){ return this->tooltips; }
+
+	inline void Add(glm::vec2 position, glm::vec2 size, char *string, int stringsize, int frame){
+		ttvec *temp = new ttvec;
+
+		temp->position = position;
+		temp->size = size;
+		temp->string = string;
+		temp->frame = frame;
+		temp->stringsize = stringsize;
+		temp->status = false;
+		temp->renderstring = false;
+
+		this->tooltips->push_back(temp);
+	}
+
+	inline void UpdateStatus(int index, bool status)
+	{
+
+		this->tooltips->at(index)->status = status;
+
+	}
+
+	inline void UpdatePosition(int index, glm::vec2 position)
+	{
+
+		this->tooltips->at(index)->position = position + glm::vec2(15, 15);
+
+	}
+
+	inline void UpdateText(int index, char *text)
+	{
+		this->tooltips->at(index)->string = text;
+	}
+
+	inline void RenderText(GameObject *g_obj, Controller *ctrl)
+	{
+
+		int i = this->GetRenderingIndex();
+		if (tooltips->at(i)->status == TOOLTIP_ACTIVE && tooltips->at(i)->renderstring == true)
+		{
+			g_obj->GetFontList()->GetFont()->Print(this->tooltips->at(i)->string, this->tooltips->at(i)->stringposition.x, this->tooltips->at(i)->stringposition.y, 17);
+		}
+
+	}
+
+	inline int GetRenderingIndex(){ return this->r_index; }
+
+
+	inline void Render(Controller *ctrl, ScreenUniformData *u_data){
+
+		for (int i = 0; i < this->tooltips->size(); i++)
+			if (tooltips->at(i)->status == TOOLTIP_ACTIVE)
+			{
+			r_index = i;
+			u_data->SetAmbientLight(glm::vec3(1.f, 1.f, 1.f));
+			u_data->ApplyMatrix(Translation(tooltips->at(i)->position)*Scale(tooltips->at(i)->size));
+			this->t_sprite->Render(tooltips->at(i)->frame);
+
+			tooltips->at(i)->stringposition = glm::vec2(this->tooltips->at(i)->position.x +
+				this->tooltips->at(i)->size.x / 10.f + 3.5f,
+				ctrl->GetWindowHeight() - this->tooltips->at(i)->position.y - this->tooltips->at(i)->size.y * 0.75f);
+			this->tooltips->at(i)->renderstring = true;
+			}
+			else
+				this->tooltips->at(i)->renderstring = false;
+
+
+	}
+};

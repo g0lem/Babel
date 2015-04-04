@@ -24,7 +24,7 @@ public:
 	inline FontManager(GameObject * g_obj){ this->Init(g_obj); }
 	inline ~FontManager(){ this->Clean(); }
     void Init(GameObject * g_obj);
-	void Render(Controller * ctrl, GameObject * g_obj);
+	void Render(Controller * ctrl, GameObject * g_obj, Tooltip *t_tip);
 	void Clean();
 
 };

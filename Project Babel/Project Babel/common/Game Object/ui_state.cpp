@@ -28,12 +28,17 @@ void UIState::Init()
 
 
 
-void UIState::ProcessKeys(Controller * ctrl)
+void UIState::ProcessKeys(SoundManager *sm, Controller * ctrl)
 {
 
 
 	if (ctrl->GetKeyOnce(MENU_KEY))
+	{
 		this->m_state->SetState(!this->m_state->GetState());
+		{
+			sm->PlaySound(MENUPRESSBUTTON);
+		}
+	}
 	
 
 }
@@ -55,11 +60,11 @@ void UIState::ManageQuits()
 
 
 
-void UIState::Update(Controller * ctrl)
+void UIState::Update(SoundManager *sm, Controller * ctrl)
 {
 
 
-	this->ProcessKeys(ctrl);
+	this->ProcessKeys(sm, ctrl);
 
 
 	this->ManageQuits();

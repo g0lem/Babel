@@ -3,7 +3,7 @@
 
 
 
-void UIRender::Init(char * vertex_shader, char * fragment_shader)
+void UIRender::Init(char * vertex_shader, char * fragment_shader, Tooltip *tooltips)
 {
 
 
@@ -11,10 +11,11 @@ void UIRender::Init(char * vertex_shader, char * fragment_shader)
 	this->BindCreate(vertex_shader, fragment_shader);
 
 
-	this->inventory_r = new Inventory();
-	this->panel_r = new PanelRender();
+	this->panel_r = new PanelRender(tooltips);
+	this->inventory_r = new Inventory(tooltips);
 	this->menu_r = new MenuRender();
 	this->story_r = new StoryRender();
+	
 
 
 	this->UnbindCreate();
@@ -25,31 +26,35 @@ void UIRender::Init(char * vertex_shader, char * fragment_shader)
 
 
 
-void UIRender::Render(SoundManager *sm, Controller *ctrl, GameObject *g_obj)
+void UIRender::Render(SoundManager *sm, Tooltip *tooltips, Controller *ctrl, GameObject *g_obj)
 {
 
 
 	this->BindRun(ctrl->GetWindowWidth(), ctrl->GetWindowHeight());
 
-	
+	tooltips->UpdateStatus(0, g_obj->GetUIState()->GetMenuState()->GetState());
+
+	tooltips->GetTooltips()->at(tooltips->GetRenderingIndex())->renderstring = false;
 
 	if (g_obj->GetUIState()->GetMenuState()->GetState())
 		this->menu_r->Render(ctrl, this->GetScreenPointer(), g_obj);
-	
 
 
-	if (g_obj->GetUIState()->GetMenuState()->GetButtonStates()[0] == PRESSED)
+
+	if (g_obj->GetUIState()->GetMenuState()->GetButtonStates()[0] == PRESSED && g_obj->GetUIState()->GetMenuState()->GetState() == ACTIVE)
+	{
+		sm->PlaySound(MENUPRESSBUTTON);
 		g_obj->GetUIState()->GetMenuState()->SetState(NOT_ACTIVE);
-
+	}
 	
 
 
 	if (g_obj->GetUIState()->GetMenuState()->GetState() == NOT_ACTIVE)
 	{
-
+		tooltips->GetTooltips()->at(tooltips->GetRenderingIndex())->renderstring = true;
 
 		if (g_obj->GetUIState()->GetInventoryState()->GetState() == ACTIVE)
-			this->inventory_r->Render(sm, ctrl, this->GetScreenPointer(), g_obj);
+			this->inventory_r->Render(tooltips, sm, ctrl, this->GetScreenPointer(), g_obj);
 		else
 		{
 			this->inventory_r->GetMover()->Reset();
@@ -66,12 +71,15 @@ void UIRender::Render(SoundManager *sm, Controller *ctrl, GameObject *g_obj)
 			this->story_r->storybox_position = glm::vec2(ctrl->GetWindowWidth() / 2 + ctrl->GetWindowWidth() / 4, ctrl->GetWindowHeight() / 2 - ctrl->GetWindowHeight() / 4);
 		}
 
-		this->panel_r->Render(sm, ctrl, this->GetScreenPointer(), g_obj);
+		this->panel_r->Render(sm, tooltips, ctrl, this->GetScreenPointer(), g_obj);
+
+		
+		tooltips->Render(ctrl, this->GetScreenPointer());
+		
+	}
 
 
 	
-	}
-
 
 	this->UnbindRun();
 

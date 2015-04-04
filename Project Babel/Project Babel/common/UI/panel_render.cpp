@@ -3,7 +3,7 @@
 
 
 
-void PanelRender::Init()
+void PanelRender::Init(Tooltip *t_tip)
 {
 	wireframe_position = vec2_0;
 	wireframe_size = glm::vec2(960, 64);
@@ -20,12 +20,12 @@ void PanelRender::Init()
 
 
 
-	LoadButtonsSprite();
+	LoadButtonsSprite(t_tip);
 
 
 }
 
-void PanelRender::LoadButtonsSprite()
+void PanelRender::LoadButtonsSprite(Tooltip *t_tip)
 {
 	this->button_skins = new Sprite();
 
@@ -45,6 +45,8 @@ void PanelRender::LoadButtonsSprite()
 	m_prop->size = this->menu_size;
 	m_prop->color = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
 	m_prop->position = vec2_0;
+
+	t_tip->Add(m_prop->position, glm::vec2(60, 30), "Menu", 20, 0);
 
 	a_button[0] = new Button(m_prop);
 
@@ -74,9 +76,14 @@ void PanelRender::LoadButtonsSprite()
 
 
 	}
+	t_tip->Add(m_prop->position, glm::vec2(60, 30), "Menu", 20, 0);
+	t_tip->Add(m_prop->position, glm::vec2(60, 30), "Inspect", 20, 0);
+	t_tip->Add(m_prop->position, glm::vec2(60, 30), "Story", 20, 0);
+	t_tip->Add(m_prop->position, glm::vec2(120, 30), "Inventory", 20, 0);
+	t_tip->Add(m_prop->position, glm::vec2(60, 30), "Pass Turn", 20, 0);
 }
 
-void PanelRender::Update(Controller *ctrl, GameObject * g_obj)
+void PanelRender::Update(Tooltip *t_tip, Controller *ctrl, GameObject * g_obj)
 {
 	
 
@@ -89,8 +96,6 @@ void PanelRender::Update(Controller *ctrl, GameObject * g_obj)
 	top_buttons[1]->GetProperties()->position = glm::vec2((ctrl->GetWindowWidth() - wireframe_size.x) / 2 + 394, 9);
 	top_buttons[2]->GetProperties()->position = glm::vec2(a_button[0]->GetProperties()->position.x + 54, 9);
 	top_buttons[3]->GetProperties()->position = glm::vec2(top_buttons[2]->GetProperties()->position.x + 54, 9);
-
-
 	
 	if (ctrl->HasBeenResized())
 	{
@@ -141,11 +146,11 @@ void PanelRender::Update(Controller *ctrl, GameObject * g_obj)
 }
 
 
-void PanelRender::Render(SoundManager *sm, Controller *ctrl, ScreenUniformData *u_data, GameObject *g_obj)
+void PanelRender::Render(SoundManager *sm, Tooltip *t_tip, Controller *ctrl, ScreenUniformData *u_data, GameObject *g_obj)
 {
 
 
-	this->Update(ctrl, g_obj);
+	this->Update(t_tip, ctrl, g_obj);
 
 
 
@@ -158,11 +163,21 @@ void PanelRender::Render(SoundManager *sm, Controller *ctrl, ScreenUniformData *
 		g_obj->GetUIState()->GetPanelState()->SetState(UI_helper::GetButtonAction(ctrl, this->a_button[0]->GetProperties()));
 		this->a_button[0]->Render(ctrl, u_data, this->button_skins, 0, g_obj->GetUIState()->GetPanelState()->GetState());
 
+		if (g_obj->GetUIState()->GetPanelState()->GetState() == HOVER)
+		{
+			t_tip->UpdateStatus(0, true);
+			t_tip->UpdatePosition(0, ctrl->GetMousePosition());
+		}
+		else
+		{
+			t_tip->UpdateStatus(0, false);
+		}
 
 		if (g_obj->GetUIState()->GetPanelState()->GetState() == PRESSED)
 		{
 			sm->PlaySound(MENUPRESSBUTTON);
 			g_obj->GetUIState()->GetMenuState()->SetState(!g_obj->GetUIState()->GetMenuState()->GetState());
+			//t_tip->UpdateStatus(0, g_obj->GetUIState()->GetMenuState()->GetState());
 		}
 
 	}
@@ -202,6 +217,9 @@ void PanelRender::Render(SoundManager *sm, Controller *ctrl, ScreenUniformData *
 			g_obj->GetUIState()->GetInventoryState()->GetState())
 		{
 
+
+			sm->PlaySound(MENUPRESSBUTTON);
+
 			g_obj->GetUIState()->GetInventoryState()->SetState(NOT_ACTIVE);
 
 			if (g_obj->GetUIState()->GetInterHandler()->GetInters()[0][INVENTARY_INTER] != NULL)
@@ -213,11 +231,22 @@ void PanelRender::Render(SoundManager *sm, Controller *ctrl, ScreenUniformData *
 
 		}
 
+		if (g_obj->GetUIState()->GetPanelState()->GetButtonsState()[2] == HOVER)
+		{
+			t_tip->UpdateStatus(4, true);
+			t_tip->UpdatePosition(4, ctrl->GetMousePosition());
+		}
+		else
+			t_tip->UpdateStatus(4, false);
+
 
 
 		if (g_obj->GetUIState()->GetPanelState()->GetButtonsState()[2] == PRESSED)
 		{
 
+			sm->PlaySound(MENUPRESSBUTTON);
+
+			
 			g_obj->GetUIState()->GetInventoryState()->SetState(!g_obj->GetUIState()->GetInventoryState()->GetState());
 
 
@@ -228,6 +257,7 @@ void PanelRender::Render(SoundManager *sm, Controller *ctrl, ScreenUniformData *
 			}
 
 		}
+		
 
 
 
@@ -236,6 +266,12 @@ void PanelRender::Render(SoundManager *sm, Controller *ctrl, ScreenUniformData *
 		if (g_obj->GetUIState()->GetStoryState()->GetButtonState()[12] == PRESSED &&
 			g_obj->GetUIState()->GetStoryState()->GetState())
 		{
+
+
+
+			sm->PlaySound(MENUPRESSBUTTON);
+
+
 
 			g_obj->GetUIState()->GetStoryState()->SetState(NOT_ACTIVE);
 
@@ -248,10 +284,21 @@ void PanelRender::Render(SoundManager *sm, Controller *ctrl, ScreenUniformData *
 
 		}
 
+		if (g_obj->GetUIState()->GetPanelState()->GetButtonsState()[1] == HOVER)
+		{
+			t_tip->UpdateStatus(3, true);
+			t_tip->UpdatePosition(3, ctrl->GetMousePosition());
+		}
+		else
+			t_tip->UpdateStatus(3, false);
+
 
 
 		if (g_obj->GetUIState()->GetPanelState()->GetButtonsState()[1] == PRESSED)
 		{
+
+			sm->PlaySound(MENUPRESSBUTTON);
+
 
 			g_obj->GetUIState()->GetStoryState()->SetState(!g_obj->GetUIState()->GetStoryState()->GetState());
 
@@ -266,12 +313,40 @@ void PanelRender::Render(SoundManager *sm, Controller *ctrl, ScreenUniformData *
 
 		}
 
+		if (g_obj->GetUIState()->GetPanelState()->GetButtonsState()[3] == HOVER)
+		{
+			t_tip->UpdateStatus(5, true);
+			t_tip->UpdatePosition(5, ctrl->GetMousePosition());
+		}
+		else
+			t_tip->UpdateStatus(5, false);
 
 
 		if (g_obj->GetUIState()->GetPanelState()->GetButtonsState()[3] == PRESSED)
+		{
+
+			sm->PlaySound(MENUPRESSBUTTON);
+
+
 			g_obj->GetTurnSystem()->Wait();
+		}
+
+		if (g_obj->GetUIState()->GetPanelState()->GetButtonsState()[0] == HOVER)
+		{
+			t_tip->UpdateStatus(2, true);
+			t_tip->UpdatePosition(2, ctrl->GetMousePosition());
+		}
+		else
+			t_tip->UpdateStatus(2, false);
 
 
+
+		if (g_obj->GetUIState()->GetPanelState()->GetButtonsState()[0] == PRESSED)
+		{
+
+			sm->PlaySound(MENUPRESSBUTTON);
+
+		}
 
 	}
 

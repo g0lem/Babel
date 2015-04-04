@@ -12,7 +12,7 @@ class Inventory: public InventoryProperties
 
 	UI_mover * mover;
 
-	void LoadItems();
+	void LoadItems(Tooltip *t_tip);
 
 	void LoadSprites();
 
@@ -20,7 +20,7 @@ class Inventory: public InventoryProperties
 
 	void RenderStaticItems(Controller *ctrl, ScreenUniformData *u_data, GameObject *g_obj);
 
-	void Update();
+	void Update(Tooltip *t_tip, Controller *ctrl);
 
 	bool EquippedWeapon = false;
 
@@ -40,12 +40,12 @@ public:
 
 	void AddIntersect(GameObject * g_obj);
 
-	inline Inventory(){ this->Init(); }
+	inline Inventory(Tooltip *t_tip){ this->Init(t_tip); }
 
-	void Render(SoundManager *sm, Controller *ctrl, ScreenUniformData * u_data, GameObject * g_obj);
+	void Render(Tooltip *t_tip, SoundManager *sm, Controller *ctrl, ScreenUniformData * u_data, GameObject * g_obj);
 
 
-	void Init();
+	void Init(Tooltip *t_tip);
 
 
 	inline UI_mover * GetMover(){ return this->mover; }

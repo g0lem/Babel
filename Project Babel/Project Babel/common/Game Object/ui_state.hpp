@@ -28,7 +28,7 @@ class UIState
 	UI_intersect * inter_handler;
 
 
-	void ProcessKeys(Controller * ctrl);
+	void ProcessKeys(SoundManager *sm, Controller * ctrl);
 
 
 	void ManageQuits();
@@ -54,7 +54,7 @@ public:
 
 
 
-	void Update(Controller * ctrl);
+	void Update(SoundManager *sm, Controller * ctrl);
 
 
 

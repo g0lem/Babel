@@ -19,15 +19,15 @@ class UIRender : public Aaether2D
 
 
 		
-		inline UIRender(char * vertex_shader, char * fragment_shader){ this->Init(vertex_shader, fragment_shader); }
+		inline UIRender(char * vertex_shader, char * fragment_shader, Tooltip *tooltips){ this->Init(vertex_shader, fragment_shader, tooltips); }
 
 
 
-		void Init(char * vertex_shader, char * fragment_shader);
+		void Init(char * vertex_shader, char * fragment_shader, Tooltip *tooltips);
 
 
 
-		void Render(SoundManager *sm, Controller *ctrl, GameObject *g_obj);
+		void Render(SoundManager *sm, Tooltip *tooltips, Controller *ctrl, GameObject *g_obj);
 
 
 

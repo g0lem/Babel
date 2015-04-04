@@ -1,6 +1,6 @@
 #include "common.hpp"
 
-void Inventory::Init()
+void Inventory::Init(Tooltip *t_tip)
 {
 
 	this->box_position = vec2_0;
@@ -25,7 +25,7 @@ void Inventory::Init()
 	this->inventory_slot_size = glm::vec2(40, 40);
 
 	this->LoadSprites();
-	this->LoadItems();
+	this->LoadItems(t_tip);
 
 	this->mover = new UI_mover();
 
@@ -57,9 +57,12 @@ void Inventory::LoadSprites()
 
 }
 
-void Inventory::LoadItems()
+void Inventory::LoadItems(Tooltip *t_tip)
 {
 	m_inventory = new Button*[16];
+
+	t_tip->Add(vec2_0, glm::vec2(60, 30), "Weapon", 20, 0);
+	t_tip->Add(vec2_0, glm::vec2(60, 30), "Armor", 20, 0);
 
 	for (int i = 0; i < 16; i++)
 	{
@@ -69,6 +72,8 @@ void Inventory::LoadItems()
 		m_prop->color = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
 
 		m_inventory[i] = new Button(m_prop);
+
+		t_tip->Add(m_prop->position, glm::vec2(60, 30), "lol", 20, 0);
 
 
 	}
@@ -87,7 +92,16 @@ void Inventory::LoadItems()
 	m1_prop->color = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
 	w_button[0] = new Button(m1_prop);
 
-	this->Update();
+	for (GLuint j = 0; j < 4; j++)
+	{
+
+		for (GLuint i = 0; i < 4; i++)
+		{
+
+			this->m_inventory[j * 4 + i]->GetProperties()->position = this->box_position + glm::vec2(33, 173) + glm::vec2(i, j)*this->inventory_slot_size;
+			
+		}
+	}
 }
 
 void Inventory::RenderStaticItems(Controller *ctrl, ScreenUniformData *u_data, GameObject *g_obj)
@@ -111,7 +125,7 @@ void Inventory::RenderStaticItems(Controller *ctrl, ScreenUniformData *u_data, G
 	
 }
 
-void Inventory::Update()
+void Inventory::Update(Tooltip *t_tip, Controller *ctrl)
 {
 	for (GLuint j = 0; j < 4; j++)
 	{
@@ -120,6 +134,7 @@ void Inventory::Update()
 		{
 
 			this->m_inventory[j * 4 + i]->GetProperties()->position = this->box_position + glm::vec2(33, 173) + glm::vec2(i, j)*this->inventory_slot_size;
+			
 		}
 	}
 
@@ -129,7 +144,7 @@ void Inventory::Update()
 	
 }
 
-void Inventory::Render(SoundManager *sm, Controller *ctrl, ScreenUniformData *u_data, GameObject *g_obj)
+void Inventory::Render(Tooltip *t_tip, SoundManager *sm, Controller *ctrl, ScreenUniformData *u_data, GameObject *g_obj)
 {
 
 
@@ -140,14 +155,14 @@ void Inventory::Render(SoundManager *sm, Controller *ctrl, ScreenUniformData *u_
 
 
 	RenderStaticItems(ctrl, u_data, g_obj);
-	this->Update();
+	this->Update(t_tip, ctrl);
 
 
 
 
 	for (int i = 0; i < 16; i++)
 	{
-
+		t_tip->UpdateStatus(INVENTORY_START + i, false);
 		g_obj->GetUIState()->GetInventoryState()->GetButtonStates()[i] = UI_helper::GetItemAction(ctrl, this->m_inventory[i]->GetProperties());
 
 		this->m_inventory[i]->RenderItem(ctrl, u_data, this->skins, 0, g_obj->GetUIState()->GetInventoryState()->GetButtonStates()[i]);
@@ -180,9 +195,19 @@ void Inventory::Render(SoundManager *sm, Controller *ctrl, ScreenUniformData *u_
 
 				}
 			}
+			
+			
+			
+
+				
 		}
 
-		
+		if (g_obj->GetUIState()->GetInventoryState()->GetButtonStates()[i] == HOVER)
+		{
+
+			t_tip->UpdateStatus(INVENTORY_START + i, true);
+			t_tip->UpdatePosition(INVENTORY_START + i, ctrl->GetMousePosition());
+		}
 
 
 	}
@@ -196,6 +221,8 @@ void Inventory::Render(SoundManager *sm, Controller *ctrl, ScreenUniformData *u_
 
 	if (EquippedWeapon == true)
 	{
+		t_tip->UpdateStatus(WEAPON, false);
+		w_position = box_position + glm::vec2(32, 68) + glm::vec2(11, 0) + glm::vec2(5, 6);
 		u_data->ApplyMatrix(Translation(w_position)*Scale(w_scale));
 		this->weapon->Render(WeaponFrame);
 
@@ -208,6 +235,13 @@ void Inventory::Render(SoundManager *sm, Controller *ctrl, ScreenUniformData *u_
 			g_obj->GetItemList()->AddtoInventory(weapon_item);
 			g_obj->GetItemList()->weapon = g_obj->GetItemList()->GetList()[0];
 			g_obj->GetItemList()->must_load = true;
+		}
+
+		if (g_obj->GetUIState()->GetInventoryState()->GetButtonStates()[17] == HOVER)
+		{
+			t_tip->UpdateStatus(WEAPON, true);
+			t_tip->UpdatePosition(WEAPON, ctrl->GetMousePosition());
+			//t_tip->UpdateText(WEAPON, );
 		}
 
 	}

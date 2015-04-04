@@ -22,6 +22,7 @@ class Application : private Controller
 
 	SoundManager * sound_m;
 
+	Tooltip *t_tip;
 
 	UIHandler * ui;
 

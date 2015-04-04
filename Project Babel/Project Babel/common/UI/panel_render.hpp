@@ -29,21 +29,17 @@ class PanelRender
 	glm::vec2 hp_bar_position;
 	glm::vec2 hp_bar_size;
 
-	void LoadButtons();
-	void LoadButtonsSprite();
+	void LoadButtons(Tooltip *t_tip);
+	void LoadButtonsSprite(Tooltip *t_tip);
 	void RenderButtons(Controller *ctrl, ScreenUniformData * u_data, GameObject * g_obj);
-	void Update(Controller *ctrl, GameObject * g_obj);
-
-
-
-
+	void Update(Tooltip *t_tip, Controller *ctrl, GameObject * g_obj);
 
 public:
 
 
-	inline PanelRender() { this->Init(); }
-	void Init();
-	void Render(SoundManager *sm, Controller *ctrl, ScreenUniformData *u_data, GameObject *g_obj);
+	inline PanelRender(Tooltip *t_tip) { this->Init(t_tip); }
+	void Init(Tooltip *t_tip);
+	void Render(SoundManager *sm, Tooltip *t_tip, Controller *ctrl, ScreenUniformData *u_data, GameObject *g_obj);
 
 
 

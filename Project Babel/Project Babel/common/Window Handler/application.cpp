@@ -32,7 +32,8 @@ void Application::Init()
 	g_object = new GameObject();
 	sound_m = new SoundManager();
 	g_render = new GameRender(g_object);
-	ui = new UIHandler();
+	t_tip = new Tooltip();
+	ui = new UIHandler(t_tip);
 	f_m = new FontManager(g_object);
 
 
@@ -55,8 +56,6 @@ void Application::Run()
 
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-
-
 		this->Enable();
 
 
@@ -67,9 +66,9 @@ void Application::Run()
 
 		if (g_render->GetDrawCode() == true)
 		{
-			ui->Render(sound_m,this, g_object);
-			f_m->Render(this, g_object);
-			g_object->GetUIState()->Update(this);
+			ui->Render(sound_m, t_tip, this, g_object);
+			f_m->Render(this, g_object,t_tip);
+			g_object->GetUIState()->Update(sound_m, this);
 		}
 
 
@@ -77,7 +76,7 @@ void Application::Run()
 		glfwSwapBuffers(this->GetWindow());
 		glfwPollEvents();
 
-
+		
 
 	} while (g_object->GetUIState()->GetMenuState()->GetButtonStates()[2] != PRESSED && glfwWindowShouldClose(this->GetWindow()) == 0);
 
