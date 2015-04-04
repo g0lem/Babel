@@ -34,6 +34,11 @@ class Tilemap
 
 public:
 
+
+
+	GLboolean boss_lvl;
+
+
 	void SmootherFOW(float **fog, glm::ivec2 position, ScreenUniformData * u_data);
 
 	void Init();

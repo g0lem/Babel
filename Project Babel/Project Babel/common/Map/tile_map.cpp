@@ -52,6 +52,9 @@ void Tilemap::GenerateBossRoom()
 	std::ifstream f("boss_map.txt");
 
 
+	this->boss_lvl = true;
+
+
 	this->tiles = new GLint*[this->size.x];
 	for (GLuint i = 0; i < this->size.x; i++)
 		this->tiles[i] = new GLint[this->size.y];
@@ -96,7 +99,7 @@ void Tilemap::Init()
 
 	this->size = glm::ivec2(48, 48);
 
-
+	this->boss_lvl = false;
 
 	this->GenerateTileMap();
 
@@ -154,11 +157,18 @@ void Tilemap::Render(Controller * ctrl, ScreenUniformData * u_data, Sprite * m_s
 
 
 
-
-
-				u_data->SetNewUV(glm::vec2(i - 1, j));
+			if (boss_lvl == false)
+			{
+				u_data->SetNewUV(glm::vec4(i - 1, j, 48, 48));
 				dark->RenderTexture(texture);
-				u_data->SetNewUV(glm::vec2(-1, -1));
+				u_data->SetNewUV(glm::vec4(-1, -1, 48, 48));
+			}
+			else
+			{
+				u_data->SetNewUV(glm::vec4(i - 1, j, 20, 20));
+				dark->RenderTexture(texture);
+				u_data->SetNewUV(glm::vec4(-1, -1, 20, 20));
+			}
 				u_data->SetAmbientLight(glm::vec4(1.0f, 1.0f, 1.0f, 1.0f));
 				u_data->ApplyMatrix(Translation(glm::vec2(i, j)*tile_scale + offset)*Scale(tile_scale));
 				m_sprite->Render(this->tiles[i][j]);

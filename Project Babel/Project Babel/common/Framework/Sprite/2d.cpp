@@ -69,7 +69,7 @@ void Aaether2D::BindRun(GLuint window_width,GLuint window_height)
 
 
 	this->Ortho(window_width, window_height);
-	this->GetScreenPointer()->SetNewUV(glm::vec2(-1, -1));
+	this->GetScreenPointer()->SetNewUV(glm::vec4(-1, -1, 48, 48));
 
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
