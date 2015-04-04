@@ -26,9 +26,9 @@ class Combat
 	void SortThingsOut(Player * player, EnemyManager * enemies);
 	void SetEnemyTarget(Player * player, EnemyManager * enemies);
 	void AquireEnemyTarget(Player * player, EnemyManager * enemies);
-	void EnemyAttack(Controller * ctrl, GameObject * g_obj, Player * player, EnemyManager *enemies);
+	void EnemyAttack(SoundManager *sm, Controller * ctrl, GameObject * g_obj, Player * player, EnemyManager *enemies);
 	void EnemyMovement(Controller * ctrl, GameObject * g_obj, Player * player ,EnemyManager * enemies);
-	void EnemyRelated(Controller * ctrl,GameObject * g_obj, Player * player, EnemyManager * enemies, Map * map);
+	void EnemyRelated(SoundManager *sm, Controller * ctrl, GameObject * g_obj, Player * player, EnemyManager * enemies, Map * map);
 	void UpdateTurns(GameObject * g_obj, EnemyManager * enemies);
 
 

@@ -65,7 +65,7 @@ class SoundManager
 	char** soundpath, **musicpath;
 
 
-
+	sf::SoundBuffer *buffer;
 
 
 	std::vector<Sound*> *m_sounds;

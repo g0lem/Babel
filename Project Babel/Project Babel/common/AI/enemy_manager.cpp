@@ -6,7 +6,7 @@
 
 
 
-void EnemyManager::Render(Controller * ctrl, ScreenUniformData * u_data, GameObject * g_obj, Map *map)
+void EnemyManager::Render(SoundManager *sm, Controller * ctrl, ScreenUniformData * u_data, GameObject * g_obj, Map *map)
 {
 
 	std::vector<glm::ivec2>list = g_obj->GetCollisionMap()->GetList();
@@ -41,7 +41,7 @@ void EnemyManager::Render(Controller * ctrl, ScreenUniformData * u_data, GameObj
 
 
 
-	this->CheckEnemiesState(g_obj, map);
+	this->CheckEnemiesState(sm, g_obj, map);
 
 
 
@@ -94,7 +94,7 @@ void EnemyManager::Init(GLuint num, Map * map, GameObject * g_obj)
 
 
 
-void EnemyManager::CheckEnemiesState(GameObject * g_obj, Map *map)
+void EnemyManager::CheckEnemiesState(SoundManager *sm, GameObject * g_obj, Map *map)
 {
 
 
@@ -107,7 +107,7 @@ void EnemyManager::CheckEnemiesState(GameObject * g_obj, Map *map)
 
 
 			this->Kill(g_obj, i, map);
-
+			sm->PlaySound(SCORPIONDIE);
 
 		}
 

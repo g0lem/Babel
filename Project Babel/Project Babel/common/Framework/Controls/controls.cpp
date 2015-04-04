@@ -154,7 +154,7 @@ void Controller::Clean()
 
 	delete this->fps;
 
-	glfwDestroyWindow(this->window);
+	//glfwDestroyWindow(this->window);
 	glfwTerminate();
 
 

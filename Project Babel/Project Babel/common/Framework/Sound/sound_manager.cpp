@@ -34,7 +34,7 @@ void SoundManager::loadSounds(char** path)
 
 	path[0] = "data/media/sounds/ambience1.flac";
 	path[1] = "data/media/sounds/ambience2.wav";
-	path[2] = "data/media/sounds/ambience3.flag";
+	path[2] = "data/media/sounds/ambience3.flac";
 	path[3] = "data/media/sounds/ambience4.wav";
 	path[4] = "data/media/sounds/attack1.wav";
 	path[5] = "data/media/sounds/attack2.wav";
@@ -91,7 +91,7 @@ void SoundManager::Clean()
 {
 
 
-	delete this->m_sounds;
+	//delete this->m_sounds;
 
 	delete this->m_music;
 
@@ -102,7 +102,7 @@ void SoundManager::AddSound(char* p_sound, char *name)
 {
 	Sound *t_sound = new Sound;
 
-	sf::SoundBuffer *buffer = new sf::SoundBuffer;
+	sf::SoundBuffer *buffer = new sf::SoundBuffer();
 
 
 

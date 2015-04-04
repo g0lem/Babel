@@ -1,6 +1,11 @@
-﻿Build started 4/3/2015 4:01:59 PM.
+﻿Build started 4/3/2015 5:27:50 PM.
      1>Project "D:\GitHub\the-correct-one\Project Babel\Project Babel\Project Babel.vcxproj" on node 2 (Build target(s)).
-     1>Link:
+     1>ClCompile:
+         D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I..\..\Dependencies\include /I.\ /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _CRT_SECURE_NO_WARNINGS /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"common.hpp" /Fp"Debug\Project Babel.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt common\AI\enemy.cpp common\AI\enemy_manager.cpp common\Combat\Combat.cpp common\Delta\animation.cpp common\Delta\auto_path.cpp common\Delta\movement.cpp common\Delta\one_direction.cpp common\Delta\pathfinder.cpp common\Delta\physical_attributes.cpp common\Effects\effects_handler.cpp common\Events\event_handler.cpp common\Framework\Controls\controls.cpp common\Framework\Font\text2D.cpp common\Framework\Font\text_render.cpp common\Framework\Math\2d_math.cpp common\Framework\Math\dice.cpp common\Framework\Shader\shader.cpp common\Framework\Sound\sound_manager.cpp common\Framework\Sprite\2d.cpp common\Framework\Sprite\sprite.cpp common\Framework\Sprite\uniform_2d.cpp common\Framework\Texture\texture.cpp "common\Game Object\TextObject.cpp" "common\Game Object\character_panel_state.cpp" "common\Game Object\collision_map.cpp" "common\Game Object\enemy_loader.cpp" "common\Game Object\game_object.cpp" "common\Game Object\inventory_state.cpp" "common\Game Object\menu_state.cpp" "common\Game Object\miscellaneous.cpp" "common\Game Object\panel_state.cpp" "common\Game Object\scroller.cpp" "common\Game Object\story_state.cpp" "common\Game Object\ui_intersect.cpp" "common\Game Object\ui_state.cpp" common\Item\item.cpp common\Item\item_list.cpp common\Item\item_types.cpp common\Manager\font_manager.cpp common\Manager\game_render.cpp common\Manager\sprite_manager.cpp common\Map\fog_of_war.cpp common\Map\graph.cpp common\Map\map.cpp common\Map\map_helper1.cpp common\Map\map_helper2.cpp common\Map\map_helper3.cpp common\Map\room.cpp common\Map\tile_map.cpp common\Stats\hp.cpp common\Stats\stats.cpp common\Turns\turn.cpp common\UI\UI_handler.cpp common\UI\UI_render.cpp common\UI\floating_text.cpp common\UI\inventory.cpp common\UI\menu_item.cpp common\UI\menu_render.cpp common\UI\panel_render.cpp common\UI\story_render.cpp common\UI\ui_helper.cpp common\UI\ui_mover.cpp "common\Window Handler\application.cpp" "common\Window Handler\media_player.cpp" common\splash_screen.cpp common\stats\xp.cpp main.cpp
+         sprite_manager.cpp
+         Generating Code...
+     1>cl : Command line warning D9028: minimal rebuild failure, reverting to normal build
+       Link:
          D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\GitHub\the-correct-one\Project Babel\Debug\Project Babel.exe" /INCREMENTAL /NOLOGO /LIBPATH:..\..\Dependencies\lib "sfml-system-d.lib" "sfml-system.lib" "sfml-audio-d.lib" "sfml-audio.lib" openAL32.lib RocketDebugger.lib Shell.lib RocketControls.lib RocketCore.lib FreeImaged.lib freetype.lib glfw3.lib glew32.lib glu32.lib opengl32.lib SQLite.lib gdi32.lib winmm.lib user32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\GitHub\the-correct-one\Project Babel\Debug\Project Babel.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\GitHub\the-correct-one\Project Babel\Debug\Project Babel.lib" /MACHINE:X86 Debug\icon.res
          Debug\common.obj
          Debug\enemy.obj
@@ -105,4 +110,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:03.09
+Time Elapsed 00:00:03.62

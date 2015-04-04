@@ -43,7 +43,7 @@ class Player
 	
 
 
-	void HandleAutoPath(Controller * ctrl, GameObject * g_obj, Map *current_map);
+	void HandleAutoPath(SoundManager *sm, Controller * ctrl, GameObject * g_obj, Map *current_map);
 	GLboolean CheckAdvance(Controller * ctrl, GameObject * g_obj);
 
 
@@ -64,7 +64,7 @@ public:
 
 
 	void Load(GameObject * g_obj, Map * current_tilemap);
-	void Render(Controller * ctrl, ScreenUniformData *u_data, GameObject * g_obj, Map * current_map);
+	void Render(SoundManager *sm, Controller * ctrl, ScreenUniformData *u_data, GameObject * g_obj, Map * current_map);
 	inline GLint GetTarget(){ return this->target; }
 	inline void SetTarget(GLint target){ this->target = target; }
 	inline PhysicalAttributes*GetPAttributes(){ return this->attributes; }
