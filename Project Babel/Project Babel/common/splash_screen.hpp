@@ -45,6 +45,10 @@ public:
 			this->m_screens->at(currentFrame)->speed *= 5;
 		 }
 
+	void RenderEnd(){
+		this->m_screen->Render(3);
+	}
+
 	bool Update();
 
 	

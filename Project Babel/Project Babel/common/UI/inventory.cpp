@@ -39,9 +39,9 @@ void Inventory::LoadSprites()
 	this->skins = new Sprite();
 	this->weapon = new Sprite();
 	this->armor = new Sprite();
-	
 
-	char **textures = new char*[9];
+
+	char **textures = new char*[10];
 
 	textures[0] = "inventoryslot.png";
 	textures[1] = "inventorybox.png";
@@ -49,11 +49,12 @@ void Inventory::LoadSprites()
 	textures[3] = "armorslotwithtext.png";
 	textures[4] = "armorslot.png";
 	textures[5] = "weaponslotwithtext.png";
+	textures[9] = "equippeditemslot.png";
 	textures[6] = "weaponslot.png";
 	textures[7] = "xbutton.png";
 	textures[8] = "";
 
-	this->skins->Load(9, "data/UI/Inventory/", textures);
+	this->skins->Load(10, "data/UI/Inventory/", textures);
 
 }
 
@@ -61,8 +62,8 @@ void Inventory::LoadItems(Tooltip *t_tip)
 {
 	m_inventory = new Button*[16];
 
-	t_tip->Add(vec2_0, glm::vec2(60, 30), "Weapon", 20, 0);
-	t_tip->Add(vec2_0, glm::vec2(60, 30), "Armor", 20, 0);
+	/*t_tip->Add(vec2_0, glm::vec2(60, 30), "Weapon", 20, 0);
+	t_tip->Add(vec2_0, glm::vec2(60, 30), "Armor", 20, 0);*/
 
 	for (int i = 0; i < 16; i++)
 	{
@@ -73,7 +74,7 @@ void Inventory::LoadItems(Tooltip *t_tip)
 
 		m_inventory[i] = new Button(m_prop);
 
-		t_tip->Add(m_prop->position, glm::vec2(60, 30), "lol", 20, 0);
+		//t_tip->Add(m_prop->position, glm::vec2(60, 30), "lol", 20, 0);
 
 
 	}
@@ -99,9 +100,15 @@ void Inventory::LoadItems(Tooltip *t_tip)
 		{
 
 			this->m_inventory[j * 4 + i]->GetProperties()->position = this->box_position + glm::vec2(33, 173) + glm::vec2(i, j)*this->inventory_slot_size;
-			
+
 		}
 	}
+
+	a_button = new Button*[1];
+	m1_prop = new Property();
+	m1_prop->size = armor_slot_size;
+	m1_prop->color = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
+	a_button[0] = new Button(m1_prop);
 }
 
 void Inventory::RenderStaticItems(Controller *ctrl, ScreenUniformData *u_data, GameObject *g_obj)
@@ -117,12 +124,9 @@ void Inventory::RenderStaticItems(Controller *ctrl, ScreenUniformData *u_data, G
 	u_data->ApplyMatrix(Translation(this->box_position + glm::vec2(129, 69))*Scale(armor_text_size));
 	this->skins->Render(3);
 
-	u_data->ApplyMatrix(Translation(this->box_position + glm::vec2(129, 69) + glm::vec2(5, 0))*Scale(armor_slot_size));
-	this->skins->Render(4);
-
 	u_data->ApplyMatrix(Translation(this->box_position + glm::vec2(32, 68))*Scale(weapon_text_size));
 	this->skins->Render(5);
-	
+
 }
 
 void Inventory::Update(Tooltip *t_tip, Controller *ctrl)
@@ -134,14 +138,15 @@ void Inventory::Update(Tooltip *t_tip, Controller *ctrl)
 		{
 
 			this->m_inventory[j * 4 + i]->GetProperties()->position = this->box_position + glm::vec2(33, 173) + glm::vec2(i, j)*this->inventory_slot_size;
-			
+
 		}
 	}
 
 	this->exit[0]->GetProperties()->position = this->box_position + glm::vec2(182, 11);
 	this->w_button[0]->GetProperties()->position = box_position + glm::vec2(32, 68) + glm::vec2(11, 0);
+	this->a_button[0]->GetProperties()->position = this->box_position + glm::vec2(129, 69) + glm::vec2(5, 0);
 
-	
+
 }
 
 void Inventory::Render(Tooltip *t_tip, SoundManager *sm, Controller *ctrl, ScreenUniformData *u_data, GameObject *g_obj)
@@ -162,7 +167,7 @@ void Inventory::Render(Tooltip *t_tip, SoundManager *sm, Controller *ctrl, Scree
 
 	for (int i = 0; i < 16; i++)
 	{
-		t_tip->UpdateStatus(INVENTORY_START + i, false);
+		//t_tip->UpdateStatus(INVENTORY_START + i, false);
 		g_obj->GetUIState()->GetInventoryState()->GetButtonStates()[i] = UI_helper::GetItemAction(ctrl, this->m_inventory[i]->GetProperties());
 
 		this->m_inventory[i]->RenderItem(ctrl, u_data, this->skins, 0, g_obj->GetUIState()->GetInventoryState()->GetButtonStates()[i]);
@@ -195,23 +200,42 @@ void Inventory::Render(Tooltip *t_tip, SoundManager *sm, Controller *ctrl, Scree
 				}
 
 				else if (g_obj->GetItemList()->GetInventory()[i]->type == 0)
-				{	
+				{
 					g_obj->GetItemList()->must_heal = true;
 					g_obj->GetItemList()->DeleteFromInventory(i);
 				}
-			}
-			
-			
-			
 
-				
+
+				/*if (g_obj->GetItemList()->GetInventory()[i]->type == 2 && this->EquippedArmor == false)
+				{
+				sm->PlaySound(EQUIPITEM);
+
+				this->armor = g_obj->GetItemList()->GetSprite();
+				this->ArmorFrame = g_obj->GetItemList()->GetInventory()[i]->frame;
+
+				this->a_position = box_position + glm::vec2(129, 69) + glm::vec2(5, 0) + glm::vec2(5, 6);
+				this->a_scale = glm::vec2(40, 40);
+
+				this->EquippedArmor = true;
+
+				this->weapon_item = g_obj->GetItemList()->GetInventory()[i];
+				g_obj->GetItemList()->armor = this->armor_item;
+				g_obj->GetItemList()->must_load = true;
+				g_obj->GetItemList()->DeleteFromInventory(i);
+				}*/
+			}
+
+
+
+
+
 		}
 
 		if (g_obj->GetUIState()->GetInventoryState()->GetButtonStates()[i] == HOVER)
 		{
 
-			t_tip->UpdateStatus(INVENTORY_START + i, true);
-			t_tip->UpdatePosition(INVENTORY_START + i, ctrl->GetMousePosition());
+			//t_tip->UpdateStatus(INVENTORY_START + i, true);
+			//t_tip->UpdatePosition(INVENTORY_START + i, ctrl->GetMousePosition());
 		}
 
 
@@ -222,11 +246,15 @@ void Inventory::Render(Tooltip *t_tip, SoundManager *sm, Controller *ctrl, Scree
 
 
 	g_obj->GetUIState()->GetInventoryState()->GetButtonStates()[17] = UI_helper::GetItemAction(ctrl, this->w_button[0]->GetProperties());
-	this->w_button[0]->Render(ctrl, u_data, this->skins, 6, g_obj->GetUIState()->GetInventoryState()->GetButtonStates()[17]);
 
+	g_obj->GetUIState()->GetInventoryState()->GetButtonStates()[18] = UI_helper::GetItemAction(ctrl, this->a_button[0]->GetProperties());
 	if (EquippedWeapon == true)
 	{
-		t_tip->UpdateStatus(WEAPON, false);
+
+		this->w_button[0]->Render(ctrl, u_data, this->skins, 9, g_obj->GetUIState()->GetInventoryState()->GetButtonStates()[17]);
+
+
+		//t_tip->UpdateStatus(WEAPON, false);
 		w_position = box_position + glm::vec2(32, 68) + glm::vec2(11, 0) + glm::vec2(5, 6);
 		u_data->ApplyMatrix(Translation(w_position)*Scale(w_scale));
 		this->weapon->Render(WeaponFrame);
@@ -244,10 +272,49 @@ void Inventory::Render(Tooltip *t_tip, SoundManager *sm, Controller *ctrl, Scree
 
 		if (g_obj->GetUIState()->GetInventoryState()->GetButtonStates()[17] == HOVER)
 		{
-			t_tip->UpdateStatus(WEAPON, true);
-			t_tip->UpdatePosition(WEAPON, ctrl->GetMousePosition());
-			//t_tip->UpdateText(WEAPON, );
+			//t_tip->UpdateStatus(WEAPON, true);
+			//t_tip->UpdatePosition(WEAPON, ctrl->GetMousePosition());
 		}
+
+	}
+	else
+	{
+		this->w_button[0]->Render(ctrl, u_data, this->skins, 6, g_obj->GetUIState()->GetInventoryState()->GetButtonStates()[17]);
+
+	}
+
+
+    if (EquippedArmor == true)
+	{
+	/*this->a_button[0]->Render(ctrl, u_data, this->skins, 9, g_obj->GetUIState()->GetInventoryState()->GetButtonStates()[18]);
+
+
+	//t_tip->UpdateStatus(WEAPON, false);
+	a_position = box_position + glm::vec2(129, 69) + glm::vec2(5, 0) + glm::vec2(5, 6);
+	u_data->ApplyMatrix(Translation(a_position)*Scale(a_scale));
+	this->armor->Render(ArmorFrame);
+
+	if (g_obj->GetUIState()->GetInventoryState()->GetButtonStates()[18] == PRESSED)
+	{
+	sm->PlaySound(EQUIPITEM);
+
+	this->EquippedWeapon = false;
+	this->a_scale = vec2_0;
+	g_obj->GetItemList()->AddtoInventory(armor_item);
+	g_obj->GetItemList()->armor = g_obj->GetItemList()->GetList()[0];
+	g_obj->GetItemList()->must_load = true;
+	}
+
+	if (g_obj->GetUIState()->GetInventoryState()->GetButtonStates()[18] == HOVER)
+	{
+	//t_tip->UpdateStatus(WEAPON, true);
+	//t_tip->UpdatePosition(WEAPON, ctrl->GetMousePosition());
+	}
+	*/
+	}
+	else
+	{
+		this->a_button[0]->Render(ctrl, u_data, this->skins, 4, g_obj->GetUIState()->GetInventoryState()->GetButtonStates()[18]);
 
 	}
 }
@@ -260,7 +327,7 @@ void Inventory::AddIntersect(GameObject *g_obj)
 
 	if (!g_obj->GetUIState()->GetInterHandler()->GetInters()[0][INVENTARY_INTER])
 	{
-	
+
 		Golem *g = new Golem();
 
 		g->id = RECT;

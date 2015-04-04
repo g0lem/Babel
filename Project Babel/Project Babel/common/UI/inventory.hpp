@@ -8,7 +8,7 @@ class Inventory: public InventoryProperties
 
 	Sprite *weapon, *armor;
 
-	Button ** m_inventory, **exit, **w_button;
+	Button ** m_inventory, **exit, **w_button, **a_button;
 
 	UI_mover * mover;
 
@@ -23,14 +23,16 @@ class Inventory: public InventoryProperties
 	void Update(Tooltip *t_tip, Controller *ctrl);
 
 	bool EquippedWeapon = false;
-
+	bool EquippedArmor = false;
+	glm::vec2 a_scale;
+	glm::vec2 a_position;
 	glm::vec2 w_position;
 	glm::vec2 w_scale;
 
 	int WeaponFrame;
-
+	int ArmorFrame;
 	Item * weapon_item;
-
+	Item * armor_item;
 	
 
 	

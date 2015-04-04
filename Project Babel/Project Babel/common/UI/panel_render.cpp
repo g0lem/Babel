@@ -37,7 +37,7 @@ void PanelRender::LoadButtonsSprite(Tooltip *t_tip)
 	tex_str[XPBAR] = "xpbar.png";
 
 
-	this->button_skins->Load(4, "data/UI/CPanel/", tex_str); 
+	this->button_skins->Load(4, "data/UI/CPanel/", tex_str);
 
 	this->a_button = new Button*[1];
 
@@ -62,33 +62,33 @@ void PanelRender::LoadButtonsSprite(Tooltip *t_tip)
 
 
 	this->top_buttons = new Button*[4];
-	
+
 	for (int i = 0; i < 4; i++)
 	{
 		Property * m_prop = new Property();
 		m_prop->size = glm::vec2(54, 27);
 		m_prop->color = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
 		if (i != 0)
-			m_prop->position = glm::vec2(top_buttons[i -1]->GetProperties()->position.x + 54, 0);
+			m_prop->position = glm::vec2(top_buttons[i - 1]->GetProperties()->position.x + 54, 0);
 		else
 			m_prop->position = vec2_0;
 		top_buttons[i] = new Button(m_prop);
 
 
 	}
-	t_tip->Add(m_prop->position, glm::vec2(60, 30), "Menu", 20, 0);
-	t_tip->Add(m_prop->position, glm::vec2(60, 30), "Inspect", 20, 0);
-	t_tip->Add(m_prop->position, glm::vec2(60, 30), "Story", 20, 0);
-	t_tip->Add(m_prop->position, glm::vec2(120, 30), "Inventory", 20, 0);
-	t_tip->Add(m_prop->position, glm::vec2(60, 30), "Pass Turn", 20, 0);
+	t_tip->Add(m_prop->position, glm::vec2(144, 53), "Menu", 20, 0);
+	t_tip->Add(m_prop->position, glm::vec2(144, 53), "Inspect", 20, 2);
+	t_tip->Add(m_prop->position, glm::vec2(144, 53), "Story", 20, 3);
+	t_tip->Add(m_prop->position, glm::vec2(144, 53), "Inventory", 20, 1);
+	t_tip->Add(m_prop->position, glm::vec2(144, 53), "Pass Turn", 20, 4);
 }
 
 void PanelRender::Update(Tooltip *t_tip, Controller *ctrl, GameObject * g_obj)
 {
-	
 
 
-	wireframe_position = glm::vec2((ctrl->GetWindowWidth() - wireframe_size.x)/2, 0);
+
+	wireframe_position = glm::vec2((ctrl->GetWindowWidth() - wireframe_size.x) / 2, 0);
 	a_button[0]->GetProperties()->position = glm::vec2((ctrl->GetWindowWidth() - wireframe_size.x) / 2 + 459, 11);
 
 
@@ -96,7 +96,7 @@ void PanelRender::Update(Tooltip *t_tip, Controller *ctrl, GameObject * g_obj)
 	top_buttons[1]->GetProperties()->position = glm::vec2((ctrl->GetWindowWidth() - wireframe_size.x) / 2 + 394, 9);
 	top_buttons[2]->GetProperties()->position = glm::vec2(a_button[0]->GetProperties()->position.x + 54, 9);
 	top_buttons[3]->GetProperties()->position = glm::vec2(top_buttons[2]->GetProperties()->position.x + 54, 9);
-	
+
 	if (ctrl->HasBeenResized())
 	{
 
@@ -127,7 +127,7 @@ void PanelRender::Update(Tooltip *t_tip, Controller *ctrl, GameObject * g_obj)
 
 
 	for (GLuint i = 0; i < 4; i++)
-		if (!g_obj->GetUIState()->GetInterHandler()->GetInters()[0][i+2])
+		if (!g_obj->GetUIState()->GetInterHandler()->GetInters()[0][i + 2])
 		{
 		Golem *g = new Golem();
 		g->id = RECT;
@@ -136,13 +136,13 @@ void PanelRender::Update(Tooltip *t_tip, Controller *ctrl, GameObject * g_obj)
 		g_obj->GetUIState()->GetInterHandler()->GetInters()[0][i + 2] = g;
 		}
 
-		
 
 
 
-	xp_bar_position = glm::vec2((ctrl->GetWindowWidth() - wireframe_size.x) / 2+ 128, 41);
-	hp_bar_position = glm::vec2((ctrl->GetWindowWidth() - wireframe_size.x) / 2+ 514, 41);
-	
+
+	xp_bar_position = glm::vec2((ctrl->GetWindowWidth() - wireframe_size.x) / 2 + 128, 41);
+	hp_bar_position = glm::vec2((ctrl->GetWindowWidth() - wireframe_size.x) / 2 + 514, 41);
+
 }
 
 
@@ -166,6 +166,7 @@ void PanelRender::Render(SoundManager *sm, Tooltip *t_tip, Controller *ctrl, Scr
 		if (g_obj->GetUIState()->GetPanelState()->GetState() == HOVER)
 		{
 			t_tip->UpdateStatus(0, true);
+			t_tip->UpdateSize(0, glm::vec2(144, 53));
 			t_tip->UpdatePosition(0, ctrl->GetMousePosition());
 		}
 		else
@@ -198,7 +199,7 @@ void PanelRender::Render(SoundManager *sm, Tooltip *t_tip, Controller *ctrl, Scr
 
 	for (int i = 0; i < 4; i++)//BUTTONS
 	{
-		
+
 
 		g_obj->GetUIState()->GetPanelState()->GetButtonsState()[i] = UI_helper::GetButtonAction(ctrl, this->top_buttons[i]->GetProperties());
 		this->top_buttons[i]->Render(ctrl, u_data, this->top_skins, i, g_obj->GetUIState()->GetPanelState()->GetButtonsState()[i]);
@@ -246,7 +247,7 @@ void PanelRender::Render(SoundManager *sm, Tooltip *t_tip, Controller *ctrl, Scr
 
 			sm->PlaySound(MENUPRESSBUTTON);
 
-			
+
 			g_obj->GetUIState()->GetInventoryState()->SetState(!g_obj->GetUIState()->GetInventoryState()->GetState());
 
 
@@ -257,7 +258,7 @@ void PanelRender::Render(SoundManager *sm, Tooltip *t_tip, Controller *ctrl, Scr
 			}
 
 		}
-		
+
 
 
 
@@ -373,5 +374,5 @@ void PanelRender::Render(SoundManager *sm, Tooltip *t_tip, Controller *ctrl, Scr
 
 	}
 
-	
+
 }

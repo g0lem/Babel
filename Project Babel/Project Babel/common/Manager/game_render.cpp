@@ -29,6 +29,17 @@ void GameRender::Render(SoundManager * sm, Controller * ctrl, GameObject * g_obj
 		this->s_manager->Advance(g_obj);
 		
 	}
+	if (ctrl->GetKeyOnce(GLFW_KEY_R))
+	{
+		g_obj->Init();
+		g_obj->GetFontList()->Load();
+		this->s_manager->Init(g_obj);
+
+	}
+
+
+
+
 
 	this->s_manager->Render(sm,ctrl, g_obj);
 
