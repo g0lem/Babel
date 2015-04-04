@@ -103,6 +103,7 @@ void Combat::PlayerAttack(SoundManager * sm,Controller * ctrl,GameObject * g_obj
 			if (dmg >= hp)
 			{
 				player->GetStats()->GetXp()->xp++;
+				if (rand() % 10>6)
 				g_obj->GetItemList()->AddDroppedItem((int)(enemies->GetEnemiesPointer()[0][player->GetTarget()]->GetPAttributes()->position.x), (int)(enemies->GetEnemiesPointer()[0][player->GetTarget()]->GetPAttributes()->position.y), item);
 				// std::cout << g_obj->GetItemList()->GetDroppedItems().size()<<"\n";
 				enemies->GetEnemiesPointer()[0][player->GetTarget()]->GetStats()->GetHp()->Damage(player->GetItems()[ITEM_SLOT_WEAPON]->attack);

@@ -75,6 +75,8 @@ private:
 
 	void AddStairs(GameObject *g_obj);
 
+	void AddSpikes(GameObject *g_obj);
+
 	void AddPotions();
 
 	void FirstTunnelPass();

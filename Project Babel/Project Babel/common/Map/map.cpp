@@ -100,7 +100,7 @@ void Map::GenerateBossRoom(GameObject *g_obj)
 
 	this->fog = new fog_of_war();
 	fog->Init(g_obj);
-	fog->GetFOW(g_obj, glm::ivec2(10, 10));
+	
 
 
 
