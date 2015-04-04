@@ -1,0 +1,174 @@
+﻿Merge remote-tracking branch 'origin/master'
+
+Conflicts:
+	Project Babel/Debug/Project Babel.exe
+	Project Babel/Debug/Project Babel.pdb
+	Project Babel/Project Babel.sdf
+	Project Babel/Project Babel.v12.suo
+	Project Babel/Project Babel/Debug/2d.obj
+	Project Babel/Project Babel/Debug/2d_math.obj
+	Project Babel/Project Babel/Debug/Combat.obj
+	Project Babel/Project Babel/Debug/Project Babel.log
+	Project Babel/Project Babel/Debug/Project Babel.pch
+	Project Babel/Project Babel/Debug/Project Babel.tlog/CL.read.1.tlog
+	Project Babel/Project Babel/Debug/Project Babel.tlog/CL.write.1.tlog
+	Project Babel/Project Babel/Debug/Project Babel.tlog/link.command.1.tlog
+	Project Babel/Project Babel/Debug/TextObject.obj
+	Project Babel/Project Babel/Debug/UI_handler.obj
+	Project Babel/Project Babel/Debug/UI_render.obj
+	Project Babel/Project Babel/Debug/animation.obj
+	Project Babel/Project Babel/Debug/application.obj
+	Project Babel/Project Babel/Debug/auto_path.obj
+	Project Babel/Project Babel/Debug/character_panel_state.obj
+	Project Babel/Project Babel/Debug/collision_map.obj
+	Project Babel/Project Babel/Debug/common.obj
+	Project Babel/Project Babel/Debug/controls.obj
+	Project Babel/Project Babel/Debug/dice.obj
+	Project Babel/Project Babel/Debug/effects_handler.obj
+	Project Babel/Project Babel/Debug/enemy.obj
+	Project Babel/Project Babel/Debug/enemy_loader.obj
+	Project Babel/Project Babel/Debug/enemy_manager.obj
+	Project Babel/Project Babel/Debug/event_handler.obj
+	Project Babel/Project Babel/Debug/floating_text.obj
+	Project Babel/Project Babel/Debug/fog_of_war.obj
+	Project Babel/Project Babel/Debug/font_manager.obj
+	Project Babel/Project Babel/Debug/game_object.obj
+	Project Babel/Project Babel/Debug/game_render.obj
+	Project Babel/Project Babel/Debug/graph.obj
+	Project Babel/Project Babel/Debug/hp.obj
+	Project Babel/Project Babel/Debug/inventory.obj
+	Project Babel/Project Babel/Debug/inventory_state.obj
+	Project Babel/Project Babel/Debug/item.obj
+	Project Babel/Project Babel/Debug/item_list.obj
+	Project Babel/Project Babel/Debug/item_types.obj
+	Project Babel/Project Babel/Debug/main.obj
+	Project Babel/Project Babel/Debug/map.obj
+	Project Babel/Project Babel/Debug/map_helper1.obj
+	Project Babel/Project Babel/Debug/map_helper2.obj
+	Project Babel/Project Babel/Debug/map_helper3.obj
+	Project Babel/Project Babel/Debug/media_player.obj
+	Project Babel/Project Babel/Debug/menu_item.obj
+	Project Babel/Project Babel/Debug/menu_render.obj
+	Project Babel/Project Babel/Debug/menu_state.obj
+	Project Babel/Project Babel/Debug/miscellaneous.obj
+	Project Babel/Project Babel/Debug/movement.obj
+	Project Babel/Project Babel/Debug/one_direction.obj
+	Project Babel/Project Babel/Debug/panel_render.obj
+	Project Babel/Project Babel/Debug/panel_state.obj
+	Project Babel/Project Babel/Debug/pathfinder.obj
+	Project Babel/Project Babel/Debug/physical_attributes.obj
+	Project Babel/Project Babel/Debug/player.obj
+	Project Babel/Project Babel/Debug/room.obj
+	Project Babel/Project Babel/Debug/scroller.obj
+	Project Babel/Project Babel/Debug/shader.obj
+	Project Babel/Project Babel/Debug/sound_manager.obj
+	Project Babel/Project Babel/Debug/splash_screen.obj
+	Project Babel/Project Babel/Debug/sprite.obj
+	Project Babel/Project Babel/Debug/sprite_manager.obj
+	Project Babel/Project Babel/Debug/stats.obj
+	Project Babel/Project Babel/Debug/story_render.obj
+	Project Babel/Project Babel/Debug/story_state.obj
+	Project Babel/Project Babel/Debug/text2D.obj
+	Project Babel/Project Babel/Debug/text_render.obj
+	Project Babel/Project Babel/Debug/texture.obj
+	Project Babel/Project Babel/Debug/tile_map.obj
+	Project Babel/Project Babel/Debug/turn.obj
+	Project Babel/Project Babel/Debug/ui_helper.obj
+	Project Babel/Project Babel/Debug/ui_intersect.obj
+	Project Babel/Project Babel/Debug/ui_mover.obj
+	Project Babel/Project Babel/Debug/ui_state.obj
+	Project Babel/Project Babel/Debug/uniform_2d.obj
+	Project Babel/Project Babel/Debug/vc120.idb
+	Project Babel/Project Babel/Debug/vc120.pdb
+	Project Babel/Project Babel/Debug/xp.obj
+#
+# It looks like you may be committing a merge.
+# If this is not correct, please remove the file
+#	.git/MERGE_HEAD
+# and try again.
+
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Your branch and 'origin/master' have diverged,
+# and have 1 and 5 different commits each, respectively.
+#   (use "git pull" to merge the remote branch into yours)
+#
+# All conflicts fixed but you are still merging.
+#
+# Changes to be committed:
+#	new file:   Project Babel/Debug/data/SplashScreen/restart.png
+#	modified:   Project Babel/Debug/data/UI/Inventory/armorslotwithtext.png
+#	new file:   Project Babel/Debug/data/UI/Inventory/equippeditemslot.png
+#	modified:   Project Babel/Debug/data/UI/Inventory/weaponslotwithtext.png
+#	new file:   Project Babel/Debug/data/UI/Story/tablet1consc.png
+#	new file:   Project Babel/Debug/data/UI/Story/tablet1descript.png
+#	new file:   Project Babel/Debug/data/UI/Story/tablet2consc.png
+#	new file:   Project Babel/Debug/data/UI/Story/tablet2descript.png
+#	new file:   Project Babel/Debug/data/UI/inspecttooltip.png
+#	new file:   Project Babel/Debug/data/UI/inventorytooltip.png
+#	new file:   Project Babel/Debug/data/UI/menutooltip.png
+#	new file:   Project Babel/Debug/data/UI/skipturntooltip.png
+#	new file:   Project Babel/Debug/data/UI/storytooltip.png
+#	new file:   Project Babel/Debug/data/tiles/boss/door-open.png
+#	new file:   Project Babel/Debug/data/tiles/boss/door.png
+#	new file:   Project Babel/Debug/data/tiles/boss/floor.png
+#	renamed:    Project Babel/Project Babel/data/sprites/hydra/back/frame1.png -> Project Babel/Debug/data/tiles/boss/wall-cracked-1.png
+#	renamed:    Project Babel/Project Babel/data/sprites/hydra/back/frame3.png -> Project Babel/Debug/data/tiles/boss/wall-cracked-2.png
+#	renamed:    Project Babel/Project Babel/data/sprites/hydra/back/frame2.png -> Project Babel/Debug/data/tiles/boss/wall-cracked-3.png
+#	renamed:    Project Babel/Project Babel/data/sprites/hydra/front/frame2.png -> Project Babel/Debug/data/tiles/boss/wall.png
+#	renamed:    Project Babel/Project Babel/data/sprites/hydra/front/frame1.png -> Project Babel/Debug/data/tiles/chains-deployed.png
+#	new file:   Project Babel/Debug/data/tiles/chains-icon.png
+#	new file:   Project Babel/Debug/data/tiles/chains.png
+#	new file:   Project Babel/Debug/data/tiles/spikes-fired.png
+#	new file:   Project Babel/Debug/data/tiles/spikes-icon.png
+#	new file:   Project Babel/Debug/data/tiles/spikes.png
+#	new file:   Project Babel/Debug/data/tiles/traps/chains/chains-deployed.png
+#	new file:   Project Babel/Debug/data/tiles/traps/chains/chains-icon.png
+#	new file:   Project Babel/Debug/data/tiles/traps/chains/chains.png
+#	new file:   Project Babel/Debug/data/tiles/traps/spikes/spikes-fired.png
+#	new file:   Project Babel/Debug/data/tiles/traps/spikes/spikes-icon.png
+#	new file:   Project Babel/Debug/data/tiles/traps/spikes/spikes.png
+#	modified:   Project Babel/Project Babel/Debug/Project Babel.log
+#	modified:   Project Babel/Project Babel/Project Babel.vcxproj
+#	modified:   Project Babel/Project Babel/boss_map.txt
+#	modified:   Project Babel/Project Babel/common/Events/event_handler.cpp
+#	modified:   Project Babel/Project Babel/common/Events/event_handler.hpp
+#	modified:   Project Babel/Project Babel/common/Game Object/game_object.cpp
+#	modified:   Project Babel/Project Babel/common/Game Object/game_object.hpp
+#	modified:   Project Babel/Project Babel/common/Manager/game_render.cpp
+#	modified:   Project Babel/Project Babel/common/Manager/sprite_manager.cpp
+#	modified:   Project Babel/Project Babel/common/UI/inventory.cpp
+#	modified:   Project Babel/Project Babel/common/UI/inventory.hpp
+#	modified:   Project Babel/Project Babel/common/UI/panel_render.cpp
+#	modified:   Project Babel/Project Babel/common/UI/story_render.cpp
+#	modified:   Project Babel/Project Babel/common/UI/story_render.hpp
+#	modified:   Project Babel/Project Babel/common/UI/ui_helper.hpp
+#	modified:   Project Babel/Project Babel/common/splash_screen.cpp
+#	modified:   Project Babel/Project Babel/common/splash_screen.hpp
+#	new file:   Project Babel/Project Babel/data/SplashScreen/restart.png
+#	modified:   Project Babel/Project Babel/data/UI/Inventory/armorslotwithtext.png
+#	new file:   Project Babel/Project Babel/data/UI/Inventory/equippeditemslot.png
+#	modified:   Project Babel/Project Babel/data/UI/Inventory/weaponslotwithtext.png
+#	new file:   Project Babel/Project Babel/data/UI/Story/tablet1consc.png
+#	new file:   Project Babel/Project Babel/data/UI/Story/tablet1descript.png
+#	new file:   Project Babel/Project Babel/data/UI/Story/tablet2consc.png
+#	new file:   Project Babel/Project Babel/data/UI/Story/tablet2descript.png
+#	new file:   Project Babel/Project Babel/data/UI/inspecttooltip.png
+#	new file:   Project Babel/Project Babel/data/UI/inventorytooltip.png
+#	new file:   Project Babel/Project Babel/data/UI/menutooltip.png
+#	new file:   Project Babel/Project Babel/data/UI/skipturntooltip.png
+#	new file:   Project Babel/Project Babel/data/UI/storytooltip.png
+#	deleted:    Project Babel/Project Babel/data/sprites/hydra/front/frame3.png
+#	deleted:    Project Babel/Project Babel/data/sprites/hydra/left/frame1.png
+#	deleted:    Project Babel/Project Babel/data/sprites/hydra/left/frame2.png
+#	deleted:    Project Babel/Project Babel/data/sprites/hydra/left/frame3.png
+#	deleted:    Project Babel/Project Babel/data/sprites/hydra/right/frame1.png
+#	deleted:    Project Babel/Project Babel/data/sprites/hydra/right/frame1.psd
+#	deleted:    Project Babel/Project Babel/data/sprites/hydra/right/frame2.png
+#	deleted:    Project Babel/Project Babel/data/sprites/hydra/right/frame3.png
+#	modified:   Project Babel/Project Babel/main.cpp
+#	modified:   Project Babel/ipch/project babel-b8de057d/project babel-38d3f719.ipch
+#
+

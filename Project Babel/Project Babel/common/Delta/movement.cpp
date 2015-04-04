@@ -20,10 +20,16 @@ void Move::TileMove(Controller* ctrl, GameObject * g_obj, glm::vec2 &position)
 	{
 
 
+		GLboolean ok = true;
 
-
-
-		if (!g_obj->GetCollisionMap()->GetTiles()[GLuint(position.x)][GLuint(position.y - 1)])
+		for (GLuint i = 0; i < g_obj->GetCollisionMap()->GetList().size();i++)
+			if (glm::ivec2(position.x, position.y - 1) == g_obj->GetCollisionMap()->GetList()[i])
+			
+			{
+			ok = false;
+			break;
+			}
+		if (ok && !g_obj->GetCollisionMap()->GetTiles()[GLuint(position.x)][GLuint(position.y - 1)])
 			position.y--;
 
 
@@ -39,7 +45,16 @@ void Move::TileMove(Controller* ctrl, GameObject * g_obj, glm::vec2 &position)
 
 
 	
-		if (!g_obj->GetCollisionMap()->GetTiles()[GLuint(position.x)][GLuint(position.y + 1)])
+		GLboolean ok = true;
+
+		for (GLuint i = 0; i < g_obj->GetCollisionMap()->GetList().size(); i++)
+			if (glm::ivec2(position.x, position.y + 1) == g_obj->GetCollisionMap()->GetList()[i])
+
+			{
+			ok = false;
+			break;
+			}
+		if (ok && !g_obj->GetCollisionMap()->GetTiles()[GLuint(position.x)][GLuint(position.y + 1)])
 			position.y++;
 
 
@@ -54,7 +69,16 @@ void Move::TileMove(Controller* ctrl, GameObject * g_obj, glm::vec2 &position)
 
 
 
-		if (!g_obj->GetCollisionMap()->GetTiles()[GLuint(position.x - 1)][GLuint(position.y)])
+		GLboolean ok = true;
+
+		for (GLuint i = 0; i < g_obj->GetCollisionMap()->GetList().size(); i++)
+			if (glm::ivec2(position.x - 1, position.y) == g_obj->GetCollisionMap()->GetList()[i])
+
+			{
+			ok = false;
+			break;
+			}
+		if (ok && !g_obj->GetCollisionMap()->GetTiles()[GLuint(position.x - 1)][GLuint(position.y)])
 			position.x--;
 
 
@@ -71,7 +95,16 @@ void Move::TileMove(Controller* ctrl, GameObject * g_obj, glm::vec2 &position)
 
 
 
-		if (!g_obj->GetCollisionMap()->GetTiles()[GLuint(position.x + 1)][GLuint(position.y)])
+		GLboolean ok = true;
+
+		for (GLuint i = 0; i < g_obj->GetCollisionMap()->GetList().size(); i++)
+			if (glm::ivec2(position.x + 1, position.y) == g_obj->GetCollisionMap()->GetList()[i])
+
+			{
+			ok = false;
+			break;
+			}
+		if (ok && !g_obj->GetCollisionMap()->GetTiles()[GLuint(position.x + 1)][GLuint(position.y)])
 			position.x++;
 
 
