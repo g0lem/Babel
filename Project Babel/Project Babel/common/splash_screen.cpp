@@ -1,6 +1,6 @@
 #include "common.hpp"
 
-#define NUM_SCREENS 3
+#define NUM_SCREENS 4
 
 void SplashScreen::Init()
 {
@@ -21,13 +21,13 @@ void SplashScreen::Load()
 	m_screen = new Sprite();
 
 	char **textures = new char*[NUM_SCREENS];
-	textures[0] = "cerberus.png";
+	textures[0] = "1st.png";
 	textures[1] = "logo1.png";
-	textures[2] = "splash1.png";
-	textures[3] = "restart.png";
+	textures[2] = "logo1.png";
+	textures[3] = "3rd.png";
 
 	m_screen->Load(NUM_SCREENS, "data/SplashScreen/", textures);
-	for (int i = 0; i < NUM_SCREENS ; i++)
+	for (int i = 0; i < NUM_SCREENS - 2  ; i++)
 	{
 		splash *t_splash = new splash();
 		t_splash->alpha = 0;
@@ -37,6 +37,22 @@ void SplashScreen::Load()
 		t_splash->speed = 1;
 		m_screens->push_back(t_splash);
 	}
+
+	splash *t_splash = new splash();
+	t_splash->alpha = 1;
+	t_splash->turn = true;
+	t_splash->type = 0;
+	t_splash->finished = false;
+	t_splash->speed = 1;
+	m_screens->push_back(t_splash);
+
+	t_splash = new splash();
+	t_splash->alpha = 1;
+	t_splash->turn = true;
+	t_splash->type = 2;
+	t_splash->finished = false;
+	t_splash->speed = 1;
+	m_screens->push_back(t_splash);
 	
 }
 
