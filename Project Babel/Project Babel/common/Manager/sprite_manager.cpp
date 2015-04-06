@@ -17,6 +17,11 @@ void SpriteManager::Init(GameObject * g_obj)
 	this->map = new Map();
 	this->s_screen = new SplashScreen();
 
+	this->test = new Sprite();
+
+	char **tex_str = new char*[1];
+	tex_str[0] = "restart.png";
+	this->test->Load(1, "data/SplashScreen/", tex_str);
 
 
 	this->map->Init(g_obj);
@@ -143,10 +148,16 @@ void SpriteManager::Render(SoundManager * sm, Controller * ctrl, GameObject * g_
 
 
 		this->player->Render(sm, ctrl, this->GetScreenPointer(), g_obj, this->map);
-		this->m_enemies->Render(sm, ctrl, this->GetScreenPointer(), g_obj, this->map);
-		this->m_combat->Action(sm,ctrl, g_obj, this->player, this->m_enemies, this->map);
+		this->m_enemies->Render(sm, ctrl, this->GetScreenPointer(), g_obj, this->map, this->m_enemies->GetType());
+		this->m_combat->Action(sm,ctrl, g_obj, this->player, this->m_enemies, this->map, this->m_enemies->GetType());
 
 	}
+
+
+	this->GetScreenPointer()->ApplyMatrix(Translation(glm::vec2(0, 0))*Scale(ctrl->GetWindowSize()));
+	if (g_obj->GetPanelState()->hp == 0 && this->s_screen->Update() == true)
+		this->test->Render(0);
+
 
 
 	this->UnbindRun();

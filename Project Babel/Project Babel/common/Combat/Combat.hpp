@@ -18,17 +18,17 @@ class Combat
 
 
 	void SetPlayerTarget(Player * player, EnemyManager * enemies);
-	void PlayerAttack(SoundManager * sm, Controller * ctrl, GameObject * g_obj, Player * player, EnemyManager *enemies, Map *current_map);
+	void PlayerAttack(SoundManager * sm, Controller * ctrl, GameObject * g_obj, Player * player, EnemyManager *enemies, Map *current_map, int type);
 	void CheckPlayerMoveAbility(Player * player, EnemyManager * enemies);
-	void PlayerRelated(SoundManager * sm, Controller * ctrl, GameObject * g_obj, Player * player, EnemyManager * enemies, Map * map);
+	void PlayerRelated(SoundManager * sm, Controller * ctrl, GameObject * g_obj, Player * player, EnemyManager * enemies, Map * map, int type);
 
 
 	void SortThingsOut(Player * player, EnemyManager * enemies);
 	void SetEnemyTarget(Player * player, EnemyManager * enemies);
 	void AquireEnemyTarget(Player * player, EnemyManager * enemies);
-	void EnemyAttack(SoundManager *sm, Controller * ctrl, GameObject * g_obj, Player * player, EnemyManager *enemies);
-	void EnemyMovement(Controller * ctrl, GameObject * g_obj, Player * player ,EnemyManager * enemies);
-	void EnemyRelated(SoundManager *sm, Controller * ctrl, GameObject * g_obj, Player * player, EnemyManager * enemies, Map * map);
+	void EnemyAttack(SoundManager *sm, Controller * ctrl, GameObject * g_obj, Player * player, EnemyManager *enemies, int type);
+	void EnemyMovement(Controller * ctrl, GameObject * g_obj, Player * player, EnemyManager * enemies, int type);
+	void EnemyRelated(SoundManager *sm, Controller * ctrl, GameObject * g_obj, Player * player, EnemyManager * enemies, Map * map, int type);
 	void UpdateTurns(GameObject * g_obj, EnemyManager * enemies);
 
 
@@ -50,7 +50,7 @@ public:
 		GameObject * g_obj, 
 		Player * player,
 		EnemyManager * enemies,
-		Map * map);
+		Map * map, int type);
 
 
 

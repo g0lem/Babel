@@ -12,7 +12,6 @@ void GameRender::Init(GameObject * g_obj)
 
 
 
-
 }
 
 

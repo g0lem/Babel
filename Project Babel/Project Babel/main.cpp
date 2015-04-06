@@ -1,7 +1,10 @@
 //Checked 1
 
-#pragma comment(linker, "/SUBSYSTEM:windows /ENTRY:mainCRTStartup")
+/*
 
+/SUBSYSTEM:windows
+/ENTRY:mainCRTStartup
+*/
 #include "common.hpp"
 
 

@@ -6,7 +6,7 @@
 
 
 
-void EnemyManager::Render(SoundManager *sm, Controller * ctrl, ScreenUniformData * u_data, GameObject * g_obj, Map *map)
+void EnemyManager::Render(SoundManager *sm, Controller * ctrl, ScreenUniformData * u_data, GameObject * g_obj, Map *map, int type)
 {
 
 	std::vector<glm::ivec2>list = g_obj->GetCollisionMap()->GetList();
@@ -41,7 +41,7 @@ void EnemyManager::Render(SoundManager *sm, Controller * ctrl, ScreenUniformData
 
 
 
-	this->CheckEnemiesState(sm, g_obj, map);
+	this->CheckEnemiesState(sm, g_obj, map, type);
 
 
 
@@ -65,6 +65,7 @@ void EnemyManager::Init(GLuint num, Map * map, GameObject * g_obj, int type)
 	while (num_e < num)
 	{
 		this->m_enemies[0][num_e] = new Enemy(g_obj->GetEnemyLoader()->GetData()[0][type]);
+		this->type = type;
 		this->m_enemies[0][num_e]->SetRandomPosition(map);
 		this->m_enemies[0][num_e]->Update(g_obj, 0);
 		glm::vec2 t_pos = this->m_enemies[0][num_e]->GetPAttributes()->position;
@@ -72,7 +73,7 @@ void EnemyManager::Init(GLuint num, Map * map, GameObject * g_obj, int type)
 		for (GLuint i = 0; i < num_e; i++)
 			if (t_pos == this->m_enemies[0][i]->GetPAttributes()->position)
 			{
-			this->Kill(g_obj, num_e, map);
+			this->Kill(g_obj, num_e, map, type);
 			ok = false;
 			break;
 			}
@@ -87,7 +88,7 @@ void EnemyManager::Init(GLuint num, Map * map, GameObject * g_obj, int type)
 
 
 
-void EnemyManager::CheckEnemiesState(SoundManager *sm, GameObject * g_obj, Map *map)
+void EnemyManager::CheckEnemiesState(SoundManager *sm, GameObject * g_obj, Map *map, int type)
 {
 
 
@@ -99,7 +100,7 @@ void EnemyManager::CheckEnemiesState(SoundManager *sm, GameObject * g_obj, Map *
 		{
 
 
-			this->Kill(g_obj, i, map);
+			this->Kill(g_obj, i, map, type);
 			sm->PlaySound(SCORPIONDIE);
 
 		}
@@ -113,7 +114,7 @@ void EnemyManager::CheckEnemiesState(SoundManager *sm, GameObject * g_obj, Map *
 
 
 
-void EnemyManager::Kill(GameObject * g_obj, GLuint enemy_id, Map *map)
+void EnemyManager::Kill(GameObject * g_obj, GLuint enemy_id, Map *map, int type)
 {
 
 

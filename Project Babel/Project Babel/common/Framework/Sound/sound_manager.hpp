@@ -3,7 +3,7 @@
 
 
 
-#define MAX_SOUNDS 15
+#define MAX_SOUNDS 16
 #define MAX_SOUNDS 3
 #define MAX_MUSIC 3
 
@@ -16,6 +16,7 @@
 #define ATTACK2 5
 #define ATTACK3 6
 #define EQUIPITEM 7
+#define HYDRAATTACK 14
 #define MENUPRESSBUTTON 8
 #define OPENDOOR 9
 #define OPENINVENTORY 10

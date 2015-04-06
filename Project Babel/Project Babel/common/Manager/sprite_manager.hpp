@@ -20,7 +20,7 @@ class SpriteManager : private Aaether2D
 	EnemyManager * m_enemies;
 
 	EffectsHandler *m_effects;
-
+	Sprite * test;
 	Font *font;
 
 	float alpha = 1.f;

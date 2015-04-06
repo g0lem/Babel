@@ -46,6 +46,7 @@ void SoundManager::loadSounds(char** path)
 	path[11] = "data/media/sounds/scorpionattack.wav";
 	path[12] = "data/media/sounds/scorpiondie.wav";
 	path[13] = "data/media/sounds/walksound.ogg";
+	path[14] = "data/media/sounds/hydrattack1.wav";
 
 
 	AddSound(path[0], "Ambience1");
@@ -62,6 +63,7 @@ void SoundManager::loadSounds(char** path)
 	AddSound(path[11], "Scorpion Attack");
 	AddSound(path[12], "Scorpion Die");
 	AddSound(path[13], "Walksound");
+	AddSound(path[14], "Hydra Attack");
 
 }
 

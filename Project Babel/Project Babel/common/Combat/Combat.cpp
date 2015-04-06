@@ -61,7 +61,7 @@ void Combat::SetPlayerTarget(Player * player, EnemyManager * enemies)
 
   
 
-void Combat::PlayerAttack(SoundManager * sm,Controller * ctrl,GameObject * g_obj, Player * player, EnemyManager *enemies, Map *current_map)
+void Combat::PlayerAttack(SoundManager * sm, Controller * ctrl, GameObject * g_obj, Player * player, EnemyManager *enemies, Map *current_map, int type)
 {
 
 	Item *item;
@@ -179,13 +179,13 @@ void Combat::CheckPlayerMoveAbility(Player * player, EnemyManager * enemies)
 
 
 
-void Combat::PlayerRelated(SoundManager * sm,Controller *ctrl, GameObject * g_obj, Player * player, EnemyManager * enemies, Map * map)
+void Combat::PlayerRelated(SoundManager * sm, Controller *ctrl, GameObject * g_obj, Player * player, EnemyManager * enemies, Map * map, int type)
 {
 
 
 	this->CheckPlayerMoveAbility(player, enemies);
 	this->SetPlayerTarget(player, enemies);
-	this->PlayerAttack(sm,ctrl, g_obj, player, enemies, map);
+	this->PlayerAttack(sm,ctrl, g_obj, player, enemies, map, type);
 
 
 }
@@ -283,7 +283,7 @@ void Combat::AquireEnemyTarget(Player * player, EnemyManager * enemies)
 
 
 
-void Combat::EnemyAttack(SoundManager *sm, Controller * ctrl, GameObject * g_obj, Player * player, EnemyManager *enemies)
+void Combat::EnemyAttack(SoundManager *sm, Controller * ctrl, GameObject * g_obj, Player * player, EnemyManager *enemies, int type)
 {
 
 
@@ -340,9 +340,10 @@ void Combat::EnemyAttack(SoundManager *sm, Controller * ctrl, GameObject * g_obj
 			char *buffer = new char[256];
 			_itoa(dmg, buffer, 10);
 			strcat(buffer, " DMG");
-
-			sm->PlaySound(SCORPIONATTACK);
-
+			if (type == 0)
+				sm->PlaySound(SCORPIONATTACK);
+			if (type == 1)
+				sm->PlaySound(HYDRAATTACK);
 
 			text_pos.x -= g_obj->GetFontList()->GetFont()->GetLength(buffer, 40) / 2.0f;
 
@@ -371,7 +372,7 @@ void Combat::EnemyAttack(SoundManager *sm, Controller * ctrl, GameObject * g_obj
 
 
 
-void Combat::EnemyMovement(Controller * ctrl, GameObject * g_obj, Player * player, EnemyManager * enemies)
+void Combat::EnemyMovement(Controller * ctrl, GameObject * g_obj, Player * player, EnemyManager * enemies, int type)
 {
 
 
@@ -491,7 +492,7 @@ void Combat::UpdateTurns(GameObject * g_obj, EnemyManager * enemies)
 
 
 
-void Combat::EnemyRelated(SoundManager *sm, Controller * ctrl, GameObject * g_obj, Player * player, EnemyManager * enemies, Map * map)
+void Combat::EnemyRelated(SoundManager *sm, Controller * ctrl, GameObject * g_obj, Player * player, EnemyManager * enemies, Map * map, int type)
 {
 
 
@@ -500,8 +501,8 @@ void Combat::EnemyRelated(SoundManager *sm, Controller * ctrl, GameObject * g_ob
 	this->SortThingsOut(player, enemies);
 	this->SetEnemyTarget(player, enemies);
 	this->AquireEnemyTarget(player, enemies);
-	this->EnemyAttack(sm, ctrl, g_obj, player, enemies);
-	this->EnemyMovement(ctrl, g_obj, player, enemies);
+	this->EnemyAttack(sm, ctrl, g_obj, player, enemies, type);
+	this->EnemyMovement(ctrl, g_obj, player, enemies, type);
 
 
 }
@@ -509,13 +510,13 @@ void Combat::EnemyRelated(SoundManager *sm, Controller * ctrl, GameObject * g_ob
 
 
 
-void Combat::Action(SoundManager * sm, Controller * ctrl, GameObject * g_obj, Player * player, EnemyManager * enemies, Map * map)
+void Combat::Action(SoundManager * sm, Controller * ctrl, GameObject * g_obj, Player * player, EnemyManager * enemies, Map * map, int type)
 {
 
 
 	
-	this->PlayerRelated(sm,ctrl, g_obj, player, enemies, map);
-	this->EnemyRelated(sm, ctrl,g_obj, player, enemies, map);
+	this->PlayerRelated(sm,ctrl, g_obj, player, enemies, map, type);
+	this->EnemyRelated(sm, ctrl,g_obj, player, enemies, map, type);
 
 
 
