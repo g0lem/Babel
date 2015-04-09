@@ -88,24 +88,28 @@ void Enemy::LoadSprites(EnemyData * data)
 
 void Enemy::SetRandomPosition(Map * map)
 {
-
+	
 
 	GLboolean ok = false;
 
 	while (!ok)
 	{
-
-
-		this->p_attributes->position = glm::vec2(Rand(map->GetTilemap()->GetSize().x), Rand(map->GetTilemap()->GetSize().y));
+		Room *room;
+		room = map->GetRoomsPointer()->at(Rand(map->GetRoomsPointer()->size()));
+		this->p_attributes->position = glm::vec2(Rand(room->GetOffset().x + 1, room->GetOffset().x + room->GetHeight() - 1), Rand(room->GetOffset().y + 1, room->GetOffset().y + room->GetWidth() - 1));
+		//this->p_attributes->position = glm::vec2(Rand(map->GetTilemap()->GetSize().x), Rand(map->GetTilemap()->GetSize().y));
 		this->p_attributes->target = this->p_attributes->position;
 
+		
 
 		GLint result = map->GetTilemap()->GetTiles()[GLuint(this->p_attributes->position.x)][GLuint(this->p_attributes->position.y)];
 
 
 		if (result >= 0 && result < SOLID_LIMIT)
-		ok = true;
-
+		{
+			ok = true;
+			
+		}
 		GLint r = Rand(10);
 		if (r > 0 || r == 0)
 		{
