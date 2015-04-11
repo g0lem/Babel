@@ -15,17 +15,21 @@ class ItemList
 
 	struct Dropped
 	{
-		int x, y;
+		glm::vec2 position;
 		Item* item;
 	};
 
 	struct Object
 	{
 		glm::vec2 position;
+		glm::vec2 damage;
 		int id;
+		inline Object(){ position = vec2_0; damage = vec2_0; id = 0; }
 	};
+   
 	
 	std::vector<Dropped*> dropped_items;
+	std::vector<Dropped*> traps;
 
 	std::vector<Object*> objectlist;
 	
@@ -71,6 +75,7 @@ public:
 	void LoadObjects();
 
 	void SpawnObject(int id, glm::vec2 position);
+	void SpawnObject(int id, glm::vec2 position, glm::vec2 damage);
 	
 	void ClearObjects();
 	void ClearDroppedItems();

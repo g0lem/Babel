@@ -24,7 +24,7 @@
 #define TABLET_ID 0
 #define STAIRS_ID 1
 #define SPIKES_ID 2
-
+#define SPIKES_FIRED_ID 3
 
 
 

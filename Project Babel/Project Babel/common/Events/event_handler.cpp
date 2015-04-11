@@ -30,8 +30,8 @@ void EventHandler::Load(Map *current_map, GameObject *g_obj)
 		}
 
 	for (int i = 0; i < g_obj->GetItemList()->GetDroppedItems().size(); i++)
-		if (g_obj->GetItemList()->GetDroppedItems()[i]->x >= 0 && g_obj->GetItemList()->GetDroppedItems()[i]->y >=0)
-		e_map[g_obj->GetItemList()->GetDroppedItems()[i]->x][g_obj->GetItemList()->GetDroppedItems()[i]->y] = 5;
+		if (g_obj->GetItemList()->GetDroppedItems()[i]->position.x >= 0 && g_obj->GetItemList()->GetDroppedItems()[i]->position.y >=0)
+			e_map[(int)(g_obj->GetItemList()->GetDroppedItems()[i]->position.x)][(int) (g_obj->GetItemList()->GetDroppedItems()[i]->position.y)] = 5;
 
 	//std::cout << "Marimea: " << g_obj->GetItemList()->GetObjects().size()<<"\n";
 
@@ -42,6 +42,9 @@ void EventHandler::Load(Map *current_map, GameObject *g_obj)
 
 		if (g_obj->GetItemList()->GetObjects()[i]->id == STAIRS_ID)
 			e_map[(int)(g_obj->GetItemList()->GetObjects()[i]->position.x)][(int)(g_obj->GetItemList()->GetObjects()[i]->position.y)] = 3;
+
+		if (g_obj->GetItemList()->GetObjects()[i]->id == SPIKES_ID)
+			e_map[(int)(g_obj->GetItemList()->GetObjects()[i]->position.x)][(int)(g_obj->GetItemList()->GetObjects()[i]->position.y)] = 4;
 	}
 	
 
@@ -154,7 +157,7 @@ void EventHandler::PickUp(glm::vec2 position, Map *current_map, GameObject *g_ob
 		for (int i = 0; i < g_obj->GetItemList()->GetDroppedItems().size(); i++)
 		{
 			
-			if (g_obj->GetItemList()->GetInventory().size() < 16 && g_obj->GetItemList()->GetDroppedItems()[i]->x == (int)(position.x) && g_obj->GetItemList()->GetDroppedItems()[i]->y == (int)(position.y))
+			if (g_obj->GetItemList()->GetInventory().size() < 16 && g_obj->GetItemList()->GetDroppedItems()[i]->position.x == position.x && g_obj->GetItemList()->GetDroppedItems()[i]->position.y == position.y)
 			{
 				g_obj->GetItemList()->AddtoInventory(g_obj->GetItemList()->GetDroppedItems()[i]->item);
 				

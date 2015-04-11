@@ -102,7 +102,7 @@ void SoundManager::Clean()
 
 void SoundManager::AddSound(char* p_sound, char *name)
 {
-	Sound *t_sound = new Sound;
+	Sound *t_sound = new Sound();
 
 	sf::SoundBuffer *buffer = new sf::SoundBuffer();
 

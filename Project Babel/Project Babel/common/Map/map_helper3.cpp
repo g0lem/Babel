@@ -360,7 +360,7 @@ void Map::AddSpikes(GameObject *g_obj)
 {
 	int x, y;
 	int tablets_added = 0;
-	while (tablets_added < 4)
+	while (tablets_added < 20)
 	{
 		x = rand() % (tilemap->GetSize().x);
 		y = rand() % (tilemap->GetSize().y);

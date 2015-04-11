@@ -90,10 +90,29 @@ void EnemyManager::Init(GLuint num, Map * map, GameObject * g_obj, int type)
 
 void EnemyManager::CheckEnemiesState(SoundManager *sm, GameObject * g_obj, Map *map, int type)
 {
-
+	int random_damage;
 
 	for (GLuint i = 0; i < this->m_enemies->size(); i++)
 	{
+		for (GLuint j = 0; j < g_obj->GetItemList()->GetObjects().size(); j++)
+		{
+			if (this->m_enemies[0][i]->GetPAttributes()->position == g_obj->GetItemList()->GetObjects()[j]->position && g_obj->GetItemList()->GetObjects()[j]->id == SPIKES_ID)
+			{
+				random_damage = Rand(100, 100);
+				//this->m_enemies[0][i]->GetStats()->GetHp()->hp -= Rand(g_obj->GetItemList()->GetObjects()[j]->damage.x, g_obj->GetItemList()->GetObjects()[j]->damage.y);
+				if (this->m_enemies[0][i]->GetStats()->GetHp()->hp > random_damage)
+				this->m_enemies[0][i]->GetStats()->GetHp()->hp -= random_damage;
+				else
+				{
+
+					this->Kill(g_obj, i, map, type);
+					sm->PlaySound(SCORPIONDIE);
+				
+				}
+
+				g_obj->GetItemList()->GetObjects()[j]->id = SPIKES_FIRED_ID;
+			}
+		}
 
 
 		if (this->m_enemies[0][i]->GetStats()->GetHp()->hp == 0)

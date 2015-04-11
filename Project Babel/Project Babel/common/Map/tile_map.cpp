@@ -186,8 +186,8 @@ void Tilemap::Render(Controller * ctrl, ScreenUniformData * u_data, Sprite * m_s
 	
 	for (int i = 0; i < item_list->GetDroppedItems().size(); i++)
 	{
-		x = item_list->GetDroppedItems()[i]->x;
-		y = item_list->GetDroppedItems()[i]->y;
+		x = item_list->GetDroppedItems()[i]->position.x;
+		y = item_list->GetDroppedItems()[i]->position.y;
 
 	
 
