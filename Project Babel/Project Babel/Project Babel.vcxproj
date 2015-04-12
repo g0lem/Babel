@@ -97,6 +97,7 @@
     <ClInclude Include="common\Delta\one_direction.hpp" />
     <ClInclude Include="common\Delta\pathfinder.hpp" />
     <ClInclude Include="common\Delta\physical_attributes.hpp" />
+    <ClInclude Include="common\Delta\physical_effects.hpp" />
     <ClInclude Include="common\Effects.hpp" />
     <ClInclude Include="common\Effects\effects_handler.hpp" />
     <ClInclude Include="common\Events.hpp" />

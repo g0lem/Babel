@@ -22,7 +22,7 @@ public:
 	void Init(Tooltip*t_tip);
 
 
-	void Render(SoundManager *sm, Tooltip *t_tip, Controller * ctrl, GameObject * g_obj);
+	void Render(SoundManager *sm, Tooltip *t_tip, Controller * ctrl, GameObject * g_obj, glm::vec2 player_position);
 
 
 

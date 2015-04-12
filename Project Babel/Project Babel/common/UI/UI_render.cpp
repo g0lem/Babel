@@ -26,7 +26,7 @@ void UIRender::Init(char * vertex_shader, char * fragment_shader, Tooltip *toolt
 
 
 
-void UIRender::Render(SoundManager *sm, Tooltip *tooltips, Controller *ctrl, GameObject *g_obj)
+void UIRender::Render(SoundManager *sm, Tooltip *tooltips, Controller *ctrl, GameObject *g_obj, glm::vec2 player_positon)
 {
 
 
@@ -54,7 +54,7 @@ void UIRender::Render(SoundManager *sm, Tooltip *tooltips, Controller *ctrl, Gam
 		tooltips->GetTooltips()->at(tooltips->GetRenderingIndex())->renderstring = true;
 
 		if (g_obj->GetUIState()->GetInventoryState()->GetState() == ACTIVE)
-			this->inventory_r->Render(tooltips, sm, ctrl, this->GetScreenPointer(), g_obj);
+			this->inventory_r->Render(tooltips, sm, ctrl, this->GetScreenPointer(), g_obj, player_positon);
 		else
 		{
 			this->inventory_r->GetMover()->Reset();

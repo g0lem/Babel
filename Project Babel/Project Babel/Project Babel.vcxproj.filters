@@ -550,6 +550,9 @@
     <ClInclude Include="common\Game Object\TextObject.hpp">
       <Filter>common\Game Object</Filter>
     </ClInclude>
+    <ClInclude Include="common\Delta\physical_effects.hpp">
+      <Filter>common\Delta</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc">

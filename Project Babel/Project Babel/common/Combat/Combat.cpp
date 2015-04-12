@@ -413,10 +413,21 @@ void Combat::EnemyMovement(Controller * ctrl, GameObject * g_obj, Player * playe
 				a_path->Start(g_obj, enemy->GetPAttributes()->position, enemy->GetTargetPosition());
 				a_path->Reset();
 
-				//freeze trap here
+		
+				int reset_position;
+				for (int j = 0; j < g_obj->GetItemList()->GetTraps().size(); j++)
+				{
+					if (enemy->GetPAttributes()->position == g_obj->GetItemList()->GetTraps()[j]->position && g_obj->GetItemList()->GetTraps()[j]->item->id == CHAINS_ID)
+					{
+						enemy->GetPAttributes()->Peffects->freeze = true;
+						g_obj->GetItemList()->GetTraps()[j]->item->id = CHAINS_ACTIVE_ID;
+						reset_position = j;
+					}
+				}
 
+				
 			
-				if (a_path->GetPathfinder()->GetPathFound())
+				if (a_path->GetPathfinder()->GetPathFound() && enemy->GetPAttributes()->Peffects->freeze == false)
 				{
 
 
@@ -431,6 +442,7 @@ void Combat::EnemyMovement(Controller * ctrl, GameObject * g_obj, Player * playe
 				{
 					enemy->GetTurnLogic()->Reset();
 					turns->Reset();
+					//enemy->GetPAttributes()->Peffects->freeze = false;
 
 				}
 

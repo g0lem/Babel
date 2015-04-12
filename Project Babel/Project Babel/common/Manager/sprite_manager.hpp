@@ -37,6 +37,8 @@ public:
 
 	void Advance(GameObject * g_obj);
 
+	inline Player *GetPlayer(){ return this->player; }
+
 
 	void Init(GameObject * g_obj);
 

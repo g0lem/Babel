@@ -44,7 +44,7 @@ public:
 
 	inline Inventory(Tooltip *t_tip){ this->Init(t_tip); }
 
-	void Render(Tooltip *t_tip, SoundManager *sm, Controller *ctrl, ScreenUniformData * u_data, GameObject * g_obj);
+	void Render(Tooltip *t_tip, SoundManager *sm, Controller *ctrl, ScreenUniformData *u_data, GameObject *g_obj, glm::vec2 player_position);
 
 
 	void Init(Tooltip *t_tip);

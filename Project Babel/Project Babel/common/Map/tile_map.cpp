@@ -233,7 +233,7 @@ void Tilemap::Render(Controller * ctrl, ScreenUniformData * u_data, Sprite * m_s
 		glm::vec3 temp = glm::vec3(1.0f) * (1 - fog[x][y]);
 		u_data->SetAmbientLight(glm::vec4(temp.x, temp.y, temp.y, 1.0f));
 		u_data->ApplyMatrix(Translation(glm::vec2(x * 64, y * 64) + offset)*Scale(glm::vec2(64, 64)));
-		item_list->GetObjectSprite()->Render(item_list->GetTraps()[i]->item->type);
+		item_list->GetObjectSprite()->Render(item_list->GetTraps()[i]->item->id);
 
 
 

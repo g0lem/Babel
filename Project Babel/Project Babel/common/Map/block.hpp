@@ -25,6 +25,8 @@
 #define STAIRS_ID 1
 #define SPIKES_ID 2
 #define SPIKES_FIRED_ID 3
+#define CHAINS_ACTIVE_ID 4
+#define CHAINS_ID 5
 
 
 

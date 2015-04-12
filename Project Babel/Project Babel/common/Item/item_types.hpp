@@ -12,7 +12,7 @@
 #define ITEM_TYPE_NONE 0
 #define ITEM_TYPE_WEAPON 1
 #define ITEM_TYPE_ARMOR 2
-
+#define ITEM_TYPE_TRAP 3
 
 
 

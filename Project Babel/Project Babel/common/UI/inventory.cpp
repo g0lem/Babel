@@ -149,7 +149,7 @@ void Inventory::Update(Tooltip *t_tip, Controller *ctrl)
 
 }
 
-void Inventory::Render(Tooltip *t_tip, SoundManager *sm, Controller *ctrl, ScreenUniformData *u_data, GameObject *g_obj)
+void Inventory::Render(Tooltip *t_tip, SoundManager *sm, Controller *ctrl, ScreenUniformData *u_data, GameObject *g_obj, glm::vec2 player_position)
 {
 
 
@@ -198,7 +198,11 @@ void Inventory::Render(Tooltip *t_tip, SoundManager *sm, Controller *ctrl, Scree
 					g_obj->GetItemList()->must_load = true;
 					g_obj->GetItemList()->DeleteFromInventory(i);
 				}
-
+				else if (g_obj->GetItemList()->GetInventory()[i]->type == ITEM_TYPE_TRAP)
+				{
+					g_obj->GetItemList()->SpawnObject(g_obj->GetItemList()->GetInventory()[i]->id, player_position, g_obj->GetItemList()->GetInventory()[i]->attack);
+					g_obj->GetItemList()->DeleteFromInventory(i);
+				}
 				else if (g_obj->GetItemList()->GetInventory()[i]->type == 0)
 				{
 					g_obj->GetItemList()->must_heal = true;

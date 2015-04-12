@@ -66,7 +66,7 @@ void Application::Run()
 
 		if (g_render->GetDrawCode() == true)
 		{
-			ui->Render(sound_m, t_tip, this, g_object);
+			ui->Render(sound_m, t_tip, this, g_object, g_render->GetSpriteManager()->GetPlayer()->GetPAttributes()->position);
 			f_m->Render(this, g_object,t_tip);
 			g_object->GetUIState()->Update(sound_m, this);
 		}

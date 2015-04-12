@@ -67,7 +67,7 @@ void Map::GenerateContent(GameObject *g_obj)
 
 	this->AddTablets(g_obj);
 	this->AddStairs(g_obj);
-	this->AddSpikes(g_obj);
+	//this->AddSpikes(g_obj);
 
 	g_obj->GetCollisionMap()->CreateOutOfMap(this->GetTilemap());
 

@@ -3,7 +3,7 @@
 
 void Item::Init()
 {
-	
+	this->id = 0;
 
 	this->armor = 0.0f;
 

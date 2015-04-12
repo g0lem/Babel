@@ -27,7 +27,7 @@ class UIRender : public Aaether2D
 
 
 
-		void Render(SoundManager *sm, Tooltip *tooltips, Controller *ctrl, GameObject *g_obj);
+		void Render(SoundManager *sm, Tooltip *tooltips, Controller *ctrl, GameObject *g_obj, glm::vec2 player_positon);
 
 
 

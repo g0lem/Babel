@@ -36,6 +36,8 @@ public:
 
 	void Render(SoundManager * sm, Controller * ctrl, GameObject * g_obj);
 
+	inline SpriteManager *GetSpriteManager(){ return this->s_manager; }
+
 
 
 };

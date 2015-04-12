@@ -39,7 +39,7 @@ void ItemList::SpawnObject(int id, glm::vec2 position, glm::vec2 damage)
 	obj->position = position;
 	obj->item = new Item();
 	obj->item->attack = damage;
- 	obj->item->type = id;
+ 	obj->item->id = id;
 	this->traps.push_back(obj);
 }
 
@@ -126,6 +126,21 @@ void ItemList::LoadItems()
 	m_item->frame = 2;
 	m_item->type = ITEM_TYPE_WEAPON;
 	m_item->attack_speed = 1.0f;
+	m_item->attack = glm::vec2(10, 10);
+	this->list.push_back(m_item);
+
+	m_item = new Item();
+	m_item->Init();
+	m_item->frame = 3;
+	m_item->id = CHAINS_ID;
+	m_item->type = ITEM_TYPE_TRAP;
+	this->list.push_back(m_item);
+
+	m_item = new Item();
+	m_item->Init();
+	m_item->frame = 4;
+	m_item->id = SPIKES_ID;
+	m_item->type = ITEM_TYPE_TRAP;
 	m_item->attack = glm::vec2(10, 10);
 	this->list.push_back(m_item);
 
@@ -227,27 +242,32 @@ std::string ItemList::NameGenerator(std::string type)
 
 void ItemList::LoadSprites()
 {
-	char ** tex_str = new char*[3];
+	char ** tex_str = new char*[5];
 
 	tex_str[0] = "potion.png";
 	tex_str[1] = "hammer.png";
 	tex_str[2] = "sword.png";
+	tex_str[3] = "chains-icon.png";
+	tex_str[4] = "spikes-icon.png";
+
 
 	this->m_sprite = new Sprite();
 
-	this->m_sprite->Load(3, "data/items/", tex_str);
+	this->m_sprite->Load(5, "data/items/", tex_str);
 
 
-	char ** tex_str2 = new char*[4];
+	char ** tex_str2 = new char*[6];
 
 	tex_str2[0] = "tablet.png";
 	tex_str2[1] = "stairs.png";
 	tex_str2[2] = "spikes.png";
 	tex_str2[3] = "spikes-fired.png";
+	tex_str2[4] = "chains.png";
+	tex_str2[5] = "chains-deployed.png";
 
 	this->s_objects= new Sprite();
 
-	this->s_objects->Load(4, "data/tiles/", tex_str2);
+	this->s_objects->Load(6, "data/tiles/", tex_str2);
 
 }
 

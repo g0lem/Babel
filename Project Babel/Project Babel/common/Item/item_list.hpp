@@ -89,6 +89,8 @@ public:
 
 	void DeleteFromDroppedList(int i){ this->dropped_items.erase(dropped_items.begin() + i); }
 
+	void DeleteFromTraps(int i){ this->traps.erase(dropped_items.begin() + i); }
+
 	inline std::vector <Item*> GetList(){ return this->list; }
 
 	inline std::vector <Item*> GetInventory(){ return this->Inventory; }

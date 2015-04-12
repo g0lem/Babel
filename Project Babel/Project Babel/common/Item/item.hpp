@@ -8,7 +8,7 @@ class Item
 public:
 
 	
-
+	
 
 	GLfloat level;
 
@@ -43,6 +43,7 @@ public:
 
 	int type;
 
+	int id;
 
 
 	inline Item(){ this->Init(); }
