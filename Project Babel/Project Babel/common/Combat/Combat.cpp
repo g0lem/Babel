@@ -413,9 +413,9 @@ void Combat::EnemyMovement(Controller * ctrl, GameObject * g_obj, Player * playe
 				a_path->Start(g_obj, enemy->GetPAttributes()->position, enemy->GetTargetPosition());
 				a_path->Reset();
 
+				//freeze trap here
 
-
-
+			
 				if (a_path->GetPathfinder()->GetPathFound())
 				{
 

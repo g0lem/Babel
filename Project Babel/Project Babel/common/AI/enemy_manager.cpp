@@ -94,14 +94,16 @@ void EnemyManager::CheckEnemiesState(SoundManager *sm, GameObject * g_obj, Map *
 
 	for (GLuint i = 0; i < this->m_enemies->size(); i++)
 	{
-		for (GLuint j = 0; j < g_obj->GetItemList()->GetObjects().size(); j++)
+		for (GLuint j = 0; j < g_obj->GetItemList()->GetTraps().size(); j++)
 		{
-			if (this->m_enemies[0][i]->GetPAttributes()->position == g_obj->GetItemList()->GetObjects()[j]->position && g_obj->GetItemList()->GetObjects()[j]->id == SPIKES_ID)
+			if (this->m_enemies[0][i]->GetPAttributes()->position == g_obj->GetItemList()->GetTraps()[j]->position  && g_obj->GetItemList()->GetTraps()[j]->item->type == SPIKES_ID)
 			{
-				random_damage = Rand(100, 100);
-				//this->m_enemies[0][i]->GetStats()->GetHp()->hp -= Rand(g_obj->GetItemList()->GetObjects()[j]->damage.x, g_obj->GetItemList()->GetObjects()[j]->damage.y);
+				//random_damage = Rand(100, 100);
+				random_damage = Rand(g_obj->GetItemList()->GetTraps()[j]->item->attack.x, g_obj->GetItemList()->GetTraps()[j]->item->attack.y);
 				if (this->m_enemies[0][i]->GetStats()->GetHp()->hp > random_damage)
-				this->m_enemies[0][i]->GetStats()->GetHp()->hp -= random_damage;
+				{
+					this->m_enemies[0][i]->GetStats()->GetHp()->hp -= random_damage;
+				}
 				else
 				{
 
@@ -110,7 +112,7 @@ void EnemyManager::CheckEnemiesState(SoundManager *sm, GameObject * g_obj, Map *
 				
 				}
 
-				g_obj->GetItemList()->GetObjects()[j]->id = SPIKES_FIRED_ID;
+				g_obj->GetItemList()->GetTraps()[j]->item->type = SPIKES_FIRED_ID;
 			}
 		}
 

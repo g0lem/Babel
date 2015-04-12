@@ -17,6 +17,11 @@ class ItemList
 	{
 		glm::vec2 position;
 		Item* item;
+		inline Dropped()
+		{
+			position = vec2_0;
+			item = new Item();
+		}
 	};
 
 	struct Object
@@ -89,6 +94,8 @@ public:
 	inline std::vector <Item*> GetInventory(){ return this->Inventory; }
 
 	inline std::vector <Dropped*> GetDroppedItems(){ return this->dropped_items; }
+
+	inline std::vector <Dropped*> GetTraps(){ return this->traps; }
 
 	inline std::vector <Object*> GetObjects(){ return this->objectlist; }
 

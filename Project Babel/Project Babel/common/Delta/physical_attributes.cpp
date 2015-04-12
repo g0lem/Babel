@@ -4,6 +4,7 @@
 void PhysicalAttributes::Init()
 {
 
+	this->Peffects = new PhysiscalEffects();
 
 	this->position = vec2_0;
 	this->target = vec2_0;

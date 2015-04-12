@@ -9,7 +9,7 @@ class PhysicalAttributes
 
 public:
 
-
+	PhysiscalEffects *Peffects;
 
 	glm::vec2 position;
 	glm::vec2 target;

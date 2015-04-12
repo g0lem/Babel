@@ -366,7 +366,7 @@ void Map::AddSpikes(GameObject *g_obj)
 		y = rand() % (tilemap->GetSize().y);
 		if (this->tilemap->GetTiles()[x][y] == 0)
 		{
-			g_obj->GetItemList()->SpawnObject(SPIKES_ID, glm::vec2(x, y));
+			g_obj->GetItemList()->SpawnObject(SPIKES_ID, glm::vec2(x, y), glm::vec2(10, 100));
 			tablets_added++;
 		}
 	}

@@ -37,8 +37,9 @@ void ItemList::SpawnObject(int id, glm::vec2 position, glm::vec2 damage)
 {
 	Dropped *obj = new Dropped();
 	obj->position = position;
+	obj->item = new Item();
 	obj->item->attack = damage;
-	obj->item->type = id;
+ 	obj->item->type = id;
 	this->traps.push_back(obj);
 }
 
