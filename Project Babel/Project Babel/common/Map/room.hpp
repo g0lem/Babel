@@ -61,6 +61,8 @@ public:
 
 	inline glm::ivec2 GetOffset(){ return this->points[0]; }
 
+	inline glm::ivec2 GetEndOffset(){ return this->points[1]; }
+
 
 	inline GLuint GetWidth(){ return this->width; }
 

@@ -29,13 +29,13 @@ void ItemList::SpawnObject(int id, glm::vec2 position)
 {
 	Object *obj = new Object();
 	obj->position = position;
-	obj->id = id;
+	obj->item->id = id;
 	this->objectlist.push_back(obj);
 }
 
 void ItemList::SpawnObject(int id, glm::vec2 position, glm::vec2 damage)
 {
-	Dropped *obj = new Dropped();
+	Object *obj = new Object();
 	obj->position = position;
 	obj->item = new Item();
 	obj->item->attack = damage;
@@ -256,7 +256,7 @@ void ItemList::LoadSprites()
 	this->m_sprite->Load(5, "data/items/", tex_str);
 
 
-	char ** tex_str2 = new char*[6];
+	char ** tex_str2 = new char*[9];
 
 	tex_str2[0] = "tablet.png";
 	tex_str2[1] = "stairs.png";
@@ -264,17 +264,20 @@ void ItemList::LoadSprites()
 	tex_str2[3] = "spikes-fired.png";
 	tex_str2[4] = "chains.png";
 	tex_str2[5] = "chains-deployed.png";
+	tex_str2[6] = "statue.png";
+	tex_str2[7] = "pillar.png";
+	tex_str2[8] = "chest.png";
 
 	this->s_objects= new Sprite();
 
-	this->s_objects->Load(6, "data/tiles/", tex_str2);
+	this->s_objects->Load(9, "data/tiles/", tex_str2);
 
 }
 
 
 void ItemList::AddDroppedItem(int x, int y, Item *item)
 {
-	Dropped *dropped_item = new Dropped();
+	Object *dropped_item = new Object();
 	dropped_item->position = glm::vec2(x, y);
 	dropped_item->item = item;
 	dropped_items.push_back(dropped_item);

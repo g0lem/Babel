@@ -37,14 +37,18 @@ void EventHandler::Load(Map *current_map, GameObject *g_obj)
 
 	for (int i = 0; i < g_obj->GetItemList()->GetObjects().size(); i++)
 	{
-		if (g_obj->GetItemList()->GetObjects()[i]->id == TABLET_ID)
+		if (g_obj->GetItemList()->GetObjects()[i]->item->id == TABLET_ID)
 		e_map[(int)(g_obj->GetItemList()->GetObjects()[i]->position.x)][(int)(g_obj->GetItemList()->GetObjects()[i]->position.y)] = 2;
 
-		if (g_obj->GetItemList()->GetObjects()[i]->id == STAIRS_ID)
+		if (g_obj->GetItemList()->GetObjects()[i]->item->id == STAIRS_ID)
 			e_map[(int)(g_obj->GetItemList()->GetObjects()[i]->position.x)][(int)(g_obj->GetItemList()->GetObjects()[i]->position.y)] = 3;
 
-		if (g_obj->GetItemList()->GetObjects()[i]->id == SPIKES_ID)
+		if (g_obj->GetItemList()->GetObjects()[i]->item->id == SPIKES_ID)
 			e_map[(int)(g_obj->GetItemList()->GetObjects()[i]->position.x)][(int)(g_obj->GetItemList()->GetObjects()[i]->position.y)] = 4;
+
+		if (g_obj->GetItemList()->GetObjects()[i]->item->id == CHEST_ID)
+			e_map[(int)(g_obj->GetItemList()->GetObjects()[i]->position.x)][(int)(g_obj->GetItemList()->GetObjects()[i]->position.y)] = 6;
+
 	}
 	
 
@@ -174,7 +178,7 @@ void EventHandler::NextLvl(glm::vec2 position, Map *current_map, GameObject *g_o
 {
 	for (int i = 0; i < g_obj->GetItemList()->GetObjects().size(); i++)
 	{
-		if (g_obj->GetItemList()->GetObjects()[i]->position == position && g_obj->GetItemList()->GetObjects()[i]->id == STAIRS_ID)
+		if (g_obj->GetItemList()->GetObjects()[i]->position == position && g_obj->GetItemList()->GetObjects()[i]->item->id == STAIRS_ID)
 		{
 			//std::cout << "YAY, STAIRS\n";
 			g_obj->rebuild = true;
@@ -183,12 +187,28 @@ void EventHandler::NextLvl(glm::vec2 position, Map *current_map, GameObject *g_o
 	}
 }
 
+void EventHandler::OpenChest(glm::vec2 position, Map *current_map, GameObject *g_obj)
+{
+	Item *item;
+	item = g_obj->GetItemList()->GetList()[rand() % g_obj->GetItemList()->GetList().size()];
+	for (int i = 0; i < g_obj->GetItemList()->GetObjects().size();i++)
+		if (g_obj->GetItemList()->GetObjects()[i]->position == position && g_obj->GetItemList()->GetObjects()[i]->item->id==CHEST_ID)
+	{
+		g_obj->GetItemList()->AddDroppedItem((int)(position.x), (int)(position.y), item);
+		g_obj->GetItemList()->DeleteFromObjects(i);
+		this->Init(current_map, g_obj);
+	}
+
+}
+
+
 void EventHandler::TriggerEvent(glm::vec2 position, Map *current_map, GameObject *g_obj, Stats *m_stats)
 {
 	//in g_obj e item_list-ul
 
 	this->Door(position, current_map, g_obj);
 	this->Health(position, current_map, m_stats, g_obj);
+	this->OpenChest(position, current_map, g_obj);
 	this->PickUp(position, current_map, g_obj);
 	this->NextLvl(position, current_map, g_obj);
 

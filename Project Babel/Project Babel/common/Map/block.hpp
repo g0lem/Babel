@@ -27,6 +27,9 @@
 #define SPIKES_FIRED_ID 3
 #define CHAINS_ACTIVE_ID 4
 #define CHAINS_ID 5
+#define STATUE_ID 6
+#define PILLAR_ID 7
+#define CHEST_ID 8
 
 
 

@@ -339,6 +339,24 @@ void Map::AddTablets(GameObject *g_obj)
 	}
 }
 
+void Map::AddChests(GameObject *g_obj)
+{
+	int x, y;
+	int tablets_added = 0;
+	while (tablets_added < 20)
+	{
+		x = rand() % (tilemap->GetSize().x);
+		y = rand() % (tilemap->GetSize().y);
+		if (this->tilemap->GetTiles()[x][y] == 0)
+		{
+			g_obj->GetItemList()->SpawnObject(CHEST_ID, glm::vec2(x, y));
+			tablets_added++;
+		}
+	}
+}
+
+
+
 void Map::AddStairs(GameObject *g_obj)
 {
 	int x, y;
@@ -356,20 +374,63 @@ void Map::AddStairs(GameObject *g_obj)
 	
 }
 
-void Map::AddSpikes(GameObject *g_obj)
+void Map::Decorate(GameObject *g_obj)
 {
-	int x, y;
-	int tablets_added = 0;
-	while (tablets_added < 20)
+	
+
+	for (int i = 0; i < this->GetRoomsPointer()[0].size(); i++)
 	{
-		x = rand() % (tilemap->GetSize().x);
-		y = rand() % (tilemap->GetSize().y);
-		if (this->tilemap->GetTiles()[x][y] == 0)
+		if (this->GetRoomsPointer()[0][i]->GetHeight() == this->GetRoomsPointer()[0][i]->GetWidth() && this->GetRoomsPointer()[0][i]->GetWidth() % 2 == 1 && this->GetRoomsPointer()[0][i]->GetHeight()>=7)
 		{
-			g_obj->GetItemList()->SpawnObject(CHAINS_ID, glm::vec2(x, y), glm::vec2(10, 100));
-			tablets_added++;
+		
+			if (rand() % 2 == 0)
+			{
+				g_obj->GetItemList()->SpawnObject(PILLAR_ID, glm::vec2(this->GetRoomsPointer()[0][i]->GetOffset() + 2));
+
+				g_obj->GetItemList()->SpawnObject(PILLAR_ID, glm::vec2(this->GetRoomsPointer()[0][i]->GetOffset().x + 2, this->GetRoomsPointer()[0][i]->GetEndOffset().y - 3));
+
+				g_obj->GetItemList()->SpawnObject(PILLAR_ID, glm::vec2(this->GetRoomsPointer()[0][i]->GetEndOffset().x - 3, this->GetRoomsPointer()[0][i]->GetOffset().y + 2));
+
+				g_obj->GetItemList()->SpawnObject(PILLAR_ID, glm::vec2(this->GetRoomsPointer()[0][i]->GetEndOffset() - 3));
+			}
+			else 
+			{
+				g_obj->GetItemList()->SpawnObject(PILLAR_ID, glm::vec2(this->GetRoomsPointer()[0][i]->GetInternalCenter()));
+
+				g_obj->GetItemList()->SpawnObject(STATUE_ID, glm::vec2(this->GetRoomsPointer()[0][i]->GetInternalCenter().x - 1, this->GetRoomsPointer()[0][i]->GetInternalCenter().y));
+
+				g_obj->GetItemList()->SpawnObject(STATUE_ID, glm::vec2(this->GetRoomsPointer()[0][i]->GetInternalCenter().x + 1, this->GetRoomsPointer()[0][i]->GetInternalCenter().y));
+
+				g_obj->GetItemList()->SpawnObject(STATUE_ID, glm::vec2(this->GetRoomsPointer()[0][i]->GetInternalCenter().x, this->GetRoomsPointer()[0][i]->GetInternalCenter().y + 1));
+
+				g_obj->GetItemList()->SpawnObject(STATUE_ID, glm::vec2(this->GetRoomsPointer()[0][i]->GetInternalCenter().x, this->GetRoomsPointer()[0][i]->GetInternalCenter().y - 1));
+
+			}
 		}
+
+		if (this->tilemap->GetTiles()[(int)(this->GetRoomsPointer()[0][i]->GetInternalCenter().x)][(int)(this->GetRoomsPointer()[0][i]->GetOffset().y)] == DOOR_BLOCK &&
+			this->tilemap->GetTiles()[(int)(this->GetRoomsPointer()[0][i]->GetOffset().x)][(int)(this->GetRoomsPointer()[0][i]->GetInternalCenter().y)] == DOOR_BLOCK &&
+			this->tilemap->GetTiles()[(int)(this->GetRoomsPointer()[0][i]->GetInternalCenter().x)][(int)(this->GetRoomsPointer()[0][i]->GetEndOffset().y - 1)] == DOOR_BLOCK &&
+			this->tilemap->GetTiles()[(int)(this->GetRoomsPointer()[0][i]->GetEndOffset().x - 1)][(int)(this->GetRoomsPointer()[0][i]->GetInternalCenter().y)] == DOOR_BLOCK)
+		{
+			
+
+			g_obj->GetItemList()->SpawnObject(STATUE_ID, glm::vec2(this->GetRoomsPointer()[0][i]->GetInternalCenter().x - 1, this->GetRoomsPointer()[0][i]->GetOffset().y+1));
+			g_obj->GetItemList()->SpawnObject(STATUE_ID, glm::vec2(this->GetRoomsPointer()[0][i]->GetInternalCenter().x + 1, this->GetRoomsPointer()[0][i]->GetOffset().y+1));
+
+			g_obj->GetItemList()->SpawnObject(STATUE_ID, glm::vec2(this->GetRoomsPointer()[0][i]->GetOffset().x+1, this->GetRoomsPointer()[0][i]->GetInternalCenter().y + 1));
+			g_obj->GetItemList()->SpawnObject(STATUE_ID, glm::vec2(this->GetRoomsPointer()[0][i]->GetOffset().x+1, this->GetRoomsPointer()[0][i]->GetInternalCenter().y - 1));
+
+			g_obj->GetItemList()->SpawnObject(STATUE_ID, glm::vec2(this->GetRoomsPointer()[0][i]->GetInternalCenter().x - 1, this->GetRoomsPointer()[0][i]->GetEndOffset().y - 2));
+			g_obj->GetItemList()->SpawnObject(STATUE_ID, glm::vec2(this->GetRoomsPointer()[0][i]->GetInternalCenter().x + 1, this->GetRoomsPointer()[0][i]->GetEndOffset().y - 2));
+
+			g_obj->GetItemList()->SpawnObject(STATUE_ID, glm::vec2(this->GetRoomsPointer()[0][i]->GetEndOffset().x - 2, this->GetRoomsPointer()[0][i]->GetInternalCenter().y + 1));
+			g_obj->GetItemList()->SpawnObject(STATUE_ID, glm::vec2(this->GetRoomsPointer()[0][i]->GetEndOffset().x - 2, this->GetRoomsPointer()[0][i]->GetInternalCenter().y - 1));
+		}
+
 	}
+
+
 }
 
 
