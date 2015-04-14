@@ -53,27 +53,28 @@ void EnemyManager::Render(SoundManager *sm, Controller * ctrl, ScreenUniformData
 void EnemyManager::Init(GLuint num, Map * map, GameObject * g_obj, int type)
 {
 
-
+	Enemy *temp;
+	EnemyData *temp_data;
 
 	this->m_enemies = new std::vector<Enemy*>();
-	this->m_enemies->resize(num);
+
+	temp_data = g_obj->GetEnemyLoader()->GetData()[0][type];
+	
 
 
-	GLint num_e = 0;
-
-
-	while (num_e < num)
+	while (this->m_enemies[0].size() < num)
 	{
-		this->m_enemies[0][num_e] = new Enemy(g_obj->GetEnemyLoader()->GetData()[0][type]);
+		temp = new Enemy(temp_data);
 		this->type = type;
-		this->m_enemies[0][num_e]->SetRandomPosition(map);
-		this->m_enemies[0][num_e]->Update(g_obj, 0);
-		glm::vec2 t_pos = this->m_enemies[0][num_e]->GetPAttributes()->position;
+		temp->SetRandomPosition(map);
+		temp->Update(g_obj, 0);
+		glm::vec2 t_pos = temp->GetPAttributes()->position;
 		GLboolean ok = true;
-		for (GLuint i = 0; i < num_e; i++)
+		for (GLuint i = 0; i < this->m_enemies[0].size(); i++)
 			if (t_pos == this->m_enemies[0][i]->GetPAttributes()->position)
 			{
-			this->Kill(g_obj, num_e, map, type);
+		//	this->Kill(g_obj, num_e, map, type);
+			delete temp;
 			ok = false;
 			break;
 			}
@@ -81,9 +82,13 @@ void EnemyManager::Init(GLuint num, Map * map, GameObject * g_obj, int type)
 		if (glm::distance(glm::vec2(map->GetRoomsPointer()[0][0]->GetInternalCenter()), t_pos) < 6.0f)
 			ok = false;
 		if (ok)
-			num_e++;
+		{
+			
+			this->m_enemies[0].push_back(temp);
+		}
 	}
-	
+
+
 }
 
 
