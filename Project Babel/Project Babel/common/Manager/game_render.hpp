@@ -9,7 +9,21 @@ class GameRender
 
 	SpriteManager * s_manager;
 
+	struct save
+	{
+		GameRender *g_rend;
+		GameObject *g_obj;
 
+		inline save(GameRender *g_rend,
+			GameObject *g_obj)
+		{
+			this->g_rend = g_rend;
+			this->g_obj = g_obj;
+		}
+	};
+
+
+	std::vector<save*> level_list;
 
 
 public:

@@ -10,14 +10,14 @@
 
 #define NO_BLOCK -1
 #define FLOOR_BLOCK 0
-#define OPENED_DOOR_BLOCK 1
-#define DOOR_BLOCK 2
-#define STONE_BLOCK 3
+#define OPENED_DOOR_BLOCK 4
+#define DOOR_BLOCK 5
+#define STONE_BLOCK 6
 
 
 
 
-#define SOLID_LIMIT 3
+#define SOLID_LIMIT 6
 
 
 //object IDs
@@ -30,6 +30,7 @@
 #define STATUE_ID 6
 #define PILLAR_ID 7
 #define CHEST_ID 8
+#define OPENED_CHEST 9
 
 
 

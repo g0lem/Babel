@@ -28,7 +28,7 @@ public:
 
 	void TransformAndApplyRoomToTileMap(Room * room, Tilemap * tilemap, GLuint transform_flag);
 
-	
+	int ComplexDecoration(){ if (rand() % 10 >= 6) return rand() % 3 + 1; else return rand() % 2; }
 
 	inline Tilemap * GetTilemap(){ return this->tilemap; }
 

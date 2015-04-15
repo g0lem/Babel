@@ -12,18 +12,21 @@ void Map::LoadSprites()
 
 
 
-	char ** tex_str = new char*[7];
+	char ** tex_str = new char*[10];
 	tex_str[0] = "floor.png";
-	tex_str[1] = "door-open.png";
-	tex_str[2] = "door.png";
-	tex_str[3] = "wall0.png";
-	tex_str[4] = "wall1.png";
-	tex_str[5] = "wall2.png";
-	tex_str[6] = "wall3.png";
+	tex_str[1] = "floor-2.png";
+	tex_str[2] = "floor-3.png";
+	tex_str[3] = "floor-4.png";
+	tex_str[4] = "door-open.png";
+	tex_str[5] = "door.png";
+	tex_str[6] = "wall0.png";
+	tex_str[7] = "wall1.png";
+	tex_str[8] = "wall2.png";
+	tex_str[9] = "wall3.png";
 
 
 
-	this->m_sprite->Load(7, "data/tiles/", tex_str);
+	this->m_sprite->Load(10, "data/tiles/", tex_str);
 
 }
 

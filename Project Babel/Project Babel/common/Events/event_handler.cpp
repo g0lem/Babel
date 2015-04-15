@@ -195,7 +195,7 @@ void EventHandler::OpenChest(glm::vec2 position, Map *current_map, GameObject *g
 		if (g_obj->GetItemList()->GetObjects()[i]->position == position && g_obj->GetItemList()->GetObjects()[i]->item->id==CHEST_ID)
 	{
 		g_obj->GetItemList()->AddDroppedItem((int)(position.x), (int)(position.y), item);
-		g_obj->GetItemList()->DeleteFromObjects(i);
+		g_obj->GetItemList()->GetObjects()[i]->item->id = OPENED_CHEST;
 		this->Init(current_map, g_obj);
 	}
 
@@ -213,7 +213,7 @@ void EventHandler::TriggerEvent(glm::vec2 position, Map *current_map, GameObject
 	this->NextLvl(position, current_map, g_obj);
 
 
-	if (e_map[(int)(position.x)][(int)(position.y)] == 2) //sa pui tool tip-ul Bursucului
+	if (e_map[(int)(position.x)][(int)(position.y)] == 2)
 	{
 		n_check = false;
 		for (int i = 0; i < g_obj->GetTablets()->size(); i++)
@@ -236,6 +236,16 @@ void EventHandler::TriggerEvent(glm::vec2 position, Map *current_map, GameObject
 			g_obj->GetTablets()->push_back(u_t);
 
 		}
+
+		for (int i = 0; i < g_obj->GetItemList()->GetObjects().size(); i++)
+		{
+			if (g_obj->GetItemList()->GetObjects()[i]->position == position && g_obj->GetItemList()->GetObjects()[i]->item->id == TABLET_ID)
+			{
+				g_obj->GetItemList()->DeleteFromObjects(i);
+				break;
+			}
+		}
+
 
 	}
 

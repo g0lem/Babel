@@ -73,7 +73,7 @@ void Player::Render(SoundManager *sm, Controller * ctrl, ScreenUniformData * u_d
 
 	this->LoadItems(g_obj);
 
-	std::cout << this->attributes->position.x << " " << this->attributes->position.y << std::endl;
+	//std::cout << this->attributes->position.x << " " << this->attributes->position.y << std::endl;
 
 
 	u_data->ApplyMatrix(Translation(GridPosition(attributes->position*attributes->scale + g_obj->GetScroller()->GetOffset(), attributes->scale))*

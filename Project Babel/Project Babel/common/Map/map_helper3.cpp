@@ -15,7 +15,7 @@ void Map::AddTunnel(glm::ivec2 point_a, glm::ivec2 point_b)
 
 
 	GLuint values[4] = { 2, 1, 1, 1 };
-
+	GLuint values2[4] = { 8, 8, 2, 1 };
 
 	for (GLuint j = begin_limit.y; j <= end_limit.y; j++)
 	{
@@ -25,7 +25,7 @@ void Map::AddTunnel(glm::ivec2 point_a, glm::ivec2 point_b)
 			this->tilemap->GetTiles()[point_a.x - 1][j] = Dice::Get(values, 4, 5) + SOLID_LIMIT;
 
 
-		this->tilemap->GetTiles()[point_a.x][j] = FLOOR_BLOCK;
+		this->tilemap->GetTiles()[point_a.x][j] = FLOOR_BLOCK + Dice::Get(values2, 4, 19);
 
 
 		if (this->tilemap->GetTiles()[point_a.x + 1][j] == NO_BLOCK)
@@ -47,7 +47,7 @@ void Map::AddTunnel(glm::ivec2 point_a, glm::ivec2 point_b)
 			this->tilemap->GetTiles()[i][point_b.y - 1] = STONE_BLOCK;
 
 
-		this->tilemap->GetTiles()[i][point_b.y] = FLOOR_BLOCK;
+		this->tilemap->GetTiles()[i][point_b.y] = FLOOR_BLOCK + Dice::Get(values2, 4, 19);
 
 
 		if (this->tilemap->GetTiles()[i][point_b.y + 1] == NO_BLOCK)
@@ -99,6 +99,12 @@ void Map::AddTunnel(glm::ivec2 point_a, glm::ivec2 point_b)
 void Map::AddDoors()
 {
 
+	srand(time(NULL));
+
+	GLuint values[4] = { 8, 8, 2, 1 };
+
+
+	int add = 0;
 
 	for (GLuint k = 0; k < rooms->size(); k++)
 	{
@@ -115,7 +121,7 @@ void Map::AddDoors()
 			GLuint door_y = room->GetOffset().y;
 
 
-			if  (this->tilemap->GetTiles()[door_x][door_y] == FLOOR_BLOCK &&
+			if (this->tilemap->GetTiles()[door_x][door_y] == FLOOR_BLOCK + Dice::Get(values, 4, 19) &&
 				(
 				
 				
@@ -147,7 +153,7 @@ void Map::AddDoors()
 
 
 
-			if (this->tilemap->GetTiles()[door_x][door_y + room->GetHeight() - 1] == FLOOR_BLOCK &&
+			if (this->tilemap->GetTiles()[door_x][door_y + room->GetHeight() - 1] == FLOOR_BLOCK + Dice::Get(values, 4, 19) &&
 			   (
 
 
@@ -195,7 +201,7 @@ void Map::AddDoors()
 			GLuint door_y = j + room->GetOffset().y;
 
 
-			if (this->tilemap->GetTiles()[door_x][door_y] == FLOOR_BLOCK &&
+			if (this->tilemap->GetTiles()[door_x][door_y] == FLOOR_BLOCK + Dice::Get(values, 4, 19) &&
 			   (
 
 
@@ -228,7 +234,7 @@ void Map::AddDoors()
 
 
 			
-			if (this->tilemap->GetTiles()[door_x + room->GetWidth() - 1][door_y] == FLOOR_BLOCK &&
+			if (this->tilemap->GetTiles()[door_x + room->GetWidth() - 1][door_y] == FLOOR_BLOCK + Dice::Get(values, 4, 19) &&
 			   (
 
 
@@ -289,19 +295,19 @@ void Map::AddDoors()
 
 
 				if (this->tilemap->GetTiles()[i - 1][j] == DOOR_BLOCK)
-					this->tilemap->GetTiles()[i - 1][j] = FLOOR_BLOCK;
+					this->tilemap->GetTiles()[i - 1][j] = FLOOR_BLOCK + Dice::Get(values, 4, 19);
 
 
 				if (this->tilemap->GetTiles()[i + 1][j] == DOOR_BLOCK)
-					this->tilemap->GetTiles()[i + 1][j] = FLOOR_BLOCK;
+					this->tilemap->GetTiles()[i + 1][j] = FLOOR_BLOCK + Dice::Get(values, 4, 19);
 
 
 				if (this->tilemap->GetTiles()[i][j - 1] == DOOR_BLOCK)
-					this->tilemap->GetTiles()[i][j - 1] = FLOOR_BLOCK;
+					this->tilemap->GetTiles()[i][j - 1] = FLOOR_BLOCK + Dice::Get(values, 4, 19);
 
 
 				if (this->tilemap->GetTiles()[i][j + 1] == DOOR_BLOCK)
-					this->tilemap->GetTiles()[i][j + 1] = FLOOR_BLOCK;
+					this->tilemap->GetTiles()[i][j + 1] = FLOOR_BLOCK + Dice::Get(values, 4, 19);
 
 
 
@@ -341,12 +347,14 @@ void Map::AddTablets(GameObject *g_obj)
 
 void Map::AddChests(GameObject *g_obj)
 {
-	int x, y;
+	int x, y, random;
 	int tablets_added = 0;
-	while (tablets_added < 20)
+	
+	while (tablets_added < 10)
 	{
-		x = rand() % (tilemap->GetSize().x);
-		y = rand() % (tilemap->GetSize().y);
+		random = Rand(this->rooms->size());
+		x = Rand(this->rooms->at(random)->GetOffset().x + 1, this->rooms->at(random)->GetEndOffset().x - 2);
+		y = Rand(this->rooms->at(random)->GetOffset().y + 1, this->rooms->at(random)->GetEndOffset().y - 2);
 		if (this->tilemap->GetTiles()[x][y] == 0)
 		{
 			g_obj->GetItemList()->SpawnObject(CHEST_ID, glm::vec2(x, y));
