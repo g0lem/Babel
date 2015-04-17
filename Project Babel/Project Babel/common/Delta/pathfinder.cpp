@@ -43,11 +43,21 @@ void Pathfinder::Delete()
 
 
 
-void Pathfinder::Init(GameObject *g_obj, glm::vec2 start, glm::vec2 finish)
+void Pathfinder::Init(GameObject *g_obj, glm::vec2 start, glm::vec2 finish, int pathfinder_type)
 {
 
+	if (pathfinder_type == PATH_WITH_DOORS)
+	{
+		this->map = g_obj->GetCollisionMap()->GetTiles();
+	}
+	else if (pathfinder_type == PATH_PLAYER)
+	{
+		this->map = g_obj->GetCollisionMap()->GetPlayerTiles();
+	}
 
-	this->map = g_obj;
+
+	this->g_obj = g_obj;
+
 
 	searchstart = false;
 
@@ -122,7 +132,7 @@ bool Pathfinder::neighbours(node *currentnode)
 		newx = dx[k] + currentnode->x;
 		newy = dy[k] + currentnode->y;
 
-		if (map->GetCollisionMap()->GetTiles()[newx][newy] == 0)
+		if (map[newx][newy] == 0)
 			return true;
 
 
@@ -182,11 +192,11 @@ void Pathfinder::FindNewNode(node *currentnode)
 
 
 
-		GLboolean ok = map->GetCollisionMap()->GetTiles()[newx][newy] == 0 && IsVisited(newx, newy) == false && IsOpened(newx, newy) == false;
+		GLboolean ok = map[newx][newy] == 0 && IsVisited(newx, newy) == false && IsOpened(newx, newy) == false;
 		if (ok)
 		{
-			for (GLuint i = 0; i < map->GetCollisionMap()->GetList().size(); i++)
-				if (glm::ivec2(newx, newy) == map->GetCollisionMap()->GetList()[i])
+			for (GLuint i = 0; i < this->g_obj->GetCollisionMap()->GetList().size(); i++)
+				if (glm::ivec2(newx, newy) == this->g_obj->GetCollisionMap()->GetList()[i])
 				{
 				ok = false;
 				break;

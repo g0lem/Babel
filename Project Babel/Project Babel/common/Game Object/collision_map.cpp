@@ -50,6 +50,37 @@ void CollisionMap::CreateOutOfMap(Tilemap * map)
 
 	}
 
+	this->size = map->GetSize();
+
+
+	this->player_tiles = new GLboolean*[this->size.x];
+	for (GLuint i = 0; i < this->size.x; i++)
+		this->player_tiles[i] = new GLboolean[this->size.y];
+
+
+
+	for (GLuint j = 0; j < this->size.y; j++)
+	{
+
+
+		for (GLuint i = 0; i < this->size.x; i++)
+
+
+		{
+
+
+			this->player_tiles[i][j] = (map->GetTiles()[i][j] >= SOLID_LIMIT);
+			if (map->GetTiles()[i][j] == DOOR_BLOCK)
+				this->player_tiles[i][j] = 0;
+
+		}
+
+
+
+	}
+
+
+
 
 
 }

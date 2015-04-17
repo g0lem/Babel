@@ -325,7 +325,7 @@ void Player::HandleAutoPath(SoundManager *sm, Controller * ctrl, GameObject * g_
 	{
 
 		this->last_wanted_position = Move::GetMapPosition(g_obj, ctrl->GetMousePosition(), attributes->scale);
-		a_path->Start(g_obj, attributes->position, last_wanted_position);
+		a_path->Start(g_obj, attributes->position, last_wanted_position, PATH_PLAYER);
 	
 		//if (current_map->GetTilemap()->GetTiles[attributes->position.x][attributes->position.y] == TABLET_ID)
 		//h_event->DisplayTablet(TABLET_ID);
@@ -351,7 +351,7 @@ void Player::HandleAutoPath(SoundManager *sm, Controller * ctrl, GameObject * g_
 			if (sm->getSoundStatus(WALKSOUND) != 2)
 				sm->PlaySound(WALKSOUND);
 			if (!able_to_move)
-			a_path->Start(g_obj, attributes->target, last_wanted_position);
+			a_path->Start(g_obj, attributes->target, last_wanted_position, PATH_PLAYER);
 		}
 
 

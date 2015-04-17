@@ -42,7 +42,7 @@ public:
 
 
 
-	void Start(GameObject * g_obj, glm::vec2 start, glm::vec2 end);
+	void Start(GameObject * g_obj, glm::vec2 start, glm::vec2 end, int path_type);
 
 
 	void Init();

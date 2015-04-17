@@ -8,7 +8,8 @@
 class Pathfinder
 {
 private:
-	GameObject *map;
+	GLboolean **map;
+	GameObject *g_obj;
 	
 	struct node
 	{
@@ -39,7 +40,7 @@ private:
 
 public:
 std::vector <glm::vec2> GetPath();
-void Init(GameObject *g_obj, glm::vec2 start, glm::vec2 finish);
+void Init(GameObject *g_obj, glm::vec2 start, glm::vec2 finish, int pathfinder_type);
 inline bool GetPathFound(){ return this->PathFound; }
 	void Delete();
 };

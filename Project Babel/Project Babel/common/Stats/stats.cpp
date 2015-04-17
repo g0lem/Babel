@@ -12,8 +12,8 @@ void Stats::Init()
 	this->base_attack_speed = 0.0f;
 	this->base_movement_speed = 0.0f;
 	this->base_armor = 0.0f;
-
-
+	this->aggressive = true;
+	this->path_type = PATH_WITH_DOORS;
 
 }
 
@@ -31,7 +31,8 @@ void Stats::Copy(Stats*other)
 	this->base_attack_speed = other->base_attack_speed;
 	this->base_movement_speed = other->base_movement_speed;
 	this->base_armor = other->base_armor;
-
+	this->aggressive = other->aggressive;
+	this->path_type = other->path_type;
 
 
 

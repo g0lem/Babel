@@ -18,8 +18,8 @@ public:
 	GLfloat base_attack_speed;
 	GLfloat base_movement_speed;
 	GLfloat base_armor;
-
-
+	GLboolean aggressive;
+	int path_type;
 
 	inline  Hp * GetHp(){ return this->m_hp; }
 
@@ -27,7 +27,7 @@ public:
 
 	inline Stats(){ this->Init(); }
 
-
+	
 
 	void Init();
 

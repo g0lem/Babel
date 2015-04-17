@@ -117,7 +117,7 @@ void Combat::PlayerAttack(SoundManager * sm, Controller * ctrl, GameObject * g_o
 
 			}
 
-
+			enemies->GetEnemiesPointer()[0][player->GetTarget()]->GetStats()->aggressive = true;
 
 			char *buffer = new char[256];
 			_itoa(dmg, buffer, 10);
@@ -298,7 +298,7 @@ void Combat::EnemyAttack(SoundManager *sm, Controller * ctrl, GameObject * g_obj
 		{
 
 
-			if (current_enemy->GetTurnSystem()->GetTurns() >= 1.0f/current_enemy->GetStats()->base_attack_speed)
+			if (current_enemy->GetTurnSystem()->GetTurns() >= 1.0f / current_enemy->GetStats()->base_attack_speed && current_enemy->GetStats()->aggressive == true)
 			{
 
 
@@ -344,6 +344,9 @@ void Combat::EnemyAttack(SoundManager *sm, Controller * ctrl, GameObject * g_obj
 				sm->PlaySound(SCORPIONATTACK);
 			if (type == 1)
 				sm->PlaySound(HYDRAATTACK);
+			if (type == 2)
+				sm->PlaySound(HYDRAATTACK);
+
 
 			text_pos.x -= g_obj->GetFontList()->GetFont()->GetLength(buffer, 40) / 2.0f;
 
@@ -398,7 +401,7 @@ void Combat::EnemyMovement(Controller * ctrl, GameObject * g_obj, Player * playe
 
 
 
-		if (!enemy->GetTurnLogic()->IsUseless())
+		if (!enemy->GetTurnLogic()->IsUseless() && enemy->GetStats()->aggressive == true)
 		{
 
 			if (attr->position == attr->target &&
@@ -410,7 +413,7 @@ void Combat::EnemyMovement(Controller * ctrl, GameObject * g_obj, Player * playe
 
 
 
-				a_path->Start(g_obj, enemy->GetPAttributes()->position, enemy->GetTargetPosition());
+				a_path->Start(g_obj, enemy->GetPAttributes()->position, enemy->GetTargetPosition(), enemy->GetStats()->path_type);
 				a_path->Reset();
 
 		

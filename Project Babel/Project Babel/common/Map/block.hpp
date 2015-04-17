@@ -44,6 +44,11 @@
 #define WALL_SE 6
 #define WALL_SW 7
 
+//pathfinder types
+#define PATH_WITH_DOORS 0
+#define PATH_PLAYER 1
+
+
 
 
 #endif
