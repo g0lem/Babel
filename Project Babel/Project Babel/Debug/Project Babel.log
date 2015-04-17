@@ -1,12 +1,14 @@
-﻿Build started 4/12/2015 4:56:38 PM.
+﻿Build started 4/17/2015 8:00:53 PM.
      1>Project "D:\GitHub\the-correct-one\Project Babel\Project Babel\Project Babel.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         D:\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I..\..\Dependencies\include /I.\ /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _CRT_SECURE_NO_WARNINGS /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"common.hpp" /Fp"Debug\Project Babel.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt common\AI\enemy_manager.cpp
-         enemy_manager.cpp
-     1>d:\github\the-correct-one\project babel\project babel\common\ai\enemy_manager.cpp(65): warning C4018: '<' : signed/unsigned mismatch
-     1>d:\github\the-correct-one\project babel\project babel\common\ai\enemy_manager.cpp(73): warning C4018: '<' : signed/unsigned mismatch
-     1>d:\github\the-correct-one\project babel\project babel\common\ai\enemy_manager.cpp(102): warning C4244: 'argument' : conversion from 'float' to 'GLuint', possible loss of data
-     1>d:\github\the-correct-one\project babel\project babel\common\ai\enemy_manager.cpp(103): warning C4018: '>' : signed/unsigned mismatch
+         D:\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I..\..\Dependencies\include /I.\ /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _CRT_SECURE_NO_WARNINGS /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"common.hpp" /Fp"Debug\Project Babel.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt common\Map\map_helper3.cpp
+         map_helper3.cpp
+     1>d:\github\the-correct-one\project babel\project babel\common\map\map_helper3.cpp(23): warning C4018: '<=' : signed/unsigned mismatch
+     1>d:\github\the-correct-one\project babel\project babel\common\map\map_helper3.cpp(55): warning C4018: '<=' : signed/unsigned mismatch
+     1>d:\github\the-correct-one\project babel\project babel\common\map\map_helper3.cpp(121): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
+     1>d:\github\the-correct-one\project babel\project babel\common\map\map_helper3.cpp(302): warning C4018: '<' : signed/unsigned mismatch
+     1>d:\github\the-correct-one\project babel\project babel\common\map\map_helper3.cpp(306): warning C4018: '<' : signed/unsigned mismatch
+     1>d:\github\the-correct-one\project babel\project babel\common\map\map_helper3.cpp(408): warning C4018: '<' : signed/unsigned mismatch
        Link:
          D:\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\GitHub\the-correct-one\Project Babel\Debug\Project Babel.exe" /INCREMENTAL /NOLOGO /LIBPATH:..\..\Dependencies\lib "sfml-system-d.lib" "sfml-system.lib" "sfml-audio-d.lib" "sfml-audio.lib" openAL32.lib RocketDebugger.lib Shell.lib RocketControls.lib RocketCore.lib FreeImaged.lib freetype.lib glfw3.lib glew32.lib glu32.lib opengl32.lib SQLite.lib gdi32.lib winmm.lib user32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\GitHub\the-correct-one\Project Babel\Debug\Project Babel.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\GitHub\the-correct-one\Project Babel\Debug\Project Babel.lib" /MACHINE:X86 Debug\icon.res
          Debug\common.obj
@@ -113,4 +115,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:14.27
+Time Elapsed 00:00:15.49

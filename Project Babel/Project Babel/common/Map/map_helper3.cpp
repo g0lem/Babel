@@ -17,6 +17,9 @@ void Map::AddTunnel(glm::ivec2 point_a, glm::ivec2 point_b)
 	GLuint values[4] = { 2, 1, 1, 1 };
 	GLuint values2[4] = { 8, 8, 2, 1 };
 
+	this->wall_list.push_back(new Wall(glm::vec2(point_a.x - 1, begin_limit.y-1), WALL_SE));
+	this->wall_list.push_back(new Wall(glm::vec2(point_a.x + 1, begin_limit.y-1), WALL_SE));
+
 	for (GLuint j = begin_limit.y; j <= end_limit.y; j++)
 	{
 
@@ -46,7 +49,8 @@ void Map::AddTunnel(glm::ivec2 point_a, glm::ivec2 point_b)
 	}
 	
 
-
+	this->wall_list.push_back(new Wall(glm::vec2(begin_limit.x, point_b.y - 1), WALL_SW));
+	this->wall_list.push_back(new Wall(glm::vec2(begin_limit.x, point_b.y + 1), WALL_NW));
 
 	for (GLuint i = begin_limit.x; i <= end_limit.x; i++)
 	{
