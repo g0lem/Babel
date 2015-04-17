@@ -20,45 +20,60 @@ void Map::AddTunnel(glm::ivec2 point_a, glm::ivec2 point_b)
 	for (GLuint j = begin_limit.y; j <= end_limit.y; j++)
 	{
 
+		this->wall_list.push_back(new Wall(glm::vec2(point_a.x - 1, j + 1), WALL_NE));
+		this->wall_list.push_back(new Wall(glm::vec2(point_a.x + 1, j + 1), WALL_NW));
 
 		if (this->tilemap->GetTiles()[point_a.x - 1][j] == NO_BLOCK)
+		{
 			this->tilemap->GetTiles()[point_a.x - 1][j] = Dice::Get(values, 4, 5) + SOLID_LIMIT;
+			
+		}
 
-
+		this->wall_list.push_back(new Wall(glm::vec2(point_a.x - 1, j), WALL_RIGHT));
+		
 		this->tilemap->GetTiles()[point_a.x][j] = FLOOR_BLOCK + Dice::Get(values2, 4, 19);
 
 
 		if (this->tilemap->GetTiles()[point_a.x + 1][j] == NO_BLOCK)
+		{
 			this->tilemap->GetTiles()[point_a.x + 1][j] = Dice::Get(values, 4, 5) + SOLID_LIMIT;
+		
+		}
 
-
+		this->wall_list.push_back(new Wall(glm::vec2(point_a.x + 1, j), WALL_LEFT));
 
 
 	}
-
+	
 
 
 
 	for (GLuint i = begin_limit.x; i <= end_limit.x; i++)
 	{
-
+		this->wall_list.push_back(new Wall(glm::vec2(i + 1, point_b.y - 1), WALL_SW));
+		this->wall_list.push_back(new Wall(glm::vec2(i + 1, point_b.y + 1), WALL_NW));
 
 		if (this->tilemap->GetTiles()[i][point_b.y - 1] == NO_BLOCK)
+		{
 			this->tilemap->GetTiles()[i][point_b.y - 1] = STONE_BLOCK;
-
-
+		
+		}
+	this->wall_list.push_back(new Wall(glm::vec2(i , point_b.y - 1), WALL_UP));
 		this->tilemap->GetTiles()[i][point_b.y] = FLOOR_BLOCK + Dice::Get(values2, 4, 19);
 
 
 		if (this->tilemap->GetTiles()[i][point_b.y + 1] == NO_BLOCK)
+		{
 			this->tilemap->GetTiles()[i][point_b.y + 1] = STONE_BLOCK;
+	
+		}
 
+		this->wall_list.push_back(new Wall(glm::vec2(i, point_b.y + 1), WALL_DOWN));
 
-
+	
 
 	}
-
-
+	
 
 
 

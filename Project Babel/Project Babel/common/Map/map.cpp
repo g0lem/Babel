@@ -150,7 +150,7 @@ void Map::Render(Controller * ctrl, ScreenUniformData * u_data, GameObject * g_o
 	fog->MakeTexture(g_obj, glm::ivec2(position));
 
 
-	this->tilemap->Render(ctrl, u_data, this->m_sprite,
+	this->Render(ctrl, u_data, this->m_sprite,
 		g_obj->GetScroller()->GetBeginLimit(),
 		g_obj->GetScroller()->GetEndLimit(),
 		g_obj->GetScroller()->GetOffset(),
@@ -166,6 +166,153 @@ void Map::Render(Controller * ctrl, ScreenUniformData * u_data, GameObject * g_o
 
 
 }
+
+void Map::Render(Controller * ctrl, ScreenUniformData * u_data, Sprite * m_sprite,
+	glm::ivec2 begin_limit, glm::ivec2 end_limit,
+	glm::vec2 offset, GLuint texture, float ** fog, ItemList *item_list)
+{
+
+
+
+	for (int j = begin_limit.y; j < end_limit.y; j++)
+	{
+
+
+
+		for (int i = begin_limit.x; i < end_limit.x; i++)
+		{
+
+
+
+			if (this->tilemap->boss_lvl == false)
+			{
+				u_data->SetNewUV(glm::vec4(i - 1, j, 48, 48));
+				this->tilemap->GetDark()->RenderTexture(texture);
+				u_data->SetNewUV(glm::vec4(-1, -1, 48, 48));
+			}
+			else
+			{
+				u_data->SetNewUV(glm::vec4(i - 1, j, 20, 20));
+				this->tilemap->GetDark()->RenderTexture(texture);
+				u_data->SetNewUV(glm::vec4(-1, -1, 20, 20));
+			}
+			u_data->SetAmbientLight(glm::vec4(1.0f, 1.0f, 1.0f, 1.0f));
+			u_data->ApplyMatrix(Translation(glm::vec2(i, j)*this->tilemap->GetTileScale() + offset)*Scale(this->tilemap->GetTileScale()));
+			m_sprite->Render(this->tilemap->GetTiles()[i][j]);
+
+
+
+		}
+
+
+
+	}
+
+
+	int x, y;
+
+	for (int i = 0; i < item_list->GetDroppedItems().size(); i++)
+	{
+		x = item_list->GetDroppedItems()[i]->position.x;
+		y = item_list->GetDroppedItems()[i]->position.y;
+
+
+
+
+		glm::vec3 temp = glm::vec3(1.0f) * (1 - fog[x][y]);
+		u_data->SetAmbientLight(glm::vec4(temp.x, temp.y, temp.y, 1.0f));
+		u_data->ApplyMatrix(Translation(glm::vec2(x * 64 + 16, y * 64 + 16) + offset)*Scale(glm::vec2(32, 32)));
+		item_list->GetSprite()->Render(item_list->GetDroppedItems()[i]->item->frame);
+
+
+
+
+
+	}
+
+	for (int i = 0; i < item_list->GetObjects().size(); i++)
+	{
+		x = item_list->GetObjects()[i]->position.x;
+		y = item_list->GetObjects()[i]->position.y;
+
+
+
+
+		glm::vec3 temp = glm::vec3(1.0f) * (1 - fog[x][y]);
+		u_data->SetAmbientLight(glm::vec4(temp.x, temp.y, temp.y, 1.0f));
+		u_data->ApplyMatrix(Translation(glm::vec2(x * 64, y * 64) + offset)*Scale(glm::vec2(64, 64)));
+		item_list->GetObjectSprite()->Render(item_list->GetObjects()[i]->item->id);
+
+
+
+
+
+	}
+
+	for (int i = 0; i < item_list->GetTraps().size(); i++)
+	{
+		x = item_list->GetTraps()[i]->position.x;
+		y = item_list->GetTraps()[i]->position.y;
+
+
+
+
+		glm::vec3 temp = glm::vec3(1.0f) * (1 - fog[x][y]);
+		u_data->SetAmbientLight(glm::vec4(temp.x, temp.y, temp.y, 1.0f));
+		u_data->ApplyMatrix(Translation(glm::vec2(x * 64, y * 64) + offset)*Scale(glm::vec2(64, 64)));
+		item_list->GetObjectSprite()->Render(item_list->GetTraps()[i]->item->id);
+
+
+
+
+
+	}
+
+	for (int i = 0; i < this->wall_list.size(); i++)
+	{
+		x = this->wall_list[i]->position.x;
+		y = this->wall_list[i]->position.y;
+
+
+		if (this->tilemap->GetTiles()[x][y] >= SOLID_LIMIT)
+		{
+			glm::vec3 temp = glm::vec3(1.0f) * (1 - fog[x][y]);
+			u_data->SetAmbientLight(glm::vec4(temp.x, temp.y, temp.y, 1.0f));
+			u_data->ApplyMatrix(Translation(glm::vec2(x * 64, y * 64) + offset)*Scale(glm::vec2(64, 64)));
+			this->m_walls->Render(this->wall_list[i]->type);
+		}
+	}
+
+
+	for (int i = 0; i < this->rooms[0].size(); i++)
+	{
+		
+		for (int j = 0; j < this->rooms[0][i]->GetWallList().size(); j++)
+		{
+			x = this->rooms[0][i]->GetWallList()[j]->position.x;
+			y = this->rooms[0][i]->GetWallList()[j]->position.y;
+
+			
+			if (this->tilemap->GetTiles()[x][y] >= SOLID_LIMIT)
+			{
+				glm::vec3 temp = glm::vec3(1.0f) * (1 - fog[x][y]);
+				u_data->SetAmbientLight(glm::vec4(temp.x, temp.y, temp.y, 1.0f));
+				u_data->ApplyMatrix(Translation(glm::vec2(x * 64, y * 64) + offset)*Scale(glm::vec2(64, 64)));
+				this->m_walls->Render(this->rooms[0][i]->GetWallList()[j]->type);
+			}
+		}
+	}
+
+	
+
+
+
+}
+
+
+
+
+
 
 
 void Map::TransformAndApplyRoomToTileMap(Room * room, Tilemap * tilemap, GLuint transform_flag)

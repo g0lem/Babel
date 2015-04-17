@@ -38,6 +38,7 @@ public:
 
 	GLboolean boss_lvl;
 
+	inline Sprite* GetDark(){ return this->dark; }//Get Metal, kids
 
 	void SmootherFOW(float **fog, glm::ivec2 position, ScreenUniformData * u_data);
 

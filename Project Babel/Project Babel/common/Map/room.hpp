@@ -22,6 +22,12 @@
 
 class Room
 {
+	struct Wall
+	{
+		glm::vec2 position;
+		int type;
+		Wall(glm::vec2 position, int type){ this->position = position; this->type = type; }
+	};
 
 
 	glm::ivec2 points[2];
@@ -39,9 +45,11 @@ class Room
 
 	GLuint type;
 
+	std::vector<Wall*> wall_list;
 
 public:
 
+	inline std::vector<Wall*> GetWallList(){ return this->wall_list; }
 
 	void Create(glm::vec2 start_point, GLfloat width, GLfloat height);
 

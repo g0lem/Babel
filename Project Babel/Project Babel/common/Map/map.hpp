@@ -11,16 +11,25 @@
 class Map
 {
 
+	
 
-
+	
 
 
 public:
 
+	struct Wall
+	{
+		glm::vec2 position;
+		int type;
+		Wall(glm::vec2 position, int type){ this->position = position; this->type = type; }
+	};
 
 
 	void Render(Controller * ctrl, ScreenUniformData * u_data, GameObject * g_obj, glm::vec2 position);
-
+	void Render(Controller * ctrl, ScreenUniformData * u_data, Sprite * m_sprite,
+		glm::ivec2 begin_limit, glm::ivec2 end_limit,
+		glm::vec2 offset, GLuint texture, float ** fog, ItemList *item_list);
 
 	void InitBoss(GameObject *g_obj);
 	void Init(GameObject *g_obj);
@@ -39,7 +48,7 @@ public:
 
 private:
 
-
+	std::vector<Wall*> wall_list;
 
 	Graph * m_graph;
     
@@ -48,6 +57,7 @@ private:
 
 
 	Sprite * m_sprite;
+	Sprite * m_walls;
 
 	fog_of_war *fog;
 
@@ -91,6 +101,7 @@ private:
 	void AddBossRoom();
 
 	void AddDoors();
+
 
 
 

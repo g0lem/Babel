@@ -19,14 +19,31 @@ void Map::LoadSprites()
 	tex_str[3] = "floor-4.png";
 	tex_str[4] = "door-open.png";
 	tex_str[5] = "door.png";
-	tex_str[6] = "wall0.png";
-	tex_str[7] = "wall1.png";
-	tex_str[8] = "wall2.png";
-	tex_str[9] = "wall3.png";
+	tex_str[6] = "wall.png";
+	tex_str[7] = "wall.png";
+	tex_str[8] = "wall.png";
+	tex_str[9] = "wall.png";
 
 
 
 	this->m_sprite->Load(10, "data/tiles/", tex_str);
+
+
+	this->m_walls = new Sprite();
+	char ** tex_str2 = new char*[8];
+	tex_str[0] = "up.png";
+	tex_str[1] = "right.png";
+	tex_str[2] = "down.png";
+	tex_str[3] = "left.png";
+	tex_str[4] = "nw.png";
+	tex_str[5] = "ne.png";
+	tex_str[6] = "se.png";
+	tex_str[7] = "sw.png";
+
+
+
+
+	this->m_walls->Load(8, "data/tiles/walls/", tex_str);
 
 }
 

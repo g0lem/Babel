@@ -33,5 +33,17 @@
 #define OPENED_CHEST 9
 
 
+//walls
+
+#define WALL_UP 0
+#define WALL_RIGHT 1
+#define WALL_DOWN 2
+#define WALL_LEFT 3
+#define WALL_NW 4
+#define WALL_NE 5
+#define WALL_SE 6
+#define WALL_SW 7
+
+
 
 #endif

@@ -1,7 +1,6 @@
 //Checked 1
 
 
-
 #include <common.hpp>
 
 
@@ -132,22 +131,32 @@ void Room::Transform(GLuint transform_flag)
 		GLuint values[4] = { 2, 1, 1, 1 };
 
 
-		for (GLuint i = 0; i < this->width; i++)
+		for (GLuint i = 1; i < this->width-1; i++)
 		{
 			this->tile_map[i][0] = Dice::Get(values, 4, 5)+SOLID_LIMIT;
+			this->wall_list.push_back(new Wall(glm::vec2(glm::ivec2(i, 0) + this->points[0]), WALL_UP));
 			this->tile_map[i][this->height - 1] = Dice::Get(values, 4, 5)+SOLID_LIMIT;
+			this->wall_list.push_back(new Wall(glm::vec2(glm::ivec2(i, this->height - 1) + this->points[0]), WALL_DOWN));
 
 		}
+		this->tile_map[0][0] = SOLID_LIMIT;
+		this->tile_map[0][this->height - 1] = SOLID_LIMIT;
+		this->wall_list.push_back(new Wall(glm::vec2(glm::ivec2(0, 0) + this->points[0]), WALL_SE));
+		this->wall_list.push_back(new Wall(glm::vec2(glm::ivec2(0, this->height - 1) + this->points[0]), WALL_NE));
 
-
-
-		for (GLuint j = 0; j < this->height; j++)
+		for (GLuint j = 1; j < this->height-1; j++)
 		{
 
 			this->tile_map[0][j] = Dice::Get(values, 4, 5)+SOLID_LIMIT;
+			this->wall_list.push_back(new Wall(glm::vec2(glm::ivec2(0, j) + this->points[0]), WALL_RIGHT));
 			this->tile_map[this->width - 1][j] = Dice::Get(values, 4, 5)+SOLID_LIMIT;
+			this->wall_list.push_back(new Wall(glm::vec2(glm::ivec2(this->width - 1, j) + this->points[0]), WALL_LEFT));
 
 		}
+		this->tile_map[this->width - 1][0] = SOLID_LIMIT;
+		this->tile_map[this->width - 1][this->height - 1] = SOLID_LIMIT;
+		this->wall_list.push_back(new Wall(glm::vec2(glm::ivec2(this->width - 1, 0) + this->points[0]), WALL_SW));
+		this->wall_list.push_back(new Wall(glm::vec2(glm::ivec2(this->width - 1, this->height - 1) + this->points[0]), WALL_NW));
 
 
 
