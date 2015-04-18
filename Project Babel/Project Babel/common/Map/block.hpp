@@ -13,7 +13,8 @@
 #define OPENED_DOOR_BLOCK 4
 #define DOOR_BLOCK 5
 #define STONE_BLOCK 6
-
+#define CORNER_BLOCK 7
+#define VISIBLE_WALL 8
 
 
 

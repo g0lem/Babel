@@ -20,15 +20,29 @@ void Map::AddTunnel(glm::ivec2 point_a, glm::ivec2 point_b)
 	this->wall_list.push_back(new Wall(glm::vec2(point_a.x - 1, begin_limit.y-1), WALL_SE));
 	this->wall_list.push_back(new Wall(glm::vec2(point_a.x + 1, begin_limit.y-1), WALL_SE));
 
+
+	if (this->tilemap->GetTiles()[point_a.x - 1][begin_limit.y - 1] == NO_BLOCK)
+		this->tilemap->GetTiles()[point_a.x - 1][begin_limit.y - 1] = VISIBLE_WALL;
+
+	if (this->tilemap->GetTiles()[point_a.x + 1][begin_limit.y - 1] == NO_BLOCK)
+		this->tilemap->GetTiles()[point_a.x + 1][begin_limit.y - 1] = VISIBLE_WALL;
+
+
 	for (GLuint j = begin_limit.y; j <= end_limit.y; j++)
 	{
 
 		this->wall_list.push_back(new Wall(glm::vec2(point_a.x - 1, j + 1), WALL_NE));
 		this->wall_list.push_back(new Wall(glm::vec2(point_a.x + 1, j + 1), WALL_NW));
 
+		if (this->tilemap->GetTiles()[point_a.x - 1][j+1] == NO_BLOCK)
+			this->tilemap->GetTiles()[point_a.x - 1][j + 1] = VISIBLE_WALL;
+
+		if (this->tilemap->GetTiles()[point_a.x + 1][j + 1] == NO_BLOCK)
+			this->tilemap->GetTiles()[point_a.x + 1][j + 1] = VISIBLE_WALL;
+
 		if (this->tilemap->GetTiles()[point_a.x - 1][j] == NO_BLOCK)
 		{
-			this->tilemap->GetTiles()[point_a.x - 1][j] = Dice::Get(values, 4, 5) + SOLID_LIMIT;
+			this->tilemap->GetTiles()[point_a.x - 1][j] = VISIBLE_WALL;
 			
 		}
 
@@ -39,7 +53,7 @@ void Map::AddTunnel(glm::ivec2 point_a, glm::ivec2 point_b)
 
 		if (this->tilemap->GetTiles()[point_a.x + 1][j] == NO_BLOCK)
 		{
-			this->tilemap->GetTiles()[point_a.x + 1][j] = Dice::Get(values, 4, 5) + SOLID_LIMIT;
+			this->tilemap->GetTiles()[point_a.x + 1][j] = VISIBLE_WALL;
 		
 		}
 
@@ -52,23 +66,37 @@ void Map::AddTunnel(glm::ivec2 point_a, glm::ivec2 point_b)
 	this->wall_list.push_back(new Wall(glm::vec2(begin_limit.x, point_b.y - 1), WALL_SW));
 	this->wall_list.push_back(new Wall(glm::vec2(begin_limit.x, point_b.y + 1), WALL_NW));
 
+	if (this->tilemap->GetTiles()[begin_limit.x][point_b.y - 1] == NO_BLOCK)
+		this->tilemap->GetTiles()[begin_limit.x][point_b.y - 1] = VISIBLE_WALL;
+	if (this->tilemap->GetTiles()[begin_limit.x][point_b.y + 1] == NO_BLOCK)
+		this->tilemap->GetTiles()[begin_limit.x][point_b.y + 1] = VISIBLE_WALL;
+
+
 	for (GLuint i = begin_limit.x; i <= end_limit.x; i++)
 	{
 		this->wall_list.push_back(new Wall(glm::vec2(i + 1, point_b.y - 1), WALL_SW));
 		this->wall_list.push_back(new Wall(glm::vec2(i + 1, point_b.y + 1), WALL_NW));
 
+		if (this->tilemap->GetTiles()[i + 1][point_b.y - 1] == NO_BLOCK)
+		{
+			this->tilemap->GetTiles()[i + 1][point_b.y - 1] = VISIBLE_WALL;
+		}
+		if (this->tilemap->GetTiles()[i][point_b.y + 1] == NO_BLOCK)
+		{
+			this->tilemap->GetTiles()[i + 1][point_b.y + 1] = VISIBLE_WALL;
+		}
 		if (this->tilemap->GetTiles()[i][point_b.y - 1] == NO_BLOCK)
 		{
-			this->tilemap->GetTiles()[i][point_b.y - 1] = STONE_BLOCK;
+			this->tilemap->GetTiles()[i][point_b.y - 1] = VISIBLE_WALL;
 		
 		}
 	this->wall_list.push_back(new Wall(glm::vec2(i , point_b.y - 1), WALL_UP));
-		this->tilemap->GetTiles()[i][point_b.y] = FLOOR_BLOCK + Dice::Get(values2, 4, 19);
+		this->tilemap->GetTiles()[i][point_b.y] = FLOOR_BLOCK;
 
 
 		if (this->tilemap->GetTiles()[i][point_b.y + 1] == NO_BLOCK)
 		{
-			this->tilemap->GetTiles()[i][point_b.y + 1] = STONE_BLOCK;
+			this->tilemap->GetTiles()[i][point_b.y + 1] = VISIBLE_WALL;
 	
 		}
 
@@ -96,16 +124,16 @@ void Map::AddTunnel(glm::ivec2 point_a, glm::ivec2 point_b)
 	
 
 	if (this->tilemap->GetTiles()[intersection_point.x - 1][intersection_point.y - 1] == NO_BLOCK)
-		this->tilemap->GetTiles()[intersection_point.x - 1][intersection_point.y - 1] = STONE_BLOCK;
+		this->tilemap->GetTiles()[intersection_point.x - 1][intersection_point.y - 1] = VISIBLE_WALL;
 
 	if (this->tilemap->GetTiles()[intersection_point.x + 1][intersection_point.y - 1] == NO_BLOCK)
-		this->tilemap->GetTiles()[intersection_point.x + 1][intersection_point.y - 1] = STONE_BLOCK;
+		this->tilemap->GetTiles()[intersection_point.x + 1][intersection_point.y - 1] = VISIBLE_WALL;
 
 	if (this->tilemap->GetTiles()[intersection_point.x - 1][intersection_point.y + 1] == NO_BLOCK)
-		this->tilemap->GetTiles()[intersection_point.x - 1][intersection_point.y + 1] = STONE_BLOCK;
+		this->tilemap->GetTiles()[intersection_point.x - 1][intersection_point.y + 1] = VISIBLE_WALL;
 
 	if (this->tilemap->GetTiles()[intersection_point.x + 1][intersection_point.y + 1] == NO_BLOCK)
-		this->tilemap->GetTiles()[intersection_point.x + 1][intersection_point.y + 1] = STONE_BLOCK;
+		this->tilemap->GetTiles()[intersection_point.x + 1][intersection_point.y + 1] = VISIBLE_WALL;
 
 
 
@@ -140,7 +168,7 @@ void Map::AddDoors()
 			GLuint door_y = room->GetOffset().y;
 
 
-			if (this->tilemap->GetTiles()[door_x][door_y] == FLOOR_BLOCK + Dice::Get(values, 4, 19) &&
+			if (this->tilemap->GetTiles()[door_x][door_y] == FLOOR_BLOCK  &&
 				(
 				
 				
@@ -172,7 +200,7 @@ void Map::AddDoors()
 
 
 
-			if (this->tilemap->GetTiles()[door_x][door_y + room->GetHeight() - 1] == FLOOR_BLOCK + Dice::Get(values, 4, 19) &&
+			if (this->tilemap->GetTiles()[door_x][door_y + room->GetHeight() - 1] == FLOOR_BLOCK &&
 			   (
 
 
@@ -220,7 +248,7 @@ void Map::AddDoors()
 			GLuint door_y = j + room->GetOffset().y;
 
 
-			if (this->tilemap->GetTiles()[door_x][door_y] == FLOOR_BLOCK + Dice::Get(values, 4, 19) &&
+			if (this->tilemap->GetTiles()[door_x][door_y] == FLOOR_BLOCK  &&
 			   (
 
 
@@ -253,7 +281,7 @@ void Map::AddDoors()
 
 
 			
-			if (this->tilemap->GetTiles()[door_x + room->GetWidth() - 1][door_y] == FLOOR_BLOCK + Dice::Get(values, 4, 19) &&
+			if (this->tilemap->GetTiles()[door_x + room->GetWidth() - 1][door_y] == FLOOR_BLOCK &&
 			   (
 
 
@@ -314,19 +342,19 @@ void Map::AddDoors()
 
 
 				if (this->tilemap->GetTiles()[i - 1][j] == DOOR_BLOCK)
-					this->tilemap->GetTiles()[i - 1][j] = FLOOR_BLOCK + Dice::Get(values, 4, 19);
+					this->tilemap->GetTiles()[i - 1][j] = FLOOR_BLOCK ;
 
 
 				if (this->tilemap->GetTiles()[i + 1][j] == DOOR_BLOCK)
-					this->tilemap->GetTiles()[i + 1][j] = FLOOR_BLOCK + Dice::Get(values, 4, 19);
+					this->tilemap->GetTiles()[i + 1][j] = FLOOR_BLOCK ;
 
 
 				if (this->tilemap->GetTiles()[i][j - 1] == DOOR_BLOCK)
-					this->tilemap->GetTiles()[i][j - 1] = FLOOR_BLOCK + Dice::Get(values, 4, 19);
+					this->tilemap->GetTiles()[i][j - 1] = FLOOR_BLOCK ;
 
 
 				if (this->tilemap->GetTiles()[i][j + 1] == DOOR_BLOCK)
-					this->tilemap->GetTiles()[i][j + 1] = FLOOR_BLOCK + Dice::Get(values, 4, 19);
+					this->tilemap->GetTiles()[i][j + 1] = FLOOR_BLOCK ;
 
 
 

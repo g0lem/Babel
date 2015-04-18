@@ -52,6 +52,8 @@ private:
 
 	Graph * m_graph;
     
+	int ***wall_score;
+
 
 	Tilemap *tilemap;
 
@@ -75,7 +77,7 @@ private:
 	
 	void GenerateBossRoom(GameObject *g_obj);
 
-	
+	void GenerateScore();
 	
 	void BossSprites();
 

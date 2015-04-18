@@ -50,6 +50,27 @@ void Map::GenerateContent(GameObject *g_obj)
 	this->tilemap->Init();
 
 
+	this->wall_score = new int**[this->tilemap->GetSize().x];
+	for (int i = 0; i < this->tilemap->GetSize().x; i++)
+	{
+		this->wall_score[i] = new int*[this->tilemap->GetSize().y];
+		for (int j = 0; j < this->tilemap->GetSize().y; j++)
+		{
+			//std::cout << i << " " << j << std::endl;
+			this->wall_score[i][j] = new int[4];
+
+			this->wall_score[i][j][0] = 0;
+			this->wall_score[i][j][1] = 0;
+			this->wall_score[i][j][2] = 0;
+			this->wall_score[i][j][3] = 0;
+
+		}
+	}
+
+
+
+	this->GenerateScore();
+
 	this->AddRooms(15);
 	
 
@@ -167,12 +188,177 @@ void Map::Render(Controller * ctrl, ScreenUniformData * u_data, GameObject * g_o
 
 }
 
+void Map::GenerateScore()
+{
+	
+
+	int dx[] = { -1, 1, 0, 0 };
+	int dy[] = { 0, 0, -1, 1 };
+	int walls[4];
+
+
+	for (int j = 0; j < this->tilemap->GetSize().y; j++)
+	for (int i = 0; i < this->tilemap->GetSize().x;i++)	
+		{ 
+		
+
+			for (int x = 0; x < 4; x++)
+			{
+				walls[x] = 0;
+				if (i + dx[x] >= 0 && i + dx[x] < this->tilemap->GetSize().x && j + dy[x] >= 0 && j + dy[x] < this->tilemap->GetSize().y)
+					if (this->tilemap->GetTiles()[i][j] >= SOLID_LIMIT)
+						walls[x] = 1;
+			}
+			
+			if ((walls[0] == walls[1] || (walls[0] == DOOR_BLOCK && walls[1] >= SOLID_LIMIT) || (walls[0] >= SOLID_LIMIT == DOOR_BLOCK && walls[1] == DOOR_BLOCK)) && walls[0] != walls[3] && walls[0] != walls[2])
+				{
+					if (walls[0] >= SOLID_LIMIT)
+					{
+						if (walls[3] >= FLOOR_BLOCK && walls[3] < SOLID_LIMIT)
+						{
+						
+							this->wall_score[i][j][0] = 1;
+							this->wall_score[i][j][1] = 1;
+						}
+
+
+						if (walls[2] >= FLOOR_BLOCK && walls[2] < SOLID_LIMIT)
+						{
+							
+							this->wall_score[i][j][2] = 1;
+							this->wall_score[i][j][3] = 1;
+						}
+					}
+				}
+				else if ((walls[2] == walls[3] || (walls[2] == DOOR_BLOCK && walls[3] >= SOLID_LIMIT) || (walls[2] >= SOLID_LIMIT == DOOR_BLOCK && walls[3] == DOOR_BLOCK)) && walls[2] != walls[0] && walls[2] != walls[1])
+				{
+					if (walls[2] >= SOLID_LIMIT)
+					{
+						if (walls[0] >= FLOOR_BLOCK && walls[0] < SOLID_LIMIT)
+						{
+							this->wall_score[i][j][0] = 1;
+							this->wall_score[i][j][3] = 1;
+						}
+						if (walls[1] >= FLOOR_BLOCK && walls[1] < SOLID_LIMIT)
+						{
+							this->wall_score[i][j][1] = 1;
+							this->wall_score[i][j][2] = 1;
+						}
+					}
+				}
+			
+			//beware of cancer
+
+			if (walls[0] == 1)
+			{
+				if (walls[1] == 1)
+				{
+					if (walls[2] == 0)
+					{
+						this->wall_score[i][j][2] = 1;
+						this->wall_score[i][j][3] = 1;
+					}
+					if (walls[3] == 0)
+					{
+						this->wall_score[i][j][0] = 1;
+						this->wall_score[i][j][1] = 1;
+					}
+				}
+
+				if (walls[2] == 1)
+					this->wall_score[i][j][3] = 1;
+
+				if (walls[3] == 1)
+					this->wall_score[i][j][0] = 1;
+			}
+
+			if (walls[1] == 1)
+			{
+				if (walls[0] == 1)
+				{
+					if (walls[2] == 0)
+					{
+						this->wall_score[i][j][2] = 1;
+						this->wall_score[i][j][3] = 1;
+					}
+					if (walls[3] == 0)
+					{
+						this->wall_score[i][j][0] = 1;
+						this->wall_score[i][j][1] = 1;
+					}
+				}
+
+				if (walls[2] == 1)
+					this->wall_score[i][j][2] = 1;
+
+				if (walls[3] == 1)
+					this->wall_score[i][j][1] = 1;
+			}
+
+			if (walls[2] == 1)
+			{
+				if (walls[3] == 1)
+				{
+					if (walls[0] == 0)
+					{
+						this->wall_score[i][j][0] = 1;
+						this->wall_score[i][j][3] = 1;
+					}
+					if (walls[1] == 0)
+					{
+						this->wall_score[i][j][2] = 1;
+						this->wall_score[i][j][1] = 1;
+					}
+				}
+
+				if (walls[0] == 1)
+					this->wall_score[i][j][3] = 1;
+
+				if (walls[1] == 1)
+					this->wall_score[i][j][2] = 1;
+			}
+
+			if (walls[3] == 1)
+			{
+				if (walls[2] == 1)
+				{
+					if (walls[0] == 0)
+					{
+						this->wall_score[i][j][0] = 1;
+						this->wall_score[i][j][3] = 1;
+					}
+					if (walls[1] == 0)
+					{
+						this->wall_score[i][j][2] = 1;
+						this->wall_score[i][j][1] = 1;
+					}
+				}
+
+				if (walls[0] == 1)
+					this->wall_score[i][j][0] = 1;
+
+				if (walls[1] == 1)
+					this->wall_score[i][j][1] = 1;
+			}
+			//std::cout << "coords: " << i << "  " << j << std::endl;
+		//	std::cout << this->wall_score[i][j][0] << " " << this->wall_score[i][j][1] << " " << this->wall_score[i][j][2] << " " << this->wall_score[i][j][3] << std::endl;
+		}
+
+}
+
+
+
+
+
+
+
+
+
 void Map::Render(Controller * ctrl, ScreenUniformData * u_data, Sprite * m_sprite,
 	glm::ivec2 begin_limit, glm::ivec2 end_limit,
 	glm::vec2 offset, GLuint texture, float ** fog, ItemList *item_list)
 {
-
-
+	this->GenerateScore();
 
 	for (int j = begin_limit.y; j < end_limit.y; j++)
 	{
@@ -196,15 +382,24 @@ void Map::Render(Controller * ctrl, ScreenUniformData * u_data, Sprite * m_sprit
 				this->tilemap->GetDark()->RenderTexture(texture);
 				u_data->SetNewUV(glm::vec4(-1, -1, 20, 20));
 			}
+
 			u_data->SetAmbientLight(glm::vec4(1.0f, 1.0f, 1.0f, 1.0f));
 			u_data->ApplyMatrix(Translation(glm::vec2(i, j)*this->tilemap->GetTileScale() + offset)*Scale(this->tilemap->GetTileScale()));
 			m_sprite->Render(this->tilemap->GetTiles()[i][j]);
 
 
 
+
+		
+		
+			
+				
+			
+
+
 		}
 
-
+		
 
 	}
 
@@ -302,7 +497,7 @@ void Map::Render(Controller * ctrl, ScreenUniformData * u_data, Sprite * m_sprit
 			}
 		}
 	}
-
+	
 	
 
 

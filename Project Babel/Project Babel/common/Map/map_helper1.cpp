@@ -20,8 +20,8 @@ void Map::LoadSprites()
 	tex_str[4] = "door-open.png";
 	tex_str[5] = "door.png";
 	tex_str[6] = "wall.png";
-	tex_str[7] = "wall.png";
-	tex_str[8] = "wall.png";
+	tex_str[7] = "corner.png";
+	tex_str[8] = "visible_wall.png";
 	tex_str[9] = "wall.png";
 
 
