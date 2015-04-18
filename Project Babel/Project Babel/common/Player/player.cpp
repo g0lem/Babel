@@ -217,7 +217,7 @@ void Player::LoadPhysicalAttributes(Map * current_tilemap)
 
 
 	this->attributes = new PhysicalAttributes();
-	this->attributes->scale = glm::vec2(64.0f, 64.0f);
+	this->attributes->scale = glm::vec2(32.0f, 32.0f);
 	this->attributes->position = glm::vec2(current_tilemap->GetRoomsPointer()[0][0]->GetInternalCenter());
 	this->attributes->target = this->attributes->position;
 	this->attributes->speed = 10.0f;

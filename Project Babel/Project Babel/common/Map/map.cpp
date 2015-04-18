@@ -69,7 +69,7 @@ void Map::GenerateContent(GameObject *g_obj)
 
 
 
-	this->GenerateScore();
+	
 
 	this->AddRooms(15);
 	
@@ -92,7 +92,7 @@ void Map::GenerateContent(GameObject *g_obj)
 	this->AddChests(g_obj);
 
 	g_obj->GetCollisionMap()->CreateOutOfMap(this->GetTilemap());
-
+	this->GenerateScore();
 
 	this->fog = new fog_of_war();
 	fog->Init(g_obj);
@@ -175,9 +175,10 @@ void Map::Render(Controller * ctrl, ScreenUniformData * u_data, GameObject * g_o
 		g_obj->GetScroller()->GetBeginLimit(),
 		g_obj->GetScroller()->GetEndLimit(),
 		g_obj->GetScroller()->GetOffset(),
-		fog->GetTexture(), 
+		fog->GetTexture(),
 		fog->GetFOW(g_obj,glm::ivec2(position)),
 		g_obj->GetItemList());
+	//in loc de 0 pune fog->GetTexture(),dupa ce rezolvi cu shader-ul
 
 
 
@@ -204,144 +205,64 @@ void Map::GenerateScore()
 
 			for (int x = 0; x < 4; x++)
 			{
-				walls[x] = 0;
 				if (i + dx[x] >= 0 && i + dx[x] < this->tilemap->GetSize().x && j + dy[x] >= 0 && j + dy[x] < this->tilemap->GetSize().y)
-					if (this->tilemap->GetTiles()[i][j] >= SOLID_LIMIT)
-						walls[x] = 1;
+					if (this->tilemap->GetTiles()[i + dx[x]][j + dy[x]] >= SOLID_LIMIT || this->tilemap->GetTiles()[i + dx[x]][j + dy[x]] == DOOR_BLOCK)
+						walls[x] = -2;
+					else
+						walls[x] = this->tilemap->GetTiles()[i][j];
+				else
+					walls[x] = 0;
+
 			}
-			
-			if ((walls[0] == walls[1] || (walls[0] == DOOR_BLOCK && walls[1] >= SOLID_LIMIT) || (walls[0] >= SOLID_LIMIT == DOOR_BLOCK && walls[1] == DOOR_BLOCK)) && walls[0] != walls[3] && walls[0] != walls[2])
-				{
-					if (walls[0] >= SOLID_LIMIT)
-					{
-						if (walls[3] >= FLOOR_BLOCK && walls[3] < SOLID_LIMIT)
-						{
-						
-							this->wall_score[i][j][0] = 1;
-							this->wall_score[i][j][1] = 1;
-						}
-
-
-						if (walls[2] >= FLOOR_BLOCK && walls[2] < SOLID_LIMIT)
-						{
-							
-							this->wall_score[i][j][2] = 1;
-							this->wall_score[i][j][3] = 1;
-						}
-					}
-				}
-				else if ((walls[2] == walls[3] || (walls[2] == DOOR_BLOCK && walls[3] >= SOLID_LIMIT) || (walls[2] >= SOLID_LIMIT == DOOR_BLOCK && walls[3] == DOOR_BLOCK)) && walls[2] != walls[0] && walls[2] != walls[1])
-				{
-					if (walls[2] >= SOLID_LIMIT)
-					{
-						if (walls[0] >= FLOOR_BLOCK && walls[0] < SOLID_LIMIT)
-						{
-							this->wall_score[i][j][0] = 1;
-							this->wall_score[i][j][3] = 1;
-						}
-						if (walls[1] >= FLOOR_BLOCK && walls[1] < SOLID_LIMIT)
-						{
-							this->wall_score[i][j][1] = 1;
-							this->wall_score[i][j][2] = 1;
-						}
-					}
-				}
-			
-			//beware of cancer
-
-			if (walls[0] == 1)
+			if (this->tilemap->GetTiles()[i][j] >= SOLID_LIMIT)
 			{
-				if (walls[1] == 1)
+				if (walls[1] == -2)
 				{
-					if (walls[2] == 0)
-					{
-						this->wall_score[i][j][2] = 1;
-						this->wall_score[i][j][3] = 1;
-					}
-					if (walls[3] == 0)
-					{
-						this->wall_score[i][j][0] = 1;
-						this->wall_score[i][j][1] = 1;
-					}
+
+
+					if (walls[2] == -2)
+						this->tilemap->GetTiles()[i][j] = SW_BLOCK;
+					if (walls[3] == -2)
+						this->tilemap->GetTiles()[i][j] = NW_BLOCK;
+
+
+
 				}
 
-				if (walls[2] == 1)
-					this->wall_score[i][j][3] = 1;
-
-				if (walls[3] == 1)
-					this->wall_score[i][j][0] = 1;
-			}
-
-			if (walls[1] == 1)
-			{
-				if (walls[0] == 1)
+				if (walls[0] == -2)
 				{
-					if (walls[2] == 0)
+
+					if (walls[2] == -2)
+						this->tilemap->GetTiles()[i][j] = SE_BLOCK;
+					if (walls[3] == -2)
+						this->tilemap->GetTiles()[i][j] = NE_BLOCK;
+
+					if (walls[1] == -2)
 					{
-						this->wall_score[i][j][2] = 1;
-						this->wall_score[i][j][3] = 1;
+						if (this->tilemap->GetTiles()[i][j - 1] == FLOOR_BLOCK)
+							this->tilemap->GetTiles()[i][j] = DOWN_STONE_BLOCK;
+						if (this->tilemap->GetTiles()[i][j + 1] == FLOOR_BLOCK)
+							this->tilemap->GetTiles()[i][j] = UP_STONE_BLOCK;
 					}
-					if (walls[3] == 0)
-					{
-						this->wall_score[i][j][0] = 1;
-						this->wall_score[i][j][1] = 1;
-					}
+
 				}
-
-				if (walls[2] == 1)
-					this->wall_score[i][j][2] = 1;
-
-				if (walls[3] == 1)
-					this->wall_score[i][j][1] = 1;
-			}
-
-			if (walls[2] == 1)
-			{
-				if (walls[3] == 1)
+				if (walls[3] == -2)
 				{
-					if (walls[0] == 0)
+					if (walls[2] == -2)
 					{
-						this->wall_score[i][j][0] = 1;
-						this->wall_score[i][j][3] = 1;
+						if (i-1>=0)
+						if (this->tilemap->GetTiles()[i-1][j] == FLOOR_BLOCK)
+							this->tilemap->GetTiles()[i][j] = LEFT_STONE_BLOCK;
+						if (this->tilemap->GetTiles()[i+1][j] == FLOOR_BLOCK)
+							this->tilemap->GetTiles()[i][j] = RIGHT_STONE_BLOCK;
 					}
-					if (walls[1] == 0)
-					{
-						this->wall_score[i][j][2] = 1;
-						this->wall_score[i][j][1] = 1;
-					}
+
 				}
+				
 
-				if (walls[0] == 1)
-					this->wall_score[i][j][3] = 1;
-
-				if (walls[1] == 1)
-					this->wall_score[i][j][2] = 1;
 			}
 
-			if (walls[3] == 1)
-			{
-				if (walls[2] == 1)
-				{
-					if (walls[0] == 0)
-					{
-						this->wall_score[i][j][0] = 1;
-						this->wall_score[i][j][3] = 1;
-					}
-					if (walls[1] == 0)
-					{
-						this->wall_score[i][j][2] = 1;
-						this->wall_score[i][j][1] = 1;
-					}
-				}
 
-				if (walls[0] == 1)
-					this->wall_score[i][j][0] = 1;
-
-				if (walls[1] == 1)
-					this->wall_score[i][j][1] = 1;
-			}
-			//std::cout << "coords: " << i << "  " << j << std::endl;
-		//	std::cout << this->wall_score[i][j][0] << " " << this->wall_score[i][j][1] << " " << this->wall_score[i][j][2] << " " << this->wall_score[i][j][3] << std::endl;
 		}
 
 }
@@ -358,7 +279,7 @@ void Map::Render(Controller * ctrl, ScreenUniformData * u_data, Sprite * m_sprit
 	glm::ivec2 begin_limit, glm::ivec2 end_limit,
 	glm::vec2 offset, GLuint texture, float ** fog, ItemList *item_list)
 {
-	this->GenerateScore();
+	//this->GenerateScore();
 
 	for (int j = begin_limit.y; j < end_limit.y; j++)
 	{
@@ -388,7 +309,7 @@ void Map::Render(Controller * ctrl, ScreenUniformData * u_data, Sprite * m_sprit
 			m_sprite->Render(this->tilemap->GetTiles()[i][j]);
 
 
-
+			
 
 		
 		
@@ -416,7 +337,7 @@ void Map::Render(Controller * ctrl, ScreenUniformData * u_data, Sprite * m_sprit
 
 		glm::vec3 temp = glm::vec3(1.0f) * (1 - fog[x][y]);
 		u_data->SetAmbientLight(glm::vec4(temp.x, temp.y, temp.y, 1.0f));
-		u_data->ApplyMatrix(Translation(glm::vec2(x * 64 + 16, y * 64 + 16) + offset)*Scale(glm::vec2(32, 32)));
+		u_data->ApplyMatrix(Translation(glm::vec2(x * this->tilemap->GetTileScale().x + 8, y * this->tilemap->GetTileScale().y + 8) + offset)*Scale(glm::vec2(this->tilemap->GetTileScale().x/2, this->tilemap->GetTileScale().y/2)));
 		item_list->GetSprite()->Render(item_list->GetDroppedItems()[i]->item->frame);
 
 
@@ -435,7 +356,7 @@ void Map::Render(Controller * ctrl, ScreenUniformData * u_data, Sprite * m_sprit
 
 		glm::vec3 temp = glm::vec3(1.0f) * (1 - fog[x][y]);
 		u_data->SetAmbientLight(glm::vec4(temp.x, temp.y, temp.y, 1.0f));
-		u_data->ApplyMatrix(Translation(glm::vec2(x * 64, y * 64) + offset)*Scale(glm::vec2(64, 64)));
+		u_data->ApplyMatrix(Translation(glm::vec2(x, y) * this->tilemap->GetTileScale() + offset)*Scale(this->tilemap->GetTileScale()));
 		item_list->GetObjectSprite()->Render(item_list->GetObjects()[i]->item->id);
 
 
@@ -454,7 +375,7 @@ void Map::Render(Controller * ctrl, ScreenUniformData * u_data, Sprite * m_sprit
 
 		glm::vec3 temp = glm::vec3(1.0f) * (1 - fog[x][y]);
 		u_data->SetAmbientLight(glm::vec4(temp.x, temp.y, temp.y, 1.0f));
-		u_data->ApplyMatrix(Translation(glm::vec2(x * 64, y * 64) + offset)*Scale(glm::vec2(64, 64)));
+		u_data->ApplyMatrix(Translation(glm::vec2(x, y)*this->tilemap->GetTileScale() + offset)*Scale(this->tilemap->GetTileScale()));
 		item_list->GetObjectSprite()->Render(item_list->GetTraps()[i]->item->id);
 
 
@@ -463,7 +384,7 @@ void Map::Render(Controller * ctrl, ScreenUniformData * u_data, Sprite * m_sprit
 
 	}
 
-	for (int i = 0; i < this->wall_list.size(); i++)
+	/*for (int i = 0; i < this->wall_list.size(); i++)
 	{
 		x = this->wall_list[i]->position.x;
 		y = this->wall_list[i]->position.y;
@@ -473,7 +394,7 @@ void Map::Render(Controller * ctrl, ScreenUniformData * u_data, Sprite * m_sprit
 		{
 			glm::vec3 temp = glm::vec3(1.0f) * (1 - fog[x][y]);
 			u_data->SetAmbientLight(glm::vec4(temp.x, temp.y, temp.y, 1.0f));
-			u_data->ApplyMatrix(Translation(glm::vec2(x * 64, y * 64) + offset)*Scale(glm::vec2(64, 64)));
+			u_data->ApplyMatrix(Translation(glm::vec2(x, y) *this->tilemap->GetTileScale() + offset)*Scale(this->tilemap->GetTileScale()));
 			this->m_walls->Render(this->wall_list[i]->type);
 		}
 	}
@@ -492,11 +413,11 @@ void Map::Render(Controller * ctrl, ScreenUniformData * u_data, Sprite * m_sprit
 			{
 				glm::vec3 temp = glm::vec3(1.0f) * (1 - fog[x][y]);
 				u_data->SetAmbientLight(glm::vec4(temp.x, temp.y, temp.y, 1.0f));
-				u_data->ApplyMatrix(Translation(glm::vec2(x * 64, y * 64) + offset)*Scale(glm::vec2(64, 64)));
+				u_data->ApplyMatrix(Translation(glm::vec2(x, y)*this->tilemap->GetTileScale() + offset)*Scale(this->tilemap->GetTileScale()));
 				this->m_walls->Render(this->rooms[0][i]->GetWallList()[j]->type);
 			}
 		}
-	}
+	}*/
 	
 	
 

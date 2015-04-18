@@ -12,38 +12,38 @@ void Map::LoadSprites()
 
 
 
-	char ** tex_str = new char*[10];
+	char ** tex_str = new char*[19];
 	tex_str[0] = "floor.png";
 	tex_str[1] = "floor-2.png";
 	tex_str[2] = "floor-3.png";
 	tex_str[3] = "floor-4.png";
 	tex_str[4] = "door-open.png";
 	tex_str[5] = "door.png";
-	tex_str[6] = "wall.png";
-	tex_str[7] = "corner.png";
-	tex_str[8] = "visible_wall.png";
-	tex_str[9] = "wall.png";
+
+	tex_str[6] = "left.png";
+	tex_str[7] = "up.png";
+	tex_str[8] = "right.png";
+	tex_str[9] = "down.png";
 
 
-
-	this->m_sprite->Load(10, "data/tiles/", tex_str);
-
-
-	this->m_walls = new Sprite();
-	char ** tex_str2 = new char*[8];
-	tex_str[0] = "up.png";
-	tex_str[1] = "right.png";
-	tex_str[2] = "down.png";
-	tex_str[3] = "left.png";
-	tex_str[4] = "nw.png";
-	tex_str[5] = "ne.png";
-	tex_str[6] = "se.png";
-	tex_str[7] = "sw.png";
+	tex_str[10] = "corner-NE.png";
+	tex_str[11] = "corner-NW.png";
+	tex_str[12] = "corner-SW.png";
+	tex_str[13] = "corner-SE.png";
 
 
+	tex_str[14] = "ne.png";
+	tex_str[15] = "nw.png";
+	tex_str[16] = "sw.png";
+	tex_str[17] = "se.png";
+
+	tex_str[18] = "wall.png";
 
 
-	this->m_walls->Load(8, "data/tiles/walls/", tex_str);
+	this->m_sprite->Load(19, "data/tiles/", tex_str);
+
+
+	
 
 }
 

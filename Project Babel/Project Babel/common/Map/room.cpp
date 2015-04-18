@@ -76,10 +76,10 @@ GLboolean Room::Intersects(Room * other)
 {
 
 
-	return (points[0].x < other->points[1].x-1 &&
-		points[1].x > other->points[0].x+1 &&
-		points[0].y < other->points[1].y-1 &&
-		points[1].y > other->points[0].y+1);
+	return (points[0].x < other->points[1].x &&
+		points[1].x > other->points[0].x &&
+		points[0].y < other->points[1].y &&
+		points[1].y > other->points[0].y);
 		
 
 
@@ -134,36 +134,36 @@ void Room::Transform(GLuint transform_flag)
 		for (GLuint i = 1; i < this->width-1; i++)
 		{
 			this->tile_map[i][0] = VISIBLE_WALL;
-			this->wall_list.push_back(new Wall(glm::vec2(glm::ivec2(i, 0) + this->points[0]), WALL_UP));
+			/*this->wall_list.push_back(new Wall(glm::vec2(glm::ivec2(i, 0) + this->points[0]), WALL_UP));*/
 			this->tile_map[i][this->height - 1] = VISIBLE_WALL;
-			this->wall_list.push_back(new Wall(glm::vec2(glm::ivec2(i, this->height - 1) + this->points[0]), WALL_DOWN));
+			/*this->wall_list.push_back(new Wall(glm::vec2(glm::ivec2(i, this->height - 1) + this->points[0]), WALL_DOWN));*/
 
 		}
 		this->tile_map[0][0] = VISIBLE_WALL;
 		this->tile_map[0][this->height - 1] = VISIBLE_WALL;
-		this->wall_list.push_back(new Wall(glm::vec2(glm::ivec2(0, 0) + this->points[0]), WALL_SE));
-		this->wall_list.push_back(new Wall(glm::vec2(glm::ivec2(0, this->height - 1) + this->points[0]), WALL_NE));
+		/*this->wall_list.push_back(new Wall(glm::vec2(glm::ivec2(0, 0) + this->points[0]), WALL_SE));
+		this->wall_list.push_back(new Wall(glm::vec2(glm::ivec2(0, this->height - 1) + this->points[0]), WALL_NE));*/
 
 		for (GLuint j = 1; j < this->height-1; j++)
 		{
 
 			this->tile_map[0][j] = VISIBLE_WALL;
 
-			this->wall_list.push_back(new Wall(glm::vec2(glm::ivec2(0, j) + this->points[0]), WALL_RIGHT));
+			/*this->wall_list.push_back(new Wall(glm::vec2(glm::ivec2(0, j) + this->points[0]), WALL_RIGHT));*/
 
 			this->tile_map[this->width - 1][j] = VISIBLE_WALL;
 
-			this->wall_list.push_back(new Wall(glm::vec2(glm::ivec2(this->width - 1, j) + this->points[0]), WALL_LEFT));
-
+			/*this->wall_list.push_back(new Wall(glm::vec2(glm::ivec2(this->width - 1, j) + this->points[0]), WALL_LEFT));
+*/
 		}
 		this->tile_map[this->width - 1][0] = VISIBLE_WALL;
 
 		this->tile_map[this->width - 1][this->height - 1] = VISIBLE_WALL;
 
-		this->wall_list.push_back(new Wall(glm::vec2(glm::ivec2(this->width - 1, 0) + this->points[0]), WALL_SW));
+		/*this->wall_list.push_back(new Wall(glm::vec2(glm::ivec2(this->width - 1, 0) + this->points[0]), WALL_SW));
 
 		this->wall_list.push_back(new Wall(glm::vec2(glm::ivec2(this->width - 1, this->height - 1) + this->points[0]), WALL_NW));
-
+*/
 
 
 	}

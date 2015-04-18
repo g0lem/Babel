@@ -132,7 +132,7 @@ void Enemy::LoadPhysicalAttributes()
 
 	this->p_attributes = new PhysicalAttributes();
 	this->p_attributes->position = this->p_attributes->target = vec2_0;
-	this->p_attributes->scale = glm::vec2(64.0f, 64.0f);
+	this->p_attributes->scale = glm::vec2(32.0f,32.0f);
 	this->p_attributes->speed = 10.0f;
 	this->p_attributes->rotation_angle - 0.0f;
 

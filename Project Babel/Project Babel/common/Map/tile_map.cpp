@@ -94,7 +94,7 @@ void Tilemap::Init()
 {
 
 
-	this->tile_scale = glm::vec2(64.0f, 64.0f);
+	this->tile_scale = glm::vec2(32.0f, 32.0f);
 
 
 	this->size = glm::ivec2(48, 48);
@@ -118,7 +118,7 @@ void Tilemap::InitBoss()
 {
 
 
-	this->tile_scale = glm::vec2(64.0f, 64.0f);
+	this->tile_scale = glm::vec2(32.0f, 32.0f);
 
 
 	this->size = glm::ivec2(20, 20);

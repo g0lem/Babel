@@ -12,9 +12,25 @@
 #define FLOOR_BLOCK 0
 #define OPENED_DOOR_BLOCK 4
 #define DOOR_BLOCK 5
-#define STONE_BLOCK 6
-#define CORNER_BLOCK 7
-#define VISIBLE_WALL 8
+
+
+#define LEFT_STONE_BLOCK 6
+#define UP_STONE_BLOCK 7
+#define RIGHT_STONE_BLOCK 8
+#define DOWN_STONE_BLOCK 9
+
+#define CORNER_NE_BLOCK 10
+#define CORNER_NW_BLOCK 11
+#define CORNER_SW_BLOCK 12
+#define CORNER_SE_BLOCK 13
+
+#define NE_BLOCK 14
+#define NW_BLOCK 15
+#define SW_BLOCK 16
+#define SE_BLOCK 17
+
+
+#define VISIBLE_WALL 18
 
 
 
