@@ -215,7 +215,6 @@ void Player::LoadSprites()
 void Player::LoadPhysicalAttributes(Map * current_tilemap)
 {
 
-
 	this->attributes = new PhysicalAttributes();
 	this->attributes->scale = glm::vec2(32.0f, 32.0f);
 	this->attributes->position = glm::vec2(current_tilemap->GetRoomsPointer()[0][0]->GetInternalCenter());
@@ -368,11 +367,11 @@ void Player::HandleAutoPath(SoundManager *sm, Controller * ctrl, GameObject * g_
 void Player::LoadStats()
 {
 
-
+	//Player Stats
 
 	this->m_stats->GetHp()->Buff(20);
 	this->m_stats->base_movement_speed = 1.0f;
-
+	this->m_stats->base_attack = glm::vec2(100, 100);
 	this->m_stats->GetXp()->max_xp = 7;
 	this->m_stats->GetXp()->xp = 0;
 

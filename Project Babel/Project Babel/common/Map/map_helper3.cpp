@@ -397,7 +397,7 @@ void Map::AddChests(GameObject *g_obj)
 	int x, y, random;
 	int tablets_added = 0;
 	
-	while (tablets_added < 10)
+	while (tablets_added < 10) //10 is the number of chests
 	{
 		random = Rand(this->rooms->size());
 		x = Rand(this->rooms->at(random)->GetOffset().x + 1, this->rooms->at(random)->GetEndOffset().x - 2);

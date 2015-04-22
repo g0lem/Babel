@@ -28,7 +28,7 @@ void EnemyManager::Render(SoundManager *sm, Controller * ctrl, ScreenUniformData
 
 
 			glm::ivec2 e_pos = glm::ivec2(this->m_enemies[0][i]->GetPAttributes()->position);
-			if (map->GetFogofWar()->GetFogMartix()[(int)(e_pos.x)][(int)(e_pos.y)] <= 0.75f)
+			if (map->GetFogofWar()->GetFogMartix()[(int)(e_pos.x)][(int)(e_pos.y)] < 0.50f)
 				this->m_enemies[0][i]->Render(ctrl, u_data, g_obj, map); 
 
 

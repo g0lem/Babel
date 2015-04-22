@@ -12,6 +12,7 @@ void EnemyLoader::Init()
 	this->data = new std::vector < EnemyData* > ;
 
 
+	//Scorpions
 
 	EnemyData * temp = new EnemyData();
 	temp->num_dirs = 8;
@@ -88,7 +89,7 @@ void EnemyLoader::Init()
 
 
 
-
+	//Hydra
 
 	
 

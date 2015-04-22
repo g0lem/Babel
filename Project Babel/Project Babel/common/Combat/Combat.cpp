@@ -96,7 +96,7 @@ void Combat::PlayerAttack(SoundManager * sm, Controller * ctrl, GameObject * g_o
 
 
 			GLint hp = enemies->GetEnemiesPointer()[0][player->GetTarget()]->GetStats()->GetHp()->hp;
-			GLint dmg = enemies->GetEnemiesPointer()[0][player->GetTarget()]->GetStats()->GetHp()->Damage(player->GetItems()[ITEM_SLOT_WEAPON]->attack);
+			GLint dmg = enemies->GetEnemiesPointer()[0][player->GetTarget()]->GetStats()->GetHp()->Damage(player->GetItems()[ITEM_SLOT_WEAPON]->attack + player->GetStats()->base_attack);
 
 
 
