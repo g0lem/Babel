@@ -1,14 +1,110 @@
-﻿Build started 4/17/2015 8:00:53 PM.
+﻿Build started 4/23/2015 2:54:41 AM.
      1>Project "D:\GitHub\the-correct-one\Project Babel\Project Babel\Project Babel.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         D:\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I..\..\Dependencies\include /I.\ /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _CRT_SECURE_NO_WARNINGS /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"common.hpp" /Fp"Debug\Project Babel.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt common\Map\map_helper3.cpp
+         D:\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I..\..\Dependencies\include /I.\ /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _CRT_SECURE_NO_WARNINGS /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yc"common.hpp" /Fp"Debug\Project Babel.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt common.cpp
+         common.cpp
+     1>d:\github\the-correct-one\project babel\project babel\common\framework\math\2d_math.hpp(17): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+     1>d:\github\the-correct-one\project babel\project babel\common\framework\math\2d_math.hpp(82): warning C4244: 'argument' : conversion from 'double' to 'GLfloat', possible loss of data
+     1>d:\github\the-correct-one\project babel\project babel\common\framework\sound\sound_manager.hpp(7): warning C4005: 'MAX_SOUNDS' : macro redefinition
+                 d:\github\the-correct-one\project babel\project babel\common\framework\sound\sound_manager.hpp(6) : see previous definition of 'MAX_SOUNDS'
+     1>d:\github\the-correct-one\project babel\project babel\common\stats\hp.hpp(21): warning C4244: 'argument' : conversion from 'float' to 'GLuint', possible loss of data
+     1>d:\github\the-correct-one\project babel\project babel\common\turns\turn.hpp(30): warning C4244: '=' : conversion from 'double' to 'GLfloat', possible loss of data
+     1>d:\github\the-correct-one\project babel\project babel\common\effects\effects_handler.hpp(22): warning C4244: '-=' : conversion from 'GLdouble' to 'float', possible loss of data
+     1>d:\github\the-correct-one\project babel\project babel\common\effects\effects_handler.hpp(31): warning C4244: '+=' : conversion from 'GLdouble' to 'float', possible loss of data
+     1>d:\github\the-correct-one\project babel\project babel\common\effects\effects_handler.hpp(46): warning C4244: '+=' : conversion from 'GLdouble' to 'float', possible loss of data
+     1>d:\github\the-correct-one\project babel\project babel\common\effects\effects_handler.hpp(48): warning C4244: '-=' : conversion from 'GLdouble' to 'float', possible loss of data
+     1>d:\github\the-correct-one\project babel\project babel\common\effects\effects_handler.hpp(64): warning C4244: '*=' : conversion from 'GLdouble' to 'float', possible loss of data
+     1>d:\github\the-correct-one\project babel\project babel\common\effects\effects_handler.hpp(76): warning C4244: '-=' : conversion from 'GLdouble' to 'float', possible loss of data
+     1>d:\github\the-correct-one\project babel\project babel\common\effects\effects_handler.hpp(77): warning C4244: 'argument' : conversion from 'float' to 'GLint', possible loss of data
+     1>d:\github\the-correct-one\project babel\project babel\common\game object\ui_state.hpp(6): warning C4005: 'NOT_ACTIVE' : macro redefinition
+                 d:\github\the-correct-one\project babel\project babel\common\game object\menu_state.hpp(3) : see previous definition of 'NOT_ACTIVE'
+     1>d:\github\the-correct-one\project babel\project babel\common\map\room.hpp(64): warning C4018: '<' : signed/unsigned mismatch
+     1>d:\github\the-correct-one\project babel\project babel\common\map\room.hpp(64): warning C4018: '<=' : signed/unsigned mismatch
+     1>d:\github\the-correct-one\project babel\project babel\common\delta\pathfinder.hpp(21): warning C4244: 'return' : conversion from 'int' to 'GLfloat', possible loss of data
+     1>d:\github\the-correct-one\project babel\project babel\common\ui\floating_text.hpp(29): warning C4018: '<' : signed/unsigned mismatch
+     1>d:\github\the-correct-one\project babel\project babel\common\ui\floating_text.hpp(48): warning C4018: '<' : signed/unsigned mismatch
+     1>d:\github\the-correct-one\project babel\project babel\common\ui\floating_text.hpp(58): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>d:\github\the-correct-one\project babel\project babel\common\ui\ui_helper.hpp(247): warning C4018: '<' : signed/unsigned mismatch
+         D:\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I..\..\Dependencies\include /I.\ /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _CRT_SECURE_NO_WARNINGS /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"common.hpp" /Fp"Debug\Project Babel.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt common\AI\enemy.cpp common\AI\enemy_manager.cpp common\Combat\Combat.cpp common\Delta\animation.cpp common\Delta\auto_path.cpp common\Delta\movement.cpp common\Delta\one_direction.cpp common\Delta\pathfinder.cpp common\Delta\physical_attributes.cpp common\Effects\effects_handler.cpp common\Events\event_handler.cpp common\Framework\Controls\controls.cpp common\Framework\Font\text2D.cpp common\Framework\Font\text_render.cpp common\Framework\Math\2d_math.cpp common\Framework\Math\dice.cpp common\Framework\Shader\shader.cpp common\Framework\Sound\sound_manager.cpp common\Framework\Sprite\2d.cpp common\Framework\Sprite\sprite.cpp common\Framework\Sprite\uniform_2d.cpp common\Framework\Texture\texture.cpp "common\Game Object\TextObject.cpp" "common\Game Object\character_panel_state.cpp" "common\Game Object\collision_map.cpp" "common\Game Object\enemy_loader.cpp" "common\Game Object\game_object.cpp" "common\Game Object\inventory_state.cpp" "common\Game Object\menu_state.cpp" "common\Game Object\miscellaneous.cpp" "common\Game Object\panel_state.cpp" "common\Game Object\scroller.cpp" "common\Game Object\story_state.cpp" "common\Game Object\ui_intersect.cpp" "common\Game Object\ui_state.cpp" common\Item\item.cpp common\Item\item_list.cpp common\Item\item_types.cpp common\Manager\font_manager.cpp common\Manager\game_render.cpp common\Manager\sprite_manager.cpp common\Map\fog_of_war.cpp common\Map\graph.cpp common\Map\map.cpp common\Map\map_helper1.cpp common\Map\map_helper2.cpp common\Map\map_helper3.cpp common\Map\room.cpp common\Map\tile_map.cpp common\Player\player.cpp common\Stats\hp.cpp common\Stats\stats.cpp common\Turns\turn.cpp common\UI\UI_handler.cpp common\UI\UI_render.cpp common\UI\floating_text.cpp common\UI\inventory.cpp common\UI\menu_item.cpp common\UI\menu_render.cpp common\UI\panel_render.cpp common\UI\story_render.cpp common\UI\ui_helper.cpp common\UI\ui_mover.cpp "common\Window Handler\application.cpp" "common\Window Handler\media_player.cpp" common\splash_screen.cpp common\stats\xp.cpp main.cpp
+         player.cpp
+     1>d:\github\the-correct-one\project babel\project babel\common\player\player.cpp(103): warning C4244: 'argument' : conversion from 'GLdouble' to 'GLfloat', possible loss of data
+     1>d:\github\the-correct-one\project babel\project babel\common\player\player.cpp(125): warning C4244: 'argument' : conversion from 'GLdouble' to 'GLfloat', possible loss of data
+     1>d:\github\the-correct-one\project babel\project babel\common\player\player.cpp(133): warning C4244: 'argument' : conversion from 'GLdouble' to 'GLfloat', possible loss of data
+     1>d:\github\the-correct-one\project babel\project babel\common\player\player.cpp(347): warning C4244: 'argument' : conversion from 'GLdouble' to 'GLfloat', possible loss of data
+     1>d:\github\the-correct-one\project babel\project babel\common\player\player.cpp(389): warning C4244: '=' : conversion from 'float' to 'GLint', possible loss of data
+     1>d:\github\the-correct-one\project babel\project babel\common\player\player.cpp(390): warning C4244: '=' : conversion from 'float' to 'GLint', possible loss of data
+         sprite_manager.cpp
+         Combat.cpp
+     1>d:\github\the-correct-one\project babel\project babel\common\combat\combat.cpp(301): warning C4805: '==' : unsafe mix of type 'GLboolean' and type 'bool' in operation
+     1>d:\github\the-correct-one\project babel\project babel\common\combat\combat.cpp(404): warning C4805: '==' : unsafe mix of type 'GLboolean' and type 'bool' in operation
+     1>d:\github\the-correct-one\project babel\project babel\common\combat\combat.cpp(421): warning C4018: '<' : signed/unsigned mismatch
+         Generating Code...
+         Skipping... (no relevant changes detected)
+         main.cpp
+         xp.cpp
+         splash_screen.cpp
+         media_player.cpp
+         application.cpp
+         ui_mover.cpp
+         ui_helper.cpp
+         story_render.cpp
+         panel_render.cpp
+         menu_render.cpp
+         menu_item.cpp
+         inventory.cpp
+         floating_text.cpp
+         UI_render.cpp
+         UI_handler.cpp
+         turn.cpp
+         stats.cpp
+         hp.cpp
+         tile_map.cpp
+         room.cpp
          map_helper3.cpp
-     1>d:\github\the-correct-one\project babel\project babel\common\map\map_helper3.cpp(23): warning C4018: '<=' : signed/unsigned mismatch
-     1>d:\github\the-correct-one\project babel\project babel\common\map\map_helper3.cpp(55): warning C4018: '<=' : signed/unsigned mismatch
-     1>d:\github\the-correct-one\project babel\project babel\common\map\map_helper3.cpp(121): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
-     1>d:\github\the-correct-one\project babel\project babel\common\map\map_helper3.cpp(302): warning C4018: '<' : signed/unsigned mismatch
-     1>d:\github\the-correct-one\project babel\project babel\common\map\map_helper3.cpp(306): warning C4018: '<' : signed/unsigned mismatch
-     1>d:\github\the-correct-one\project babel\project babel\common\map\map_helper3.cpp(408): warning C4018: '<' : signed/unsigned mismatch
+         map_helper2.cpp
+         map_helper1.cpp
+         map.cpp
+         graph.cpp
+         fog_of_war.cpp
+         game_render.cpp
+         font_manager.cpp
+         item_types.cpp
+         item_list.cpp
+         item.cpp
+         ui_state.cpp
+         ui_intersect.cpp
+         story_state.cpp
+         scroller.cpp
+         panel_state.cpp
+         miscellaneous.cpp
+         menu_state.cpp
+         inventory_state.cpp
+         game_object.cpp
+         enemy_loader.cpp
+         collision_map.cpp
+         character_panel_state.cpp
+         TextObject.cpp
+         texture.cpp
+         uniform_2d.cpp
+         sprite.cpp
+         2d.cpp
+         sound_manager.cpp
+         shader.cpp
+         dice.cpp
+         2d_math.cpp
+         text_render.cpp
+         text2D.cpp
+         controls.cpp
+         event_handler.cpp
+         effects_handler.cpp
+         physical_attributes.cpp
+         pathfinder.cpp
+         one_direction.cpp
+         movement.cpp
+         auto_path.cpp
+         animation.cpp
+         enemy_manager.cpp
+         enemy.cpp
        Link:
          D:\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\GitHub\the-correct-one\Project Babel\Debug\Project Babel.exe" /INCREMENTAL /NOLOGO /LIBPATH:..\..\Dependencies\lib "sfml-system-d.lib" "sfml-system.lib" "sfml-audio-d.lib" "sfml-audio.lib" openAL32.lib RocketDebugger.lib Shell.lib RocketControls.lib RocketCore.lib FreeImaged.lib freetype.lib glfw3.lib glew32.lib glu32.lib opengl32.lib SQLite.lib gdi32.lib winmm.lib user32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\GitHub\the-correct-one\Project Babel\Debug\Project Babel.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\GitHub\the-correct-one\Project Babel\Debug\Project Babel.lib" /MACHINE:X86 Debug\icon.res
          Debug\common.obj
@@ -115,4 +211,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:15.49
+Time Elapsed 00:00:14.81

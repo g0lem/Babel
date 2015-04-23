@@ -35,7 +35,7 @@ void SpriteManager::Init(GameObject * g_obj)
 
 	//enemy spawn
 
-	this->m_enemies = new EnemyManager(100, this->map, g_obj, 0);
+	this->m_enemies = new EnemyManager(10, this->map, g_obj, 0);
 
 	this->m_effects = new EffectsHandler();
 

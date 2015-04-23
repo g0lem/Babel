@@ -371,7 +371,7 @@ void Player::LoadStats()
 
 	this->m_stats->GetHp()->Buff(20);
 	this->m_stats->base_movement_speed = 1.0f;
-	this->m_stats->base_attack = glm::vec2(100, 100);
+	this->m_stats->base_attack = glm::vec2(0, 0);
 	this->m_stats->GetXp()->max_xp = 7;
 	this->m_stats->GetXp()->xp = 0;
 
