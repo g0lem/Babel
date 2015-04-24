@@ -158,9 +158,6 @@
     <ClCompile Include="common\Turns\turn.cpp">
       <Filter>common\Turns</Filter>
     </ClCompile>
-    <ClCompile Include="common\Window Handler\media_player.cpp">
-      <Filter>common\Window Handler</Filter>
-    </ClCompile>
     <ClCompile Include="common\Window Handler\application.cpp">
       <Filter>common\Window Handler</Filter>
     </ClCompile>
@@ -362,9 +359,6 @@
       <Filter>common\Turns</Filter>
     </ClInclude>
     <ClInclude Include="common\Window Handler\application.hpp">
-      <Filter>common\Window Handler</Filter>
-    </ClInclude>
-    <ClInclude Include="common\Window Handler\media_player.hpp">
       <Filter>common\Window Handler</Filter>
     </ClInclude>
     <ClInclude Include="common\Framework\Controls\controls.hpp">

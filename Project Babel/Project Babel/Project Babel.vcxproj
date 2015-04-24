@@ -80,7 +80,6 @@
     <ClCompile Include="common\UI\ui_mover.cpp" />
     <ClCompile Include="common\UI\UI_render.cpp" />
     <ClCompile Include="common\Window Handler\application.cpp" />
-    <ClCompile Include="common\Window Handler\media_player.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -166,7 +165,6 @@
     <ClInclude Include="common\UI\UI_render.hpp" />
     <ClInclude Include="common\Window Handler.hpp" />
     <ClInclude Include="common\Window Handler\application.hpp" />
-    <ClInclude Include="common\Window Handler\media_player.hpp" />
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
@@ -220,7 +218,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_CRT_SECURE_NO_WARNINGS;_DEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\..\Dependencies\include;.\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\Dependencies\include;.\;..\..\Dependencies\include\freetype-gl\</AdditionalIncludeDirectories>
       <PrecompiledHeaderFile>common.hpp</PrecompiledHeaderFile>
       <PrecompiledHeader>Use</PrecompiledHeader>
     </ClCompile>
