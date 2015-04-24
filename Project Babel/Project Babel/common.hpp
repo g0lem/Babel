@@ -2,7 +2,7 @@
 
 
 #include <FreeImage.h>
-
+#include <wchar.h>
 
 #include "sqlite3.h"
 
@@ -12,6 +12,13 @@
 #include <ft2build.h>
 #include <time.h>
 #include <algorithm>
+
+#include <freetype-gl.h>
+#include <vertex-buffer.h>
+#include <vertex-attribute.h>
+#include <markup.h>
+#include <shader.h>
+#include <mat4.h>
 
 
 #include <SFML/System.hpp>

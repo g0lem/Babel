@@ -154,7 +154,7 @@ GLvoid Font::Print(const GLchar * text, GLint x, GLint y, GLint size){
 		GLchar character = text[i];
 
 
-		character_offset += GLfloat(this->glyph_offset[character])*(GLfloat(size) / GLfloat(this->glyph_width));
+		character_offset += GLfloat(this->glyph_offset[character]);
 
 
 		glm::vec2 vertex_up_left = glm::vec2(x + i*size - character_offset, y + size);

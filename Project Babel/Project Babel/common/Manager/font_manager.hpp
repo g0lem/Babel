@@ -15,8 +15,9 @@ class FontManager : private TextRender
 
 	char text[256];
 
-
 	FloatingText *fText;
+
+	
 
 
 public:
