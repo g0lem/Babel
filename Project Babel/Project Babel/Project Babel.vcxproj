@@ -218,7 +218,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_CRT_SECURE_NO_WARNINGS;_DEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\..\Dependencies\include;.\;..\..\Dependencies\include\freetype-gl\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\Dependencies\include;..\..\Dependencies\include\freetype-gl\;.\</AdditionalIncludeDirectories>
       <PrecompiledHeaderFile>common.hpp</PrecompiledHeaderFile>
       <PrecompiledHeader>Use</PrecompiledHeader>
     </ClCompile>
@@ -226,7 +226,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>..\..\Dependencies\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>sfml-system-d.lib;sfml-system.lib;sfml-audio-d.lib;sfml-audio.lib;openAL32.lib;RocketDebugger.lib;Shell.lib;RocketControls.lib;RocketCore.lib;FreeImaged.lib;freetype.lib;glfw3.lib;glew32.lib;glu32.lib;opengl32.lib;SQLite.lib;gdi32.lib;winmm.lib;user32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;freetype-gl.lib;glu32.lib;opengl32.lib;sfml-system-d.lib;sfml-system.lib;sfml-audio-d.lib;sfml-audio.lib;openAL32.lib;RocketDebugger.lib;Shell.lib;RocketControls.lib;RocketCore.lib;FreeImaged.lib;freetype.lib;glfw3.lib;glew32.lib;SQLite.lib;winmm.lib;AntTweakBar.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
