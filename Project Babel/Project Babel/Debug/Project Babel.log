@@ -1,11 +1,8 @@
-﻿Build started 4/25/2015 8:04:00 AM.
+﻿Build started 4/26/2015 12:35:55 PM.
      1>Project "D:\GitHub\the-correct-one\Project Babel\Project Babel\Project Babel.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I..\..\Dependencies\include /I"..\..\Dependencies\include\freetype-gl\\" /I.\ /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _CRT_SECURE_NO_WARNINGS /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"common.hpp" /Fp"Debug\Project Babel.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt "common\Window Handler\application.cpp"
-         application.cpp
-     1>d:\github\the-correct-one\project babel\project babel\common\window handler\application.cpp(49): warning C4244: 'initializing' : conversion from 'int' to 'float', possible loss of data
-     1>d:\github\the-correct-one\project babel\project babel\common\window handler\application.cpp(102): warning C4244: 'argument' : conversion from 'size_t' to 'const float', possible loss of data
-     1>d:\github\the-correct-one\project babel\project babel\common\window handler\application.cpp(117): warning C4305: 'argument' : truncation from 'double' to 'GLclampf'
+         D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I..\..\Dependencies\include /I"..\..\Dependencies\include\freetype-gl\\" /I.\ /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _CRT_SECURE_NO_WARNINGS /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"common.hpp" /Fp"Debug\Project Babel.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt common\Manager\font_manager.cpp
+         font_manager.cpp
        Link:
          D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\GitHub\the-correct-one\Project Babel\Debug\Project Babel.exe" /INCREMENTAL /NOLOGO /LIBPATH:..\..\Dependencies\lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib "freetype-gl.lib" glu32.lib opengl32.lib "sfml-system-d.lib" "sfml-system.lib" "sfml-audio-d.lib" "sfml-audio.lib" openAL32.lib RocketDebugger.lib Shell.lib RocketControls.lib RocketCore.lib FreeImaged.lib freetype.lib glfw3.lib glew32.lib SQLite.lib winmm.lib AntTweakBar.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\GitHub\the-correct-one\Project Babel\Debug\Project Babel.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\GitHub\the-correct-one\Project Babel\Debug\Project Babel.lib" /MACHINE:X86 Debug\icon.res
          Debug\common.obj
@@ -114,4 +111,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:03.35
+Time Elapsed 00:00:03.25

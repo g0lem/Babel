@@ -3,36 +3,21 @@
 
 void FontManager::Init(GameObject * g_obj)
 {
-
-
-	this->BindCreate("data/shaders/font/v3f-t2f-c4f.vert",
-		"data/shaders/font/v3f-t2f-c4f.frag");
-
+	this->BindCreate("data/shaders/text_vert.txt",
+		"data/shaders/text_frag.txt");
 
 	g_obj->GetFontList()->Load();
 	this->fText = new FloatingText();
 
 
-	
-	
-
-
-
 	this->UnbindCreate();
-
-
 }
 
 
 
 void FontManager::Clean()
 {
-
-
 	TextRender::Clean();
-
-
-
 }
 
 
@@ -45,7 +30,11 @@ void FontManager::Render(Controller * ctrl, GameObject * g_obj, Tooltip *t_tip)
 
 
 	this->SetColor(1.f, 1.f, 1.f);
-	g_obj->GetFontList()->GetFont()->Print("Text + test II", 200, 400, 45);
+
+
+
+
+	g_obj->GetFontList()->GetFont()->Print("Text + test II", 200, 400, 50);
 	
 	
 
