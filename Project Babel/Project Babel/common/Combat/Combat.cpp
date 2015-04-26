@@ -112,8 +112,10 @@ void Combat::PlayerAttack(SoundManager * sm, Controller * ctrl, GameObject * g_o
 
 			if (player->GetStats()->GetXp()->xp >= player->GetStats()->GetXp()->max_xp)
 			{
+				printf("Level: %i", player->GetStats()->GetXp()->lvl);
 				player->GetStats()->GetXp()->lvl++;
 				player->GetStats()->GetXp()->xp = 0;
+				player->GetStats()->GetXp()->max_xp += 4;
 
 			}
 
