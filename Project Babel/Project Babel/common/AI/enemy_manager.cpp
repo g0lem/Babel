@@ -92,6 +92,45 @@ void EnemyManager::Init(GLuint num, Map * map, GameObject * g_obj, int type)
 }
 
 
+void EnemyManager::AddEnemies(GLuint num, Map * map, GameObject * g_obj, int type)
+{
+
+	Enemy *temp;
+	EnemyData *temp_data;
+	int target = this->m_enemies[0].size() + num;
+
+	temp_data = g_obj->GetEnemyLoader()->GetData()[0][type];
+
+
+
+	while (this->m_enemies[0].size() < target)
+	{
+		temp = new Enemy(temp_data);
+		this->type = type;
+		temp->SetRandomPosition(map);
+		temp->Update(g_obj, 0);
+		glm::vec2 t_pos = temp->GetPAttributes()->position;
+		GLboolean ok = true;
+		for (GLuint i = 0; i < this->m_enemies[0].size(); i++)
+			if (t_pos == this->m_enemies[0][i]->GetPAttributes()->position)
+			{
+			//	this->Kill(g_obj, num_e, map, type);
+			delete temp;
+			ok = false;
+			break;
+			}
+
+		if (glm::distance(glm::vec2(map->GetRoomsPointer()[0][0]->GetInternalCenter()), t_pos) < 6.0f)
+			ok = false;
+		if (ok)
+		{
+
+			this->m_enemies[0].push_back(temp);
+		}
+	}
+
+
+}
 
 void EnemyManager::CheckEnemiesState(SoundManager *sm, GameObject * g_obj, Map *map, int type)
 {
