@@ -76,10 +76,9 @@ public:
 		if (t_list->size() > 0)
 		{
 
-
 			HandleText(0, g_obj, tr, ctrl);
 
-			if (t_list->at(0)->color.a < 0.5f)
+			if (t_list->at(0)->color.a < 0.2f)
 				t_list->erase(t_list->begin());
 
 

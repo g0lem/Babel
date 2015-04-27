@@ -15,7 +15,7 @@ public:
 
 	inline FontList(){}
 	inline void Load(){
-		this->f = new Font(); 	this->f->Create("data/fonts/arial.ttf", 48);
+		this->f = new Font(); 	this->f->Create("data/fonts/choco.ttf", 18);
 	}
 
 

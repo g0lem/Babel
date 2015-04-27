@@ -65,16 +65,16 @@ public:
 
 		tr->SetColor(color.r, color.g, color.b, color.a);
 		if (direction == UP)
-			position.y += speed;
+			position.y -= speed;
 		else if (direction == LEFT)
 			position.x -= speed;
 		else if (direction == RIGHT)
 			position.x += speed;
 		else if (direction == DOWN)
-			position.y -= speed;
+			position.y += speed;
 
 		color.a -= 8.0f*ctrl->GetFpsPointer()->Delta();
-		font->Print(text, position.x, position.y, size);
+		font->Print(text, position.x, ctrl->GetWindowHeight() - position.y, size);
 	}
 
 };

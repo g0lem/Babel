@@ -8,6 +8,8 @@
 
 #include <sstream>
 
+#define WINDOW_WIDTH 960
+#define WINDOW_HEIGHT 640
 
 #include <ft2build.h>
 #include <time.h>

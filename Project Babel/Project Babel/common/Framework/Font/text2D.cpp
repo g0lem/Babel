@@ -6,127 +6,22 @@
 #include <common.hpp>
 
 
-
+void Font::Init(std::string name, std::string filename, int size)
+{
+	name = name;
+	filename = filename;
+	m_size = size;
+	m_atlas = texture_atlas_new(512, 512, 1);
+	m_font = texture_font_new_from_file(m_atlas, size, filename.c_str());
+}
 
 GLvoid Font::Create(GLchar * texturePath, GLuint size)
 {
-
-
-
-
 	glGenBuffers(1, &Text2DVertexBufferID);
 	glGenBuffers(1, &Text2DUVBufferID);
 
-
-	FT_Library ft;
-
-	if (FT_Init_FreeType(&ft)) {
-		fprintf(stderr, "Could not init freetype library\n");
-		return;
-	}
-
-	FT_Face face;
-
-	if (FT_New_Face(ft, texturePath, 0, &face)) {
-		fprintf(stderr, "Could not open font\n");
-		return;
-	}
-
-	FT_Set_Pixel_Sizes(face, 0, size);
-	
-
-
-	GLuint g_width = 0, g_height = 0;
-
-
-
-	for (GLuint c = 0; c < 256; c++)
-	{
-
-
-		if (FT_Load_Char(face, c, FT_LOAD_RENDER))
-		{
-			fprintf(stderr, "Could not load character &x\n",c);
-			return;
-		}
-
-
-		FT_GlyphSlot g = face->glyph;
-
-
-
-
-		if (g->bitmap.width > g_width)
-			g_width = g->bitmap.width;
-
-		if (g->bitmap.rows > g_height)
-			g_height = g->bitmap.rows;
-
-	}
-
-
-	g_width = next_p2(g_width);
-	g_height = next_p2(g_height);
-
-
-
-	this->glyph_width = g_width;
-
-
-
-	glGenTextures(1, &this->Text2DTextureID);
-	glBindTexture(GL_TEXTURE_2D, this->Text2DTextureID);
-
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-
-	glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RED, 16 * g_width, 16 * g_height, 0, GL_RED, GL_UNSIGNED_BYTE, 0);
-
-
-	for (GLuint j = 0; j < 16; j++)
-	{
-
-		for (GLuint i = 0; i < 16; i++)
-
-		{
-
-
-			if (FT_Load_Char(face, j*16+i, FT_LOAD_RENDER)) {
-				fprintf(stderr, "Could not load character &x\n", j*16+i);
-				return;
-			}
-
-
-			FT_GlyphSlot g = face->glyph;
-
-
-
-
-			this->glyph_offset[16 * j + i] = (g_width - g->bitmap.width) / 2;
-
-
-			glTexSubImage2D(GL_TEXTURE_2D,
-				0,
-				g_width*i + (g_width-g->bitmap.width)/2,
-				g_height*j + (g_height-g->bitmap.rows)/2 ,
-				g->bitmap.width, 
-				g->bitmap.rows,
-				GL_RED, 
-				GL_UNSIGNED_BYTE, 
-				g->bitmap.buffer);
-
-		}
-	}
-
-
-	glBindTexture(GL_TEXTURE_2D, 0);
-	jambo("Arial", "data/fonts/arial.ttf", 40);
-	this->scale = glm::vec2(30, 30);
-
-
+	Init("Arial", "data/fonts/choco.ttf", 20);
+	this->scale = glm::vec2(1, 1);
 }
 
 GLvoid Font::Print(const GLchar * text, GLint x, GLint y, GLint size){
@@ -135,12 +30,14 @@ GLvoid Font::Print(const GLchar * text, GLint x, GLint y, GLint size){
 
 	std::vector<glm::vec2> vertices;
 	std::vector<glm::vec2> UVs;
+	printf("%s\n", text);
 
-
+	float ny = y;
 
 	float x3 = x;
 	texture_font_t *font = this->m_font;
-	glm::vec2 scale = glm::vec2(0.3, 0.3);
+	font->size = size;
+	glm::vec2 scale = glm::vec2(1, 1);
 
 	for (GLuint i = 0; i<length; i++){
 
@@ -173,9 +70,9 @@ GLvoid Font::Print(const GLchar * text, GLint x, GLint y, GLint size){
 		vertices.push_back(vertex_down_left);
 		vertices.push_back(vertex_up_right);
 
-		vertices.push_back(vertex_down_right);
-		vertices.push_back(vertex_up_right);
+		vertices.push_back(vertex_up_left);
 		vertices.push_back(vertex_down_left);
+		vertices.push_back(vertex_down_right);
 
 
 		glm::vec2 uv_up_left = glm::vec2(u0, v0);
@@ -187,9 +84,9 @@ GLvoid Font::Print(const GLchar * text, GLint x, GLint y, GLint size){
 		UVs.push_back(uv_down_left);
 		UVs.push_back(uv_up_right);
 
-		UVs.push_back(uv_down_right);
-		UVs.push_back(uv_up_right);
+		UVs.push_back(uv_up_left);
 		UVs.push_back(uv_down_left);
+		UVs.push_back(uv_down_right);
 
 
 		x3 += glyph->advance_x / scale.x;
@@ -226,8 +123,10 @@ GLfloat Font::GetLength(const GLchar * text, GLint size)
 
 
 	for (GLuint i = 0; i < length; i++)
-	character_offset += GLfloat(this->glyph_offset[text[i]])*(GLfloat(size) / GLfloat(this->glyph_width));
-	
+	{
+		texture_glyph_t *glyph = texture_font_get_glyph(this->m_font, text[i]);
+		character_offset += texture_glyph_get_kerning(glyph, text[i - 1]);;
+	}
 
 	return GLfloat(length*size) - character_offset;
 }

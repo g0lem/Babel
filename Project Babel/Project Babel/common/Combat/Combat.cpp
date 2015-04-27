@@ -91,8 +91,13 @@ void Combat::PlayerAttack(SoundManager * sm, Controller * ctrl, GameObject * g_o
 			glm::vec2 text_pos = e_attr->position *
 				e_attr->scale +
 				g_obj->GetScroller()->GetOffset();
-			text_pos.y = ctrl->GetWindowHeight() - text_pos.y + 6;
-			text_pos.x += e_attr->scale.x + 10;
+
+
+
+
+			text_pos.y = ctrl->GetWindowHeight() - text_pos.y - 18;
+			text_pos.x += e_attr->scale.x + 14;
+			
 
 
 			GLint hp = enemies->GetEnemiesPointer()[0][player->GetTarget()]->GetStats()->GetHp()->hp;
@@ -124,17 +129,14 @@ void Combat::PlayerAttack(SoundManager * sm, Controller * ctrl, GameObject * g_o
 			char *buffer = new char[256];
 			_itoa(dmg, buffer, 10);
 			strcat(buffer, " DMG");
-			
-
-			text_pos.x -= g_obj->GetFontList()->GetFont()->GetLength(buffer, 40)/2.0f;
+			text_pos.x -= g_obj->GetFontList()->GetFont()->GetLength(buffer, 20)/2.f;
 
 			g_obj->GetTextObject()->Add(g_obj->GetFontList()->GetFont(),
 				buffer,
 				text_pos,
-				glm::vec4(1.0f, 0.0f, 0.0f, 1.0f),
-				20,
+				glm::vec4(1.0f, 0.0f, 0.0f, 1.0f), 20, 
 				UP,
-				350);
+				50);
 
 
 
@@ -333,8 +335,11 @@ void Combat::EnemyAttack(SoundManager *sm, Controller * ctrl, GameObject * g_obj
 			glm::vec2 text_pos = e_attr->position *
 				e_attr->scale +
 				g_obj->GetScroller()->GetOffset();
-			text_pos.y = ctrl->GetWindowHeight() - text_pos.y + 6;
-			text_pos.x += e_attr->scale.x + 10;
+			print_vec2(g_obj->GetScroller()->GetOffset());
+			print_vec2(e_attr->position *
+				e_attr->scale);
+			text_pos.y = ctrl->GetWindowHeight() - text_pos.y;// -18;
+			text_pos.x += e_attr->scale.x + 14;
 
 
 
@@ -350,15 +355,13 @@ void Combat::EnemyAttack(SoundManager *sm, Controller * ctrl, GameObject * g_obj
 				sm->PlaySound(HYDRAATTACK);
 
 
-			text_pos.x -= g_obj->GetFontList()->GetFont()->GetLength(buffer, 40) / 2.0f;
-
+			text_pos.x -= g_obj->GetFontList()->GetFont()->GetLength(buffer, 20) / 2.f;
 			g_obj->GetTextObject()->Add(g_obj->GetFontList()->GetFont(),
 				buffer,
 				text_pos,
-				glm::vec4(1.0f, 0.0f, 0.0f, 1.0f),
-				20,
+				glm::vec4(1.0f, 0.0f, 0.0f, 1.0f), 20,
 				UP,
-				350);
+				50);
 
 
 		

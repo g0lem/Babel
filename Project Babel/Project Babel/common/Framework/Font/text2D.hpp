@@ -59,14 +59,8 @@ public:
 		std::string filename;
 
 
-		void jambo(std::string name, std::string filename, int size)
-		{
-			name = name;
-			filename = filename;
-			m_size = size;
-			m_atlas = texture_atlas_new(512, 512, 1);
-			m_font = texture_font_new_from_file(m_atlas, size, filename.c_str());
-		}
+
+		void Init(std::string name, std::string filename, int size);
 		void setScale(float x, float y){
 			scale = glm::vec2(x, y);
 		}

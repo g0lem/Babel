@@ -34,8 +34,8 @@ void FontManager::Render(Controller * ctrl, GameObject * g_obj, Tooltip *t_tip)
 
 
 
-	g_obj->GetFontList()->GetFont()->Print("Text + test II", 200, 400, 50);
-	
+	//g_obj->GetFontList()->GetFont()->Print("fuck my life", 200, ctrl->GetWindowHeight() - 400, 28);
+	//g_obj->GetFontList()->GetFont()->Print("fuck my life", 400, ctrl->GetWindowHeight() - 600, 50);
 	
 
 
