@@ -6,6 +6,7 @@
 
 #include <common.hpp>
 
+#define fireballdata "data/spells/fireball.png"
 
 void Player::Load(GameObject * g_obj, Map * current_tilemap)
 {
@@ -26,8 +27,8 @@ void Player::Load(GameObject * g_obj, Map * current_tilemap)
 	this->last_wanted_position = glm::vec2(0, 0);
 	this->a_handler = new ActionHandler();
 	this->able_to_move = false;
-
-
+	created = false;
+	this->mm_spell = new SpellManager();
 	this->LoadItems(g_obj);
 	this->LoadStats();
 
@@ -76,10 +77,10 @@ void Player::Render(SoundManager *sm, Controller * ctrl, ScreenUniformData * u_d
 	//std::cout << this->attributes->position.x << " " << this->attributes->position.y << std::endl;
 
 
+
 	u_data->ApplyMatrix(Translation(GridPosition(attributes->position*attributes->scale + g_obj->GetScroller()->GetOffset(), attributes->scale))*
 		Scale(attributes->scale));
 	u_data->SetAmbientLight(glm::vec3(1.0f, 1.0f, 1.0f));
-
 
 
 
@@ -94,6 +95,7 @@ void Player::Render(SoundManager *sm, Controller * ctrl, ScreenUniformData * u_d
 			a_handler->Start();
 
 		}
+
 
 
 
@@ -140,7 +142,7 @@ void Player::Render(SoundManager *sm, Controller * ctrl, ScreenUniformData * u_d
 
 
 
-
+		int frame = m_dir->Compute(DIR_TYPE_4, attributes->position, attributes->target);
 		
 
 
@@ -150,7 +152,18 @@ void Player::Render(SoundManager *sm, Controller * ctrl, ScreenUniformData * u_d
 			this->m_sprite[4]->Render(m_dir->Compute(DIR_TYPE_4, attributes->position, attributes->target));
 
 
-		
+		if (ctrl->GetKeyOnce(GLFW_KEY_X))
+		{
+			this->created = true;
+			this->mm_spell->Add(new Spell(FIREBALL, GridPosition(attributes->position*attributes->scale + g_obj->GetScroller()->GetOffset(), attributes->scale),
+				g_obj->GetScroller()->GetOffset(),attributes->scale,
+				5.f, frame));
+		}
+
+		if (created == true)
+		{
+			mm_spell->Render(ctrl, u_data, g_obj);
+		}
 
 
 

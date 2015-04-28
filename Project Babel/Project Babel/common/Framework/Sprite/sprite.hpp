@@ -25,7 +25,7 @@ public:
 
 
 	void Load(GLuint num_textures, char * dir, char **textures_str);
-	void Load(char *dir, char *textures_str);
+	void Load(const char *dir);
 	
 
 	void Render(GLuint current_frame);

@@ -19,7 +19,8 @@
 class Player
 {
 
-
+	Spell *m_spell;
+	SpellManager *mm_spell;
 	Direction * m_dir;
 	AutoPath * a_path;
 	Sprite ** m_sprite;
@@ -38,7 +39,7 @@ class Player
 	glm::vec2 last_wanted_position;
 	GLboolean able_to_move;
 	Item **items;
-
+	bool created;
 	
 
 

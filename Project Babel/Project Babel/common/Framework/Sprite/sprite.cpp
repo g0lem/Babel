@@ -69,7 +69,7 @@ void Sprite::Load(GLuint num_textures, char * dir, char ** textures_str)
 
 }
 
-void Sprite::Load(char * dir, char * textures_str)
+void Sprite::Load(const char * dir)
 {
 
 
@@ -116,13 +116,10 @@ void Sprite::Load(char * dir, char * textures_str)
 
 
 	std::string temp(dir);
-	temp += textures_str;
 	std::vector<char> writable(temp.begin(), temp.end());
 	writable.push_back('\0');
 
 	this->textures[0] = load_texture(&temp[0], GL_LINEAR);
-
-
 }
 
 

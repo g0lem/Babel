@@ -17,6 +17,8 @@
     <ClCompile Include="common\AI\enemy.cpp" />
     <ClCompile Include="common\AI\enemy_manager.cpp" />
     <ClCompile Include="common\Combat\Combat.cpp" />
+    <ClCompile Include="common\Combat\Spell.cpp" />
+    <ClCompile Include="common\Combat\SpellManager.cpp" />
     <ClCompile Include="common\Delta\animation.cpp" />
     <ClCompile Include="common\Delta\auto_path.cpp" />
     <ClCompile Include="common\Delta\movement.cpp" />
@@ -89,6 +91,8 @@
     <ClInclude Include="common\AI\enemy_manager.hpp" />
     <ClInclude Include="common\Combat.hpp" />
     <ClInclude Include="common\Combat\Combat.hpp" />
+    <ClInclude Include="common\Combat\Spell.hpp" />
+    <ClInclude Include="common\Combat\SpellManager.hpp" />
     <ClInclude Include="common\Delta.hpp" />
     <ClInclude Include="common\Delta\animation.hpp" />
     <ClInclude Include="common\Delta\auto_path.hpp" />
