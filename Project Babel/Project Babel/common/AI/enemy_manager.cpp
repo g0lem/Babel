@@ -29,8 +29,17 @@ void EnemyManager::Render(SoundManager *sm, Controller * ctrl, ScreenUniformData
 
 			glm::ivec2 e_pos = glm::ivec2(this->m_enemies[0][i]->GetPAttributes()->position);
 			if (map->GetFogofWar()->GetFogMartix()[(int)(e_pos.x)][(int)(e_pos.y)] < 0.50f)
-				this->m_enemies[0][i]->Render(ctrl, u_data, g_obj, map); 
-
+			{
+				u_data->SetAmbientLight(glm::vec4(1.f, 1.f, 1.f, 1.f));
+				this->m_enemies[0][i]->Render(ctrl, u_data, g_obj, map);
+				this->m_enemies[0][i]->GetPAttributes()->visible = true;
+			}
+			else
+			{
+				u_data->SetAmbientLight(glm::vec4(1.f, 1.f, 1.f, 0.f));
+				this->m_enemies[0][i]->Render(ctrl, u_data, g_obj, map);
+				this->m_enemies[0][i]->GetPAttributes()->visible = false;
+			}
 
 
 

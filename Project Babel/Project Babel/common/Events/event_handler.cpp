@@ -194,8 +194,9 @@ void EventHandler::OpenChest(glm::vec2 position, Map *current_map, GameObject *g
 	for (int i = 0; i < g_obj->GetItemList()->GetObjects().size();i++)
 		if (g_obj->GetItemList()->GetObjects()[i]->position == position && g_obj->GetItemList()->GetObjects()[i]->item->id==CHEST_ID)
 	{
+		g_obj->GetItemList()->DeleteFromObjects(i);
 		g_obj->GetItemList()->AddDroppedItem((int)(position.x), (int)(position.y), item);
-		g_obj->GetItemList()->GetObjects()[i]->item->id = OPENED_CHEST;
+		//g_obj->GetItemList()->GetObjects()[i]->item->id = OPENED_CHEST;
 		this->Init(current_map, g_obj);
 	}
 

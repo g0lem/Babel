@@ -13,6 +13,8 @@ void PhysicalAttributes::Init()
 	this->rotation_angle = 0.0f;
 	
 
+	this->visible = false;
+
 }
 
 

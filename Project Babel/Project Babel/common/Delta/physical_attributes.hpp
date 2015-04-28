@@ -16,7 +16,7 @@ public:
 	glm::vec2 scale;
 	GLfloat speed;
 	GLfloat rotation_angle;
-
+	GLboolean visible;
 
 	inline PhysicalAttributes(){ this->Init(); }
 	void Init();

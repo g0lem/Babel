@@ -159,7 +159,7 @@ void Enemy::RenderMisc(ScreenUniformData * u_data, GameObject * g_obj)
 
 
 
-	if (this->m_stats->GetHp()->hp < this->m_stats->GetHp()->max_hp)
+	if (this->m_stats->GetHp()->hp < this->m_stats->GetHp()->max_hp && this->GetPAttributes()->visible == true)
 	this->RenderHpBar(u_data, g_obj);
 
 
@@ -187,7 +187,7 @@ void Enemy::RenderHpBar(ScreenUniformData * u_data, GameObject * g_obj)
 	u_data->SetAmbientLight(glm::vec3(0.0f, 1.0f, 0.0f));
 
 
-
+	
 	g_obj->GetMisc()->GetSprites()[0]->Render(0);
 
 
