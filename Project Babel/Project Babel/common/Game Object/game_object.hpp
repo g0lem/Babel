@@ -70,6 +70,8 @@ public:
 	inline FontList * GetFontList(){ return this->f_list; }
 
 
+	void SpawnSolidObject(int id, glm::vec2 position);
+
 	void Init();
 
 	std::vector<untablet*> *u_t;

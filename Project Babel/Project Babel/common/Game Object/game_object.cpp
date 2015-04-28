@@ -56,3 +56,12 @@ void GameObject::Clean()
 
 
 }
+
+
+
+void GameObject::SpawnSolidObject(int id, glm::vec2 position)
+{
+	this->GetItemList()->SpawnObject(id, position);
+	this->GetCollisionMap()->AddSolid(position);
+
+}

@@ -31,6 +31,7 @@ void ItemList::SpawnObject(int id, glm::vec2 position)
 	obj->position = position;
 	obj->item->id = id;
 	this->objectlist.push_back(obj);
+    
 }
 
 void ItemList::SpawnObject(int id, glm::vec2 position, glm::vec2 damage)

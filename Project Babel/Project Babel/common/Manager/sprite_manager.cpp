@@ -25,7 +25,7 @@ void SpriteManager::Init(GameObject * g_obj)
 
 
 	this->map->Init(g_obj);
-	g_obj->GetCollisionMap()->CreateOutOfMap(this->map->GetTilemap());
+	
 
 
 
@@ -76,7 +76,7 @@ void SpriteManager::Advance(GameObject * g_obj)
 
 	this->map->InitBoss(g_obj);
 
-g_obj->GetCollisionMap()->CreateOutOfMap(this->map->GetTilemap());
+
 	this->player->Advance(g_obj, this->map);
 
 
@@ -129,7 +129,7 @@ void SpriteManager::Clean()
 void SpriteManager::Render(SoundManager * sm, Controller * ctrl, GameObject * g_obj)
 {
 
-	g_obj->GetCollisionMap()->CreateOutOfMap(this->map->GetTilemap());
+	
 	this->BindRun(ctrl->GetWindowWidth(), ctrl->GetWindowHeight());
 
 

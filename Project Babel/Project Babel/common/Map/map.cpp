@@ -88,14 +88,18 @@ void Map::GenerateContent(GameObject *g_obj)
 	this->GenerateScore();
 	this->AddDoors();
 
-	this->Decorate(g_obj);
+	
 	this->AddTablets(g_obj);
 	this->AddStairs(g_obj);
 	
 	this->AddChests(g_obj);
 
+
+
 	g_obj->GetCollisionMap()->CreateOutOfMap(this->GetTilemap());
 	
+	this->Decorate(g_obj);
+
 
 	this->fog = new fog_of_war();
 	fog->Init(g_obj);

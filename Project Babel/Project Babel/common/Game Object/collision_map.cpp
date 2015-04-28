@@ -84,3 +84,12 @@ void CollisionMap::CreateOutOfMap(Tilemap * map)
 
 
 }
+
+
+void CollisionMap::AddSolid(glm::vec2 position)
+{
+	
+		this->tiles[(int)(position.x)][(int)(position.y)] = true;
+		this->player_tiles[(int)(position.x)][(int)(position.y)] = true;
+	
+}

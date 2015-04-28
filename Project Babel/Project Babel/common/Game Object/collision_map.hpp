@@ -23,7 +23,7 @@ public:
 
 
 	void CreateOutOfMap(Tilemap * map);
-
+	void AddSolid(glm::vec2 position);
 
 	inline void ResetList(){ this->list.clear(); }
 	inline std::vector<glm::ivec2> GetList(){ return this->list; }
