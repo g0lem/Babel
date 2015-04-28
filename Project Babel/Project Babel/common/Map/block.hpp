@@ -30,6 +30,14 @@
 #define SE_BLOCK 17
 
 
+#define DOOR_UP 18
+#define DOOR_DOWN 19
+#define DOOR_RIGHT 20
+#define DOOR_LEFT 21
+
+
+
+
 #define VISIBLE_WALL 18
 
 

@@ -37,6 +37,7 @@ public:
 	void Render(SoundManager *sm, Controller * ctrl, ScreenUniformData * u_data, GameObject * g_obj, int type);
 	inline EnemyManager(GLuint num, Map *map, GameObject *g_obj, int type){ this->Init(num, map, g_obj, type); }
 	void Init(GLuint num, Map * map, GameObject * g_obj, int type);
+	void AddEnemies(GLuint num, Map * map, GameObject * g_obj, int type);
 	inline std::vector<Enemy*>*GetEnemiesPointer(){ return this->m_enemies; }
 
 
