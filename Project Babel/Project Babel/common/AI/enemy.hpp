@@ -85,6 +85,8 @@ public:
 	inline Enemy(EnemyData * data){ this->Init(data); }
 	void Init(EnemyData * data);
 
+	inline void SetPosition(glm::vec2 position);
+
 
 	void Render(Controller * ctrl, ScreenUniformData * u_data, GameObject * g_obj, Map *map);
 	void SetRandomPosition(Map * map);

@@ -435,12 +435,12 @@ void Map::Decorate(GameObject *g_obj)
 
 	for (int i = 0; i < this->GetRoomsPointer()[0].size(); i++)
 	{
-		/*if (this->GetRoomsPointer()[0][i]->GetHeight() == this->GetRoomsPointer()[0][i]->GetWidth() && this->GetRoomsPointer()[0][i]->GetWidth() % 2 == 1 && this->GetRoomsPointer()[0][i]->GetHeight()>=7)
+		if (this->GetRoomsPointer()[0][i]->GetHeight() == this->GetRoomsPointer()[0][i]->GetWidth() && this->GetRoomsPointer()[0][i]->GetWidth() % 2 == 1 && this->GetRoomsPointer()[0][i]->GetHeight()>=7)
 		{
 		
 			if (rand() % 2 == 0)
-			{*/
-		std::cout << this->GetRoomsPointer()[0][i]->GetOffset().x << " " << this->GetRoomsPointer()[0][i]->GetOffset().x << "\n";
+			{
+
 
 				g_obj->SpawnSolidObject(PILLAR_ID, glm::vec2(this->GetRoomsPointer()[0][i]->GetOffset() + 2));
 
@@ -449,7 +449,7 @@ void Map::Decorate(GameObject *g_obj)
 				g_obj->SpawnSolidObject(PILLAR_ID, glm::vec2(this->GetRoomsPointer()[0][i]->GetEndOffset().x - 3, this->GetRoomsPointer()[0][i]->GetOffset().y + 2));
 
 				g_obj->SpawnSolidObject(PILLAR_ID, glm::vec2(this->GetRoomsPointer()[0][i]->GetEndOffset() - 3));
-			/*}
+			}
 			else 
 			{
 				g_obj->SpawnSolidObject(PILLAR_ID, glm::vec2(this->GetRoomsPointer()[0][i]->GetInternalCenter()));
@@ -463,7 +463,25 @@ void Map::Decorate(GameObject *g_obj)
 				g_obj->SpawnSolidObject(STATUE_ID, glm::vec2(this->GetRoomsPointer()[0][i]->GetInternalCenter().x, this->GetRoomsPointer()[0][i]->GetInternalCenter().y - 1));
 
 			}
-		}*/
+		}
+		else
+			if (this->GetRoomsPointer()[0][i]->GetWidth() % 2 == 1 && this->GetRoomsPointer()[0][i]->GetHeight() % 2 == 1 && this->GetRoomsPointer()[0][i]->GetHeight() >= 7 && this->GetRoomsPointer()[0][i]->GetWidth() >= 7)
+			{
+
+			//g_obj->SpawnSolidObject(PILLAR_ID, glm::vec2(this->GetRoomsPointer()[0][i]->GetInternalCenter())); -- chest coords
+
+			g_obj->GetItemList()->SpawnObject(CHEST_ID, glm::vec2(this->GetRoomsPointer()[0][i]->GetInternalCenter()));
+
+			g_obj->SpawnSolidObject(PILLAR_ID, glm::vec2(this->GetRoomsPointer()[0][i]->GetInternalCenter().x - 1, this->GetRoomsPointer()[0][i]->GetInternalCenter().y));
+
+			g_obj->SpawnSolidObject(PILLAR_ID, glm::vec2(this->GetRoomsPointer()[0][i]->GetInternalCenter().x + 1, this->GetRoomsPointer()[0][i]->GetInternalCenter().y));
+
+			//g_obj->SpawnSolidObject(PILLAR_ID, glm::vec2(this->GetRoomsPointer()[0][i]->GetInternalCenter().x, this->GetRoomsPointer()[0][i]->GetInternalCenter().y + 1));
+
+			g_obj->SpawnSolidObject(PILLAR_ID, glm::vec2(this->GetRoomsPointer()[0][i]->GetInternalCenter().x, this->GetRoomsPointer()[0][i]->GetInternalCenter().y - 1));
+
+
+			}
 
 		if (this->tilemap->GetTiles()[(int)(this->GetRoomsPointer()[0][i]->GetInternalCenter().x)][(int)(this->GetRoomsPointer()[0][i]->GetOffset().y)] == DOOR_BLOCK &&
 			this->tilemap->GetTiles()[(int)(this->GetRoomsPointer()[0][i]->GetOffset().x)][(int)(this->GetRoomsPointer()[0][i]->GetInternalCenter().y)] == DOOR_BLOCK &&

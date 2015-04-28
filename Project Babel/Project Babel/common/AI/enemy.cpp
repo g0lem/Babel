@@ -125,6 +125,33 @@ void Enemy::SetRandomPosition(Map * map)
 }
 
 
+void Enemy::SetPosition(glm::vec2 position)
+{
+
+
+	
+
+	
+		
+	
+		this->p_attributes->position = position;
+		//this->p_attributes->position = glm::vec2(Rand(map->GetTilemap()->GetSize().x), Rand(map->GetTilemap()->GetSize().y));
+		this->p_attributes->target = this->p_attributes->position;
+
+
+
+		
+			this->m_stats->GetHp()->Buff(Rand(8));
+		
+		
+
+	
+
+
+}
+
+
+
 
 void Enemy::LoadPhysicalAttributes()
 {

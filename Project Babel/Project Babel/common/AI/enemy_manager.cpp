@@ -141,6 +141,41 @@ void EnemyManager::AddEnemies(GLuint num, Map * map, GameObject * g_obj, int typ
 
 }
 
+
+void EnemyManager::AddEnemies(Map * map, GameObject * g_obj, int type, glm::vec2 position)
+{
+	Enemy *temp;
+	EnemyData *temp_data;
+	int target = this->m_enemies[0].size() + 1;
+
+	temp_data = g_obj->GetEnemyLoader()->GetData()[0][type];
+
+
+
+	
+		temp = new Enemy(temp_data);
+		this->type = type;
+		temp->SetRandomPosition(map);
+		temp->Update(g_obj, 0);
+		temp->GetPAttributes()->position = position;
+		temp->GetPAttributes()->target = position;
+		
+		
+
+
+		
+		
+
+			this->m_enemies[0].push_back(temp);
+		
+	
+
+
+}
+
+
+
+
 void EnemyManager::CheckEnemiesState(SoundManager *sm, GameObject * g_obj, Map *map, int type)
 {
 	int random_damage;

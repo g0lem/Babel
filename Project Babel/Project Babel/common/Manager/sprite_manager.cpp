@@ -35,9 +35,17 @@ void SpriteManager::Init(GameObject * g_obj)
 
 	//enemy spawn
 
-	this->m_enemies = new EnemyManager(5, this->map, g_obj, 0);
-	this->m_enemies->AddEnemies(5, this->map, g_obj, 1);
-	this->m_enemies->AddEnemies(10, this->map, g_obj, 2);
+	this->m_enemies = new EnemyManager(1, this->map, g_obj, 0);
+	//this->m_enemies->AddEnemies(1, this->map, g_obj, 1);
+	//this->m_enemies->AddEnemies(10, this->map, g_obj, 2);
+
+	for (int i = 0; i < g_obj->GetItemList()->GetObjects().size(); i++)
+	{
+		if (g_obj->GetItemList()->GetObjects()[i]->item->id == CHEST_ID)
+			this->m_enemies->AddEnemies(this->map, g_obj, 2, glm::vec2(g_obj->GetItemList()->GetObjects()[i]->position.x, g_obj->GetItemList()->GetObjects()[i]->position.y+1));
+	}
+
+
 
 	this->m_effects = new EffectsHandler();
 
