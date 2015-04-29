@@ -334,13 +334,30 @@ void Map::GenerateScore()
 
 	
 
-
+		this->ComplexDecoration();
 
 }
 
 
 
+void Map::ComplexDecoration()
+{
+	
 
+	GLuint v[] = { 10, 1, 1, 1, 1 };
+
+	for (int i = 0; i < this->GetTilemap()->GetSize().x; i++)
+		for (int j = 0; j < this->GetTilemap()->GetSize().y; j++)
+		{
+		if (this->GetTilemap()->GetTiles()[i][j] == FLOOR_BLOCK)
+		{
+			this->GetTilemap()->GetTiles()[i][j] += Dice::Get(v, 5, 14);
+		}
+		}
+	
+
+
+}
 
 
 

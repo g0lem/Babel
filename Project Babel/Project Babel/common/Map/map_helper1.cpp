@@ -12,43 +12,44 @@ void Map::LoadSprites()
 
 
 
-	char ** tex_str = new char*[22];
+	char ** tex_str = new char*[23];
 	tex_str[0] = "floor.png";
 	tex_str[1] = "floor-2.png";
 	tex_str[2] = "floor-3.png";
 	tex_str[3] = "floor-4.png";
-	tex_str[4] = "door-open.png";
-	tex_str[5] = "door.png";
+	tex_str[4] = "floor-5.png";
+	tex_str[5] = "door-open.png";
+	tex_str[6] = "door.png";
 
-	tex_str[6] = "left.png";
-	tex_str[7] = "up.png";
-	tex_str[8] = "right.png";
-	tex_str[9] = "down.png";
-
-
-	tex_str[10] = "corner-NE.png";
-	tex_str[11] = "corner-NW.png";
-	tex_str[12] = "corner-SW.png";
-	tex_str[13] = "corner-SE.png";
+	tex_str[7] = "left.png";
+	tex_str[8] = "up.png";
+	tex_str[9] = "right.png";
+	tex_str[10] = "down.png";
 
 
-	tex_str[14] = "ne.png";
-	tex_str[15] = "nw.png";
-	tex_str[16] = "sw.png";
-	tex_str[17] = "se.png";
+	tex_str[11] = "corner-NE.png";
+	tex_str[12] = "corner-NW.png";
+	tex_str[13] = "corner-SW.png";
+	tex_str[14] = "corner-SE.png";
 
 
-	tex_str[18] = "door-up.png";
-	tex_str[19] = "door-down.png";
-	tex_str[20] = "door-right.png";
-	tex_str[21] = "door-left.png";
+	tex_str[15] = "ne.png";
+	tex_str[16] = "nw.png";
+	tex_str[17] = "sw.png";
+	tex_str[18] = "se.png";
+
+
+	tex_str[19] = "door-up.png";
+	tex_str[20] = "door-down.png";
+	tex_str[21] = "door-right.png";
+	tex_str[22] = "door-left.png";
 
 
 
 	//tex_str[18] = "wall.png";
 
 
-	this->m_sprite->Load(22, "data/tiles/", tex_str);
+	this->m_sprite->Load(23, "data/tiles/", tex_str);
 
 
 	
