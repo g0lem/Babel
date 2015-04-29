@@ -57,6 +57,8 @@ public:
 	GLboolean must_load = true;
 	GLboolean must_heal = false;
 	Item * weapon = NULL;
+	Item * armor = NULL;
+
 	std::string NameGenerator(std::string type);
 
 
