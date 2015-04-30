@@ -20,6 +20,7 @@ public:
 	GLfloat base_armor;
 	GLboolean aggressive;
 	int path_type;
+	
 
 
 	

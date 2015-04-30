@@ -149,6 +149,48 @@ void EventHandler::Door(glm::vec2 position, Map *current_map, GameObject *g_obj)
 	}
 }
 
+
+ void EventHandler::AutomaticallyOpenDoor(glm::vec2 position, Map *current_map, GameObject *g_obj, glm::vec2 &door_pos)
+{
+	if (current_map->GetTilemap()->GetTiles()[(int)(position.x)][(int)(position.y)] == DOOR_BLOCK)
+	{
+		current_map->GetTilemap()->GetTiles()[(int)(position.x)][(int)(position.y)] = OPENED_DOOR_BLOCK;
+		g_obj->GetCollisionMap()->GetTiles()[(int)(position.x)][(int)(position.y)] = false;
+		g_obj->GetCollisionMap()->GetVisibleTiles()[(int)(position.x)][(int)(position.y)] = false;
+		door_pos = position;
+	}
+	else if (current_map->GetTilemap()->GetTiles()[(int)(position.x)][(int)(position.y)] == OPENED_DOOR_BLOCK)
+	{
+		current_map->GetTilemap()->GetTiles()[(int)(position.x)][(int)(position.y)] = DOOR_BLOCK;
+		g_obj->GetCollisionMap()->GetTiles()[(int)(position.x)][(int)(position.y)] = true;
+		g_obj->GetCollisionMap()->GetVisibleTiles()[(int)(position.x)][(int)(position.y)] = true;	
+		door_pos = vec2_0;
+	}
+	
+
+
+}
+
+ void EventHandler::DestroyDoor(glm::vec2 position, Map *current_map, GameObject *g_obj)
+ {
+	/* if (current_map->GetTilemap()->GetTiles()[(int)(position.x)][(int)(position.y)] == DOOR_BLOCK)
+	 {
+		 current_map->GetTilemap()->GetTiles()[(int)(position.x)][(int)(position.y)] = DESTROYED_DOOR_BLOCK;
+		 g_obj->GetCollisionMap()->GetTiles()[(int)(position.x)][(int)(position.y)] = false;
+		 g_obj->GetCollisionMap()->GetVisibleTiles()[(int)(position.x)][(int)(position.y)] = false;
+		
+	 }
+	*/
+
+
+
+ }
+
+
+
+
+
+
 void EventHandler::Health(glm::vec2 position, Map *current_map, Stats *m_stats, GameObject *g_obj)
 {
 	if (e_map[(int)(position.x)][(int)(position.y)] == 3)

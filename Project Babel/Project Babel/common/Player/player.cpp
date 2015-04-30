@@ -31,6 +31,7 @@ void Player::Load(GameObject * g_obj, Map * current_tilemap)
 	this->mm_spell = new SpellManager();
 	this->LoadItems(g_obj);
 	this->LoadStats();
+	this->last_pos_door = vec2_0;
 
 
 
@@ -329,6 +330,13 @@ void Player::HandleAutoPath(SoundManager *sm, Controller * ctrl, GameObject * g_
 	{
 		h_event->TriggerEvent(attributes->position, current_map, g_obj, this->GetStats());
 	}
+
+	
+	EventHandler::AutomaticallyOpenDoor(this->last_pos_door, current_map, g_obj, this->last_pos_door);
+		EventHandler::AutomaticallyOpenDoor(attributes->position, current_map, g_obj, last_pos_door);
+	
+
+	
 	
 
 	
