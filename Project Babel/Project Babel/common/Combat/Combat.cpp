@@ -395,7 +395,7 @@ void Combat::EnemyAttack(SoundManager *sm, Controller * ctrl, GameObject * g_obj
 
 
 
-void Combat::EnemyMovement(Controller * ctrl, GameObject * g_obj, Player * player, EnemyManager * enemies, int type)
+void Combat::EnemyMovement(Controller * ctrl, GameObject * g_obj, Player * player, EnemyManager * enemies, Map* current_map, int type)
 {
 
 
@@ -418,6 +418,8 @@ void Combat::EnemyMovement(Controller * ctrl, GameObject * g_obj, Player * playe
 		AutoPath * a_path = enemy->GetAutoPath();
 		Stats * stats = enemy->GetStats();
 		ActionHandler * a_handler = enemy->GetActionHandler();
+
+		EventHandler::DestroyDoor(attr->position, current_map, g_obj);
 
 
 
@@ -537,7 +539,7 @@ void Combat::EnemyRelated(SoundManager *sm, Controller * ctrl, GameObject * g_ob
 	this->SetEnemyTarget(player, enemies);
 	this->AquireEnemyTarget(player, enemies);
 	this->EnemyAttack(sm, ctrl, g_obj, player, enemies, type);
-	this->EnemyMovement(ctrl, g_obj, player, enemies, type);
+	this->EnemyMovement(ctrl, g_obj, player, enemies,map, type);
 
 
 }

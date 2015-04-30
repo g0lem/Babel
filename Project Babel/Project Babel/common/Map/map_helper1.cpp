@@ -12,12 +12,12 @@ void Map::LoadSprites()
 
 
 
-	char ** tex_str = new char*[23];
+	char ** tex_str = new char*[24];
 	tex_str[FLOOR_BLOCK] = "floor.png";
 	tex_str[FLOOR_BLOCK1] = "floor-2.png";
 	tex_str[FLOOR_BLOCK2] = "floor-3.png";
 	tex_str[FLOOR_BLOCK3] = "floor-4.png";
-	tex_str[FLOOR_BLOCK4] = "floor-5.png";
+	tex_str[FLOOR_BLOCK_LAST] = "floor-5.png";
 	tex_str[OPENED_DOOR_BLOCK] = "door-open.png";
 	tex_str[DOOR_BLOCK] = "door.png";
 
@@ -44,12 +44,12 @@ void Map::LoadSprites()
 	tex_str[DOOR_RIGHT] = "door-right.png";
 	tex_str[DOOR_LEFT] = "door-left.png";
 
-
+	tex_str[BROKEN_DOOR] = "broken-door.png";
 
 	//tex_str[18] = "wall.png";
 
 
-	this->m_sprite->Load(23, "data/tiles/", tex_str);
+	this->m_sprite->Load(24, "data/tiles/", tex_str);
 
 
 	

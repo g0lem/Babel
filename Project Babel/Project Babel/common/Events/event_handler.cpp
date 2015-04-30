@@ -171,19 +171,14 @@ void EventHandler::Door(glm::vec2 position, Map *current_map, GameObject *g_obj)
 
 }
 
- void EventHandler::DestroyDoor(glm::vec2 position, Map *current_map, GameObject *g_obj)
+ void EventHandler::DestroyDoor(glm::vec2 position, Map *&current_map, GameObject *g_obj)
  {
-	/* if (current_map->GetTilemap()->GetTiles()[(int)(position.x)][(int)(position.y)] == DOOR_BLOCK)
+	 if (current_map->GetTilemap()->GetTiles()[(int)(position.x)][(int)(position.y)] == DOOR_BLOCK)
 	 {
-		 current_map->GetTilemap()->GetTiles()[(int)(position.x)][(int)(position.y)] = DESTROYED_DOOR_BLOCK;
+		 current_map->GetTilemap()->GetTiles()[(int)(position.x)][(int)(position.y)] = BROKEN_DOOR;
 		 g_obj->GetCollisionMap()->GetTiles()[(int)(position.x)][(int)(position.y)] = false;
-		 g_obj->GetCollisionMap()->GetVisibleTiles()[(int)(position.x)][(int)(position.y)] = false;
-		
+		 g_obj->GetCollisionMap()->GetVisibleTiles()[(int)(position.x)][(int)(position.y)] = false;	
 	 }
-	*/
-
-
-
  }
 
 
@@ -256,6 +251,8 @@ void EventHandler::OpenChest(glm::vec2 position, Map *current_map, GameObject *g
 void EventHandler::TriggerEvent(glm::vec2 position, Map *current_map, GameObject *g_obj, Stats *m_stats)
 {
 	//in g_obj e item_list-ul
+	this->Init(current_map, g_obj);
+
 
 	this->Door(position, current_map, g_obj);
 	this->Health(position, current_map, m_stats, g_obj);

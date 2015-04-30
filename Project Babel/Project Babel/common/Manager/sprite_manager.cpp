@@ -35,7 +35,7 @@ void SpriteManager::Init(GameObject * g_obj)
 
 	//enemy spawn
 
-	this->m_enemies = new EnemyManager(20, this->map, g_obj, 0);
+	this->m_enemies = new EnemyManager(6+(rand()%3), this->map, g_obj, 0);
 	//this->m_enemies->AddEnemies(1, this->map, g_obj, 1);
 	//this->m_enemies->AddEnemies(10, this->map, g_obj, 2);
 

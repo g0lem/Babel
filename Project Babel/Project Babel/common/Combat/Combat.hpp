@@ -27,7 +27,7 @@ class Combat
 	void SetEnemyTarget(Player * player, EnemyManager * enemies);
 	void AquireEnemyTarget(Player * player, EnemyManager * enemies);
 	void EnemyAttack(SoundManager *sm, Controller * ctrl, GameObject * g_obj, Player * player, EnemyManager *enemies, int type);
-	void EnemyMovement(Controller * ctrl, GameObject * g_obj, Player * player, EnemyManager * enemies, int type);
+	void EnemyMovement(Controller * ctrl, GameObject * g_obj, Player * player, EnemyManager * enemies, Map* currend_map, int type);
 	void EnemyRelated(SoundManager *sm, Controller * ctrl, GameObject * g_obj, Player * player, EnemyManager * enemies, Map * map, int type);
 	void UpdateTurns(GameObject * g_obj, EnemyManager * enemies);
 
