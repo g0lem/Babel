@@ -66,7 +66,9 @@ void Combat::PlayerAttack(SoundManager * sm, Controller * ctrl, GameObject * g_o
 
 	Item *item;
 	
-	item = g_obj->GetItemList()->GetList()[rand()%g_obj->GetItemList()->GetList().size()];
+
+
+	
 
 
 	if (player->GetTarget() > NO_TARGET && 
@@ -106,13 +108,20 @@ void Combat::PlayerAttack(SoundManager * sm, Controller * ctrl, GameObject * g_o
 			GLint dmg = enemies->GetEnemiesPointer()[0][player->GetTarget()]->GetStats()->GetHp()->Damage(player->GetItems()[ITEM_SLOT_WEAPON]->attack + player->GetStats()->base_attack);
 
 
-
+			int rand_item_number;
 			if (dmg >= hp)
 			{
 				player->GetStats()->GetXp()->xp++;
-				if (rand() % 10>3)
-				g_obj->GetItemList()->AddDroppedItem((int)(enemies->GetEnemiesPointer()[0][player->GetTarget()]->GetPAttributes()->position.x), (int)(enemies->GetEnemiesPointer()[0][player->GetTarget()]->GetPAttributes()->position.y), item);
-				// std::cout << g_obj->GetItemList()->GetDroppedItems().size()<<"\n";
+
+				rand_item_number = enemies->GetEnemiesPointer()[0][player->GetTarget()]->items[Dice::Get((GLuint*)(enemies->GetEnemiesPointer()[0][player->GetTarget()]->chances), (GLuint)(enemies->GetEnemiesPointer()[0][player->GetTarget()]->num_drop), 100)];
+			
+				if (rand_item_number != EnemyData::item_types::Nothing)
+				{
+
+					item = g_obj->GetItemList()->GetList()[rand_item_number];
+					g_obj->GetItemList()->AddDroppedItem((int)(enemies->GetEnemiesPointer()[0][player->GetTarget()]->GetPAttributes()->position.x), (int)(enemies->GetEnemiesPointer()[0][player->GetTarget()]->GetPAttributes()->position.y), item);
+				}
+					// std::cout << g_obj->GetItemList()->GetDroppedItems().size()<<"\n";
 				enemies->GetEnemiesPointer()[0][player->GetTarget()]->GetStats()->GetHp()->Damage(player->GetItems()[ITEM_SLOT_WEAPON]->attack);
 				player->GetEventHandler()->Init(current_map, g_obj);
 			}

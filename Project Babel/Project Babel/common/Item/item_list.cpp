@@ -108,7 +108,7 @@ void ItemList::LoadItems()
 	m_item->Init();
 	m_item->attack = glm::vec2(1, 4);
 	m_item->attack_speed = 1.0f;
-	m_item->item_name = "Da";
+	m_item->item_name = "Health Potion";
 	this->list.push_back(m_item);
 	this->weapon = m_item;
 

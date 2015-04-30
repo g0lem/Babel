@@ -21,6 +21,11 @@ public:
 	GLboolean aggressive;
 	int path_type;
 
+
+	
+
+
+
 	inline  Hp * GetHp(){ return this->m_hp; }
 
 	inline Xp *GetXp() { return this->m_xp; }
