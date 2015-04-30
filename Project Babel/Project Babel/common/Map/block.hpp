@@ -10,30 +10,30 @@
 
 #define NO_BLOCK -1
 #define FLOOR_BLOCK 0
-#define OPENED_DOOR_BLOCK 4
-#define DOOR_BLOCK 5
+#define OPENED_DOOR_BLOCK 5
+#define DOOR_BLOCK 6
 
 
-#define LEFT_STONE_BLOCK 6
-#define UP_STONE_BLOCK 7
-#define RIGHT_STONE_BLOCK 8
-#define DOWN_STONE_BLOCK 9
+#define LEFT_STONE_BLOCK 7
+#define UP_STONE_BLOCK 8
+#define RIGHT_STONE_BLOCK 9
+#define DOWN_STONE_BLOCK 10
 
-#define CORNER_NE_BLOCK 10
-#define CORNER_NW_BLOCK 11
-#define CORNER_SW_BLOCK 12
-#define CORNER_SE_BLOCK 13
+#define CORNER_NE_BLOCK 11
+#define CORNER_NW_BLOCK 12
+#define CORNER_SW_BLOCK 13
+#define CORNER_SE_BLOCK 14
 
-#define NE_BLOCK 14
-#define NW_BLOCK 15
-#define SW_BLOCK 16
-#define SE_BLOCK 17
+#define NE_BLOCK 15
+#define NW_BLOCK 16
+#define SW_BLOCK 17
+#define SE_BLOCK 18
 
 
-#define DOOR_UP 18
-#define DOOR_DOWN 19
-#define DOOR_RIGHT 20
-#define DOOR_LEFT 21
+#define DOOR_UP 19
+#define DOOR_DOWN 20
+#define DOOR_RIGHT 21
+#define DOOR_LEFT 22
 
 
 
@@ -42,7 +42,7 @@
 
 
 
-#define SOLID_LIMIT 6
+#define SOLID_LIMIT 7
 
 
 //object IDs
