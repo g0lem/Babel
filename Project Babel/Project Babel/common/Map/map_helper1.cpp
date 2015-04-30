@@ -13,36 +13,36 @@ void Map::LoadSprites()
 
 
 	char ** tex_str = new char*[23];
-	tex_str[0] = "floor.png";
-	tex_str[1] = "floor-2.png";
-	tex_str[2] = "floor-3.png";
-	tex_str[3] = "floor-4.png";
-	tex_str[4] = "floor-5.png";
-	tex_str[5] = "door-open.png";
-	tex_str[6] = "door.png";
+	tex_str[FLOOR_BLOCK] = "floor.png";
+	tex_str[FLOOR_BLOCK1] = "floor-2.png";
+	tex_str[FLOOR_BLOCK2] = "floor-3.png";
+	tex_str[FLOOR_BLOCK3] = "floor-4.png";
+	tex_str[FLOOR_BLOCK4] = "floor-5.png";
+	tex_str[OPENED_DOOR_BLOCK] = "door-open.png";
+	tex_str[DOOR_BLOCK] = "door.png";
 
-	tex_str[7] = "left.png";
-	tex_str[8] = "up.png";
-	tex_str[9] = "right.png";
-	tex_str[10] = "down.png";
-
-
-	tex_str[11] = "corner-NE.png";
-	tex_str[12] = "corner-NW.png";
-	tex_str[13] = "corner-SW.png";
-	tex_str[14] = "corner-SE.png";
+	tex_str[LEFT_STONE_BLOCK] = "left.png";
+	tex_str[UP_STONE_BLOCK] = "up.png";
+	tex_str[RIGHT_STONE_BLOCK] = "right.png";
+	tex_str[DOWN_STONE_BLOCK] = "down.png";
 
 
-	tex_str[15] = "ne.png";
-	tex_str[16] = "nw.png";
-	tex_str[17] = "sw.png";
-	tex_str[18] = "se.png";
+	tex_str[CORNER_NE_BLOCK] = "corner-NE.png";
+	tex_str[CORNER_NW_BLOCK] = "corner-NW.png";
+	tex_str[CORNER_SW_BLOCK] = "corner-SW.png";
+	tex_str[CORNER_SE_BLOCK] = "corner-SE.png";
 
 
-	tex_str[19] = "door-up.png";
-	tex_str[20] = "door-down.png";
-	tex_str[21] = "door-right.png";
-	tex_str[22] = "door-left.png";
+	tex_str[NE_BLOCK] = "ne.png";
+	tex_str[NW_BLOCK] = "nw.png";
+	tex_str[SW_BLOCK] = "sw.png";
+	tex_str[SE_BLOCK] = "se.png";
+
+
+	tex_str[DOOR_UP] = "door-up.png";
+	tex_str[DOOR_DOWN] = "door-down.png";
+	tex_str[DOOR_RIGHT] = "door-right.png";
+	tex_str[DOOR_LEFT] = "door-left.png";
 
 
 
