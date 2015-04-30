@@ -56,7 +56,7 @@ public:
 	
 	
 
-std::string item_name;
+char * item_name;
 
 	
 

@@ -108,6 +108,7 @@ void ItemList::LoadItems()
 	m_item->Init();
 	m_item->attack = glm::vec2(1, 4);
 	m_item->attack_speed = 1.0f;
+	m_item->item_name = "COUGH";
 	this->list.push_back(m_item);
 	this->weapon = m_item;
 
@@ -119,6 +120,7 @@ void ItemList::LoadItems()
 	m_item->type = ITEM_TYPE_WEAPON;
 	m_item->attack_speed = 1.0f;
 	m_item->attack = glm::vec2(6, 6);
+	m_item->item_name = "COUGH";
 	this->list.push_back(m_item);
 
 
@@ -128,6 +130,7 @@ void ItemList::LoadItems()
 	m_item->type = ITEM_TYPE_WEAPON;
 	m_item->attack_speed = 1.0f;
 	m_item->attack = glm::vec2(10, 10);
+	m_item->item_name = "COUGH";
 	this->list.push_back(m_item);
 
 	m_item = new Item();
@@ -135,6 +138,7 @@ void ItemList::LoadItems()
 	m_item->frame = 3;
 	m_item->id = CHAINS_ID;
 	m_item->type = ITEM_TYPE_TRAP;
+	m_item->item_name = "COUGH";
 	this->list.push_back(m_item);
 
 	m_item = new Item();
@@ -142,6 +146,7 @@ void ItemList::LoadItems()
 	m_item->frame = 4;
 	m_item->id = SPIKES_ID;
 	m_item->type = ITEM_TYPE_TRAP;
+	m_item->item_name = "COUGH";
 	m_item->attack = glm::vec2(10, 10);
 	this->list.push_back(m_item);
 

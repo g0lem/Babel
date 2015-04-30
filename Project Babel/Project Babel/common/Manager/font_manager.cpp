@@ -36,7 +36,6 @@ void FontManager::Render(Controller * ctrl, GameObject * g_obj, Tooltip *t_tip)
 
 	//g_obj->GetFontList()->GetFont()->Print("fuck my life", 200, ctrl->GetWindowHeight() - 400, 28);
 	//g_obj->GetFontList()->GetFont()->Print("fuck my life", 400, ctrl->GetWindowHeight() - 600, 50);
-	
 
 
 
@@ -46,7 +45,7 @@ void FontManager::Render(Controller * ctrl, GameObject * g_obj, Tooltip *t_tip)
 
 	this->SetColor(0.f, 0.f, 0.f);
 	if (t_tip->GetTooltips()->at(t_tip->GetRenderingIndex())->renderstring == true)
-		t_tip->RenderText(g_obj, ctrl);
+		t_tip->RenderText(g_obj, this, ctrl);
 
 	this->UnbindRun();
 

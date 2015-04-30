@@ -62,8 +62,8 @@ void Inventory::LoadItems(Tooltip *t_tip)
 {
 	m_inventory = new Button*[16];
 
-	/*t_tip->Add(vec2_0, glm::vec2(60, 30), "Weapon", 20, 0);
-	t_tip->Add(vec2_0, glm::vec2(60, 30), "Armor", 20, 0);*/
+	t_tip->Add(vec2_0, glm::vec2(60, 30), "Weapon", 30, 0);
+	t_tip->Add(vec2_0, glm::vec2(60, 30), "Armor", 20, 0);
 
 	for (int i = 0; i < 16; i++)
 	{
@@ -74,7 +74,7 @@ void Inventory::LoadItems(Tooltip *t_tip)
 
 		m_inventory[i] = new Button(m_prop);
 
-		//t_tip->Add(m_prop->position, glm::vec2(60, 30), "lol", 20, 0);
+		t_tip->Add(m_prop->position, glm::vec2(60, 30), "lol", 30, 0);
 
 
 	}
@@ -167,7 +167,7 @@ void Inventory::Render(Tooltip *t_tip, SoundManager *sm, Controller *ctrl, Scree
 
 	for (int i = 0; i < 16; i++)
 	{
-		//t_tip->UpdateStatus(INVENTORY_START + i, false);
+		t_tip->UpdateStatus(INVENTORY_START + i, false);
 		g_obj->GetUIState()->GetInventoryState()->GetButtonStates()[i] = UI_helper::GetItemAction(ctrl, this->m_inventory[i]->GetProperties());
 
 		this->m_inventory[i]->RenderItem(ctrl, u_data, this->skins, 0, g_obj->GetUIState()->GetInventoryState()->GetButtonStates()[i]);
@@ -238,8 +238,8 @@ void Inventory::Render(Tooltip *t_tip, SoundManager *sm, Controller *ctrl, Scree
 		if (g_obj->GetUIState()->GetInventoryState()->GetButtonStates()[i] == HOVER)
 		{
 
-			//t_tip->UpdateStatus(INVENTORY_START + i, true);
-			//t_tip->UpdatePosition(INVENTORY_START + i, ctrl->GetMousePosition());
+			t_tip->UpdateStatus(INVENTORY_START + i, true);
+			t_tip->UpdatePosition(INVENTORY_START + i, ctrl->GetMousePosition());
 		}
 
 
@@ -258,7 +258,7 @@ void Inventory::Render(Tooltip *t_tip, SoundManager *sm, Controller *ctrl, Scree
 		this->w_button[0]->Render(ctrl, u_data, this->skins, 9, g_obj->GetUIState()->GetInventoryState()->GetButtonStates()[17]);
 
 
-		//t_tip->UpdateStatus(WEAPON, false);
+		t_tip->UpdateStatus(WEAPON, false);
 		w_position = box_position + glm::vec2(32, 68) + glm::vec2(11, 0) + glm::vec2(5, 6);
 		u_data->ApplyMatrix(Translation(w_position)*Scale(w_scale));
 		this->weapon->Render(WeaponFrame);
@@ -276,8 +276,9 @@ void Inventory::Render(Tooltip *t_tip, SoundManager *sm, Controller *ctrl, Scree
 
 		if (g_obj->GetUIState()->GetInventoryState()->GetButtonStates()[17] == HOVER)
 		{
-			//t_tip->UpdateStatus(WEAPON, true);
-			//t_tip->UpdatePosition(WEAPON, ctrl->GetMousePosition());
+			t_tip->UpdateStatus(WEAPON, true);
+			t_tip->UpdatePosition(WEAPON, ctrl->GetMousePosition());
+			t_tip->UpdateText(WEAPON, weapon_item->item_name);
 		}
 
 	}

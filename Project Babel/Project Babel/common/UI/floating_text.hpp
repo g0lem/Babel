@@ -81,10 +81,7 @@ public:
 			if (t_list->at(0)->color.a < 0.2f)
 				t_list->erase(t_list->begin());
 
-
 		}
-
-
 	}
 
 

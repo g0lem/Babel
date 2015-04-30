@@ -92,10 +92,12 @@ void Combat::PlayerAttack(SoundManager * sm, Controller * ctrl, GameObject * g_o
 				e_attr->scale +
 				g_obj->GetScroller()->GetOffset();
 
+			print_vec2(e_attr->position *
+				e_attr->scale);
+			print_vec2(text_pos);
 
 
-
-			text_pos.y = ctrl->GetWindowHeight() - text_pos.y - 18;
+			text_pos.y -=  10;
 			text_pos.x += e_attr->scale.x + 14;
 			
 
@@ -115,13 +117,20 @@ void Combat::PlayerAttack(SoundManager * sm, Controller * ctrl, GameObject * g_o
 				player->GetEventHandler()->Init(current_map, g_obj);
 			}
 
+			/*
+			
+			
+			xp = current xp
+			max xp = max xp
+
+
+			*/
+
 			if (player->GetStats()->GetXp()->xp >= player->GetStats()->GetXp()->max_xp)
 			{
-				printf("Level: %i", player->GetStats()->GetXp()->lvl);
 				player->GetStats()->GetXp()->lvl++;
 				player->GetStats()->GetXp()->xp = 0;
 				player->GetStats()->GetXp()->max_xp += 4;
-
 			}
 
 			enemies->GetEnemiesPointer()[0][player->GetTarget()]->GetStats()->aggressive = true;
@@ -335,9 +344,6 @@ void Combat::EnemyAttack(SoundManager *sm, Controller * ctrl, GameObject * g_obj
 			glm::vec2 text_pos = e_attr->position *
 				e_attr->scale +
 				g_obj->GetScroller()->GetOffset();
-			print_vec2(g_obj->GetScroller()->GetOffset());
-			print_vec2(e_attr->position *
-				e_attr->scale);
 			text_pos.y = ctrl->GetWindowHeight() - text_pos.y;// -18;
 			text_pos.x += e_attr->scale.x + 14;
 
