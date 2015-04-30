@@ -1,0 +1,32 @@
+﻿Merge remote-tracking branch 'origin/master'
+
+Conflicts:
+	Project Babel/Debug/Project Babel.exe
+#
+# It looks like you may be committing a merge.
+# If this is not correct, please remove the file
+#	.git/MERGE_HEAD
+# and try again.
+
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Your branch and 'origin/master' have diverged,
+# and have 1 and 1 different commit each, respectively.
+#   (use "git pull" to merge the remote branch into yours)
+#
+# All conflicts fixed but you are still merging.
+#
+# Changes to be committed:
+#	modified:   Project Babel/Project Babel/common/Map/block.hpp
+#	modified:   Project Babel/Project Babel/common/Map/map.cpp
+#	modified:   Project Babel/Project Babel/common/Map/map.hpp
+#	modified:   Project Babel/Project Babel/common/Map/map_helper1.cpp
+#	modified:   Project Babel/Project Babel/data/tiles/floor-2.png
+#	modified:   Project Babel/Project Babel/data/tiles/floor-3.png
+#	modified:   Project Babel/Project Babel/data/tiles/floor-4.png
+#	new file:   Project Babel/Project Babel/data/tiles/floor-5.png
+#	modified:   Project Babel/Project Babel/data/tiles/floor.png
+#
+
