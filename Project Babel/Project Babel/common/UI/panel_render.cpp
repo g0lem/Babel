@@ -167,10 +167,11 @@ void PanelRender::Render(SoundManager *sm, Tooltip *t_tip, Controller *ctrl, Scr
 		{
 			t_tip->UpdateStatus(0, true);
 			t_tip->UpdateSize(0, glm::vec2(g_obj->GetFontList()->GetFont()->GetLength(t_tip->GetTooltips()->at(0)->string, 45) + BORDER_SIZE * 2 + 2, 45));
-			t_tip->UpdateStringPosition(0, glm::vec2(BORDER_SIZE + 1, BORDER_SIZE + 1));
+			
 			t_tip->UpdateStringLength(0, g_obj->GetFontList()->GetFont()->GetLength(t_tip->GetTooltips()->at(0)->string, 45));
 			printf("%.2f\n", g_obj->GetFontList()->GetFont()->GetLength(t_tip->GetTooltips()->at(0)->string, 45));
 			t_tip->UpdatePosition(0, ctrl->GetMousePosition());
+			t_tip->UpdateStringPosition(0, glm::vec2(BORDER_SIZE - 1, BORDER_SIZE + 1));
 		}
 		else
 		{
