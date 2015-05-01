@@ -132,6 +132,7 @@ bool Pathfinder::neighbours(node *currentnode)
 		newx = dx[k] + currentnode->x;
 		newy = dy[k] + currentnode->y;
 
+		if (newx>=0 && newy>=0 && newx<48 && newy<48)
 		if (map[newx][newy] == 0)
 			return true;
 

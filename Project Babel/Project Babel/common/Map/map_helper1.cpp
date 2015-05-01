@@ -62,23 +62,70 @@ void Map::BossSprites()
 
 
 
+	//this->m_sprite = new Sprite();
+
+
+
+	//char ** tex_str = new char*[7];
+	//tex_str[0] = "floor.png";
+	//tex_str[1] = "door-open.png";
+	//tex_str[2] = "door.png";
+	//tex_str[3] = "wall.png";
+	//tex_str[4] = "wall-cracked-1.png";
+	//tex_str[5] = "wall-cracked-2.png";
+	//tex_str[6] = "wall-cracked-3.png";
+
+
+
+	//this->m_sprite->Load(7, "data/tiles/boss/", tex_str);
+	////this->m_sprite->Load(7, "data/tiles/", tex_str);
+
+
 	this->m_sprite = new Sprite();
 
 
 
-	char ** tex_str = new char*[7];
-	tex_str[0] = "floor.png";
-	tex_str[1] = "door-open.png";
-	tex_str[2] = "door.png";
-	tex_str[3] = "wall.png";
-	tex_str[4] = "wall-cracked-1.png";
-	tex_str[5] = "wall-cracked-2.png";
-	tex_str[6] = "wall-cracked-3.png";
+	char ** tex_str = new char*[24];
+	tex_str[FLOOR_BLOCK] = "floor.png";
+	tex_str[FLOOR_BLOCK1] = "floor-2.png";
+	tex_str[FLOOR_BLOCK2] = "floor-3.png";
+	tex_str[FLOOR_BLOCK3] = "floor-4.png";
+	tex_str[FLOOR_BLOCK_LAST] = "floor-5.png";
+	tex_str[OPENED_DOOR_BLOCK] = "door-open.png";
+	tex_str[DOOR_BLOCK] = "door.png";
+
+	tex_str[LEFT_STONE_BLOCK] = "left.png";
+	tex_str[UP_STONE_BLOCK] = "up.png";
+	tex_str[RIGHT_STONE_BLOCK] = "right.png";
+	tex_str[DOWN_STONE_BLOCK] = "down.png";
+
+
+	tex_str[CORNER_NE_BLOCK] = "corner-NE.png";
+	tex_str[CORNER_NW_BLOCK] = "corner-NW.png";
+	tex_str[CORNER_SW_BLOCK] = "corner-SW.png";
+	tex_str[CORNER_SE_BLOCK] = "corner-SE.png";
+
+
+	tex_str[NE_BLOCK] = "ne.png";
+	tex_str[NW_BLOCK] = "nw.png";
+	tex_str[SW_BLOCK] = "sw.png";
+	tex_str[SE_BLOCK] = "se.png";
+
+
+	tex_str[DOOR_UP] = "door-up.png";
+	tex_str[DOOR_DOWN] = "door-down.png";
+	tex_str[DOOR_RIGHT] = "door-right.png";
+	tex_str[DOOR_LEFT] = "door-left.png";
+
+	tex_str[BROKEN_DOOR] = "broken-door.png";
+
+	//tex_str[18] = "wall.png";
+
+
+	this->m_sprite->Load(24, "data/tiles/", tex_str);
 
 
 
-	this->m_sprite->Load(7, "data/tiles/boss/", tex_str);
-	//this->m_sprite->Load(7, "data/tiles/", tex_str);
 }
 
 

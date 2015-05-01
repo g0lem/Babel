@@ -46,8 +46,8 @@ void Tilemap::GenerateTileMap()
 void Tilemap::GenerateBossRoom()
 {
 
-	this->size.x = 20;
-	this->size.y = 20;
+	this->size.x = 48;
+	this->size.y = 48;
 
 	std::ifstream f("boss_map.txt");
 

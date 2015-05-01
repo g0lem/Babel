@@ -379,18 +379,18 @@ void Map::Render(Controller * ctrl, ScreenUniformData * u_data, Sprite * m_sprit
 
 
 
-			if (this->tilemap->boss_lvl == false)
-			{
+			//if (this->tilemap->boss_lvl == false)
+			//{
 				u_data->SetNewUV(glm::vec4(i - 1, j, 48, 48));
 				this->tilemap->GetDark()->RenderTexture(texture);
 				u_data->SetNewUV(glm::vec4(-1, -1, 48, 48));
-			}
+			/*}
 			else
 			{
 				u_data->SetNewUV(glm::vec4(i - 1, j, 20, 20));
 				this->tilemap->GetDark()->RenderTexture(texture);
 				u_data->SetNewUV(glm::vec4(-1, -1, 20, 20));
-			}
+			}*/
 
 			u_data->SetAmbientLight(glm::vec4(1.0f, 1.0f, 1.0f, 1.0f));
 			u_data->ApplyMatrix(Translation(glm::vec2(i, j)*this->tilemap->GetTileScale() + offset)*Scale(this->tilemap->GetTileScale()));
