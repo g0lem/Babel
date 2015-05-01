@@ -7,10 +7,20 @@ class EnemyData
 
 public:
 
+	enum item_types
+	{
+		health_potion_12, health_potion_20, xp_potion_2, Sword, Hammer, Leather_Armor, Plate_Armor, Epic_Sword, Scroll, Nothing
+	};
+
+
 	Sprite ** m_sprites;
 	GLuint * num_frames;
 	GLuint num_dirs;
 	Stats * m_stats;
+
+	int *chances;
+	int *items;
+	int num_drop;
 
 };
 

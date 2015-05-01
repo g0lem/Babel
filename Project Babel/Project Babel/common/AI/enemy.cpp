@@ -97,11 +97,9 @@ void Enemy::SetRandomPosition(Map * map)
 		Room *room;
 		room = map->GetRoomsPointer()->at(Rand(map->GetRoomsPointer()->size()));
 		this->p_attributes->position = glm::vec2(Rand(room->GetOffset().x + 1, room->GetOffset().x + room->GetHeight() - 1), Rand(room->GetOffset().y + 1, room->GetOffset().y + room->GetWidth() - 1));
-		//this->p_attributes->position = glm::vec2(Rand(map->GetTilemap()->GetSize().x), Rand(map->GetTilemap()->GetSize().y));
 		this->p_attributes->target = this->p_attributes->position;
 
 		
-
 		GLint result = map->GetTilemap()->GetTiles()[GLuint(this->p_attributes->position.x)][GLuint(this->p_attributes->position.y)];
 
 
@@ -110,14 +108,14 @@ void Enemy::SetRandomPosition(Map * map)
 			ok = true;
 			
 		}
-		GLint r = Rand(10);
+		/*GLint r = Rand(10);
 		if (r > 0 || r == 0)
 		{
 			color = glm::vec4(GLfloat(Rand(10)) / 10, GLfloat(Rand(10)) / 10, GLfloat(Rand(10)) / 10, 1.0f)*GLfloat(Rand(10) + 1);
 			this->m_stats->GetHp()->Buff(Rand(8));
 		}
 		else
-			color = glm::vec4(1, 1, 1, 1);
+			color = glm::vec4(1, 1, 1, 1);*/
 
 	}
 
@@ -246,11 +244,31 @@ void Enemy::LoadStats(EnemyData * data)
 	this->m_stats = new Stats();
 	this->m_stats->Copy(data->m_stats);
 
-    
+	this->SetChances(data);
 
 }
 
+void Enemy::SetChances(EnemyData * data)
+{
 
+
+	this->num_drop = 9;
+	this->chances = new int[this->num_drop];
+	this->items = new int[this->num_drop];
+
+
+
+	this->chances[0] = data->chances[0]; this->items[0] = data->items[0];
+	this->chances[1] = data->chances[1]; this->items[1] = data->items[1];
+	this->chances[2] = data->chances[2]; this->items[2] = data->items[2];
+	this->chances[3] = data->chances[3]; this->items[3] = data->items[3];
+	this->chances[4] = data->chances[4]; this->items[4] = data->items[4];
+	this->chances[5] = data->chances[5]; this->items[5] = data->items[5];
+	this->chances[6] = data->chances[6]; this->items[6] = data->items[6];
+	this->chances[7] = data->chances[7]; this->items[7] = data->items[7];
+	this->chances[8] = data->chances[8]; this->items[8] = data->items[8];
+
+}
 
 
 

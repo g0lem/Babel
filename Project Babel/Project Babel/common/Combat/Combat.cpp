@@ -66,7 +66,9 @@ void Combat::PlayerAttack(SoundManager * sm, Controller * ctrl, GameObject * g_o
 
 	Item *item;
 	
-	item = g_obj->GetItemList()->GetList()[rand()%g_obj->GetItemList()->GetList().size()];
+
+
+	
 
 
 	if (player->GetTarget() > NO_TARGET && 
@@ -88,17 +90,7 @@ void Combat::PlayerAttack(SoundManager * sm, Controller * ctrl, GameObject * g_o
 		{
 
 			PhysicalAttributes * e_attr = enemies->GetEnemiesPointer()[0][player->GetTarget()]->GetPAttributes();
-			glm::vec2 text_pos = e_attr->position *
-				e_attr->scale +
-				g_obj->GetScroller()->GetOffset();
 
-			print_vec2(e_attr->position *
-				e_attr->scale);
-			print_vec2(text_pos);
-
-
-			text_pos.y -=  10;
-			text_pos.x += e_attr->scale.x + 14;
 			
 
 
@@ -106,13 +98,20 @@ void Combat::PlayerAttack(SoundManager * sm, Controller * ctrl, GameObject * g_o
 			GLint dmg = enemies->GetEnemiesPointer()[0][player->GetTarget()]->GetStats()->GetHp()->Damage(player->GetItems()[ITEM_SLOT_WEAPON]->attack + player->GetStats()->base_attack);
 
 
-
+			int rand_item_number;
 			if (dmg >= hp)
 			{
 				player->GetStats()->GetXp()->xp++;
-				if (rand() % 10>3)
-				g_obj->GetItemList()->AddDroppedItem((int)(enemies->GetEnemiesPointer()[0][player->GetTarget()]->GetPAttributes()->position.x), (int)(enemies->GetEnemiesPointer()[0][player->GetTarget()]->GetPAttributes()->position.y), item);
-				// std::cout << g_obj->GetItemList()->GetDroppedItems().size()<<"\n";
+
+				rand_item_number = enemies->GetEnemiesPointer()[0][player->GetTarget()]->items[Dice::Get((GLuint*)(enemies->GetEnemiesPointer()[0][player->GetTarget()]->chances), (GLuint)(enemies->GetEnemiesPointer()[0][player->GetTarget()]->num_drop), 100)];
+			
+				if (rand_item_number != EnemyData::item_types::Nothing)
+				{
+
+					item = g_obj->GetItemList()->GetList()[rand_item_number];
+					g_obj->GetItemList()->AddDroppedItem((int)(enemies->GetEnemiesPointer()[0][player->GetTarget()]->GetPAttributes()->position.x), (int)(enemies->GetEnemiesPointer()[0][player->GetTarget()]->GetPAttributes()->position.y), item);
+				}
+					// std::cout << g_obj->GetItemList()->GetDroppedItems().size()<<"\n";
 				enemies->GetEnemiesPointer()[0][player->GetTarget()]->GetStats()->GetHp()->Damage(player->GetItems()[ITEM_SLOT_WEAPON]->attack);
 				player->GetEventHandler()->Init(current_map, g_obj);
 			}
@@ -128,17 +127,37 @@ void Combat::PlayerAttack(SoundManager * sm, Controller * ctrl, GameObject * g_o
 
 			if (player->GetStats()->GetXp()->xp >= player->GetStats()->GetXp()->max_xp)
 			{
+				int hp = player->GetStats()->GetHp()->hp
+					/ player->GetStats()->GetHp()->max_hp;
+				int mhp = player->GetStats()->GetXp()->lvl * 2;
+				printf("%i, %i\n", player->GetStats()->GetHp()->hp, player->GetStats()->GetHp()->max_hp);
+
+				player->GetStats()->GetHp()->Buff(hp * mhp, mhp);
+				printf("%i, %i\n", player->GetStats()->GetHp()->hp, player->GetStats()->GetHp()->max_hp);
+				player->GetStats()->GetXp()->Increase(player->GetStats()->GetXp()->lvl * 4);
+				player->GetStats()->base_attack += 2;
 				player->GetStats()->GetXp()->lvl++;
 				player->GetStats()->GetXp()->xp = 0;
-				player->GetStats()->GetXp()->max_xp += 4;
 			}
 
 			enemies->GetEnemiesPointer()[0][player->GetTarget()]->GetStats()->aggressive = true;
 
+
+			glm::vec2 text_pos = e_attr->position *
+				e_attr->scale +
+				g_obj->GetScroller()->GetOffset();
+
+			print_vec2(e_attr->position *
+				e_attr->scale);
+			print_vec2(text_pos);
+
+
+			text_pos.y -= 10;
+			text_pos.x -= 4;
+
 			char *buffer = new char[256];
 			_itoa(dmg, buffer, 10);
 			strcat(buffer, " DMG");
-			text_pos.x -= g_obj->GetFontList()->GetFont()->GetLength(buffer, 20)/2.f;
 
 			g_obj->GetTextObject()->Add(g_obj->GetFontList()->GetFont(),
 				buffer,
@@ -345,7 +364,7 @@ void Combat::EnemyAttack(SoundManager *sm, Controller * ctrl, GameObject * g_obj
 				e_attr->scale +
 				g_obj->GetScroller()->GetOffset();
 			text_pos.y = ctrl->GetWindowHeight() - text_pos.y;// -18;
-			text_pos.x += e_attr->scale.x + 14;
+			text_pos.x -= 4;
 
 
 
@@ -361,7 +380,6 @@ void Combat::EnemyAttack(SoundManager *sm, Controller * ctrl, GameObject * g_obj
 				sm->PlaySound(HYDRAATTACK);
 
 
-			text_pos.x -= g_obj->GetFontList()->GetFont()->GetLength(buffer, 20) / 2.f;
 			g_obj->GetTextObject()->Add(g_obj->GetFontList()->GetFont(),
 				buffer,
 				text_pos,
@@ -386,7 +404,7 @@ void Combat::EnemyAttack(SoundManager *sm, Controller * ctrl, GameObject * g_obj
 
 
 
-void Combat::EnemyMovement(Controller * ctrl, GameObject * g_obj, Player * player, EnemyManager * enemies, int type)
+void Combat::EnemyMovement(Controller * ctrl, GameObject * g_obj, Player * player, EnemyManager * enemies, Map* current_map, int type)
 {
 
 
@@ -409,6 +427,8 @@ void Combat::EnemyMovement(Controller * ctrl, GameObject * g_obj, Player * playe
 		AutoPath * a_path = enemy->GetAutoPath();
 		Stats * stats = enemy->GetStats();
 		ActionHandler * a_handler = enemy->GetActionHandler();
+
+		EventHandler::DestroyDoor(attr->position, current_map, g_obj);
 
 
 
@@ -528,7 +548,7 @@ void Combat::EnemyRelated(SoundManager *sm, Controller * ctrl, GameObject * g_ob
 	this->SetEnemyTarget(player, enemies);
 	this->AquireEnemyTarget(player, enemies);
 	this->EnemyAttack(sm, ctrl, g_obj, player, enemies, type);
-	this->EnemyMovement(ctrl, g_obj, player, enemies, type);
+	this->EnemyMovement(ctrl, g_obj, player, enemies,map, type);
 
 
 }

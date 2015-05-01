@@ -20,6 +20,12 @@ public:
 	GLfloat base_armor;
 	GLboolean aggressive;
 	int path_type;
+	
+
+
+	
+
+
 
 	inline  Hp * GetHp(){ return this->m_hp; }
 

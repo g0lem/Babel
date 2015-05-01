@@ -10,7 +10,7 @@ class CollisionMap
 	glm::ivec2 size;
 	GLboolean **tiles;
 	GLboolean **player_tiles;
-
+	GLboolean **visible_tiles;
 
 	std::vector<glm::ivec2>list;
 
@@ -33,7 +33,7 @@ public:
 	inline glm::ivec2 GetSize(){ return this->size; }
 	inline GLboolean **GetTiles(){ return this->tiles; }
 	inline GLboolean **GetPlayerTiles(){ return this->player_tiles; }
-
+	inline GLboolean **GetVisibleTiles(){ return this->visible_tiles; }
 };
 
 #endif

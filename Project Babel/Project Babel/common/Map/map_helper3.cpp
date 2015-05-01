@@ -476,6 +476,10 @@ void Map::Decorate(GameObject *g_obj)
 
 			g_obj->SpawnSolidObject(PILLAR_ID, glm::vec2(this->GetRoomsPointer()[0][i]->GetInternalCenter().x + 1, this->GetRoomsPointer()[0][i]->GetInternalCenter().y));
 
+			g_obj->SpawnSolidObject(PILLAR_ID, glm::vec2(this->GetRoomsPointer()[0][i]->GetInternalCenter().x + 1, this->GetRoomsPointer()[0][i]->GetInternalCenter().y - 1));
+
+			g_obj->SpawnSolidObject(PILLAR_ID, glm::vec2(this->GetRoomsPointer()[0][i]->GetInternalCenter().x - 1, this->GetRoomsPointer()[0][i]->GetInternalCenter().y - 1));
+
 			//g_obj->SpawnSolidObject(PILLAR_ID, glm::vec2(this->GetRoomsPointer()[0][i]->GetInternalCenter().x, this->GetRoomsPointer()[0][i]->GetInternalCenter().y + 1));
 
 			g_obj->SpawnSolidObject(PILLAR_ID, glm::vec2(this->GetRoomsPointer()[0][i]->GetInternalCenter().x, this->GetRoomsPointer()[0][i]->GetInternalCenter().y - 1));

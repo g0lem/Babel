@@ -93,6 +93,13 @@ public:
 	void Update(GameObject * g_obj, GLfloat delta);
 
 
+	int *chances;
+	int *items;
+	int num_drop;
+
+	void SetChances(EnemyData * data);
+
+
 };
 
 

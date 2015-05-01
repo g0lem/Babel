@@ -108,7 +108,7 @@ void ItemList::LoadItems()
 	m_item->Init();
 	m_item->attack = glm::vec2(1, 4);
 	m_item->attack_speed = 1.0f;
-	m_item->item_name = "COUGH";
+	m_item->item_name = "Health Potion";
 	this->list.push_back(m_item);
 	this->weapon = m_item;
 
@@ -119,8 +119,8 @@ void ItemList::LoadItems()
 	m_item->frame = 1;
 	m_item->type = ITEM_TYPE_WEAPON;
 	m_item->attack_speed = 1.0f;
-	m_item->attack = glm::vec2(6, 6);
-	m_item->item_name = "COUGH";
+	m_item->attack = glm::vec2(2, 3);
+	m_item->item_name = "Hammer";
 	this->list.push_back(m_item);
 
 
@@ -129,8 +129,8 @@ void ItemList::LoadItems()
 	m_item->frame = 2;
 	m_item->type = ITEM_TYPE_WEAPON;
 	m_item->attack_speed = 1.0f;
-	m_item->attack = glm::vec2(10, 10);
-	m_item->item_name = "COUGH";
+	m_item->attack = glm::vec2(1, 2);
+	m_item->item_name = "Sword";;
 	this->list.push_back(m_item);
 
 	m_item = new Item();
@@ -138,7 +138,7 @@ void ItemList::LoadItems()
 	m_item->frame = 3;
 	m_item->id = CHAINS_ID;
 	m_item->type = ITEM_TYPE_TRAP;
-	m_item->item_name = "COUGH";
+	m_item->item_name = "Chains";
 	this->list.push_back(m_item);
 
 	m_item = new Item();
@@ -146,11 +146,65 @@ void ItemList::LoadItems()
 	m_item->frame = 4;
 	m_item->id = SPIKES_ID;
 	m_item->type = ITEM_TYPE_TRAP;
-	m_item->item_name = "COUGH";
+	m_item->item_name = "Spikes";
 	m_item->attack = glm::vec2(10, 10);
 	this->list.push_back(m_item);
 
 
+	m_item = new Item;
+	m_item->Init();
+	m_item->frame = 2;
+	m_item->type = ITEM_TYPE_WEAPON;
+	m_item->attack_speed = 1.0f;
+	m_item->attack = glm::vec2(4, 4);
+	m_item->item_name = "Epic Sword";
+	this->list.push_back(m_item);
+
+
+
+	m_item = new Item;
+	m_item->Init();
+	m_item->frame = 1;
+	m_item->type = ITEM_TYPE_ARMOR;
+	m_item->armor = 2;
+	m_item->item_name = "Leather Armor";
+	this->list.push_back(m_item);
+
+	m_item = new Item;
+	m_item->Init();
+	m_item->frame = 1;
+	m_item->type = ITEM_TYPE_ARMOR;
+	m_item->armor = 1;
+	m_item->item_name = "Leather Armor";
+	this->list.push_back(m_item);
+
+
+	m_item = new Item;
+	m_item->Init();
+	m_item->frame = 1;
+	m_item->type = ITEM_TYPE_ARMOR;
+	m_item->armor = 2;
+	m_item->item_name = "Plate Armor";
+	this->list.push_back(m_item);
+
+
+	m_item = new Item;
+	m_item->Init();
+	m_item->frame = 1;
+	m_item->type = ITEM_TYPE_ARMOR;
+	m_item->armor = 3;
+	m_item->item_name = "Plate Armor";
+	this->list.push_back(m_item);
+
+
+
+	m_item = new Item;
+	m_item->Init();
+	m_item->frame = 1;
+	m_item->type = ITEM_TYPE_ARMOR;
+	m_item->armor = 4;
+	m_item->item_name = "Epic Armor";
+	this->list.push_back(m_item);
 }
 
 int ItemList::listed_name(std::string name)

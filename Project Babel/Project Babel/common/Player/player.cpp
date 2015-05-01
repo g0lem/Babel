@@ -31,6 +31,7 @@ void Player::Load(GameObject * g_obj, Map * current_tilemap)
 	this->mm_spell = new SpellManager();
 	this->LoadItems(g_obj);
 	this->LoadStats();
+	this->last_pos_door = vec2_0;
 
 
 
@@ -329,6 +330,13 @@ void Player::HandleAutoPath(SoundManager *sm, Controller * ctrl, GameObject * g_
 	{
 		h_event->TriggerEvent(attributes->position, current_map, g_obj, this->GetStats());
 	}
+
+	
+	EventHandler::AutomaticallyOpenDoor(this->last_pos_door, current_map, g_obj, this->last_pos_door);
+		EventHandler::AutomaticallyOpenDoor(attributes->position, current_map, g_obj, last_pos_door);
+	
+
+	
 	
 
 	
@@ -382,10 +390,10 @@ void Player::LoadStats()
 
 	//Player Stats
 
-	this->m_stats->GetHp()->Buff(20);
+	this->m_stats->GetHp()->Buff(15);
 	this->m_stats->base_movement_speed = 1.0f;
-	this->m_stats->base_attack = glm::vec2(0, 0);
-	this->m_stats->GetXp()->max_xp = 7;
+	this->m_stats->base_attack = glm::vec2(3, 3);
+	this->m_stats->GetXp()->max_xp = 4;
 	this->m_stats->GetXp()->xp = 0;
 
 

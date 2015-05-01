@@ -37,6 +37,7 @@ class Player
 
 	ActionHandler * a_handler;
 	glm::vec2 last_wanted_position;
+	glm::vec2 last_pos_door;
 	GLboolean able_to_move;
 	Item **items;
 	bool created;

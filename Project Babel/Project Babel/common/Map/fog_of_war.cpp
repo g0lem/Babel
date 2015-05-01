@@ -57,7 +57,7 @@ float **fog_of_war::GetFOW(GameObject *g_obj, glm::ivec2 position)
 
 	for (int i = position.y; i < position.y + RANGE; i++)	
 		if (i >= 0 && i<g_obj->GetCollisionMap()->GetSize().y)
-		if (g_obj->GetCollisionMap()->GetTiles()[position.x][i] != 1)
+		if (g_obj->GetCollisionMap()->GetVisibleTiles()[position.x][i] != 1)
 		{
 			s_map[position.x][i] = LIT;
 		}
@@ -70,7 +70,7 @@ float **fog_of_war::GetFOW(GameObject *g_obj, glm::ivec2 position)
 
 	for (int i = position.x; i < position.x + RANGE; i++)
 		if (i >= 0 && i<g_obj->GetCollisionMap()->GetSize().x)
-			if (g_obj->GetCollisionMap()->GetTiles()[i][position.y] != 1)
+			if (g_obj->GetCollisionMap()->GetVisibleTiles()[i][position.y] != 1)
 				s_map[i][position.y] = LIT;
 			else
 			{
@@ -83,7 +83,7 @@ float **fog_of_war::GetFOW(GameObject *g_obj, glm::ivec2 position)
 
 	for (int i = position.y; i > position.y - RANGE; i--)
 		if (i >= 0 && i<g_obj->GetCollisionMap()->GetSize().y)
-			if (g_obj->GetCollisionMap()->GetTiles()[position.x][i] != 1)
+			if (g_obj->GetCollisionMap()->GetVisibleTiles()[position.x][i] != 1)
 				s_map[position.x][i] = LIT;
 			else
 			{
@@ -93,7 +93,7 @@ float **fog_of_war::GetFOW(GameObject *g_obj, glm::ivec2 position)
 
 	for (int i = position.x; i > position.x - RANGE; i--)
 		if (i >= 0 && i<g_obj->GetCollisionMap()->GetSize().x)
-			if (g_obj->GetCollisionMap()->GetTiles()[i][position.y] != 1)
+			if (g_obj->GetCollisionMap()->GetVisibleTiles()[i][position.y] != 1)
 				s_map[i][position.y] = LIT;
 			else
 			{
@@ -106,7 +106,7 @@ float **fog_of_war::GetFOW(GameObject *g_obj, glm::ivec2 position)
 	for (int i = 0; i < RANGE; i++)
 	{
 		if (i >= 0 && position.x + i <g_obj->GetCollisionMap()->GetSize().x && position.y + i<g_obj->GetCollisionMap()->GetSize().y)
-			if (g_obj->GetCollisionMap()->GetTiles()[position.x + i][position.y + i] != 1)
+			if (g_obj->GetCollisionMap()->GetVisibleTiles()[position.x + i][position.y + i] != 1)
 				s_map[position.x + i][position.y + i] = LIT;
 			else
 			{
@@ -118,7 +118,7 @@ float **fog_of_war::GetFOW(GameObject *g_obj, glm::ivec2 position)
 	for (int i = 0; i < RANGE; i++)
 	{
 		if (i >= 0 && position.x - i<g_obj->GetCollisionMap()->GetSize().x && position.y - i <g_obj->GetCollisionMap()->GetSize().y)
-			if (g_obj->GetCollisionMap()->GetTiles()[position.x - i][position.y - i] != 1)
+			if (g_obj->GetCollisionMap()->GetVisibleTiles()[position.x - i][position.y - i] != 1)
 				s_map[position.x - i][position.y - i] = LIT;
 			else
 			{
@@ -131,7 +131,7 @@ float **fog_of_war::GetFOW(GameObject *g_obj, glm::ivec2 position)
 	for (int i = 0; i < RANGE; i++)
 	{
 		if (i >= 0 && position.x + i<g_obj->GetCollisionMap()->GetSize().x && position.y - i <g_obj->GetCollisionMap()->GetSize().y)
-			if (g_obj->GetCollisionMap()->GetTiles()[position.x + i][position.y - i] != 1)
+			if (g_obj->GetCollisionMap()->GetVisibleTiles()[position.x + i][position.y - i] != 1)
 				s_map[position.x + i][position.y - i] = LIT;
 			else
 			{
@@ -144,7 +144,7 @@ float **fog_of_war::GetFOW(GameObject *g_obj, glm::ivec2 position)
 	for (int i = 0; i < RANGE; i++)
 	{
 		if (i >= 0 && position.x - i<g_obj->GetCollisionMap()->GetSize().x && position.y + i <g_obj->GetCollisionMap()->GetSize().y)
-			if (g_obj->GetCollisionMap()->GetTiles()[position.x - i][position.y + i] != 1)
+			if (g_obj->GetCollisionMap()->GetVisibleTiles()[position.x - i][position.y + i] != 1)
 				s_map[position.x - i][position.y + i] = LIT;
 			else
 			{
@@ -168,12 +168,12 @@ float **fog_of_war::GetFOW(GameObject *g_obj, glm::ivec2 position)
 		
 		if (i >= 0 && i < g_obj->GetCollisionMap()->GetSize().x && j >= 0 && j < g_obj->GetCollisionMap()->GetSize().y)
 		{
-			if (g_obj->GetCollisionMap()->GetTiles()[i][j] == false && g_obj->GetCollisionMap()->GetTiles()[i + 1][j] == false && g_obj->GetCollisionMap()->GetTiles()[i][j - 1] == false && g_obj->GetCollisionMap()->GetTiles()[i + 1][j - 1] == false)
+			if (g_obj->GetCollisionMap()->GetVisibleTiles()[i][j] == false && g_obj->GetCollisionMap()->GetVisibleTiles()[i + 1][j] == false && g_obj->GetCollisionMap()->GetVisibleTiles()[i][j - 1] == false && g_obj->GetCollisionMap()->GetVisibleTiles()[i + 1][j - 1] == false)
 				if (s_map[i + 1][j] == LIT && s_map[i][j - 1] == LIT && s_map[i + 1][j - 1] == LIT)
 				{			
 				s_map[i][j] = LIT;
 				}
-			if (g_obj->GetCollisionMap()->GetTiles()[i][j] == true)
+			if (g_obj->GetCollisionMap()->GetVisibleTiles()[i][j] == true)
 				if (s_map[i + 1][j] == LIT && s_map[i][j - 1] == LIT && s_map[i + 1][j - 1] == LIT)
 				{				
 				s_map[i][j] = LIT;
@@ -191,12 +191,12 @@ float **fog_of_war::GetFOW(GameObject *g_obj, glm::ivec2 position)
 		
 		if (i >= 0 && i < g_obj->GetCollisionMap()->GetSize().x && j >= 0 && j < g_obj->GetCollisionMap()->GetSize().y)
 		{
-			if (g_obj->GetCollisionMap()->GetTiles()[i][j] == false && g_obj->GetCollisionMap()->GetTiles()[i + 1][j] == false && g_obj->GetCollisionMap()->GetTiles()[i][j + 1] == false && g_obj->GetCollisionMap()->GetTiles()[i + 1][j + 1] == false)
+			if (g_obj->GetCollisionMap()->GetVisibleTiles()[i][j] == false && g_obj->GetCollisionMap()->GetVisibleTiles()[i + 1][j] == false && g_obj->GetCollisionMap()->GetVisibleTiles()[i][j + 1] == false && g_obj->GetCollisionMap()->GetVisibleTiles()[i + 1][j + 1] == false)
 			if (s_map[i + 1][j] == LIT && s_map[i][j + 1] == LIT && s_map[i + 1][j + 1] == LIT)
 			{
 				s_map[i][j] = LIT;
 			}
-			if (g_obj->GetCollisionMap()->GetTiles()[i][j] == true)
+			if (g_obj->GetCollisionMap()->GetVisibleTiles()[i][j] == true)
 				if (s_map[i + 1][j] == LIT && s_map[i][j + 1] == LIT && s_map[i + 1][j + 1] == LIT)
 				{
 				s_map[i][j] = LIT;
@@ -217,13 +217,13 @@ float **fog_of_war::GetFOW(GameObject *g_obj, glm::ivec2 position)
 		if (i >= 0 && i < g_obj->GetCollisionMap()->GetSize().x && j >= 0 && j < g_obj->GetCollisionMap()->GetSize().y)
 		{
 		
-			if (g_obj->GetCollisionMap()->GetTiles()[i][j] == false && g_obj->GetCollisionMap()->GetTiles()[i - 1][j] == false && g_obj->GetCollisionMap()->GetTiles()[i][j + 1] == false && g_obj->GetCollisionMap()->GetTiles()[i - 1][j + 1] == false)
+			if (g_obj->GetCollisionMap()->GetVisibleTiles()[i][j] == false && g_obj->GetCollisionMap()->GetVisibleTiles()[i - 1][j] == false && g_obj->GetCollisionMap()->GetVisibleTiles()[i][j + 1] == false && g_obj->GetCollisionMap()->GetVisibleTiles()[i - 1][j + 1] == false)
 		    if(s_map[i - 1][j] == LIT && s_map[i][j + 1] == LIT && s_map[i - 1][j + 1] == LIT)
 			{
 				
 				s_map[i][j] = LIT;
 			}
-			if (g_obj->GetCollisionMap()->GetTiles()[i][j] == true)
+			if (g_obj->GetCollisionMap()->GetVisibleTiles()[i][j] == true)
 				if (s_map[i - 1][j] == LIT && s_map[i][j + 1] == LIT && s_map[i - 1][j + 1] == LIT)
 				{
 				s_map[i][j] = LIT;
@@ -243,12 +243,12 @@ float **fog_of_war::GetFOW(GameObject *g_obj, glm::ivec2 position)
 		{
 		if (i >= 0 && i < g_obj->GetCollisionMap()->GetSize().x && j >= 0 && j < g_obj->GetCollisionMap()->GetSize().y)
 		{
-			if (g_obj->GetCollisionMap()->GetTiles()[i][j] == false && g_obj->GetCollisionMap()->GetTiles()[i - 1][j] == false && g_obj->GetCollisionMap()->GetTiles()[i][j - 1] == false && g_obj->GetCollisionMap()->GetTiles()[i - 1][j - 1] == false)
+			if (g_obj->GetCollisionMap()->GetVisibleTiles()[i][j] == false && g_obj->GetCollisionMap()->GetVisibleTiles()[i - 1][j] == false && g_obj->GetCollisionMap()->GetVisibleTiles()[i][j - 1] == false && g_obj->GetCollisionMap()->GetVisibleTiles()[i - 1][j - 1] == false)
 			if(s_map[i - 1][j] == LIT && s_map[i][j - 1] == LIT && s_map[i - 1][j - 1] == LIT)
 			{
 				s_map[i][j] = LIT;
 			}
-			if (g_obj->GetCollisionMap()->GetTiles()[i][j] == true)
+			if (g_obj->GetCollisionMap()->GetVisibleTiles()[i][j] == true)
 				if (s_map[i - 1][j] == LIT && s_map[i][j - 1] == LIT && s_map[i - 1][j - 1] == LIT)
 				{
 				s_map[i][j] = LIT;

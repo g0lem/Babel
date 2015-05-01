@@ -46,7 +46,7 @@ void PanelRender::LoadButtonsSprite(Tooltip *t_tip)
 	m_prop->color = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
 	m_prop->position = vec2_0;
 
-	t_tip->Add(m_prop->position, glm::vec2(60, 30), "Menu", 20, 0);
+	t_tip->Add(m_prop->position, glm::vec2(60, 30), "Menu", 45, 0);
 
 	a_button[0] = new Button(m_prop);
 
@@ -76,11 +76,11 @@ void PanelRender::LoadButtonsSprite(Tooltip *t_tip)
 
 
 	}
-	t_tip->Add(m_prop->position, glm::vec2(144, 53), "Menu", 20, 0);
-	t_tip->Add(m_prop->position, glm::vec2(144, 53), "Inspect", 20, 2);
-	t_tip->Add(m_prop->position, glm::vec2(144, 53), "Story", 20, 3);
-	t_tip->Add(m_prop->position, glm::vec2(144, 53), "Inventory", 20, 1);
-	t_tip->Add(m_prop->position, glm::vec2(144, 53), "Pass Turn", 20, 4);
+	t_tip->Add(m_prop->position, glm::vec2(144, 53), "Menu", 45, 0);
+	t_tip->Add(m_prop->position, glm::vec2(144, 53), "Inspect", 45, 0);
+	t_tip->Add(m_prop->position, glm::vec2(144, 53), "Story", 45, 0);
+	t_tip->Add(m_prop->position, glm::vec2(144, 53), "Inventory", 45, 0);
+	t_tip->Add(m_prop->position, glm::vec2(144, 53), "Pass Turn", 45, 0);
 }
 
 void PanelRender::Update(Tooltip *t_tip, Controller *ctrl, GameObject * g_obj)
@@ -166,7 +166,10 @@ void PanelRender::Render(SoundManager *sm, Tooltip *t_tip, Controller *ctrl, Scr
 		if (g_obj->GetUIState()->GetPanelState()->GetState() == HOVER)
 		{
 			t_tip->UpdateStatus(0, true);
-			t_tip->UpdateSize(0, glm::vec2(144, 53));
+			t_tip->UpdateSize(0, glm::vec2(g_obj->GetFontList()->GetFont()->GetLength(t_tip->GetTooltips()->at(0)->string, 45) + BORDER_SIZE * 2 + 2, 45));
+			t_tip->UpdateStringPosition(0, glm::vec2(BORDER_SIZE + 1, BORDER_SIZE + 1));
+			t_tip->UpdateStringLength(0, g_obj->GetFontList()->GetFont()->GetLength(t_tip->GetTooltips()->at(0)->string, 45));
+			printf("%.2f\n", g_obj->GetFontList()->GetFont()->GetLength(t_tip->GetTooltips()->at(0)->string, 45));
 			t_tip->UpdatePosition(0, ctrl->GetMousePosition());
 		}
 		else
@@ -178,7 +181,7 @@ void PanelRender::Render(SoundManager *sm, Tooltip *t_tip, Controller *ctrl, Scr
 		{
 			sm->PlaySound(MENUPRESSBUTTON);
 			g_obj->GetUIState()->GetMenuState()->SetState(!g_obj->GetUIState()->GetMenuState()->GetState());
-			//t_tip->UpdateStatus(0, g_obj->GetUIState()->GetMenuState()->GetState());
+			t_tip->UpdateStatus(0, g_obj->GetUIState()->GetMenuState()->GetState());
 		}
 
 	}
@@ -236,6 +239,8 @@ void PanelRender::Render(SoundManager *sm, Tooltip *t_tip, Controller *ctrl, Scr
 		{
 			t_tip->UpdateStatus(4, true);
 			t_tip->UpdatePosition(4, ctrl->GetMousePosition());
+			t_tip->UpdateSize(4, glm::vec2(g_obj->GetFontList()->GetFont()->GetLength(t_tip->GetTooltips()->at(4)->string, 45), 45));
+			t_tip->UpdateStringLength(4, g_obj->GetFontList()->GetFont()->GetLength(t_tip->GetTooltips()->at(4)->string, 45));
 		}
 		else
 			t_tip->UpdateStatus(4, false);
@@ -289,6 +294,8 @@ void PanelRender::Render(SoundManager *sm, Tooltip *t_tip, Controller *ctrl, Scr
 		{
 			t_tip->UpdateStatus(3, true);
 			t_tip->UpdatePosition(3, ctrl->GetMousePosition());
+			t_tip->UpdateSize(3, glm::vec2(g_obj->GetFontList()->GetFont()->GetLength(t_tip->GetTooltips()->at(3)->string, 45), 45));
+			t_tip->UpdateStringLength(3, g_obj->GetFontList()->GetFont()->GetLength(t_tip->GetTooltips()->at(3)->string, 45));
 		}
 		else
 			t_tip->UpdateStatus(3, false);
@@ -318,6 +325,8 @@ void PanelRender::Render(SoundManager *sm, Tooltip *t_tip, Controller *ctrl, Scr
 		{
 			t_tip->UpdateStatus(5, true);
 			t_tip->UpdatePosition(5, ctrl->GetMousePosition());
+			t_tip->UpdateSize(5, glm::vec2(g_obj->GetFontList()->GetFont()->GetLength(t_tip->GetTooltips()->at(5)->string, 45), 45));
+			t_tip->UpdateStringLength(5, g_obj->GetFontList()->GetFont()->GetLength(t_tip->GetTooltips()->at(5)->string, 45));
 		}
 		else
 			t_tip->UpdateStatus(5, false);
@@ -336,6 +345,8 @@ void PanelRender::Render(SoundManager *sm, Tooltip *t_tip, Controller *ctrl, Scr
 		{
 			t_tip->UpdateStatus(2, true);
 			t_tip->UpdatePosition(2, ctrl->GetMousePosition());
+			t_tip->UpdateSize(2, glm::vec2(g_obj->GetFontList()->GetFont()->GetLength(t_tip->GetTooltips()->at(2)->string, 45), 45));
+			t_tip->UpdateStringLength(2, g_obj->GetFontList()->GetFont()->GetLength(t_tip->GetTooltips()->at(2)->string, 45));
 		}
 		else
 			t_tip->UpdateStatus(2, false);

@@ -137,6 +137,7 @@ struct ttvec
 	glm::vec2 stringposition;
 	bool status;
 	int frame;
+	float stringlenght;
 	bool renderstring;
 
 };
@@ -156,6 +157,10 @@ struct ttvec
 #define INVENTORY_START 8
 #define INVENTORY_STOP 24
 
+#define BORDER_SIZE 13
+#define LOWER_BORDER_SIZE 12
+#define BORDER_CANVAS 1
+
 class Tooltip
 {
 
@@ -163,28 +168,33 @@ class Tooltip
 
 	std::vector<ttvec*> *tooltips;
 
+	glm::vec2 corner;
+
 	int r_index;
 
+	float border_size = 13;
+
 public:
-
-
 	inline Tooltip(){ this->Init(); }
 
 	inline void Init(){
 		this->tooltips = new std::vector < ttvec* >;
 		this->t_sprite = new Sprite();
 
-		char **textures = new char*[8];
-		textures[0] = "menubutton.png";
-		textures[1] = "menubutton.png";
-		textures[2] = "menubutton.png";
-		textures[3] = "menubutton.png";
-		textures[4] = "menubutton.png";
-		textures[5] = "weapontooltip.png";
-		textures[6] = "armortooltip.png";
-		textures[7] = "potiontooltip.png";
+		char **textures = new char*[9];
+		textures[0] = "body.png";
+		textures[1] = "top.png";
+		textures[2] = "bottom.png";
+		textures[3] = "left.png";
+		textures[4] = "right.png";
+		textures[5] = "top-left.png";
+		textures[6] = "top-right.png";
+		textures[7] = "bottom-left.png";
+		textures[8] = "bottom-right.png";
 
-		this->t_sprite->Load(8, "data/UI/", textures);
+		this->corner = glm::vec2(13, 12);
+
+		this->t_sprite->Load(9, "data/UI/Tooltips/", textures);
 
 	}
 
@@ -223,6 +233,18 @@ public:
 
 	}
 
+	inline void UpdateStringPosition(int index, glm::vec2 position)
+	{
+		this->tooltips->at(index)->stringposition = position;
+	}
+
+	inline void UpdateStringLength(int index, float lenght)
+	{
+		this->tooltips->at(index)->stringlenght = lenght;
+		printf("%.2f\n", this->tooltips->at(index)->stringlenght);
+	}
+	
+
 	inline void UpdateText(int index, char *text)
 	{
 		this->tooltips->at(index)->string = text;
@@ -242,6 +264,54 @@ public:
 
 	inline int GetRenderingIndex(){ return this->r_index; }
 
+	inline void RenderCorners(int i, ScreenUniformData *u_data)
+	{
+		u_data->SetAmbientLight(glm::vec3(1.f, 1.f, 1.f));
+
+		u_data->ApplyMatrix(Translation(tooltips->at(i)->position + 2.f
+			+ glm::vec2(0, tooltips->at(i)->stringsize) +
+			glm::vec2(tooltips->at(i)->stringlenght, 0))*Scale(this->corner));
+		this->t_sprite->Render(6);
+
+		u_data->ApplyMatrix(Translation(tooltips->at(i)->position + 2.f
+			+ glm::vec2(0, tooltips->at(i)->stringsize))*Scale(this->corner));
+		this->t_sprite->Render(5);
+
+		u_data->ApplyMatrix(Translation(tooltips->at(i)->position)*Scale(this->corner));
+		this->t_sprite->Render(7);
+
+		u_data->ApplyMatrix(Translation(tooltips->at(i)->position + border_size
+			+ 2.0f + glm::vec2(tooltips->at(i)->stringlenght, 0))*Scale(this->corner));
+		this->t_sprite->Render(8);
+
+	}
+
+	inline void RenderBorders(int i, ScreenUniformData *u_data)
+	{
+		u_data->SetAmbientLight(glm::vec3(1.f, 1.f, 1.f));
+
+		u_data->ApplyMatrix(Translation(tooltips->at(i)->position + corner
+			+ glm::vec2(0, tooltips->at(i)->stringsize)) * Scale(2.f + glm::vec2(tooltips->at(i)->stringlenght, border_size)));
+		this->t_sprite->Render(1);
+
+		u_data->ApplyMatrix(Translation(tooltips->at(i)->position + glm::vec2(corner.x, 0)) * Scale(glm::vec2(tooltips->at(i)->stringlenght, border_size)));
+		this->t_sprite->Render(2);
+
+		u_data->ApplyMatrix(Translation(tooltips->at(i)->position + glm::vec2(0, corner.y)) * Scale(glm::vec2(border_size, tooltips->at(i)->stringsize)));
+		this->t_sprite->Render(3);
+
+		u_data->ApplyMatrix(Translation(tooltips->at(i)->position + corner + glm::vec2(tooltips->at(i)->stringlenght, 0)) * Scale(glm::vec2(border_size, tooltips->at(i)->stringsize)));
+		this->t_sprite->Render(4);
+	}
+
+	inline void RenderBody(int i, ScreenUniformData *u_data)
+	{
+		u_data->SetAmbientLight(glm::vec3(1.f, 1.f, 1.f));
+
+		u_data->ApplyMatrix(Translation(tooltips->at(i)->position + corner)* Scale(glm::vec2(tooltips->at(i)->stringlenght, tooltips->at(i)->stringsize)));
+		this->t_sprite->Render(0);
+
+	}
 
 	inline void Render(Controller *ctrl, ScreenUniformData *u_data){
 
@@ -249,9 +319,10 @@ public:
 			if (tooltips->at(i)->status == TOOLTIP_ACTIVE)
 			{
 			r_index = i;
-			u_data->SetAmbientLight(glm::vec3(1.f, 1.f, 1.f));
-			u_data->ApplyMatrix(Translation(tooltips->at(i)->position)*Scale(tooltips->at(i)->size));
-			this->t_sprite->Render(tooltips->at(i)->frame);
+			
+			RenderCorners(i, u_data);
+			RenderBorders(i, u_data);
+			RenderBody(i, u_data);
 
 			tooltips->at(i)->stringposition = glm::vec2(this->tooltips->at(i)->position.x +
 				this->tooltips->at(i)->size.x / 10.f + 3.5f,

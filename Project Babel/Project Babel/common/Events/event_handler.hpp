@@ -23,6 +23,8 @@ public:
 	void Init(Map *current_map, GameObject *g_obj);
 	void TriggerEvent(glm::vec2 position, Map *current_map, GameObject *g_obj, Stats *m_stats);
     int **GetEventMapTiles(){ return this->e_map; }
+	static void AutomaticallyOpenDoor(glm::vec2 position, Map *current_map, GameObject *g_obj, glm::vec2 &door_pos);
+	static void EventHandler::DestroyDoor(glm::vec2 position, Map *&current_map, GameObject *g_obj);
 	static void DisplayTablet(int id);
 
 };

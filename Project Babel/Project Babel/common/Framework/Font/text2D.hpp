@@ -52,8 +52,12 @@ class Font
 public:
 
 		texture_atlas_t *m_atlas;
-		texture_font_t *m_font;
+		texture_atlas_t *t_atlas;
+
+		std::vector <texture_font_t*> *m_fonts;
+
 		int m_size;
+		int t_size;
 		glm::vec2 scale;
 		std::string name;
 		std::string filename;
@@ -72,6 +76,15 @@ public:
 
 	GLvoid Create(char * texturePath, GLuint size);
 	GLvoid Print(const GLchar * text, GLint x, GLint y, GLint size);
+	GLvoid Print2(const GLchar * text, GLint x, GLint y, GLint size);
+
+
+	texture_font_t *GetFontIndex(int size);
+	void GenerateFonts(int min, int max, texture_atlas_t * atlas, std::string filename);
+
+
+
+
 	GLvoid Print(const GLchar * text, glm::vec3 color, GLint x, GLint y, GLint size);
 	GLfloat GetLength(const GLchar * text, GLint size);
 	GLvoid Clean();

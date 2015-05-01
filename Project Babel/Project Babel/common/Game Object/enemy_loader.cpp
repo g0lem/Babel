@@ -67,16 +67,34 @@ void EnemyLoader::Init()
 
 	
 
+	temp->num_drop = 9;
+	temp->chances = new int[temp->num_drop];
+	temp->items = new int[temp->num_drop];
+	
+
+
+	temp->chances[0] = 25;  temp->items[0] = EnemyData::item_types::health_potion_12;
+	temp->chances[1] = 10; temp->items[1] = EnemyData::item_types::health_potion_12;
+	temp->chances[2] = 10;  temp->items[2] = EnemyData::item_types::health_potion_12;
+	temp->chances[3] = 5; temp->items[3] = EnemyData::item_types::Sword;
+	temp->chances[4] = 3;  temp->items[4] = EnemyData::item_types::Hammer;
+	temp->chances[5] = 5; temp->items[5] = EnemyData::item_types::Leather_Armor;
+	temp->chances[6] = 3;  temp->items[6] = EnemyData::item_types::Plate_Armor;
+	temp->chances[7] = 1; temp->items[7] = EnemyData::item_types::Epic_Sword;
+	temp->chances[8] = 38; temp->items[8] = EnemyData::item_types::Nothing;
+
+
+
 
 
 
 
 
 	temp->m_stats = new Stats();
-	temp->m_stats->base_attack = glm::vec2(0.0f, 1.0f);
+	temp->m_stats->base_attack = glm::vec2(1.0f, 3.0f);
 	temp->m_stats->base_attack_speed = 1.0f;
 	temp->m_stats->base_movement_speed = 1.0f;
-	temp->m_stats->GetHp()->Buff(15);
+	temp->m_stats->GetHp()->Buff(7);
 	
 	
 
@@ -136,6 +154,30 @@ void EnemyLoader::Init()
 	temp->m_stats->base_movement_speed = 2.0f;
 	temp->m_stats->GetHp()->Buff(30);
 
+
+
+	temp->num_drop = 9;
+	temp->chances = new int[temp->num_drop];
+	temp->items = new int[temp->num_drop];
+
+
+
+	temp->chances[0] = 0;  temp->items[0] = EnemyData::item_types::health_potion_12;
+	temp->chances[1] = 30; temp->items[1] = EnemyData::item_types::health_potion_12;
+	temp->chances[2] = 0;  temp->items[2] = EnemyData::item_types::health_potion_12;
+	temp->chances[3] = 10; temp->items[3] = EnemyData::item_types::Sword;
+	temp->chances[4] = 5;  temp->items[4] = EnemyData::item_types::Hammer;
+	temp->chances[5] = 10; temp->items[5] = EnemyData::item_types::Leather_Armor;
+	temp->chances[6] = 5;  temp->items[6] = EnemyData::item_types::Plate_Armor;
+	temp->chances[7] = 20; temp->items[7] = EnemyData::item_types::Epic_Sword;
+	temp->chances[8] = 20; temp->items[8] = EnemyData::item_types::Nothing;
+
+
+
+
+
+
+
 	this->data->push_back(temp);
 
 
@@ -184,11 +226,33 @@ void EnemyLoader::Init()
 
 	temp->m_stats = new Stats();
 	temp->m_stats->aggressive = false;
-	temp->m_stats->base_attack = glm::vec2(1.0f, 1.0f);
+	temp->m_stats->base_attack = glm::vec2(2.0f, 4.0f);
 	temp->m_stats->base_attack_speed = 1.0f;
 	temp->m_stats->base_movement_speed = 1.0f;
 	temp->m_stats->path_type = PATH_PLAYER;
-	temp->m_stats->GetHp()->Buff(50);
+	temp->m_stats->GetHp()->Buff(27);
+
+
+
+	temp->num_drop = 9;
+	temp->chances = new int[temp->num_drop];
+	temp->items = new int[temp->num_drop];
+
+
+	temp->chances[0] = 10;  temp->items[0] = EnemyData::item_types::health_potion_12;
+	temp->chances[1] = 0; temp->items[1] = EnemyData::item_types::health_potion_12;
+	temp->chances[2] = 5;  temp->items[2] = EnemyData::item_types::health_potion_12;
+	temp->chances[3] = 3; temp->items[3] = EnemyData::item_types::Sword;
+	temp->chances[4] = 1;  temp->items[4] = EnemyData::item_types::Hammer;
+	temp->chances[5] = 3; temp->items[5] = EnemyData::item_types::Leather_Armor;
+	temp->chances[6] = 1;  temp->items[6] = EnemyData::item_types::Plate_Armor;
+	temp->chances[7] = 3; temp->items[7] = EnemyData::item_types::Epic_Sword;
+	temp->chances[8] = 74; temp->items[8] = EnemyData::item_types::Nothing;
+
+
+
+
+
 
 	this->data->push_back(temp);
 
