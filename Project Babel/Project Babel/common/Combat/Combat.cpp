@@ -329,17 +329,27 @@ void Combat::EnemyAttack(SoundManager *sm, Controller * ctrl, GameObject * g_obj
 		if (current_enemy->GetTarget() > NO_TARGET && current_enemy->GetActionHandler()->IsStopped())
 		{
 
+		
+			if (current_enemy->ranged == true)
+		    {
+				if (current_enemy->GetTurnSystem()->GetTurns() >= 1.0f / current_enemy->GetStats()->base_attack_speed && current_enemy->GetStats()->aggressive == true)
+				{
 
-			if (current_enemy->GetTurnSystem()->GetTurns() >= 1.0f / current_enemy->GetStats()->base_attack_speed && current_enemy->GetStats()->aggressive == true)
-			{
+				}
+		    }
+		
+			else if (current_enemy->GetTurnSystem()->GetTurns() >= 1.0f / current_enemy->GetStats()->base_attack_speed && current_enemy->GetStats()->aggressive == true)
+				{
 
 
-				current_enemy->GetDirection()->Compute(DIR_TYPE_4, current_enemy->GetPAttributes()->position, current_enemy->GetTargetPosition());
-				current_enemy->GetActionHandler()->SetAction(ATTACKING);
-				current_enemy->GetActionHandler()->Start();
+					current_enemy->GetDirection()->Compute(DIR_TYPE_4, current_enemy->GetPAttributes()->position, current_enemy->GetTargetPosition());
+					current_enemy->GetActionHandler()->SetAction(ATTACKING);
+					current_enemy->GetActionHandler()->Start();
 
 
-			}
+				}
+			
+			
 
 
 		}

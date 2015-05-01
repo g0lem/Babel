@@ -96,6 +96,7 @@ public:
 	int *chances;
 	int *items;
 	int num_drop;
+	bool ranged;
 
 	void SetChances(EnemyData * data);
 

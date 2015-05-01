@@ -255,7 +255,7 @@ void Enemy::SetChances(EnemyData * data)
 	this->num_drop = 9;
 	this->chances = new int[this->num_drop];
 	this->items = new int[this->num_drop];
-
+	this->ranged = data->ranged;
 
 
 	this->chances[0] = data->chances[0]; this->items[0] = data->items[0];

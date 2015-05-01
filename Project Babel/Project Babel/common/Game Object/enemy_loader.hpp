@@ -17,6 +17,8 @@ public:
 	GLuint * num_frames;
 	GLuint num_dirs;
 	Stats * m_stats;
+	
+	bool ranged;
 
 	int *chances;
 	int *items;

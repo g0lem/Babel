@@ -17,7 +17,7 @@ void EnemyLoader::Init()
 	EnemyData * temp = new EnemyData();
 	temp->num_dirs = 8;
 
-
+	temp->ranged = false;
 
 	temp->num_frames = new GLuint[temp->num_dirs];
 	temp->num_frames[0] = 5;
@@ -154,6 +154,7 @@ void EnemyLoader::Init()
 	temp->m_stats->base_movement_speed = 2.0f;
 	temp->m_stats->GetHp()->Buff(30);
 
+	temp->ranged = true;
 
 
 	temp->num_drop = 9;
@@ -232,7 +233,7 @@ void EnemyLoader::Init()
 	temp->m_stats->path_type = PATH_PLAYER;
 	temp->m_stats->GetHp()->Buff(27);
 
-
+	temp->ranged = false;
 
 	temp->num_drop = 9;
 	temp->chances = new int[temp->num_drop];
