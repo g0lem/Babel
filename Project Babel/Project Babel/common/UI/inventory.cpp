@@ -254,9 +254,13 @@ void Inventory::Render(Tooltip *t_tip, SoundManager *sm, Controller *ctrl, Scree
 
 				t_tip->UpdateStatus(INVENTORY_START + i, true);
 				t_tip->UpdateText(INVENTORY_START + i, g_obj->GetItemList()->GetInventory()[i]->item_name);
-				t_tip->UpdateSize(INVENTORY_START + i, glm::vec2(g_obj->GetFontList()->GetFont()->GetLength(t_tip->GetTooltips()->at(INVENTORY_START + i)->string, 20) + BORDER_SIZE * 3 + 2, 25 + 13.f));
-				t_tip->UpdateStringPosition(INVENTORY_START + i, glm::vec2(ctrl->GetMousePosition().x + 12.f / 2.f + 15.f + 1 / 2.f, ctrl->GetWindowHeight() - (ctrl->GetMousePosition().y + 25 + 15)));
-				t_tip->UpdateStringLength(INVENTORY_START + i, g_obj->GetFontList()->GetFont()->GetLength(t_tip->GetTooltips()->at(INVENTORY_START + i)->string, 20));
+				t_tip->UpdateOffset(INVENTORY_START + i, 7.5);
+				t_tip->UpdateVoffset(INVENTORY_START + i, 4);
+				t_tip->UpdateSize(INVENTORY_START + i, 
+					glm::vec2(g_obj->GetFontList()->GetFont()->GetLength(t_tip->GetTooltips()->at(INVENTORY_START + i)->string, 25)
+					+ t_tip->corner.x * 2 + t_tip->GetOffset(INVENTORY_START + 1), 25 + t_tip->corner.y + t_tip->GetVoffset(INVENTORY_START + i)));
+				t_tip->UpdateStringPosition(INVENTORY_START + i, glm::vec2(ctrl->GetMousePosition().x + 9.f + 15.f, ctrl->GetWindowHeight() - (ctrl->GetMousePosition().y + 25 + 15 + 2)));
+				t_tip->UpdateStringLength(INVENTORY_START + i, g_obj->GetFontList()->GetFont()->GetLength(t_tip->GetTooltips()->at(INVENTORY_START + i)->string, 25));
 				t_tip->UpdatePosition(INVENTORY_START + i, ctrl->GetMousePosition());
 			}
 

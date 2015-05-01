@@ -53,7 +53,6 @@ GLvoid Font::Print(const GLchar * text, GLint x, GLint y, GLint size){
 
 	std::vector<glm::vec2> vertices;
 	std::vector<glm::vec2> UVs;
-	printf("%s\n", text);
 
 	float ny = y;
 

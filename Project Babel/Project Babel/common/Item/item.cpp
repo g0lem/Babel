@@ -107,11 +107,11 @@ Item Item::GenerateItem(int frame)
 				new_item.frame = frame;
 			}
 		}
-		std::cout << "Attack Speed: "<< new_item.attack_speed <<std::endl;
-		std::cout << "Attack: " << new_item.attack.x<<" "<<new_item.attack.y << std::endl;
-		std::cout << "Armor: " << new_item.armor<< std::endl;
-		std::cout << "Dodge: " << new_item.dodge<< std::endl;
-		std::cout << "Level: " << new_item.level << std::endl;
+		//std::cout << "Attack Speed: "<< new_item.attack_speed <<std::endl;
+		//std::cout << "Attack: " << new_item.attack.x<<" "<<new_item.attack.y << std::endl;
+		//std::cout << "Armor: " << new_item.armor<< std::endl;
+		//std::cout << "Dodge: " << new_item.dodge<< std::endl;
+		//std::cout << "Level: " << new_item.level << std::endl;
 
 		sqlite3_finalize(res);
 		sqlite3_close(db);

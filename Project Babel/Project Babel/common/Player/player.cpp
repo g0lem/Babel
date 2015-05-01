@@ -28,7 +28,6 @@ void Player::Load(GameObject * g_obj, Map * current_tilemap)
 	this->a_handler = new ActionHandler();
 	this->able_to_move = false;
 	created = false;
-	this->mm_spell = new SpellManager();
 	this->LoadItems(g_obj);
 	this->LoadStats();
 	this->last_pos_door = vec2_0;
@@ -155,18 +154,10 @@ void Player::Render(SoundManager *sm, Controller * ctrl, ScreenUniformData * u_d
 
 		if (ctrl->GetKeyOnce(GLFW_KEY_X))
 		{
-			this->created = true;
-			this->mm_spell->Add(new Spell(FIREBALL, GridPosition(attributes->position*attributes->scale + g_obj->GetScroller()->GetOffset(), attributes->scale),
+			g_obj->GetSpellManager()->Add(new Spell(FIREBALL, GridPosition(attributes->position*attributes->scale + g_obj->GetScroller()->GetOffset(), attributes->scale),
 				g_obj->GetScroller()->GetOffset(),attributes->scale,
 				5.f, frame));
 		}
-
-		if (created == true)
-		{
-			mm_spell->Render(ctrl, u_data, g_obj);
-		}
-
-
 
 
 

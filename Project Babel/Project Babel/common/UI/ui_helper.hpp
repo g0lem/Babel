@@ -139,6 +139,8 @@ struct ttvec
 	int frame;
 	float stringlenght;
 	bool renderstring;
+	float offset;
+	float voffset;
 
 };
 
@@ -168,16 +170,18 @@ class Tooltip
 
 	std::vector<ttvec*> *tooltips;
 
-	glm::vec2 corner;
+
 
 	int r_index;
 
 	float border_size = 13;
 
-	float offset = 0;
+	
 
 public:
 	inline Tooltip(){ this->Init(); }
+
+	glm::vec2 corner;
 
 	inline void Init(){
 		this->tooltips = new std::vector < ttvec* >;
@@ -195,7 +199,6 @@ public:
 		textures[8] = "bottom-right.png";
 
 		this->corner = glm::vec2(13, 12);
-		this->offset = corner.x / 2.f + 1;
 
 		this->t_sprite->Load(9, "data/UI/Tooltips/", textures);
 
@@ -213,6 +216,9 @@ public:
 		temp->stringsize = stringsize;
 		temp->status = false;
 		temp->renderstring = false;
+		temp->offset = corner.x / 2.f + 1;
+		temp->voffset = 0;
+
 
 		this->tooltips->push_back(temp);
 	}
@@ -252,6 +258,27 @@ public:
 		this->tooltips->at(index)->string = text;
 	}
 
+
+	inline void UpdateOffset(int index, float offset)
+	{
+		this->tooltips->at(index)->offset = offset;
+	}
+
+	inline float GetOffset(int index)
+	{
+		return this->tooltips->at(index)->offset;
+	}
+
+	inline void UpdateVoffset(int index, float Voffset)
+	{
+		this->tooltips->at(index)->voffset = Voffset;
+	}
+
+	inline float GetVoffset(int index)
+	{
+		return this->tooltips->at(index)->voffset;
+	}
+
 	inline void RenderText(GameObject *g_obj, TextRender *tr, Controller *ctrl)
 	{
 
@@ -274,19 +301,20 @@ public:
 
 
 
-		u_data->ApplyMatrix(Translation(tooltips->at(i)->position + glm::vec2(0, tooltips->at(i)->stringsize))*Scale(this->corner));
+		u_data->ApplyMatrix(Translation(tooltips->at(i)->position + glm::vec2(0, tooltips->at(i)->stringsize + tooltips->at(i)->voffset))*Scale(this->corner));
 		this->t_sprite->Render(7);
 
-		u_data->ApplyMatrix(Translation(tooltips->at(i)->position)*Scale(this->corner));
+		u_data->ApplyMatrix(Translation(tooltips->at(i)->position )*Scale(this->corner));
 		this->t_sprite->Render(5);
 
 
 
 
-		u_data->ApplyMatrix(Translation(tooltips->at(i)->position + glm::vec2(tooltips->at(i)->stringlenght + corner.x + offset, 0))*Scale(this->corner));
+
+		u_data->ApplyMatrix(Translation(tooltips->at(i)->position + glm::vec2(tooltips->at(i)->stringlenght + corner.x + tooltips->at(i)->offset, 0))*Scale(this->corner));
 		this->t_sprite->Render(6);
 
-		u_data->ApplyMatrix(Translation(tooltips->at(i)->position + glm::vec2(tooltips->at(i)->stringlenght + corner.x + offset, tooltips->at(i)->stringsize))*Scale(this->corner));
+		u_data->ApplyMatrix(Translation(tooltips->at(i)->position + glm::vec2(tooltips->at(i)->stringlenght + corner.x + tooltips->at(i)->offset, tooltips->at(i)->stringsize + tooltips->at(i)->voffset))*Scale(this->corner));
 		this->t_sprite->Render(8);
 
 	}
@@ -296,18 +324,18 @@ public:
 		u_data->SetAmbientLight(glm::vec3(1.f, 1.f, 1.f));
 
 		u_data->ApplyMatrix(Translation(tooltips->at(i)->position
-			+ glm::vec2(corner.x, tooltips->at(i)->stringsize)) * Scale(glm::vec2(tooltips->at(i)->stringlenght + offset, border_size - 1)));
+			+ glm::vec2(corner.x, tooltips->at(i)->stringsize + tooltips->at(i)->voffset)) * Scale(glm::vec2(tooltips->at(i)->stringlenght + tooltips->at(i)->offset, border_size - 1)));
 		this->t_sprite->Render(2);
 
-		u_data->ApplyMatrix(Translation(tooltips->at(i)->position + glm::vec2(corner.x, 0)) * Scale(glm::vec2(tooltips->at(i)->stringlenght + offset, border_size - 1)));
+		u_data->ApplyMatrix(Translation(tooltips->at(i)->position + glm::vec2(corner.x, 0)) * Scale(glm::vec2(tooltips->at(i)->stringlenght + tooltips->at(i)->offset, border_size - 1)));
 		this->t_sprite->Render(1);
 
 
 
-		u_data->ApplyMatrix(Translation(tooltips->at(i)->position + glm::vec2(0, corner.y)) * Scale(glm::vec2(border_size, tooltips->at(i)->stringsize)));
+		u_data->ApplyMatrix(Translation(tooltips->at(i)->position + glm::vec2(0, corner.y)) * Scale(glm::vec2(border_size, tooltips->at(i)->stringsize + tooltips->at(i)->voffset)));
 		this->t_sprite->Render(3);
 
-		u_data->ApplyMatrix(Translation(tooltips->at(i)->position + corner + glm::vec2(tooltips->at(i)->stringlenght + offset, 0)) * Scale(glm::vec2(border_size, tooltips->at(i)->stringsize)));
+		u_data->ApplyMatrix(Translation(tooltips->at(i)->position + corner + glm::vec2(tooltips->at(i)->stringlenght + tooltips->at(i)->offset, 0)) * Scale(glm::vec2(border_size, tooltips->at(i)->stringsize + tooltips->at(i)->voffset)));
 		this->t_sprite->Render(4);
 	}
 
@@ -315,10 +343,11 @@ public:
 	{
 		u_data->SetAmbientLight(glm::vec3(1.f, 1.f, 1.f));
 
-		u_data->ApplyMatrix(Translation(tooltips->at(i)->position)* Scale(glm::vec2(tooltips->at(i)->stringlenght + corner.x * 2 + offset, tooltips->at(i)->stringsize + corner.y)));
+		u_data->ApplyMatrix(Translation(tooltips->at(i)->position)* Scale(this->tooltips->at(i)->size));
 		this->t_sprite->Render(0);
 
 	}
+
 
 	inline void Render(Controller *ctrl, ScreenUniformData *u_data){
 

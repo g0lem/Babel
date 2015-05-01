@@ -9,18 +9,18 @@
 
 void fog_of_war::Init(GameObject *g_obj)
 {
-	std::cout << "AM INTRAT!\n";
-	for (int i = 0; i < g_obj->GetCollisionMap()->GetSize().x; i++)
-	{
-		for (int j = 0; j < g_obj->GetCollisionMap()->GetSize().y; j++)
-			if (g_obj->GetCollisionMap()->GetTiles()[i][j] == 0)
-				std::cout << " ";
-			else
-				std::cout << (char)(219);
-		std::cout << "\n";
-	}
+	//std::cout << "AM INTRAT!\n";
+	////for (int i = 0; i < g_obj->GetCollisionMap()->GetSize().x; i++)
+	////{
+	////	for (int j = 0; j < g_obj->GetCollisionMap()->GetSize().y; j++)
+	////		if (g_obj->GetCollisionMap()->GetTiles()[i][j] == 0)
+	////			std::cout << " ";
+	////		else
+	////			std::cout << (char)(219);
+	////	std::cout << "\n";
+	////}
 
-	std::cout << "AM IESIT!\n";
+	//std::cout << "AM IESIT!\n";
 
 	s_map = new float*[g_obj->GetCollisionMap()->GetSize().x];
 	for (int i = 0; i < g_obj->GetCollisionMap()->GetSize().x; i++)

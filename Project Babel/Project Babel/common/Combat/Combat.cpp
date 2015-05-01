@@ -130,10 +130,9 @@ void Combat::PlayerAttack(SoundManager * sm, Controller * ctrl, GameObject * g_o
 				int hp = player->GetStats()->GetHp()->hp
 					/ player->GetStats()->GetHp()->max_hp;
 				int mhp = player->GetStats()->GetXp()->lvl * 2;
-				printf("%i, %i\n", player->GetStats()->GetHp()->hp, player->GetStats()->GetHp()->max_hp);
+
 
 				player->GetStats()->GetHp()->Buff(hp * mhp, mhp);
-				printf("%i, %i\n", player->GetStats()->GetHp()->hp, player->GetStats()->GetHp()->max_hp);
 				player->GetStats()->GetXp()->Increase(player->GetStats()->GetXp()->lvl * 4);
 				player->GetStats()->base_attack += 2;
 				player->GetStats()->GetXp()->lvl++;

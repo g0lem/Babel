@@ -19,8 +19,6 @@
 class Player
 {
 
-	Spell *m_spell;
-	SpellManager *mm_spell;
 	Direction * m_dir;
 	AutoPath * a_path;
 	Sprite ** m_sprite;

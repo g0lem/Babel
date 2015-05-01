@@ -52,6 +52,8 @@
 #include "common/Turns.hpp"
 #include "common/Effects.hpp"
 #include "common/Map/tile_map.hpp"
+#include "common/Combat/Spell.hpp"
+#include "common/Combat/SpellManager.hpp"
 #include "common/Game Object.hpp"
 
 
@@ -62,8 +64,6 @@
 #include "common/AI.hpp"
 #include "common/UI.hpp"
 #include "common/Manager/font_manager.hpp"
-#include "common/Combat/Spell.hpp"
-#include "common/Combat/SpellManager.hpp"
 #include "common/Player.hpp"
 #include "common/Combat.hpp"
 #include "common/splash_screen.hpp"

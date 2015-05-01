@@ -1,10 +1,6 @@
 //Checked 1
 
 
-
-
-
-
 #ifndef GAME_OBJECT_HPP
 #define GAME_OBJECT_HPP
 struct untablet
@@ -28,7 +24,7 @@ class GameObject
 
 	Miscellaneous * m_misc;
 	ItemList *m_list;
-
+	SpellManager *sp_manager;
 
 
 	TurnSystem * t_system;
@@ -68,6 +64,7 @@ public:
 	inline EnemyLoader * GetEnemyLoader(){ return this->e_loader; }
 	inline TextObject * GetTextObject(){ return this->t_object; }
 	inline FontList * GetFontList(){ return this->f_list; }
+	inline SpellManager * GetSpellManager(){ return this->sp_manager; }
 
 
 	void SpawnSolidObject(int id, glm::vec2 position);

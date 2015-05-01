@@ -21,6 +21,7 @@ void GameObject::Init()
 	this->e_loader = new EnemyLoader();
 	this->t_object = new TextObject();
 	this->f_list = new FontList();
+	this->sp_manager = new SpellManager();
 	u_t =new  std::vector < untablet* > ;
 
 }

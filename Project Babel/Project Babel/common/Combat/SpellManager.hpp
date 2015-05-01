@@ -28,15 +28,15 @@ public:
 		this->m_spells->push_back(spell);
 	}
 	
-	void Render(Controller *ctrl, ScreenUniformData *u_data, GameObject *g_obj)
+	void Render(Controller *ctrl, ScreenUniformData *u_data, GLboolean **tiles)
 	{
 		for (int i = 0; i < m_spells->size(); i++)
 		{
-			printf("test");
+
 
 			if (this->m_spells->at(i)->active == true)
 			{
-				this->m_spells->at(i)->Operate(ctrl, u_data, g_obj);
+				this->m_spells->at(i)->Operate(ctrl, u_data, tiles);
 			}
 			else
 			{

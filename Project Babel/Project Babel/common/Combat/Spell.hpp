@@ -39,24 +39,24 @@ public:
 		this->state = RUNNING;
 	}
 
-	inline void Operate(Controller *ctrl, ScreenUniformData * u_data, GameObject *g_obj)
+	inline void Operate(Controller *ctrl, ScreenUniformData * u_data, GLboolean **tiles)
 	{
 
 		
 		rPosition = glm::ivec2((this->position - offset )/ this->scale);
 
-		if (g_obj->GetCollisionMap()->GetTiles()[rPosition.x][rPosition.y] == 0)
+		if (tiles[rPosition.x][rPosition.y] == 0)
 		{
 
 			if (direction == UP)
 				{
 					position.y -= speed;
 				}
-			if (direction == DOWN && g_obj->GetCollisionMap()->GetTiles()[rPosition.x][rPosition.y + 1] == 0 )
+			if (direction == DOWN && tiles[rPosition.x][rPosition.y + 1] == 0)
 				{
 					position.y += speed;
 				}
-			else if (direction == DOWN && g_obj->GetCollisionMap()->GetTiles()[rPosition.x][rPosition.y + 1] == 1)
+			else if (direction == DOWN && tiles[rPosition.x][rPosition.y + 1] == 1)
 			{
 				this->active = false;
 				this->state = FINISHED;
@@ -65,17 +65,17 @@ public:
 				{
 					position.x -= speed;
 				}
-			if (direction == RIGHT && g_obj->GetCollisionMap()->GetTiles()[rPosition.x + 1][rPosition.y] == 0)
+			if (direction == RIGHT && tiles[rPosition.x + 1][rPosition.y] == 0)
 				{
 					position.x += speed;
 				}
-			else if (direction == RIGHT && g_obj->GetCollisionMap()->GetTiles()[rPosition.x + 1][rPosition.y] == 1)
+			else if (direction == RIGHT && tiles[rPosition.x + 1][rPosition.y] == 1)
 			{
 				this->active = false;
 				this->state = FINISHED;
 			}
 
-			this->Render(ctrl, u_data, g_obj);
+			this->Render(ctrl, u_data);
 		}
 		else
 		{
@@ -85,7 +85,7 @@ public:
 		
 	}
 
-	inline void Render(Controller *ctrl, ScreenUniformData * u_data, GameObject *g_obj)
+	inline void Render(Controller *ctrl, ScreenUniformData * u_data)
 	{
 		u_data->SetAmbientLight();
 		u_data->ApplyMatrix(Translation(this->position)*Scale(this->scale));
