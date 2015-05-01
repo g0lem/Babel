@@ -62,8 +62,8 @@ void Inventory::LoadItems(Tooltip *t_tip)
 {
 	m_inventory = new Button*[16];
 
-	t_tip->Add(vec2_0, glm::vec2(60, 30), "Weapon", 30, 0);
-	t_tip->Add(vec2_0, glm::vec2(60, 30), "Armor", 20, 0);
+	t_tip->Add(vec2_0, glm::vec2(60, 30), "Weapon", 25, 0);
+	t_tip->Add(vec2_0, glm::vec2(60, 30), "Armor", 25, 0);
 
 	for (int i = 0; i < 16; i++)
 	{
@@ -74,7 +74,7 @@ void Inventory::LoadItems(Tooltip *t_tip)
 
 		m_inventory[i] = new Button(m_prop);
 
-		t_tip->Add(m_prop->position, glm::vec2(60, 30), "lol", 30, 0);
+		t_tip->Add(m_prop->position, glm::vec2(60, 30), "", 25, 0);
 
 
 	}
@@ -249,17 +249,21 @@ void Inventory::Render(Tooltip *t_tip, SoundManager *sm, Controller *ctrl, Scree
 			}
 
 
+			if (g_obj->GetUIState()->GetInventoryState()->GetButtonStates()[i] == HOVER)
+			{
 
+				t_tip->UpdateStatus(INVENTORY_START + i, true);
+				t_tip->UpdateText(INVENTORY_START + i, g_obj->GetItemList()->GetInventory()[i]->item_name);
+				t_tip->UpdateSize(INVENTORY_START + i, glm::vec2(g_obj->GetFontList()->GetFont()->GetLength(t_tip->GetTooltips()->at(INVENTORY_START + i)->string, 20) + BORDER_SIZE * 3 + 2, 25 + 13.f));
+				t_tip->UpdateStringPosition(INVENTORY_START + i, glm::vec2(ctrl->GetMousePosition().x + 12.f / 2.f + 15.f + 1 / 2.f, ctrl->GetWindowHeight() - (ctrl->GetMousePosition().y + 25 + 15)));
+				t_tip->UpdateStringLength(INVENTORY_START + i, g_obj->GetFontList()->GetFont()->GetLength(t_tip->GetTooltips()->at(INVENTORY_START + i)->string, 20));
+				t_tip->UpdatePosition(INVENTORY_START + i, ctrl->GetMousePosition());
+			}
 
 
 		}
 
-		if (g_obj->GetUIState()->GetInventoryState()->GetButtonStates()[i] == HOVER)
-		{
 
-			t_tip->UpdateStatus(INVENTORY_START + i, true);
-			t_tip->UpdatePosition(INVENTORY_START + i, ctrl->GetMousePosition());
-		}
 
 
 	}

@@ -169,9 +169,8 @@ void PanelRender::Render(SoundManager *sm, Tooltip *t_tip, Controller *ctrl, Scr
 			t_tip->UpdateSize(0, glm::vec2(g_obj->GetFontList()->GetFont()->GetLength(t_tip->GetTooltips()->at(0)->string, 45) + BORDER_SIZE * 2 + 2, 45));
 			
 			t_tip->UpdateStringLength(0, g_obj->GetFontList()->GetFont()->GetLength(t_tip->GetTooltips()->at(0)->string, 45));
-			printf("%.2f\n", g_obj->GetFontList()->GetFont()->GetLength(t_tip->GetTooltips()->at(0)->string, 45));
+			t_tip->UpdateStringPosition(0, glm::vec2(ctrl->GetMousePosition().x + 12.f / 2.f + 15.f + 1 / 2.f, ctrl->GetWindowHeight() - (ctrl->GetMousePosition().y + 45 + 13 / 2.f + 1)));
 			t_tip->UpdatePosition(0, ctrl->GetMousePosition());
-			t_tip->UpdateStringPosition(0, glm::vec2(BORDER_SIZE - 1, BORDER_SIZE + 1));
 		}
 		else
 		{
@@ -241,6 +240,7 @@ void PanelRender::Render(SoundManager *sm, Tooltip *t_tip, Controller *ctrl, Scr
 			t_tip->UpdateStatus(4, true);
 			t_tip->UpdatePosition(4, ctrl->GetMousePosition());
 			t_tip->UpdateSize(4, glm::vec2(g_obj->GetFontList()->GetFont()->GetLength(t_tip->GetTooltips()->at(4)->string, 45), 45));
+			t_tip->UpdateStringPosition(4, glm::vec2(ctrl->GetMousePosition().x + 12.f / 2.f + 15.f + 1 / 2.f, ctrl->GetWindowHeight() - (ctrl->GetMousePosition().y + 45 + 13 / 2.f + 1)));
 			t_tip->UpdateStringLength(4, g_obj->GetFontList()->GetFont()->GetLength(t_tip->GetTooltips()->at(4)->string, 45));
 		}
 		else
@@ -296,6 +296,7 @@ void PanelRender::Render(SoundManager *sm, Tooltip *t_tip, Controller *ctrl, Scr
 			t_tip->UpdateStatus(3, true);
 			t_tip->UpdatePosition(3, ctrl->GetMousePosition());
 			t_tip->UpdateSize(3, glm::vec2(g_obj->GetFontList()->GetFont()->GetLength(t_tip->GetTooltips()->at(3)->string, 45), 45));
+			t_tip->UpdateStringPosition(3, glm::vec2(ctrl->GetMousePosition().x + 12.f / 2.f + 15.f + 1 / 2.f, ctrl->GetWindowHeight() - (ctrl->GetMousePosition().y + 45 + 13 / 2.f + 1)));
 			t_tip->UpdateStringLength(3, g_obj->GetFontList()->GetFont()->GetLength(t_tip->GetTooltips()->at(3)->string, 45));
 		}
 		else
@@ -327,6 +328,7 @@ void PanelRender::Render(SoundManager *sm, Tooltip *t_tip, Controller *ctrl, Scr
 			t_tip->UpdateStatus(5, true);
 			t_tip->UpdatePosition(5, ctrl->GetMousePosition());
 			t_tip->UpdateSize(5, glm::vec2(g_obj->GetFontList()->GetFont()->GetLength(t_tip->GetTooltips()->at(5)->string, 45), 45));
+			t_tip->UpdateStringPosition(5, glm::vec2(ctrl->GetMousePosition().x + 12.f / 2.f + 15.f + 1 / 2.f, ctrl->GetWindowHeight() - (ctrl->GetMousePosition().y + 45 + 13/2.f + 1)));
 			t_tip->UpdateStringLength(5, g_obj->GetFontList()->GetFont()->GetLength(t_tip->GetTooltips()->at(5)->string, 45));
 		}
 		else
@@ -347,6 +349,7 @@ void PanelRender::Render(SoundManager *sm, Tooltip *t_tip, Controller *ctrl, Scr
 			t_tip->UpdateStatus(2, true);
 			t_tip->UpdatePosition(2, ctrl->GetMousePosition());
 			t_tip->UpdateSize(2, glm::vec2(g_obj->GetFontList()->GetFont()->GetLength(t_tip->GetTooltips()->at(2)->string, 45), 45));
+			t_tip->UpdateStringPosition(2, glm::vec2(ctrl->GetMousePosition().x + 12.f / 2.f + 15.f + 1 / 2.f, ctrl->GetWindowHeight() - (ctrl->GetMousePosition().y + 45 + 13 / 2.f + 1)));
 			t_tip->UpdateStringLength(2, g_obj->GetFontList()->GetFont()->GetLength(t_tip->GetTooltips()->at(2)->string, 45));
 		}
 		else

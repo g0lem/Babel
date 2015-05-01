@@ -174,7 +174,7 @@ class Tooltip
 
 	float border_size = 13;
 
-	float offset = 13;
+	float offset = 0;
 
 public:
 	inline Tooltip(){ this->Init(); }
@@ -195,6 +195,7 @@ public:
 		textures[8] = "bottom-right.png";
 
 		this->corner = glm::vec2(13, 12);
+		this->offset = corner.x / 2.f + 1;
 
 		this->t_sprite->Load(9, "data/UI/Tooltips/", textures);
 
@@ -257,9 +258,9 @@ public:
 		int i = this->GetRenderingIndex();
 		if (tooltips->at(i)->status == TOOLTIP_ACTIVE && tooltips->at(i)->renderstring == true)
 		{
-		tr->SetColor(1, 1, 1);
-		g_obj->GetFontList()->GetFont()->Print(this->tooltips->at(i)->string ,
-			this->tooltips->at(i)->position.x + border_size/2.f - 1/2.f, ctrl->GetWindowHeight() - (this->tooltips->at(i)->position.y + this->tooltips->at(i)->stringsize - border_size/2.f),
+			tr->SetColor(1, 1, 1);
+			g_obj->GetFontList()->GetFont()->Print(this->tooltips->at(i)->string ,
+				this->tooltips->at(i)->stringposition.x, this->tooltips->at(i)->stringposition.y,
 			this->tooltips->at(i)->stringsize);
 		}
 
