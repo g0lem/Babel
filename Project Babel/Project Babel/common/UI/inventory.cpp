@@ -304,8 +304,16 @@ void Inventory::Render(Tooltip *t_tip, SoundManager *sm, Controller *ctrl, Scree
 		if (g_obj->GetUIState()->GetInventoryState()->GetButtonStates()[17] == HOVER)
 		{
 			t_tip->UpdateStatus(WEAPON, true);
-			t_tip->UpdatePosition(WEAPON, ctrl->GetMousePosition());
 			t_tip->UpdateText(WEAPON, weapon_item->item_name);
+			t_tip->UpdateOffset(WEAPON, 7.5);
+			t_tip->UpdateVoffset(WEAPON, 4);
+			t_tip->UpdateSize(WEAPON,
+				glm::vec2(g_obj->GetFontList()->GetFont()->GetLength(t_tip->GetTooltips()->at(WEAPON)->string, 25)
+				+ t_tip->corner.x * 2 + t_tip->GetOffset(WEAPON), 25 + t_tip->corner.y + t_tip->GetVoffset(WEAPON)));
+			t_tip->UpdateStringPosition(WEAPON, glm::vec2(ctrl->GetMousePosition().x + 9.f + 15.f, ctrl->GetWindowHeight() - (ctrl->GetMousePosition().y + 25 + 15 + 2)));
+			t_tip->UpdateStringLength(WEAPON, g_obj->GetFontList()->GetFont()->GetLength(t_tip->GetTooltips()->at(WEAPON)->string, 25));
+			t_tip->UpdatePosition(WEAPON, ctrl->GetMousePosition());
+
 		}
 
 	}
@@ -339,8 +347,16 @@ void Inventory::Render(Tooltip *t_tip, SoundManager *sm, Controller *ctrl, Scree
 
 	if (g_obj->GetUIState()->GetInventoryState()->GetButtonStates()[18] == HOVER)
 	{
-	t_tip->UpdateStatus(ARMOR, true);
-	t_tip->UpdatePosition(ARMOR, ctrl->GetMousePosition());
+		t_tip->UpdateStatus(ARMOR, true);
+		t_tip->UpdateText(ARMOR, armor_item->item_name);
+		t_tip->UpdateOffset(ARMOR, 7.5);
+		t_tip->UpdateVoffset(ARMOR, 4);
+		t_tip->UpdateSize(ARMOR,
+			glm::vec2(g_obj->GetFontList()->GetFont()->GetLength(t_tip->GetTooltips()->at(ARMOR)->string, 25)
+			+ t_tip->corner.x * 2 + t_tip->GetOffset(ARMOR), 25 + t_tip->corner.y + t_tip->GetVoffset(ARMOR)));
+		t_tip->UpdateStringPosition(ARMOR, glm::vec2(ctrl->GetMousePosition().x + 9.f + 15.f, ctrl->GetWindowHeight() - (ctrl->GetMousePosition().y + 25 + 15 + 2)));
+		t_tip->UpdateStringLength(ARMOR, g_obj->GetFontList()->GetFont()->GetLength(t_tip->GetTooltips()->at(ARMOR)->string, 25));
+		t_tip->UpdatePosition(ARMOR, ctrl->GetMousePosition());
 	}
 	
 	}

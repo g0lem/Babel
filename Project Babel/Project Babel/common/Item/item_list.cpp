@@ -165,7 +165,7 @@ void ItemList::LoadItems()
 
 	m_item = new Item;
 	m_item->Init();
-	m_item->frame = 1;
+	m_item->frame = 6;
 	m_item->type = ITEM_TYPE_ARMOR;
 	m_item->armor = 2;
 	m_item->item_name = "Leather Armor";
@@ -173,7 +173,7 @@ void ItemList::LoadItems()
 
 	m_item = new Item;
 	m_item->Init();
-	m_item->frame = 1;
+	m_item->frame = 6;
 	m_item->type = ITEM_TYPE_ARMOR;
 	m_item->armor = 1;
 	m_item->item_name = "Leather Armor";
@@ -182,7 +182,7 @@ void ItemList::LoadItems()
 
 	m_item = new Item;
 	m_item->Init();
-	m_item->frame = 1;
+	m_item->frame = 5;
 	m_item->type = ITEM_TYPE_ARMOR;
 	m_item->armor = 2;
 	m_item->item_name = "Plate Armor";
@@ -191,7 +191,7 @@ void ItemList::LoadItems()
 
 	m_item = new Item;
 	m_item->Init();
-	m_item->frame = 1;
+	m_item->frame = 5;
 	m_item->type = ITEM_TYPE_ARMOR;
 	m_item->armor = 3;
 	m_item->item_name = "Plate Armor";
@@ -201,7 +201,7 @@ void ItemList::LoadItems()
 
 	m_item = new Item;
 	m_item->Init();
-	m_item->frame = 1;
+	m_item->frame = 5;
 	m_item->type = ITEM_TYPE_ARMOR;
 	m_item->armor = 4;
 	m_item->item_name = "Epic Armor";
@@ -303,18 +303,20 @@ std::string ItemList::NameGenerator(std::string type)
 
 void ItemList::LoadSprites()
 {
-	char ** tex_str = new char*[5];
+	char ** tex_str = new char*[7];
 
 	tex_str[0] = "potion.png";
 	tex_str[1] = "hammer.png";
 	tex_str[2] = "sword.png";
 	tex_str[3] = "chains-icon.png";
 	tex_str[4] = "spikes-icon.png";
+	tex_str[5] = "iron-chestplace.png";
+	tex_str[6] = "leather-chestplate-2.png";
 
 
 	this->m_sprite = new Sprite();
 
-	this->m_sprite->Load(5, "data/items/", tex_str);
+	this->m_sprite->Load(7, "data/items/", tex_str);
 
 
 	char ** tex_str2 = new char*[10];
