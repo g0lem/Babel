@@ -148,10 +148,14 @@ void EnemyLoader::Init()
 	temp->m_sprites[6]->Load(temp->num_frames[6], "data/sprites/hydra/left/", tex_str);
 	temp->m_sprites[7] = new Sprite();
 	temp->m_sprites[7]->Load(temp->num_frames[7], "data/sprites/hydra/right/", tex_str);
+	
+	
+	
+	
 	temp->m_stats = new Stats();
 	temp->m_stats->base_attack = glm::vec2(3.0f, 4.0f);
 	temp->m_stats->base_attack_speed = 1.0f;
-	temp->m_stats->base_movement_speed = 2.0f;
+	temp->m_stats->base_movement_speed = 0.0f;
 	temp->m_stats->GetHp()->Buff(30);
 
 	temp->ranged = true;

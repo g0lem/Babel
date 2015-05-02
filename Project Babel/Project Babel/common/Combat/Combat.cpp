@@ -414,6 +414,17 @@ void Combat::EnemyAttack(SoundManager *sm, Controller * ctrl, GameObject * g_obj
 		    {
 				if (current_enemy->GetTurnSystem()->GetTurns() >= 1.0f / current_enemy->GetStats()->base_attack_speed && current_enemy->GetStats()->aggressive == true)
 				{
+					if (player->GetPAttributes()->position.x == current_enemy->GetPAttributes()->position.x || player->GetPAttributes()->position.y == current_enemy->GetPAttributes()->position.y)
+					{
+						
+						int frame = current_enemy->GetDirection()->Compute(DIR_TYPE_4, current_enemy->GetPAttributes()->position, current_enemy->GetPAttributes()->target);
+						
+							g_obj->GetSpellManager()->Add(new Spell(FIREBALL, 10, current_enemy->GetPAttributes()->position,
+								g_obj->GetScroller()->GetOffset(), current_enemy->GetPAttributes()->scale,
+								5.f, frame));
+						
+					}
+
 
 				}
 		    }

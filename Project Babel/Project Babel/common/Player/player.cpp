@@ -140,7 +140,7 @@ void Player::Render(SoundManager *sm, Controller * ctrl, ScreenUniformData * u_d
 			}
 		}
 
-
+	
 
 		int frame = m_dir->Compute(DIR_TYPE_4, attributes->position, attributes->target);
 		
