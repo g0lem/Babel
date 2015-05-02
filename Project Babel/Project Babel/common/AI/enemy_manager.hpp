@@ -25,6 +25,7 @@ class EnemyManager
 
 	int type;
 
+	int num_enemies_max;
 
 
 public:
@@ -39,6 +40,7 @@ public:
 	void Init(GLuint num, Map * map, GameObject * g_obj, int type);
 	void AddEnemies(GLuint num, Map * map, GameObject * g_obj, int type);
 	inline std::vector<Enemy*>*GetEnemiesPointer(){ return this->m_enemies; }
+	int GetMax(){ return this->num_enemies_max; }
 
 
 

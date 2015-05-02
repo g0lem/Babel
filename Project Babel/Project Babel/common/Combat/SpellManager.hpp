@@ -27,6 +27,9 @@ public:
 	{
 		this->m_spells->push_back(spell);
 	}
+
+	inline Spell *GetSpell(int index){ return this->m_spells->at(index); }
+	inline std::vector<Spell *> *GetBuffer(){ return this->m_spells; }
 	
 	void Render(Controller *ctrl, ScreenUniformData *u_data, GLboolean **tiles)
 	{
@@ -34,12 +37,13 @@ public:
 		{
 
 
-			if (this->m_spells->at(i)->active == true)
+			if (this->m_spells->at(i)->active == true && this->m_spells->at(i)->state == true)
 			{
 				this->m_spells->at(i)->Operate(ctrl, u_data, tiles);
 			}
 			else
 			{
+
 				this->m_spells->erase(this->m_spells->begin() + i);
 			}
 		}

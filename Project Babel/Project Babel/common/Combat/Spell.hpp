@@ -25,9 +25,10 @@ public:
 	bool state;
 	std::string path;
 	glm::vec2 offset;
+	glm::vec2 finish;
 
-	inline Spell(int spellID, glm::vec2 position, glm::vec2 offset, glm::vec2 scale, float speed, int direction)
-		: position(position), scale(scale), speed(speed), direction(direction), offset(offset)
+	inline Spell(int spellID, int damage, glm::vec2 position, glm::vec2 offset, glm::vec2 scale, float speed, int direction)
+		: damage(damage), position(position), scale(scale), speed(speed), direction(direction), offset(offset)
 	{
 
 		if (spellID == FIREBALL)
@@ -36,13 +37,13 @@ public:
 		this->m_sprite = new Sprite();
 		this->m_sprite->Load(path.c_str());
 		this->active = true;
-		this->state = RUNNING;
+		this->state = true;
 	}
 
-	inline void Operate(Controller *ctrl, ScreenUniformData * u_data, GLboolean **tiles)
+	inline glm::vec2 Operate(Controller *ctrl, ScreenUniformData * u_data, GLboolean **tiles)
 	{
 
-		
+
 		rPosition = glm::ivec2((this->position - offset )/ this->scale);
 
 		if (tiles[rPosition.x][rPosition.y] == 0)
@@ -59,7 +60,9 @@ public:
 			else if (direction == DOWN && tiles[rPosition.x][rPosition.y + 1] == 1)
 			{
 				this->active = false;
-				this->state = FINISHED;
+
+				rPosition.y++;
+				return position;
 			}
 			if (direction == LEFT)
 				{
@@ -72,20 +75,21 @@ public:
 			else if (direction == RIGHT && tiles[rPosition.x + 1][rPosition.y] == 1)
 			{
 				this->active = false;
-				this->state = FINISHED;
+				rPosition.x++;
+				return position;
 			}
 
-			this->Render(ctrl, u_data);
+			this->Render(u_data);
 		}
 		else
 		{
 			this->active = false;
-			this->state = FINISHED;
+			return position;
 		}
 		
 	}
 
-	inline void Render(Controller *ctrl, ScreenUniformData * u_data)
+	inline void Render(ScreenUniformData * u_data)
 	{
 		u_data->SetAmbientLight();
 		u_data->ApplyMatrix(Translation(this->position)*Scale(this->scale));

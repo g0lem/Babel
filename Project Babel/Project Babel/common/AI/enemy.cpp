@@ -100,6 +100,7 @@ void Enemy::SetRandomPosition(Map * map)
 		this->p_attributes->target = this->p_attributes->position;
 
 		
+
 		GLint result = map->GetTilemap()->GetTiles()[GLuint(this->p_attributes->position.x)][GLuint(this->p_attributes->position.y)];
 
 
@@ -108,14 +109,7 @@ void Enemy::SetRandomPosition(Map * map)
 			ok = true;
 			
 		}
-		/*GLint r = Rand(10);
-		if (r > 0 || r == 0)
-		{
-			color = glm::vec4(GLfloat(Rand(10)) / 10, GLfloat(Rand(10)) / 10, GLfloat(Rand(10)) / 10, 1.0f)*GLfloat(Rand(10) + 1);
-			this->m_stats->GetHp()->Buff(Rand(8));
-		}
-		else
-			color = glm::vec4(1, 1, 1, 1);*/
+
 
 	}
 
@@ -133,7 +127,6 @@ void Enemy::SetPosition(glm::vec2 position)
 		
 	
 		this->p_attributes->position = position;
-		//this->p_attributes->position = glm::vec2(Rand(map->GetTilemap()->GetSize().x), Rand(map->GetTilemap()->GetSize().y));
 		this->p_attributes->target = this->p_attributes->position;
 
 

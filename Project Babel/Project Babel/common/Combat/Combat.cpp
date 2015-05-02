@@ -68,7 +68,7 @@ void Combat::PlayerAttack(SoundManager * sm, Controller * ctrl, GameObject * g_o
 	
 
 
-	
+	SpellManager *spell = g_obj->GetSpellManager();
 
 
 	if (player->GetTarget() > NO_TARGET && 
@@ -146,9 +146,6 @@ void Combat::PlayerAttack(SoundManager * sm, Controller * ctrl, GameObject * g_o
 				e_attr->scale +
 				g_obj->GetScroller()->GetOffset();
 
-			print_vec2(e_attr->position *
-				e_attr->scale);
-			print_vec2(text_pos);
 
 
 			text_pos.y -= 10;
@@ -170,6 +167,90 @@ void Combat::PlayerAttack(SoundManager * sm, Controller * ctrl, GameObject * g_o
 			sm->PlaySound(ATTACK2);
 
 
+		}
+	}
+	else
+	{
+		for (int i = 0; i < spell->GetBuffer()->size(); i++)
+		{
+			int nextSpell = false;
+
+			if (spell->GetSpell(i)->active == false)
+			{
+				for (int j = 0; j < enemies->GetEnemiesPointer()->size() && nextSpell == false && spell->GetSpell(i)->state == true; j++)
+				{
+					if ((glm::ivec2)enemies->GetEnemiesPointer()[0][j]->GetPAttributes()->position == spell->GetSpell(i)->rPosition)
+					{
+						printf("IM FUCKING ANNOYED\n");
+
+						nextSpell == true;
+
+						GLint hp = enemies->GetEnemiesPointer()[0][j]->GetStats()->GetHp()->hp;
+						GLint dmg = enemies->GetEnemiesPointer()[0][j]->GetStats()->GetHp()->Damage(glm::vec2(spell->GetSpell(i)->damage, spell->GetSpell(i)->damage));
+
+						PhysicalAttributes * e_attr = enemies->GetEnemiesPointer()[0][j]->GetPAttributes();
+
+						int rand_item_number;
+						if (dmg >= hp)
+						{
+							player->GetStats()->GetXp()->xp++;
+
+							rand_item_number = enemies->GetEnemiesPointer()[0][j]->items[Dice::Get((GLuint*)(enemies->GetEnemiesPointer()[0][j]->chances), (GLuint)(enemies->GetEnemiesPointer()[0][j]->num_drop), 100)];
+
+							if (rand_item_number != EnemyData::item_types::Nothing)
+							{
+
+								item = g_obj->GetItemList()->GetList()[rand_item_number];
+								g_obj->GetItemList()->AddDroppedItem((int)(enemies->GetEnemiesPointer()[0][j]->GetPAttributes()->position.x), (int)(enemies->GetEnemiesPointer()[0][j]->GetPAttributes()->position.y), item);
+							}
+
+							enemies->GetEnemiesPointer()[0][j]->GetStats()->GetHp()->Damage(glm::vec2(spell->GetSpell(i)->damage, spell->GetSpell(i)->damage));
+							player->GetEventHandler()->Init(current_map, g_obj);
+						}
+
+						if (player->GetStats()->GetXp()->xp >= player->GetStats()->GetXp()->max_xp)
+						{
+							int hp = player->GetStats()->GetHp()->hp
+								/ player->GetStats()->GetHp()->max_hp;
+							int mhp = player->GetStats()->GetXp()->lvl * 2;
+
+
+							player->GetStats()->GetHp()->Buff(hp * mhp, mhp);
+							player->GetStats()->GetXp()->Increase(player->GetStats()->GetXp()->lvl * 4);
+							player->GetStats()->base_attack += 2;
+							player->GetStats()->GetXp()->lvl++;
+							player->GetStats()->GetXp()->xp = 0;
+						}
+
+						enemies->GetEnemiesPointer()[0][j]->GetStats()->aggressive = true;
+
+
+						glm::vec2 text_pos = e_attr->position *
+							e_attr->scale +
+							g_obj->GetScroller()->GetOffset();
+
+
+
+
+						text_pos.y -= 10;
+						text_pos.x -= 4;
+
+						char *buffer = new char[256];
+						_itoa(dmg, buffer, 10);
+						strcat(buffer, " DMG");
+
+						g_obj->GetTextObject()->Add(g_obj->GetFontList()->GetFont(),
+							buffer,
+							text_pos,
+							glm::vec4(1.0f, 0.0f, 0.0f, 1.0f), 20,
+							UP,
+							50);
+
+						spell->GetSpell(i)->state = false;
+
+					}
+				}
+			}
 		}
 	}
 

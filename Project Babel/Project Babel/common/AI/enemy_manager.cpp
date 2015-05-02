@@ -97,6 +97,7 @@ void EnemyManager::Init(GLuint num, Map * map, GameObject * g_obj, int type)
 		}
 	}
 
+	this->num_enemies_max = num;
 
 }
 

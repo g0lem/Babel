@@ -154,7 +154,7 @@ void Player::Render(SoundManager *sm, Controller * ctrl, ScreenUniformData * u_d
 
 		if (ctrl->GetKeyOnce(GLFW_KEY_X))
 		{
-			g_obj->GetSpellManager()->Add(new Spell(FIREBALL, GridPosition(attributes->position*attributes->scale + g_obj->GetScroller()->GetOffset(), attributes->scale),
+			g_obj->GetSpellManager()->Add(new Spell(FIREBALL, 10, GridPosition(attributes->position*attributes->scale + g_obj->GetScroller()->GetOffset(), attributes->scale),
 				g_obj->GetScroller()->GetOffset(),attributes->scale,
 				5.f, frame));
 		}
