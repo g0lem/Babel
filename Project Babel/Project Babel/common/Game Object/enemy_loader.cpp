@@ -188,23 +188,24 @@ void EnemyLoader::Init()
 	//Golem
 
 	temp = new EnemyData();
-	temp->num_dirs = 8;
+	temp->num_dirs = 9;
 
-	tex_str = new char*[3];
-	tex_str[0] = "frame1.png";
-	tex_str[1] = "frame2.png";
-	tex_str[2] = "frame3.png";
+	tex_str = new char*[4];
+	tex_str[0] = "1.png";
+	tex_str[1] = "2.png";
+	tex_str[2] = "3.png";
+	tex_str[3] = "4.png";
 
 	temp->num_frames = new GLuint[temp->num_dirs];
-	temp->num_frames[0] = 3;
-	temp->num_frames[1] = 3;
-	temp->num_frames[2] = 3;
-	temp->num_frames[3] = 3;
-	temp->num_frames[4] = 3;
-	temp->num_frames[5] = 3;
-	temp->num_frames[6] = 3;
-	temp->num_frames[7] = 3;
-
+	temp->num_frames[0] = 4;
+	temp->num_frames[1] = 4;
+	temp->num_frames[2] = 4;
+	temp->num_frames[3] = 4;
+	temp->num_frames[4] = 4;
+	temp->num_frames[5] = 4;
+	temp->num_frames[6] = 4;
+	temp->num_frames[7] = 4;
+	temp->num_frames[8] = 1;
 
 
 	temp->m_sprites = new Sprite*[temp->num_dirs];
@@ -224,6 +225,10 @@ void EnemyLoader::Init()
 	temp->m_sprites[6]->Load(temp->num_frames[6], "data/sprites/golem/left/", tex_str);
 	temp->m_sprites[7] = new Sprite();
 	temp->m_sprites[7]->Load(temp->num_frames[7], "data/sprites/golem/right/", tex_str);
+	temp->m_sprites[8] = new Sprite();
+	temp->m_sprites[8]->Load(temp->num_frames[8], "data/sprites/golem/sleep/", tex_str);
+
+
 
 	temp->m_stats = new Stats();
 	temp->m_stats->aggressive = false;

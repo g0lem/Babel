@@ -53,10 +53,21 @@ void Enemy::Render(Controller * ctrl, ScreenUniformData * u_data, GameObject * g
 
 
 
+
 	if (a_handler->GetAction() == ATTACKING)
 		this->m_sprites[dir + 4]->Render(this->animations[dir + 4]->GetIFrames());
-	else
+	else if (this->m_stats->aggressive == true)
 		this->m_sprites[dir]->Render(this->animations[dir]->GetIFrames());
+
+
+
+	if (this->m_stats->aggressive == false)
+	{
+		this->animations[dir + 8]->Update(GLfloat(this->animations[dir + 8]->GetNumFrames())*7.5f, ctrl->GetFpsPointer()->Delta());
+		this->m_sprites[dir + 8]->Render(this->animations[dir + 8]->GetIFrames());
+	}
+
+
 
 
 	this->RenderMisc(u_data, g_obj);
