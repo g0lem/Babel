@@ -110,19 +110,10 @@ void Combat::PlayerAttack(SoundManager * sm, Controller * ctrl, GameObject * g_o
 					item = g_obj->GetItemList()->GetList()[rand_item_number];
 					g_obj->GetItemList()->AddDroppedItem((int)(enemies->GetEnemiesPointer()[0][player->GetTarget()]->GetPAttributes()->position.x), (int)(enemies->GetEnemiesPointer()[0][player->GetTarget()]->GetPAttributes()->position.y), item);
 				}
-					// std::cout << g_obj->GetItemList()->GetDroppedItems().size()<<"\n";
 				enemies->GetEnemiesPointer()[0][player->GetTarget()]->GetStats()->GetHp()->Damage(player->GetItems()[ITEM_SLOT_WEAPON]->attack);
 				player->GetEventHandler()->Init(current_map, g_obj);
 			}
 
-			/*
-			
-			
-			xp = current xp
-			max xp = max xp
-
-
-			*/
 
 			if (player->GetStats()->GetXp()->xp >= player->GetStats()->GetXp()->max_xp)
 			{
@@ -411,21 +402,21 @@ void Combat::EnemyAttack(SoundManager *sm, Controller * ctrl, GameObject * g_obj
 		
 			if (current_enemy->ranged == true)
 		    {
-				if (current_enemy->GetTurnSystem()->GetTurns() >= 1.0f / current_enemy->GetStats()->base_attack_speed && current_enemy->GetStats()->aggressive == true)
-				{
-					if (player->GetPAttributes()->position.x == current_enemy->GetPAttributes()->position.x || player->GetPAttributes()->position.y == current_enemy->GetPAttributes()->position.y)
-					{
-						
-						int frame = current_enemy->GetDirection()->Compute(DIR_TYPE_4, current_enemy->GetPAttributes()->position, current_enemy->GetPAttributes()->target);
-						
-							g_obj->GetSpellManager()->Add(new Spell(FIREBALL, 10, current_enemy->GetPAttributes()->position,
-								g_obj->GetScroller()->GetOffset(), current_enemy->GetPAttributes()->scale,
-								5.f, frame));
-						
-					}
+				//if (current_enemy->GetTurnSystem()->GetTurns() >= 1.0f / current_enemy->GetStats()->base_attack_speed && current_enemy->GetStats()->aggressive == true)
+				//{
+				//	if (player->GetPAttributes()->position.x == current_enemy->GetPAttributes()->position.x || player->GetPAttributes()->position.y == current_enemy->GetPAttributes()->position.y)
+				//	{
+				//		
+				//		int frame = current_enemy->GetDirection()->Compute(DIR_TYPE_4, current_enemy->GetPAttributes()->position, current_enemy->GetPAttributes()->target);
+				//		
+				//			g_obj->GetSpellManager()->Add(new Spell(FIREBALL, 10, current_enemy->GetPAttributes()->position,
+				//				g_obj->GetScroller()->GetOffset(), current_enemy->GetPAttributes()->scale,
+				//				5.f, frame));
+				//		
+				//	}
 
 
-				}
+				//}
 		    }
 		
 			else if (current_enemy->GetTurnSystem()->GetTurns() >= 1.0f / current_enemy->GetStats()->base_attack_speed && current_enemy->GetStats()->aggressive == true)

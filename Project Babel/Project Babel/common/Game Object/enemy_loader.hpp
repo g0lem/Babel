@@ -9,7 +9,9 @@ public:
 
 	enum item_types
 	{
-		health_potion_12, health_potion_20, xp_potion_2, Sword, Hammer, Leather_Armor, Plate_Armor, Epic_Sword, Scroll, Nothing
+		health_potion_12, health_potion_20, xp_potion_2, Sword = 2, Hammer = 1,
+		Leather_Armor_1 = 6, Leather_Armor_2 = 7,Plate_Armor_1 = 8, Plate_Armor_2 = 9, Epic_Sword = 5, 
+		Epic_Armor = 10, Scroll, Nothing
 	};
 
 

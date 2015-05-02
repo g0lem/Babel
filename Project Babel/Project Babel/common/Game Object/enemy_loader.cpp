@@ -67,21 +67,22 @@ void EnemyLoader::Init()
 
 	
 
-	temp->num_drop = 9;
+	temp->num_drop = 10;
 	temp->chances = new int[temp->num_drop];
 	temp->items = new int[temp->num_drop];
 	
 
 
-	temp->chances[0] = 25;  temp->items[0] = EnemyData::item_types::health_potion_12;
+	temp->chances[0] = 24;  temp->items[0] = EnemyData::item_types::health_potion_12;
 	temp->chances[1] = 10; temp->items[1] = EnemyData::item_types::health_potion_12;
 	temp->chances[2] = 10;  temp->items[2] = EnemyData::item_types::health_potion_12;
 	temp->chances[3] = 5; temp->items[3] = EnemyData::item_types::Sword;
 	temp->chances[4] = 3;  temp->items[4] = EnemyData::item_types::Hammer;
-	temp->chances[5] = 5; temp->items[5] = EnemyData::item_types::Leather_Armor;
-	temp->chances[6] = 3;  temp->items[6] = EnemyData::item_types::Plate_Armor;
+	temp->chances[5] = 5; temp->items[5] = EnemyData::item_types::Leather_Armor_1;
+	temp->chances[6] = 3;  temp->items[6] = EnemyData::item_types::Plate_Armor_1;
 	temp->chances[7] = 1; temp->items[7] = EnemyData::item_types::Epic_Sword;
-	temp->chances[8] = 38; temp->items[8] = EnemyData::item_types::Nothing;
+	temp->chances[8] = 1; temp->items[8] = EnemyData::item_types::Epic_Armor;
+	temp->chances[9] = 38; temp->items[9] = EnemyData::item_types::Nothing;
 
 
 
@@ -161,21 +162,22 @@ void EnemyLoader::Init()
 	temp->ranged = true;
 
 
-	temp->num_drop = 9;
+	temp->num_drop = 10;
 	temp->chances = new int[temp->num_drop];
 	temp->items = new int[temp->num_drop];
 
 
 
 	temp->chances[0] = 0;  temp->items[0] = EnemyData::item_types::health_potion_12;
-	temp->chances[1] = 30; temp->items[1] = EnemyData::item_types::health_potion_12;
+	temp->chances[1] = 10; temp->items[1] = EnemyData::item_types::health_potion_12;
 	temp->chances[2] = 0;  temp->items[2] = EnemyData::item_types::health_potion_12;
-	temp->chances[3] = 10; temp->items[3] = EnemyData::item_types::Sword;
+	temp->chances[3] = 5; temp->items[3] = EnemyData::item_types::Sword;
 	temp->chances[4] = 5;  temp->items[4] = EnemyData::item_types::Hammer;
-	temp->chances[5] = 10; temp->items[5] = EnemyData::item_types::Leather_Armor;
-	temp->chances[6] = 5;  temp->items[6] = EnemyData::item_types::Plate_Armor;
+	temp->chances[5] = 5; temp->items[5] = EnemyData::item_types::Leather_Armor_2;
+	temp->chances[6] = 5;  temp->items[6] = EnemyData::item_types::Plate_Armor_2;
 	temp->chances[7] = 20; temp->items[7] = EnemyData::item_types::Epic_Sword;
-	temp->chances[8] = 20; temp->items[8] = EnemyData::item_types::Nothing;
+	temp->chances[8] = 20; temp->items[8] = EnemyData::item_types::Epic_Armor;
+	temp->chances[9] = 20; temp->items[9] = EnemyData::item_types::Nothing;
 
 
 
@@ -244,20 +246,21 @@ void EnemyLoader::Init()
 
 	temp->ranged = false;
 
-	temp->num_drop = 9;
+	temp->num_drop = 10;
 	temp->chances = new int[temp->num_drop];
 	temp->items = new int[temp->num_drop];
 
 
-	temp->chances[0] = 10;  temp->items[0] = EnemyData::item_types::health_potion_12;
+	temp->chances[0] = 9;  temp->items[0] = EnemyData::item_types::health_potion_12;
 	temp->chances[1] = 0; temp->items[1] = EnemyData::item_types::health_potion_12;
 	temp->chances[2] = 5;  temp->items[2] = EnemyData::item_types::health_potion_12;
 	temp->chances[3] = 3; temp->items[3] = EnemyData::item_types::Sword;
 	temp->chances[4] = 1;  temp->items[4] = EnemyData::item_types::Hammer;
-	temp->chances[5] = 3; temp->items[5] = EnemyData::item_types::Leather_Armor;
-	temp->chances[6] = 30;  temp->items[6] = 10;
-	temp->chances[7] = 30; temp->items[7] = 5;
-	temp->chances[8] = 74; temp->items[8] = EnemyData::item_types::Nothing;
+	temp->chances[5] = 3; temp->items[5] = EnemyData::item_types::Leather_Armor_2;
+	temp->chances[6] = 3;  temp->items[6] = EnemyData::item_types::Plate_Armor_2;
+	temp->chances[7] = 1; temp->items[7] = EnemyData::item_types::Epic_Sword;
+	temp->chances[8] = 1; temp->items[8] = EnemyData::item_types::Epic_Armor;
+	temp->chances[9] = 74; temp->items[9] = EnemyData::item_types::Nothing;
 
 
 
