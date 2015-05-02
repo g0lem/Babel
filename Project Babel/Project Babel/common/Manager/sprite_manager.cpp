@@ -32,7 +32,7 @@ void SpriteManager::Init(GameObject * g_obj)
 	this->player = new Player();
 	this->player->Load(g_obj, this->map);
 
-	this->m_enemies = new EnemyManager(60+(rand()%3), this->map, g_obj, 2);
+	this->m_enemies = new EnemyManager(1+(rand()%3), this->map, g_obj, 2);
 
 	for (int i = 0; i < g_obj->GetItemList()->GetObjects().size(); i++)
 	{

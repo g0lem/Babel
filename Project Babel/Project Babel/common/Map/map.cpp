@@ -245,7 +245,7 @@ void Map::GenerateScore()
 				else
 					walls[x] = this->tilemap->GetTiles()[i + dx[x]][j + dy[x]];
 			else
-				walls[x] = 0;
+				walls[x] = -3;
 
 		}
 
@@ -255,6 +255,8 @@ void Map::GenerateScore()
 
 		if (this->tilemap->GetTiles()[i][j] >= SOLID_LIMIT)
 		{
+			this->tilemap->GetTiles()[i][j] = NW_BLOCK;
+
 			if (walls[1] == -2)
 			{
 
@@ -309,6 +311,7 @@ void Map::GenerateScore()
 				{
 					if (this->tilemap->GetTiles()[i][j - 1] == FLOOR_BLOCK)
 						this->tilemap->GetTiles()[i][j] = DOWN_STONE_BLOCK;
+
 					if (this->tilemap->GetTiles()[i][j + 1] == FLOOR_BLOCK)
 						this->tilemap->GetTiles()[i][j] = UP_STONE_BLOCK;
 				}
@@ -321,6 +324,7 @@ void Map::GenerateScore()
 					if (i - 1 >= 0)
 						if (this->tilemap->GetTiles()[i - 1][j] == FLOOR_BLOCK)
 							this->tilemap->GetTiles()[i][j] = LEFT_STONE_BLOCK;
+
 					if (this->tilemap->GetTiles()[i + 1][j] == FLOOR_BLOCK)
 						this->tilemap->GetTiles()[i][j] = RIGHT_STONE_BLOCK;
 				}
