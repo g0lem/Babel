@@ -240,13 +240,18 @@ void Player::LoadItems(GameObject * g_obj)
 	
 	if (g_obj->GetItemList()->must_load)
 	{
-		this->items = new Item*[1];
+		this->items = new Item*[3];
 		this->items[ITEM_SLOT_WEAPON] = g_obj->GetItemList()->weapon;
+		this->items[ITEM_SLOT_ARMOR] = g_obj->GetItemList()->armor;
 		g_obj->GetItemList()->must_load = false;
 	}
 	if (g_obj->GetItemList()->must_heal)
 	{
-		this->GetStats()->GetHp()->Buff(8);
+		int temp = Rand(1, 4);
+		if (this->GetStats()->GetHp()->hp + temp > this->GetStats()->GetHp()->max_hp)
+			this->GetStats()->GetHp()->hp = this->GetStats()->GetHp()->max_hp;
+		else
+			this->GetStats()->GetHp()->hp += Rand(1, 4);
 		g_obj->GetItemList()->must_heal = false;
 	}
 

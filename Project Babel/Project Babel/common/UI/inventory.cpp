@@ -207,7 +207,7 @@ void Inventory::Render(Tooltip *t_tip, SoundManager *sm, Controller *ctrl, Scree
 
 					//this->w_position = box_position + glm::vec2(32, 68) + glm::vec2(11, 0) + glm::vec2(5, 6);
 					this->a_position = box_position + glm::vec2(129, 69) + glm::vec2(5, 0) + glm::vec2(5, 6);
-					this->w_scale = glm::vec2(40, 40);
+					this->a_scale = glm::vec2(40, 40);
 
 					this->EquippedArmor = true;
 
@@ -318,10 +318,10 @@ void Inventory::Render(Tooltip *t_tip, SoundManager *sm, Controller *ctrl, Scree
 
     if (EquippedArmor == true)
 	{
-	/*this->a_button[0]->Render(ctrl, u_data, this->skins, 9, g_obj->GetUIState()->GetInventoryState()->GetButtonStates()[18]);
+	this->a_button[0]->Render(ctrl, u_data, this->skins, 9, g_obj->GetUIState()->GetInventoryState()->GetButtonStates()[18]);
 
 
-	//t_tip->UpdateStatus(WEAPON, false);
+	t_tip->UpdateStatus(ARMOR, false);
 	a_position = box_position + glm::vec2(129, 69) + glm::vec2(5, 0) + glm::vec2(5, 6);
 	u_data->ApplyMatrix(Translation(a_position)*Scale(a_scale));
 	this->armor->Render(ArmorFrame);
@@ -330,7 +330,7 @@ void Inventory::Render(Tooltip *t_tip, SoundManager *sm, Controller *ctrl, Scree
 	{
 	sm->PlaySound(EQUIPITEM);
 
-	this->EquippedWeapon = false;
+	this->EquippedArmor = false;
 	this->a_scale = vec2_0;
 	g_obj->GetItemList()->AddtoInventory(armor_item);
 	g_obj->GetItemList()->armor = g_obj->GetItemList()->GetList()[0];
@@ -339,10 +339,10 @@ void Inventory::Render(Tooltip *t_tip, SoundManager *sm, Controller *ctrl, Scree
 
 	if (g_obj->GetUIState()->GetInventoryState()->GetButtonStates()[18] == HOVER)
 	{
-	//t_tip->UpdateStatus(WEAPON, true);
-	//t_tip->UpdatePosition(WEAPON, ctrl->GetMousePosition());
+	t_tip->UpdateStatus(ARMOR, true);
+	t_tip->UpdatePosition(ARMOR, ctrl->GetMousePosition());
 	}
-	*/
+	
 	}
 	else
 	{
