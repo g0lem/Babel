@@ -377,15 +377,31 @@ void PanelRender::Render(SoundManager *sm, Tooltip *t_tip, Controller *ctrl, Scr
 		u_data->ApplyMatrix(Translation(this->hp_bar_position)*Scale(this->hp_bar_size*hp_factor));
 		this->button_skins->Render(HEALTHBAR);
 
+		//g_obj->GetFontList()->GetFont()->Print("HP lol", hp_bar_position.x + 5, ctrl->GetWindowHeight() - hp_bar_position.y, 35);
 
-
+		char *buffer = new char[256];
+		char *buffer2 = new char[256];
+		_itoa(g_obj->GetPanelState()->hp, buffer, 10);
+		strcat(buffer, " / ");
+		_itoa(g_obj->GetPanelState()->max_hp, buffer2, 10);
+		strcat(buffer, buffer2);
+		g_obj->hp = buffer;
+		g_obj->hp_pos = hp_bar_position + glm::vec2(0, 15 + 1/2.f);
 
 		glm::vec2 xp_factor = glm::vec2(GLfloat(g_obj->GetPanelState()->xp) / GLfloat(g_obj->GetPanelState()->max_xp), 1.0f);
 		u_data->ApplyMatrix(Translation(this->xp_bar_position + glm::vec2(this->xp_bar_size.x - (this->xp_bar_size*xp_factor).x, 0))
 			*Scale(this->xp_bar_size*xp_factor));
 		this->button_skins->Render(XPBAR);
+		
+		buffer = new char[256];
+		buffer2 = new char[256];
 
-
+		_itoa(g_obj->GetPanelState()->xp, buffer, 10);
+		strcat(buffer, " / ");
+		_itoa(g_obj->GetPanelState()->max_xp, buffer2, 10);
+		strcat(buffer, buffer2);
+		g_obj->xp = buffer;
+		g_obj->xp_pos = xp_bar_position  + glm::vec2(xp_bar_size.x - 2.f, 15 + 1/2.f) - glm::vec2(g_obj->GetFontList()->GetFont()->GetLength(buffer, 30) + 7.5, 0);
 
 	}
 

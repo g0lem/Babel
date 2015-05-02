@@ -66,6 +66,10 @@ public:
 	inline FontList * GetFontList(){ return this->f_list; }
 	inline SpellManager * GetSpellManager(){ return this->sp_manager; }
 
+	char *hp;
+	char *xp;
+	glm::vec2 hp_pos;
+	glm::vec2 xp_pos;
 
 	void SpawnSolidObject(int id, glm::vec2 position);
 

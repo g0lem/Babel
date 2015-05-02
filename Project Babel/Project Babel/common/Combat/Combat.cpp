@@ -80,7 +80,6 @@ void Combat::PlayerAttack(SoundManager * sm, Controller * ctrl, GameObject * g_o
 		
 
 
-
         g_obj->GetTurnSystem()->ComputeAttack(player->GetItems()[ITEM_SLOT_WEAPON]->attack_speed);
 		player->GetActionHandler()->SetAction(NO_ACTION);
 		player->GetActionHandler()->Stop();
@@ -127,16 +126,17 @@ void Combat::PlayerAttack(SoundManager * sm, Controller * ctrl, GameObject * g_o
 
 			if (player->GetStats()->GetXp()->xp >= player->GetStats()->GetXp()->max_xp)
 			{
+
+				player->GetStats()->base_attack += 2;
+				player->GetStats()->GetXp()->lvl++;
 				int hp = player->GetStats()->GetHp()->hp
 					/ player->GetStats()->GetHp()->max_hp;
 				int mhp = player->GetStats()->GetXp()->lvl * 2;
 
 
 				player->GetStats()->GetHp()->Buff(hp * mhp, mhp);
-				player->GetStats()->GetXp()->Increase(player->GetStats()->GetXp()->lvl * 4);
-				player->GetStats()->base_attack += 2;
-				player->GetStats()->GetXp()->lvl++;
 				player->GetStats()->GetXp()->xp = 0;
+				player->GetStats()->GetXp()->max_xp = player->GetStats()->GetXp()->lvl * 4;
 			}
 
 			enemies->GetEnemiesPointer()[0][player->GetTarget()]->GetStats()->aggressive = true;
@@ -210,16 +210,16 @@ void Combat::PlayerAttack(SoundManager * sm, Controller * ctrl, GameObject * g_o
 
 						if (player->GetStats()->GetXp()->xp >= player->GetStats()->GetXp()->max_xp)
 						{
+							player->GetStats()->base_attack += 2;
+							player->GetStats()->GetXp()->lvl++;
 							int hp = player->GetStats()->GetHp()->hp
 								/ player->GetStats()->GetHp()->max_hp;
 							int mhp = player->GetStats()->GetXp()->lvl * 2;
 
 
 							player->GetStats()->GetHp()->Buff(hp * mhp, mhp);
-							player->GetStats()->GetXp()->Increase(player->GetStats()->GetXp()->lvl * 4);
-							player->GetStats()->base_attack += 2;
-							player->GetStats()->GetXp()->lvl++;
 							player->GetStats()->GetXp()->xp = 0;
+							player->GetStats()->GetXp()->max_xp = player->GetStats()->GetXp()->lvl * 4;
 						}
 
 						enemies->GetEnemiesPointer()[0][j]->GetStats()->aggressive = true;
