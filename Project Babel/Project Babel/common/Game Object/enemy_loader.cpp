@@ -222,13 +222,13 @@ void EnemyLoader::Init()
 	temp->m_sprites[3] = new Sprite();
 	temp->m_sprites[3]->Load(temp->num_frames[3], "data/sprites/golem/right/", tex_str);
 	temp->m_sprites[4] = new Sprite();
-	temp->m_sprites[4]->Load(temp->num_frames[4], "data/sprites/golem/back/", tex_str);
+	temp->m_sprites[4]->Load(temp->num_frames[4], "data/sprites/golem/attack/back/", tex_str);
 	temp->m_sprites[5] = new Sprite();
-	temp->m_sprites[5]->Load(temp->num_frames[5], "data/sprites/golem/front/", tex_str);
+	temp->m_sprites[5]->Load(temp->num_frames[5], "data/sprites/golem/attack/front/", tex_str);
 	temp->m_sprites[6] = new Sprite();
-	temp->m_sprites[6]->Load(temp->num_frames[6], "data/sprites/golem/left/", tex_str);
+	temp->m_sprites[6]->Load(temp->num_frames[6], "data/sprites/golem/attack/left/", tex_str);
 	temp->m_sprites[7] = new Sprite();
-	temp->m_sprites[7]->Load(temp->num_frames[7], "data/sprites/golem/right/", tex_str);
+	temp->m_sprites[7]->Load(temp->num_frames[7], "data/sprites/golem/attack/right/", tex_str);
 	temp->m_sprites[8] = new Sprite();
 	temp->m_sprites[8]->Load(temp->num_frames[8], "data/sprites/golem/sleep/", tex_str);
 
