@@ -48,7 +48,8 @@ public:
 
 	inline Item(){ this->Init(); }
 
-
+	glm::vec4 color;
+	glm::vec4 base_color;
 
 	void Init();
 

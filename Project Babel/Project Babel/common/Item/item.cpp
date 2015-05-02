@@ -19,6 +19,8 @@ void Item::Init()
 
 	this->effect = 0;
 
+	this->base_color = glm::vec4(1, 1, 1, 1);
+	this->color = glm::vec4(1.f, 1.f, 1.f, 1.f);
 
 	this->frame = 0;
 

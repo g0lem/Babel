@@ -125,7 +125,51 @@ void SpriteManager::Clean()
 
 }
 
+bool gX, gY, gZ;
 
+void Update(Controller *ctrl, GameObject *g_obj)
+{
+	for (int i = 0; i < g_obj->GetItemList()->GetList().size(); i++)
+	{
+		if (g_obj->GetItemList()->GetList()[i]->item_name == "Epic Sword" || g_obj->GetItemList()->GetList()[i]->item_name == "Epic Armor")
+		{
+			if (g_obj->GetItemList()->GetList()[i]->color.x < g_obj->GetItemList()->GetList()[i]->base_color.x)
+				gX = true;
+			if (g_obj->GetItemList()->GetList()[i]->color.y < g_obj->GetItemList()->GetList()[i]->base_color.y)
+				gY = true;
+			if(g_obj->GetItemList()->GetList()[i]->color.z < g_obj->GetItemList()->GetList()[i]->base_color.z)
+			{
+				gZ= true;
+			}
+			if (g_obj->GetItemList()->GetList()[i]->color.x > 0.99f)
+				gX = false;
+			if (g_obj->GetItemList()->GetList()[i]->color.y > 0.60f)
+				gY = false;
+			if( g_obj->GetItemList()->GetList()[i]->color.z > 0.99f)
+			{
+				gZ = false;
+			}
+
+
+
+			//if (gX == false)
+			//	g_obj->GetItemList()->GetList()[i]->color.x -= 0.05f;
+			//else
+			//	g_obj->GetItemList()->GetList()[i]->color.x += 0.05f;
+			if (gY == false)
+				g_obj->GetItemList()->GetList()[i]->color.y -= 0.04f*ctrl->GetFpsPointer()->Delta()*40;
+			else
+				g_obj->GetItemList()->GetList()[i]->color.y += 0.04f*ctrl->GetFpsPointer()->Delta() * 80;
+			//if (gZ == false)
+			//	g_obj->GetItemList()->GetList()[i]->color.z -= 0.03f;
+			//else
+			//	g_obj->GetItemList()->GetList()[i]->color.z += 0.03f;
+
+		}
+	}
+
+
+}
 
 
 
@@ -148,9 +192,11 @@ void SpriteManager::Render(SoundManager * sm, Controller * ctrl, GameObject * g_
 	}
 	else
 	{
+
+
 		g_obj->GetScroller()->ComputeScreenLimits(ctrl, this->map->GetTilemap()->GetSize(), this->map->GetTilemap()->GetTileScale());
 
-
+		Update(ctrl, g_obj);
 
 		g_obj->GetScroller()->ComputeScreenLimits(ctrl, this->map->GetTilemap()->GetSize(), this->map->GetTilemap()->GetTileScale());
 		this->map->Render(ctrl, this->GetScreenPointer(), g_obj, player->GetPAttributes()->position);

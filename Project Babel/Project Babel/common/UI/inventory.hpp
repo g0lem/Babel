@@ -30,6 +30,8 @@ class Inventory: public InventoryProperties
 	glm::vec2 w_scale;
 
 	int WeaponFrame;
+	glm::vec4 w_color;
+	glm::vec4 a_color;
 	int ArmorFrame;
 	Item * weapon_item;
 	Item * armor_item;

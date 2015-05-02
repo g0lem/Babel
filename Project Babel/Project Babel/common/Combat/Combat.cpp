@@ -181,7 +181,6 @@ void Combat::PlayerAttack(SoundManager * sm, Controller * ctrl, GameObject * g_o
 				{
 					if ((glm::ivec2)enemies->GetEnemiesPointer()[0][j]->GetPAttributes()->position == spell->GetSpell(i)->rPosition)
 					{
-						printf("IM FUCKING ANNOYED\n");
 
 						nextSpell == true;
 
@@ -471,7 +470,7 @@ void Combat::EnemyAttack(SoundManager *sm, Controller * ctrl, GameObject * g_obj
 
 			if (current_enemy->GetStats()->base_attack.x > g_obj->GetItemList()->armor->armor)
 			{
-				dmg = player->GetStats()->GetHp()->Damage(g_obj->GetItemList()->armor->armor - current_enemy->GetStats()->base_attack);
+				dmg = player->GetStats()->GetHp()->Damage(current_enemy->GetStats()->base_attack - g_obj->GetItemList()->armor->armor);
 			}
 			else
 			{

@@ -255,8 +255,8 @@ void EnemyLoader::Init()
 	temp->chances[3] = 3; temp->items[3] = EnemyData::item_types::Sword;
 	temp->chances[4] = 1;  temp->items[4] = EnemyData::item_types::Hammer;
 	temp->chances[5] = 3; temp->items[5] = EnemyData::item_types::Leather_Armor;
-	temp->chances[6] = 1;  temp->items[6] = EnemyData::item_types::Plate_Armor;
-	temp->chances[7] = 3; temp->items[7] = EnemyData::item_types::Epic_Sword;
+	temp->chances[6] = 30;  temp->items[6] = 10;
+	temp->chances[7] = 30; temp->items[7] = 5;
 	temp->chances[8] = 74; temp->items[8] = EnemyData::item_types::Nothing;
 
 

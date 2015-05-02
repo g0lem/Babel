@@ -424,7 +424,13 @@ void Map::Render(Controller * ctrl, ScreenUniformData * u_data, Sprite * m_sprit
 
 
 		glm::vec3 temp = glm::vec3(1.0f) * (1 - fog[x][y]);
+		
+		
 		u_data->SetAmbientLight(glm::vec4(temp.x, temp.y, temp.y, 1.0f));
+
+		if (item_list->GetDroppedItems()[i]->item->item_name == "Epic Armor" || item_list->GetDroppedItems()[i]->item->item_name == "Epic Sword")
+			u_data->SetAmbientLight(item_list->GetDroppedItems()[i]->item->color);
+
 		u_data->ApplyMatrix(Translation(glm::vec2(x * this->tilemap->GetTileScale().x + 8, y * this->tilemap->GetTileScale().y + 8) + offset)*Scale(glm::vec2(this->tilemap->GetTileScale().x/2, this->tilemap->GetTileScale().y/2)));
 		item_list->GetSprite()->Render(item_list->GetDroppedItems()[i]->item->frame);
 

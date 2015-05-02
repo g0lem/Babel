@@ -159,6 +159,7 @@ void ItemList::LoadItems()
 	m_item->attack_speed = 1.0f;
 	m_item->attack = glm::vec2(4, 4);
 	m_item->item_name = "Epic Sword";
+	m_item->base_color = glm::vec4(0.58f, 0.f, 0.82f, 1.f);
 	this->list.push_back(m_item);
 
 
@@ -205,6 +206,7 @@ void ItemList::LoadItems()
 	m_item->type = ITEM_TYPE_ARMOR;
 	m_item->armor = 4;
 	m_item->item_name = "Epic Armor";
+	m_item->base_color = glm::vec4(0.58f, 0.f, 0.82f, 1.f);
 	this->list.push_back(m_item);
 }
 

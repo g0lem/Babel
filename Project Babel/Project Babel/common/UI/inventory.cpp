@@ -170,12 +170,22 @@ void Inventory::Render(Tooltip *t_tip, SoundManager *sm, Controller *ctrl, Scree
 		t_tip->UpdateStatus(INVENTORY_START + i, false);
 		g_obj->GetUIState()->GetInventoryState()->GetButtonStates()[i] = UI_helper::GetItemAction(ctrl, this->m_inventory[i]->GetProperties());
 
+
 		this->m_inventory[i]->RenderItem(ctrl, u_data, this->skins, 0, g_obj->GetUIState()->GetInventoryState()->GetButtonStates()[i]);
 
 		if (i < g_obj->GetItemList()->GetInventory().size())
 		{
 			u_data->ApplyMatrix(Translation(this->m_inventory[i]->GetProperties()->position + glm::vec2(6, 6))*Scale(glm::vec2(28, 28)));
+			
+			if (g_obj->GetItemList()->GetInventory()[i]->item_name == "Epic Sword" || g_obj->GetItemList()->GetInventory()[i]->item_name == "Epic Armor")
+				u_data->SetAmbientLight(g_obj->GetItemList()->GetInventory()[i]->color);
+			else
+				u_data->SetAmbientLight();
+			
 			g_obj->GetItemList()->GetSprite()->Render(g_obj->GetItemList()->GetInventory()[i]->frame);
+
+
+
 
 			if (g_obj->GetUIState()->GetInventoryState()->GetButtonStates()[i] == PRESSED)
 			{
@@ -227,25 +237,6 @@ void Inventory::Render(Tooltip *t_tip, SoundManager *sm, Controller *ctrl, Scree
 					g_obj->GetItemList()->must_heal = true;
 					g_obj->GetItemList()->DeleteFromInventory(i);
 				}
-
-
-				/*if (g_obj->GetItemList()->GetInventory()[i]->type == 2 && this->EquippedArmor == false)
-				{
-				sm->PlaySound(EQUIPITEM);
-
-				this->armor = g_obj->GetItemList()->GetSprite();
-				this->ArmorFrame = g_obj->GetItemList()->GetInventory()[i]->frame;
-
-				this->a_position = box_position + glm::vec2(129, 69) + glm::vec2(5, 0) + glm::vec2(5, 6);
-				this->a_scale = glm::vec2(40, 40);
-
-				this->EquippedArmor = true;
-
-				this->weapon_item = g_obj->GetItemList()->GetInventory()[i];
-				g_obj->GetItemList()->armor = this->armor_item;
-				g_obj->GetItemList()->must_load = true;
-				g_obj->GetItemList()->DeleteFromInventory(i);
-				}*/
 			}
 
 
@@ -287,6 +278,12 @@ void Inventory::Render(Tooltip *t_tip, SoundManager *sm, Controller *ctrl, Scree
 
 		t_tip->UpdateStatus(WEAPON, false);
 		w_position = box_position + glm::vec2(32, 68) + glm::vec2(11, 0) + glm::vec2(5, 6);
+
+		if (g_obj->GetItemList()->weapon->item_name == "Epic Sword")
+			u_data->SetAmbientLight(g_obj->GetItemList()->weapon->color);
+		else
+			u_data->SetAmbientLight(glm::vec3(1.f, 1.f, 1.f));
+
 		u_data->ApplyMatrix(Translation(w_position)*Scale(w_scale));
 		this->weapon->Render(WeaponFrame);
 
@@ -295,6 +292,7 @@ void Inventory::Render(Tooltip *t_tip, SoundManager *sm, Controller *ctrl, Scree
 			sm->PlaySound(EQUIPITEM);
 
 			this->EquippedWeapon = false;
+			this->w_color = glm::vec4(1.f, 1.f, 1.f, 1.f);
 			this->w_scale = vec2_0;
 			g_obj->GetItemList()->AddtoInventory(weapon_item);
 			g_obj->GetItemList()->weapon = g_obj->GetItemList()->GetList()[0];
@@ -332,6 +330,10 @@ void Inventory::Render(Tooltip *t_tip, SoundManager *sm, Controller *ctrl, Scree
 	t_tip->UpdateStatus(ARMOR, false);
 	a_position = box_position + glm::vec2(129, 69) + glm::vec2(5, 0) + glm::vec2(5, 6);
 	u_data->ApplyMatrix(Translation(a_position)*Scale(a_scale));
+	if (g_obj->GetItemList()->armor->item_name == "Epic Armor")
+		u_data->SetAmbientLight(g_obj->GetItemList()->armor->color);
+	else
+		u_data->SetAmbientLight(glm::vec3(1.f, 1.f, 1.f));
 	this->armor->Render(ArmorFrame);
 
 	if (g_obj->GetUIState()->GetInventoryState()->GetButtonStates()[18] == PRESSED)
