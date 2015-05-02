@@ -14,6 +14,7 @@
     <ClCompile Include="common.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="common\AI\boss.cpp" />
     <ClCompile Include="common\AI\enemy.cpp" />
     <ClCompile Include="common\AI\enemy_manager.cpp" />
     <ClCompile Include="common\Combat\Combat.cpp" />
@@ -87,6 +88,7 @@
   <ItemGroup>
     <ClInclude Include="common.hpp" />
     <ClInclude Include="common\AI.hpp" />
+    <ClInclude Include="common\AI\boss.hpp" />
     <ClInclude Include="common\AI\enemy.hpp" />
     <ClInclude Include="common\AI\enemy_manager.hpp" />
     <ClInclude Include="common\Combat.hpp" />

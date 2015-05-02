@@ -134,7 +134,7 @@ void Enemy::SetPosition(glm::vec2 position)
 
 
 		
-			this->m_stats->GetHp()->Buff(Rand(8));
+			this->m_stats->GetHp()->Buff(Rand(8, 16));
 		
 		
 

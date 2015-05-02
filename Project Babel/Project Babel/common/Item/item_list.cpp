@@ -310,7 +310,7 @@ void ItemList::LoadSprites()
 	tex_str[2] = "sword.png";
 	tex_str[3] = "chains-icon.png";
 	tex_str[4] = "spikes-icon.png";
-	tex_str[5] = "iron-chestplace.png";
+	tex_str[5] = "iron-chestplate.png";
 	tex_str[6] = "leather-chestplate-2.png";
 
 

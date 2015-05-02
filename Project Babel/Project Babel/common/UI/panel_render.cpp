@@ -410,7 +410,6 @@ void PanelRender::Render(SoundManager *sm, Tooltip *t_tip, Controller *ctrl, Scr
 
 		buffer = new char[256];
 		buffer2 = new char[256];
-		char *buffer3 = new char[256];
 
 		
 

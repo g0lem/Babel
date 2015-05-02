@@ -302,6 +302,9 @@
     <ClCompile Include="common\Combat\SpellManager.cpp">
       <Filter>common\Combat</Filter>
     </ClCompile>
+    <ClCompile Include="common\AI\boss.cpp">
+      <Filter>common\AI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h">
@@ -558,6 +561,9 @@
     </ClInclude>
     <ClInclude Include="common\Combat\SpellManager.hpp">
       <Filter>common\Combat</Filter>
+    </ClInclude>
+    <ClInclude Include="common\AI\boss.hpp">
+      <Filter>common\AI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

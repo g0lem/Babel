@@ -51,11 +51,11 @@ public:
 
 			if (direction == UP)
 				{
-					position.y -= speed;
+					position.y -= speed*ctrl->GetFpsPointer()->Delta()*100;
 				}
 			if (direction == DOWN && tiles[rPosition.x][rPosition.y + 1] == 0)
 				{
-					position.y += speed;
+					position.y += speed*ctrl->GetFpsPointer()->Delta() * 100;
 				}
 			else if (direction == DOWN && tiles[rPosition.x][rPosition.y + 1] == 1)
 			{
@@ -66,11 +66,11 @@ public:
 			}
 			if (direction == LEFT)
 				{
-					position.x -= speed;
+					position.x -= speed*ctrl->GetFpsPointer()->Delta()*100;
 				}
 			if (direction == RIGHT && tiles[rPosition.x + 1][rPosition.y] == 0)
 				{
-					position.x += speed;
+					position.x += speed*ctrl->GetFpsPointer()->Delta()*100;
 				}
 			else if (direction == RIGHT && tiles[rPosition.x + 1][rPosition.y] == 1)
 			{
