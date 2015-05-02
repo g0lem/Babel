@@ -225,7 +225,7 @@ void EventHandler::NextLvl(glm::vec2 position, Map *current_map, GameObject *g_o
 	{
 		if (g_obj->GetItemList()->GetObjects()[i]->position == position && g_obj->GetItemList()->GetObjects()[i]->item->id == STAIRS_ID)
 		{
-			//std::cout << "YAY, STAIRS\n";
+			g_obj->floor_c++;
 			g_obj->rebuild = true;
 		}
 			

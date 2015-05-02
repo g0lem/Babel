@@ -101,6 +101,8 @@ void Enemy::SetRandomPosition(Map * map)
 
 		
 
+
+
 		GLint result = map->GetTilemap()->GetTiles()[GLuint(this->p_attributes->position.x)][GLuint(this->p_attributes->position.y)];
 
 

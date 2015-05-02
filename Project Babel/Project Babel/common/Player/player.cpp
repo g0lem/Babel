@@ -405,7 +405,7 @@ void Player::UpdateUI(GameObject * g_obj)
 	
 	g_obj->GetPanelState()->xp = this->m_stats->GetXp()->xp;
 	g_obj->GetPanelState()->max_xp = this->m_stats->GetXp()->max_xp;
-	g_obj->GetPanelState()->level = this->m_stats->GetHp()->hp;
+	g_obj->GetPanelState()->level = this->m_stats->GetXp()->lvl;
 
 }
 

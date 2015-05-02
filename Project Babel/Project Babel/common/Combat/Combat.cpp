@@ -212,12 +212,12 @@ void Combat::PlayerAttack(SoundManager * sm, Controller * ctrl, GameObject * g_o
 						{
 							player->GetStats()->base_attack += 2;
 							player->GetStats()->GetXp()->lvl++;
-							int hp = player->GetStats()->GetHp()->hp
-								/ player->GetStats()->GetHp()->max_hp;
+	
 							int mhp = player->GetStats()->GetXp()->lvl * 2;
 
 
-							player->GetStats()->GetHp()->Buff(hp * mhp, mhp);
+							player->GetStats()->GetHp()->Buff(mhp);
+							player->GetStats()->GetHp()->hp = player->GetStats()->GetHp()->max_hp;
 							player->GetStats()->GetXp()->xp = 0;
 							player->GetStats()->GetXp()->max_xp = player->GetStats()->GetXp()->lvl * 4;
 						}
@@ -456,9 +456,18 @@ void Combat::EnemyAttack(SoundManager *sm, Controller * ctrl, GameObject * g_obj
 			text_pos.y = ctrl->GetWindowHeight() - text_pos.y;// -18;
 			text_pos.x -= 4;
 
+			int dmg;
 
+			if (current_enemy->GetStats()->base_attack.x > g_obj->GetItemList()->armor->armor)
+			{
+				dmg = player->GetStats()->GetHp()->Damage(g_obj->GetItemList()->armor->armor - current_enemy->GetStats()->base_attack);
+			}
+			else
+			{
+				dmg = player->GetStats()->GetHp()->Damage(glm::vec2(0, 0));
+			}
 
-			GLint dmg = player->GetStats()->GetHp()->Damage(current_enemy->GetStats()->base_attack);
+			
 			char *buffer = new char[256];
 			_itoa(dmg, buffer, 10);
 			strcat(buffer, " DMG");

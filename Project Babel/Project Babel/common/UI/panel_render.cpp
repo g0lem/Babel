@@ -381,6 +381,7 @@ void PanelRender::Render(SoundManager *sm, Tooltip *t_tip, Controller *ctrl, Scr
 
 		char *buffer = new char[256];
 		char *buffer2 = new char[256];
+		char *text = new char[256];
 		_itoa(g_obj->GetPanelState()->hp, buffer, 10);
 		strcat(buffer, " / ");
 		_itoa(g_obj->GetPanelState()->max_hp, buffer2, 10);
@@ -402,6 +403,36 @@ void PanelRender::Render(SoundManager *sm, Tooltip *t_tip, Controller *ctrl, Scr
 		strcat(buffer, buffer2);
 		g_obj->xp = buffer;
 		g_obj->xp_pos = xp_bar_position  + glm::vec2(xp_bar_size.x - 2.f, 15 + 1/2.f) - glm::vec2(g_obj->GetFontList()->GetFont()->GetLength(buffer, 30) + 7.5, 0);
+
+
+
+		// Level and Floor rendering 
+
+		buffer = new char[256];
+		buffer2 = new char[256];
+		char *buffer3 = new char[256];
+
+		
+
+		_itoa(g_obj->GetPanelState()->level, buffer2, 10);
+	
+		strcpy(buffer, "Level: ");
+		strcat(buffer, buffer2);
+
+		g_obj->level = buffer;
+		g_obj->level_pos = wireframe_position + glm::vec2(2.f, wireframe_size.y + 1 / 2.f - 7.5);
+
+		buffer = new char[256];
+		buffer2 = new char[256];
+
+		_itoa(g_obj->floor_c, buffer2, 10);
+		
+		strcpy(buffer, "Floor: ");
+		strcat(buffer, buffer2);
+
+
+		g_obj->floor = buffer;
+		g_obj->floor_pos = g_obj->level_pos + glm::vec2(0, 30);
 
 	}
 

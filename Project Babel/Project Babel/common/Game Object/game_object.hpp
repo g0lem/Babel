@@ -70,6 +70,11 @@ public:
 	char *xp;
 	glm::vec2 hp_pos;
 	glm::vec2 xp_pos;
+	char *level;
+	int level_i;
+	char *floor;
+	int floor_c;
+	glm::vec2 level_pos, floor_pos;
 
 	void SpawnSolidObject(int id, glm::vec2 position);
 
