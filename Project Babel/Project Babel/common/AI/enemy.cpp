@@ -107,7 +107,11 @@ void Enemy::SetRandomPosition(Map * map)
 	{
 		Room *room;
 		room = map->GetRoomsPointer()->at(Rand(map->GetRoomsPointer()->size()));
-		this->p_attributes->position = glm::vec2(Rand(room->GetOffset().x + 1, room->GetOffset().x + room->GetHeight() - 1), Rand(room->GetOffset().y + 1, room->GetOffset().y + room->GetWidth() - 1));
+
+		do
+		{
+			this->p_attributes->position = glm::vec2(Rand(room->GetOffset().x + 1, room->GetOffset().x + room->GetHeight() - 1), Rand(room->GetOffset().y + 1, room->GetOffset().y + room->GetWidth() - 1));
+		} while ((int)(this->p_attributes->position.x) < 0 || (int)(this->p_attributes->position.y) < 0 || (int)(this->p_attributes->position.x) >= (int)(map->GetTilemap()->GetSize().x) || (int)(this->p_attributes->position.y) >= (int)(map->GetTilemap()->GetSize().y));
 		this->p_attributes->target = this->p_attributes->position;
 
 		

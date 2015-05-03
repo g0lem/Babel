@@ -204,8 +204,8 @@ void Map::GenerateScore()
 	int dy[] = { 0, 0, -1, 1 };
 	int walls[8];
 
-	for (int j = 0; j < this->tilemap->GetSize().y; j++)
-		for (int i = 0; i < this->tilemap->GetSize().x; i++)
+	for (int i = 0; i < this->tilemap->GetSize().x; i++)
+		for (int j = 0; j < this->tilemap->GetSize().y; j++)
 		{
 
 
@@ -218,10 +218,70 @@ void Map::GenerateScore()
 
 		}
 
-		if (walls[0] == FLOOR_BLOCK && walls[1] == FLOOR_BLOCK)
+		if (walls[0] >= FLOOR_BLOCK && walls[0] <= FLOOR_BLOCK_LAST && walls[1] >= FLOOR_BLOCK && walls[1] <= FLOOR_BLOCK_LAST)
+		{
+		
 			this->tilemap->GetTiles()[i][j] = FLOOR_BLOCK;
-		if (walls[2] == FLOOR_BLOCK && walls[3] == FLOOR_BLOCK)
+		}
+		if (walls[2] >= FLOOR_BLOCK && walls[2] <= FLOOR_BLOCK_LAST && walls[3] >= FLOOR_BLOCK && walls[3] <= FLOOR_BLOCK_LAST)
+		{
+			
 			this->tilemap->GetTiles()[i][j] = FLOOR_BLOCK;
+		}
+
+
+		}
+
+
+	for (int i = 0; i < this->tilemap->GetSize().x; i++)
+		for (int j = 0; j < this->tilemap->GetSize().y; j++)
+		{
+
+
+		for (int x = 0; x < 4; x++)
+		{
+			if (i + dx[x] >= 0 && i + dx[x] < this->tilemap->GetSize().x && j + dy[x] >= 0 && j + dy[x] < this->tilemap->GetSize().y)
+				walls[x] = this->tilemap->GetTiles()[i + dx[x]][j + dy[x]];
+			else
+				walls[x] = -1;
+
+		}
+
+		if (walls[0] >= FLOOR_BLOCK && walls[0] <= FLOOR_BLOCK_LAST && walls[1] >= FLOOR_BLOCK && walls[1] <= FLOOR_BLOCK_LAST)
+		{
+			
+			this->tilemap->GetTiles()[i][j] = FLOOR_BLOCK;
+		}
+		if (walls[2] >= FLOOR_BLOCK && walls[2] <= FLOOR_BLOCK_LAST && walls[3] >= FLOOR_BLOCK && walls[3] <= FLOOR_BLOCK_LAST)
+		{
+			
+			this->tilemap->GetTiles()[i][j] = FLOOR_BLOCK;
+		}
+
+
+		}
+
+	int floor_counter=0;
+	for (int j = 0; j < this->tilemap->GetSize().y; j++)
+		for (int i = 0; i < this->tilemap->GetSize().x; i++)
+		{
+		floor_counter = 0;
+		if (this->tilemap->GetTiles()[i][j] == DOOR_BLOCK)
+		{
+			if (walls[0] >= FLOOR_BLOCK && walls[0] < FLOOR_BLOCK_LAST)
+				floor_counter++;
+
+			if (walls[1] >= FLOOR_BLOCK && walls[1] <= FLOOR_BLOCK_LAST)
+				floor_counter++;
+			if (walls[2] >= FLOOR_BLOCK && walls[2] <= FLOOR_BLOCK_LAST)
+				floor_counter++;
+			if (walls[3] >= FLOOR_BLOCK && walls[3] <= FLOOR_BLOCK_LAST)
+				floor_counter++;
+
+			if (floor_counter >= 3)
+				this->tilemap->GetTiles()[i][j] = FLOOR_BLOCK;
+		}
+
 
 
 		}
@@ -229,14 +289,14 @@ void Map::GenerateScore()
 
 
 
-	for (int j = 0; j < this->tilemap->GetSize().y; j++)
-		for (int i = 0; i < this->tilemap->GetSize().x; i++)
+	for (int i = 0; i < this->tilemap->GetSize().x; i++)
+		for (int j = 0; j < this->tilemap->GetSize().y; j++)
 		{
 
 
 		for (int x = 0; x < 4; x++)
 		{
-			if (i + dx[x] >= 0 && i + dx[x] < this->tilemap->GetSize().x && j + dy[x] >= 0 && j + dy[x] < this->tilemap->GetSize().y)
+			if (i + dx[x] >= 0 && i + dx[x] < this->tilemap->GetSize().y && j + dy[x] >= 0 && j + dy[x] < this->tilemap->GetSize().x)
 				if (this->tilemap->GetTiles()[i + dx[x]][j + dy[x]] >= SOLID_LIMIT || this->tilemap->GetTiles()[i + dx[x]][j + dy[x]] == DOOR_BLOCK)
 				{
 				walls[x] = -2;
@@ -263,23 +323,24 @@ void Map::GenerateScore()
 
 				if (walls[2] == -2)
 				{
-					if (j - 1 >= 0)
-						if (this->tilemap->GetTiles()[i + 1][j - 1] == FLOOR_BLOCK)
-					        this->tilemap->GetTiles()[i][j] = SW_BLOCK;
-
 					if (i-1>=0)
 					if (this->tilemap->GetTiles()[i-1][j+1] == FLOOR_BLOCK)
 						this->tilemap->GetTiles()[i][j] = CORNER_SW_BLOCK;
+
+					if (j - 1 >= 0)
+						if (this->tilemap->GetTiles()[i + 1][j - 1] == FLOOR_BLOCK)
+							this->tilemap->GetTiles()[i][j] = SW_BLOCK;
 				}
 				if (walls[3] == -2)
 				{
 					if (i - 1 >= 0 && j - 1 >= 0)
 					{
+						if (this->tilemap->GetTiles()[i - 1][j - 1] == FLOOR_BLOCK)
+							this->tilemap->GetTiles()[i][j] = CORNER_NW_BLOCK;
+
 						if (this->tilemap->GetTiles()[i + 1][j + 1] == FLOOR_BLOCK)
 							this->tilemap->GetTiles()[i][j] = NW_BLOCK;
 
-						if (this->tilemap->GetTiles()[i - 1][j - 1] == FLOOR_BLOCK)
-							this->tilemap->GetTiles()[i][j] = CORNER_NW_BLOCK;
 					}
 				}
 
@@ -291,19 +352,21 @@ void Map::GenerateScore()
 
 				if (walls[2] == -2)
 				{
-					if (this->tilemap->GetTiles()[i - 1][j - 1] == FLOOR_BLOCK)
-					this->tilemap->GetTiles()[i][j] = SE_BLOCK;
 					if (i - 1 >= 0)
 					if (this->tilemap->GetTiles()[i + 1][j + 1] == FLOOR_BLOCK)
 						this->tilemap->GetTiles()[i][j] = CORNER_SE_BLOCK;
+
+					if (this->tilemap->GetTiles()[i - 1][j - 1] == FLOOR_BLOCK)
+						this->tilemap->GetTiles()[i][j] = SE_BLOCK;
 				}
 				if (walls[3] == -2)
 				{
-					if (this->tilemap->GetTiles()[i - 1][j + 1] == FLOOR_BLOCK)
-					this->tilemap->GetTiles()[i][j] = NE_BLOCK;
 
 					if (this->tilemap->GetTiles()[i + 1][j - 1] == FLOOR_BLOCK)
 						this->tilemap->GetTiles()[i][j] = CORNER_NE_BLOCK;
+
+					if (this->tilemap->GetTiles()[i - 1][j + 1] == FLOOR_BLOCK)
+						this->tilemap->GetTiles()[i][j] = NE_BLOCK;
 				}
 
 
@@ -337,6 +400,9 @@ void Map::GenerateScore()
 		}
 
 	
+
+
+
 
 		this->ComplexDecoration();
 
