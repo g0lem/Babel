@@ -193,7 +193,7 @@ void Inventory::Render(Tooltip *t_tip, SoundManager *sm, Controller *ctrl, Scree
 				if (g_obj->GetItemList()->GetInventory()[i]->type == ITEM_TYPE_WEAPON && this->EquippedWeapon == false)
 				{
 
-					sm->PlaySound(EQUIPITEM);
+					//sm->PlaySound(EQUIPITEM);
 
 					this->weapon = g_obj->GetItemList()->GetSprite();
 					this->WeaponFrame = g_obj->GetItemList()->GetInventory()[i]->frame;
@@ -210,7 +210,7 @@ void Inventory::Render(Tooltip *t_tip, SoundManager *sm, Controller *ctrl, Scree
 				}
 				else if (g_obj->GetItemList()->GetInventory()[i]->type == ITEM_TYPE_ARMOR && this->EquippedArmor == false)
 				{
-					sm->PlaySound(EQUIPITEM);
+					//sm->PlaySound(EQUIPITEM);
 
 					this->armor = g_obj->GetItemList()->GetSprite();
 					this->ArmorFrame = g_obj->GetItemList()->GetInventory()[i]->frame;
@@ -289,7 +289,7 @@ void Inventory::Render(Tooltip *t_tip, SoundManager *sm, Controller *ctrl, Scree
 
 		if (g_obj->GetUIState()->GetInventoryState()->GetButtonStates()[17] == PRESSED)
 		{
-			sm->PlaySound(EQUIPITEM);
+			//sm->PlaySound(EQUIPITEM);
 
 			this->EquippedWeapon = false;
 			this->w_color = glm::vec4(1.f, 1.f, 1.f, 1.f);
@@ -338,7 +338,7 @@ void Inventory::Render(Tooltip *t_tip, SoundManager *sm, Controller *ctrl, Scree
 
 	if (g_obj->GetUIState()->GetInventoryState()->GetButtonStates()[18] == PRESSED)
 	{
-	sm->PlaySound(EQUIPITEM);
+	//sm->PlaySound(EQUIPITEM);
 
 	this->EquippedArmor = false;
 	this->a_scale = vec2_0;

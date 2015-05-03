@@ -43,7 +43,7 @@ void UIRender::Render(SoundManager *sm, Tooltip *tooltips, Controller *ctrl, Gam
 
 	if (g_obj->GetUIState()->GetMenuState()->GetButtonStates()[0] == PRESSED && g_obj->GetUIState()->GetMenuState()->GetState() == ACTIVE)
 	{
-		sm->PlaySound(MENUPRESSBUTTON);
+		//sm->PlaySound(MENUPRESSBUTTON);
 		g_obj->GetUIState()->GetMenuState()->SetState(NOT_ACTIVE);
 	}
 	

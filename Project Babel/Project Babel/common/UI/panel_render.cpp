@@ -178,7 +178,7 @@ void PanelRender::Render(SoundManager *sm, Tooltip *t_tip, Controller *ctrl, Scr
 
 		if (g_obj->GetUIState()->GetPanelState()->GetState() == PRESSED)
 		{
-			sm->PlaySound(MENUPRESSBUTTON);
+			//sm->PlaySound(MENUPRESSBUTTON);
 			g_obj->GetUIState()->GetMenuState()->SetState(!g_obj->GetUIState()->GetMenuState()->GetState());
 			t_tip->UpdateStatus(0, g_obj->GetUIState()->GetMenuState()->GetState());
 		}
@@ -221,7 +221,7 @@ void PanelRender::Render(SoundManager *sm, Tooltip *t_tip, Controller *ctrl, Scr
 		{
 
 
-			sm->PlaySound(MENUPRESSBUTTON);
+			//sm->PlaySound(MENUPRESSBUTTON);
 
 			g_obj->GetUIState()->GetInventoryState()->SetState(NOT_ACTIVE);
 
@@ -251,7 +251,7 @@ void PanelRender::Render(SoundManager *sm, Tooltip *t_tip, Controller *ctrl, Scr
 		if (g_obj->GetUIState()->GetPanelState()->GetButtonsState()[2] == PRESSED)
 		{
 
-			sm->PlaySound(MENUPRESSBUTTON);
+			//sm->PlaySound(MENUPRESSBUTTON);
 
 
 			g_obj->GetUIState()->GetInventoryState()->SetState(!g_obj->GetUIState()->GetInventoryState()->GetState());
@@ -276,7 +276,7 @@ void PanelRender::Render(SoundManager *sm, Tooltip *t_tip, Controller *ctrl, Scr
 
 
 
-			sm->PlaySound(MENUPRESSBUTTON);
+			//sm->PlaySound(MENUPRESSBUTTON);
 
 
 
@@ -307,7 +307,7 @@ void PanelRender::Render(SoundManager *sm, Tooltip *t_tip, Controller *ctrl, Scr
 		if (g_obj->GetUIState()->GetPanelState()->GetButtonsState()[1] == PRESSED)
 		{
 
-			sm->PlaySound(MENUPRESSBUTTON);
+			//sm->PlaySound(MENUPRESSBUTTON);
 
 
 			g_obj->GetUIState()->GetStoryState()->SetState(!g_obj->GetUIState()->GetStoryState()->GetState());
@@ -338,7 +338,7 @@ void PanelRender::Render(SoundManager *sm, Tooltip *t_tip, Controller *ctrl, Scr
 		if (g_obj->GetUIState()->GetPanelState()->GetButtonsState()[3] == PRESSED)
 		{
 
-			sm->PlaySound(MENUPRESSBUTTON);
+			//sm->PlaySound(MENUPRESSBUTTON);
 
 
 			g_obj->GetTurnSystem()->Wait();
@@ -360,7 +360,7 @@ void PanelRender::Render(SoundManager *sm, Tooltip *t_tip, Controller *ctrl, Scr
 		if (g_obj->GetUIState()->GetPanelState()->GetButtonsState()[0] == PRESSED)
 		{
 
-			sm->PlaySound(MENUPRESSBUTTON);
+			//sm->PlaySound(MENUPRESSBUTTON);
 
 		}
 
@@ -376,8 +376,6 @@ void PanelRender::Render(SoundManager *sm, Tooltip *t_tip, Controller *ctrl, Scr
 		glm::vec2 hp_factor = glm::vec2(GLfloat(g_obj->GetPanelState()->hp) / GLfloat(g_obj->GetPanelState()->max_hp), 1.0f);
 		u_data->ApplyMatrix(Translation(this->hp_bar_position)*Scale(this->hp_bar_size*hp_factor));
 		this->button_skins->Render(HEALTHBAR);
-
-		//g_obj->GetFontList()->GetFont()->Print("HP lol", hp_bar_position.x + 5, ctrl->GetWindowHeight() - hp_bar_position.y, 35);
 
 		char *buffer = new char[256];
 		char *buffer2 = new char[256];

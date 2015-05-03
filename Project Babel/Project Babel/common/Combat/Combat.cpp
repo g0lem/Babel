@@ -155,7 +155,7 @@ void Combat::PlayerAttack(SoundManager * sm, Controller * ctrl, GameObject * g_o
 
 
 
-			sm->PlaySound(ATTACK2);
+			//sm->PlaySound(ATTACK2);
 
 
 		}
@@ -417,12 +417,6 @@ void Combat::EnemyAttack(SoundManager *sm, Controller * ctrl, GameObject * g_obj
 				if (player->GetPAttributes()->position.x == current_enemy->GetPAttributes()->position.x || player->GetPAttributes()->position.y == current_enemy->GetPAttributes()->position.y)
 				{
 
-					print_vec2(half_screen_vector);
-					print_vec2(player->GetPAttributes()->position * player->GetPAttributes()->scale + g_obj->GetScroller()->GetOffset());
-		
-
-
-
 					g_obj->GetSpellManager()->Add(new Spell(FIREBALL, 1, half_screen_vector,
 						half_screen_vector - current_enemy->GetPAttributes()->position * current_enemy->GetPAttributes()->scale, current_enemy->GetPAttributes()->scale,
 						5.f, frame));
@@ -485,11 +479,11 @@ void Combat::EnemyAttack(SoundManager *sm, Controller * ctrl, GameObject * g_obj
 			_itoa(dmg, buffer, 10);
 			strcat(buffer, " DMG");
 			if (type == 0)
-				sm->PlaySound(SCORPIONATTACK);
+				//sm->PlaySound(SCORPIONATTACK);
 			if (type == 1)
-				sm->PlaySound(HYDRAATTACK);
+				//sm->PlaySound(HYDRAATTACK);
 			if (type == 2)
-				sm->PlaySound(HYDRAATTACK);
+				//sm->PlaySound(HYDRAATTACK);
 
 
 			g_obj->GetTextObject()->Add(g_obj->GetFontList()->GetFont(),

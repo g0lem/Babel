@@ -42,11 +42,7 @@ public:
 
 	inline glm::vec2 Operate(Controller *ctrl, ScreenUniformData * u_data, GLboolean **tiles)
 	{
-
-		printf("test\n");
-
 		rPosition = glm::ivec2((this->position - offset )/ this->scale);
-		print_vec2(rPosition);
 
 		if (tiles[rPosition.x][rPosition.y] == 0)
 		{

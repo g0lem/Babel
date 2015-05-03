@@ -197,7 +197,7 @@ void EnemyManager::CheckEnemiesState(SoundManager *sm, GameObject * g_obj, Map *
 				{
 
 					this->Kill(g_obj, i, map, type);
-					sm->PlaySound(SCORPIONDIE);
+					//sm->PlaySound(SCORPIONDIE);
 				
 				}
 
@@ -211,7 +211,7 @@ void EnemyManager::CheckEnemiesState(SoundManager *sm, GameObject * g_obj, Map *
 
 
 			this->Kill(g_obj, i, map, type);
-			sm->PlaySound(SCORPIONDIE);
+			//sm->PlaySound(SCORPIONDIE);
 
 		}
 

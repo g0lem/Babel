@@ -36,7 +36,7 @@ void UIState::ProcessKeys(SoundManager *sm, Controller * ctrl)
 	{
 		this->m_state->SetState(!this->m_state->GetState());
 		{
-			sm->PlaySound(MENUPRESSBUTTON);
+			//sm->PlaySound(MENUPRESSBUTTON);
 		}
 	}
 	
