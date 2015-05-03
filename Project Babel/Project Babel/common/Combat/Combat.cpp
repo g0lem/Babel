@@ -402,21 +402,33 @@ void Combat::EnemyAttack(SoundManager *sm, Controller * ctrl, GameObject * g_obj
 		
 			if (current_enemy->ranged == true)
 		    {
-				//if (current_enemy->GetTurnSystem()->GetTurns() >= 1.0f / current_enemy->GetStats()->base_attack_speed && current_enemy->GetStats()->aggressive == true)
-				//{
-				//	if (player->GetPAttributes()->position.x == current_enemy->GetPAttributes()->position.x || player->GetPAttributes()->position.y == current_enemy->GetPAttributes()->position.y)
-				//	{
-				//		
-				//		int frame = current_enemy->GetDirection()->Compute(DIR_TYPE_4, current_enemy->GetPAttributes()->position, current_enemy->GetPAttributes()->target);
-				//		
-				//			g_obj->GetSpellManager()->Add(new Spell(FIREBALL, 10, current_enemy->GetPAttributes()->position,
-				//				g_obj->GetScroller()->GetOffset(), current_enemy->GetPAttributes()->scale,
-				//				5.f, frame));
-				//		
-				//	}
 
 
-				//}
+				glm::vec2 half_screen_vector = GridPosition(glm::vec2(ctrl->GetWindowWidth(), ctrl->GetWindowHeight()) / 2.0f, current_enemy->GetPAttributes()->scale);
+
+
+				int frame = current_enemy->GetDirection()->Compute(DIR_TYPE_4, current_enemy->GetPAttributes()->position, current_enemy->GetTargetPosition());
+				current_enemy->GetActionHandler()->SetAction(ATTACKING);
+				current_enemy->GetActionHandler()->Start();
+
+
+
+
+				if (player->GetPAttributes()->position.x == current_enemy->GetPAttributes()->position.x || player->GetPAttributes()->position.y == current_enemy->GetPAttributes()->position.y)
+				{
+
+					print_vec2(half_screen_vector);
+					print_vec2(player->GetPAttributes()->position * player->GetPAttributes()->scale + g_obj->GetScroller()->GetOffset());
+		
+
+
+
+					g_obj->GetSpellManager()->Add(new Spell(FIREBALL, 1, half_screen_vector,
+						half_screen_vector - current_enemy->GetPAttributes()->position * current_enemy->GetPAttributes()->scale, current_enemy->GetPAttributes()->scale,
+						5.f, frame));
+				}
+
+
 		    }
 		
 			else if (current_enemy->GetTurnSystem()->GetTurns() >= 1.0f / current_enemy->GetStats()->base_attack_speed && current_enemy->GetStats()->aggressive == true)

@@ -107,7 +107,7 @@ inline glm::ivec2 GetCenter(glm::ivec2 points[2]){ return GetCenter(points[0], p
 
 
 inline GLvoid print_vec2(glm::vec2 t_vec){ printf("%.2f, %.2f\n", t_vec.x, t_vec.y); }
-
+inline GLvoid print_vec2(glm::ivec2 t_vec){ printf("%i, %i\n", t_vec.x, t_vec.x); }
 
 
 inline GLboolean vec2_i(glm::vec2 t_vec){ return (glm::vec2(glm::ivec2(t_vec)) == t_vec); }
