@@ -45,3 +45,30 @@ void AutoPath::Start(GameObject * g_obj, glm::vec2 start, glm::vec2 end, int pat
 
 
 }
+
+void AutoPath::Start(GameObject * g_obj, glm::vec2 start, glm::vec2 end, int path_type, int scale)
+{
+
+
+	this->GetPathfinder()->Init(g_obj, start, end, path_type, scale);
+
+
+	this->Reset();
+
+
+	if (this->GetPathfinder()->GetPathFound())
+	{
+
+
+		this->SetPath(this->GetPathfinder()->GetPath());
+
+
+		this->Advance();
+
+
+
+	}
+
+
+}
+

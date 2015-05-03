@@ -10,7 +10,7 @@ std::vector <glm::vec2> Pathfinder::GetPath()
 
 	while (get != NULL)
 	{
-		path.push_back(glm::vec2(get->x, get->y));
+		path.push_back(glm::vec2(get->x * this->scale, get->y * this->scale));
 		get = get->last;
 	}
 
@@ -45,7 +45,7 @@ void Pathfinder::Delete()
 
 void Pathfinder::Init(GameObject *g_obj, glm::vec2 start, glm::vec2 finish, int pathfinder_type)
 {
-
+	this->scale = 1;
 	if (pathfinder_type == PATH_WITH_DOORS)
 	{
 		this->map = g_obj->GetCollisionMap()->GetTiles();
@@ -54,6 +54,7 @@ void Pathfinder::Init(GameObject *g_obj, glm::vec2 start, glm::vec2 finish, int 
 	{
 		this->map = g_obj->GetCollisionMap()->GetPlayerTiles();
 	}
+
 
 
 	this->g_obj = g_obj;
@@ -139,6 +140,130 @@ bool Pathfinder::neighbours(node *currentnode)
 
 	}
 	return false;
+}
+
+void Pathfinder::Init(GameObject *g_obj, glm::vec2 start, glm::vec2 finish, int pathfinder_type, int scale)
+{
+	this->scale = scale;
+
+	if (pathfinder_type == PATH_WITH_DOORS)
+	{
+		
+		this->b_map = g_obj->GetCollisionMap()->GetTiles();
+	}
+	else if (pathfinder_type == PATH_PLAYER)
+	{
+		this->b_map = g_obj->GetCollisionMap()->GetPlayerTiles();
+	}
+
+	this->map_size = g_obj->GetCollisionMap()->GetSize();
+
+
+	std::cout << "got it";
+	AdaptMap();
+
+
+	this->g_obj = g_obj;
+
+
+	searchstart = false;
+
+	this->Delete();
+	this->PathFound = false;
+
+
+
+
+	Ending = new node;
+	Beginning = new node;
+	Ending->x = finish.x/this->scale;
+	Ending->y = finish.y / this->scale;
+	Ending->H = 0;
+
+	Beginning->x = start.x / this->scale;
+	Beginning->y = start.y / this->scale;
+	Beginning->last = NULL;
+	Beginning->G = 0;
+	Beginning->H = GetDistance(Ending);
+	Beginning->F = Beginning->G + Beginning->H;
+
+
+
+	openlist.push_back(Beginning);
+
+
+
+	node *current;
+
+	current = FindBestNode();
+
+	while (PathFound == false && neighbours(current) == true)
+	{
+		if (openlist.size() != 0)
+			FindNewNode(current);
+		if (searchstart == false)
+		{
+			FindNewNode(current);
+			searchstart = true;
+		}
+		if (!PathFound)
+			current = FindBestNode();
+
+
+		if (openlist.size() == 0)
+		{
+			FindNewNode(current);
+			if (openlist.size() == 0)
+				break;
+		}
+
+	}
+
+
+
+
+}
+void Pathfinder::AdaptMap()
+{
+	bool ok;
+
+	
+	this->map = new GLboolean*[int(this->map_size.x / this->scale)];
+	std::cout << "Intrat";
+	for (int i = 0; i < int(this->map_size.x / this->scale); i++)
+	{
+		this->map[i] = new GLboolean[int(this->map_size.y / this->scale)];
+	}
+
+	for (int i = 0; i < int(this->map_size.x); i += this->scale)
+		for (int j = 0; j <int(this->map_size.y); j += this->scale)
+		{
+		ok = true;
+		for (int k = 0; k < this->scale; k++)
+			for (int l = 0; l < this->scale;l++)
+				if (b_map[i+k][j+l] == true)
+				{
+			//std::cout << "DA";
+			        map[i/scale][j/scale] = true;
+					ok = false;
+				}
+		if (ok == true)
+		{
+			map[i / scale][j / scale] = false;
+		}
+
+
+		}
+
+	for (int i = 0; i < int(this->map_size.x / this->scale); i++)
+	{
+		for (int j = 0; j <int(this->map_size.y / this->scale); j++)
+		{
+			std::cout << (int)(map[i][j]);
+		}
+		std::cout << "\n";
+	}
+
 }
 
 
@@ -240,34 +365,36 @@ void Pathfinder::FindNewNode(node *currentnode)
 Pathfinder::node *Pathfinder::FindBestNode()
 {
 
-
-	node *best = openlist[0];
-	GLfloat minimum_F= best->F;
-	int pozition = 0;
-
-
-	for (int i = 1; i < openlist.size(); i++)
+	if (openlist.size() > 0)
 	{
+		node *best = openlist[0];
+		GLfloat minimum_F = best->F;
+		int pozition = 0;
 
 
-		if (openlist[i]->F < minimum_F)
+		for (int i = 1; i < openlist.size(); i++)
 		{
-			best = openlist[i];
-			minimum_F = openlist[i]->F;
-			pozition = i;
+
+
+			if (openlist[i]->F < minimum_F)
+			{
+				best = openlist[i];
+				minimum_F = openlist[i]->F;
+				pozition = i;
+			}
+
+
 		}
 
 
+
+		visitedlist.push_back(best);
+		openlist.erase(openlist.begin() + pozition);
+
+
+		return best;
+
 	}
-
-
-
-	visitedlist.push_back(best);
-	openlist.erase(openlist.begin() + pozition);
-
 	
-	return best;
-
-
 }
 
