@@ -12,7 +12,7 @@ void SpriteManager::Init(GameObject * g_obj)
 	this->BindCreate("data/shaders/2d_vert.txt","data/shaders/2d_frag.txt");
 
 
-
+	this->level = 1;
 
 	this->map = new Map();
 	this->s_screen = new SplashScreen();
@@ -32,7 +32,7 @@ void SpriteManager::Init(GameObject * g_obj)
 	this->player = new Player();
 	this->player->Load(g_obj, this->map);
 
-	this->m_enemies = new EnemyManager(20+(rand()%3), this->map, g_obj, 2);
+	this->m_enemies = new EnemyManager(20+(rand()%3), this->map, g_obj, 0);
 
 	for (int i = 0; i < g_obj->GetItemList()->GetObjects().size(); i++)
 	{
@@ -68,7 +68,7 @@ void SpriteManager::Advance(GameObject * g_obj)
 
 	this->BindCreate("data/shaders/2d_vert.txt", "data/shaders/2d_frag.txt");
 
-	
+	this->level++;
 	
 
 
@@ -76,18 +76,28 @@ void SpriteManager::Advance(GameObject * g_obj)
 	
 
 
-
-	this->map->InitBoss(g_obj);
-
-
-	this->player->Advance(g_obj, this->map);
+	if (this->level == 3)
+	{
+		this->map->InitBoss(g_obj);
 
 
+		this->player->Advance(g_obj, this->map);
+
+		this->m_enemies = new EnemyManager(1, this->map, g_obj, 1);
+	}
+	else
+	{
+		this->map->Init(g_obj);
+		this->player->Load(g_obj, this->map);
+
+		if (this->level == 2)
+		this->m_enemies = new EnemyManager(7, this->map, g_obj, 0);
+	}
 
 	
 	
 	
-	this->m_enemies = new EnemyManager(1, this->map, g_obj, 1);
+	
 
 
 	this->m_effects = new EffectsHandler();

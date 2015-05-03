@@ -25,6 +25,7 @@ class SpriteManager : private Aaether2D
 
 	float alpha = 1.f;
 
+	int level;
 
 	Combat * m_combat;
 
