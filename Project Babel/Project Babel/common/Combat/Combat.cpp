@@ -388,7 +388,7 @@ void Combat::AquireEnemyTarget(Player * player, EnemyManager * enemies)
 void Combat::EnemyAttack(SoundManager *sm, Controller * ctrl, GameObject * g_obj, Player * player, EnemyManager *enemies, int type)
 {
 
-
+	SpellManager *spell = g_obj->GetSpellManager();
 	for (GLuint i = 0; i < enemies->GetEnemiesPointer()->size(); i++)
 	{
 
@@ -399,33 +399,9 @@ void Combat::EnemyAttack(SoundManager *sm, Controller * ctrl, GameObject * g_obj
 		if (current_enemy->GetTarget() > NO_TARGET && current_enemy->GetActionHandler()->IsStopped())
 		{
 
+
 		
-			if (current_enemy->ranged == true)
-		    {
-
-
-				glm::vec2 half_screen_vector = GridPosition(glm::vec2(ctrl->GetWindowWidth(), ctrl->GetWindowHeight()) / 2.0f, current_enemy->GetPAttributes()->scale);
-
-
-				int frame = current_enemy->GetDirection()->Compute(DIR_TYPE_4, current_enemy->GetPAttributes()->position, current_enemy->GetTargetPosition());
-				current_enemy->GetActionHandler()->SetAction(ATTACKING);
-				current_enemy->GetActionHandler()->Start();
-
-
-
-
-				if (player->GetPAttributes()->position.x == current_enemy->GetPAttributes()->position.x || player->GetPAttributes()->position.y == current_enemy->GetPAttributes()->position.y)
-				{
-
-					g_obj->GetSpellManager()->Add(new Spell(FIREBALL, 1, half_screen_vector,
-						half_screen_vector - current_enemy->GetPAttributes()->position * current_enemy->GetPAttributes()->scale, current_enemy->GetPAttributes()->scale,
-						5.f, frame));
-				}
-
-
-		    }
-		
-			else if (current_enemy->GetTurnSystem()->GetTurns() >= 1.0f / current_enemy->GetStats()->base_attack_speed && current_enemy->GetStats()->aggressive == true)
+			if (current_enemy->GetTurnSystem()->GetTurns() >= 1.0f / current_enemy->GetStats()->base_attack_speed && current_enemy->GetStats()->aggressive == true)
 				{
 
 
@@ -440,11 +416,39 @@ void Combat::EnemyAttack(SoundManager *sm, Controller * ctrl, GameObject * g_obj
 
 
 		}
+		else
+		{
+			if (current_enemy->ranged == true && (current_enemy->GetTurnSystem()->GetTurns() >= 1.0f / current_enemy->GetStats()->base_attack_speed && current_enemy->GetStats()->aggressive == true))
+			{
+
+
+				glm::vec2 half_screen_vector = GridPosition(glm::vec2(ctrl->GetWindowWidth(), ctrl->GetWindowHeight()) / 2.0f, current_enemy->GetPAttributes()->scale);
+
+
+				int frame = current_enemy->GetDirection()->Compute(DIR_TYPE_4, current_enemy->GetPAttributes()->position, current_enemy->GetTargetPosition());
+				current_enemy->GetActionHandler()->SetAction(ATTACKING);
+				current_enemy->GetActionHandler()->Start();
+
+				glm::vec2 offset = half_screen_vector - current_enemy->GetPAttributes()->position * current_enemy->GetPAttributes()->scale;
 
 
 
-		if (current_enemy->GetActionHandler()->GetAction() == ATTACKING && 
-			current_enemy->GetActionHandler()->HasReachedLifetime(TIME_FOR_ACTION))
+				if ((player->GetPAttributes()->position.x == current_enemy->GetPAttributes()->position.x  && player->GetPAttributes()->position.y - current_enemy->GetPAttributes()->position.y > 3) || (player->GetPAttributes()->position.y == current_enemy->GetPAttributes()->position.y && player->GetPAttributes()->position.x - current_enemy->GetPAttributes()->position.x > 3))
+				{
+
+					g_obj->GetSpellManager()->Add(new Spell(FIREBALL, 1, current_enemy->GetPAttributes()->position * current_enemy->GetPAttributes()->scale + g_obj->GetScroller()->GetOffset(),
+						player->GetPAttributes()->position ,g_obj->GetScroller()->GetOffset(), current_enemy->GetPAttributes()->scale,
+						5.f, frame));
+				}
+
+
+			}
+		}
+
+
+
+		if (current_enemy->GetActionHandler()->GetAction() == ATTACKING &&
+			current_enemy->GetActionHandler()->HasReachedLifetime(TIME_FOR_ACTION) && current_enemy->ranged == false)
 		{
 		
 
@@ -460,7 +464,7 @@ void Combat::EnemyAttack(SoundManager *sm, Controller * ctrl, GameObject * g_obj
 			glm::vec2 text_pos = e_attr->position *
 				e_attr->scale +
 				g_obj->GetScroller()->GetOffset();
-			text_pos.y = ctrl->GetWindowHeight() - text_pos.y;// -18;
+			text_pos.y = ctrl->GetWindowHeight() - text_pos.y;
 			text_pos.x -= 4;
 
 			int dmg;
@@ -493,15 +497,69 @@ void Combat::EnemyAttack(SoundManager *sm, Controller * ctrl, GameObject * g_obj
 				UP,
 				50);
 
-
-		
+			
 		
 		}
 
+		for (int i = 0; i < spell->GetBuffer()->size(); i++)
+		{
+			int nextSpell = false;
 
+			if (spell->GetSpell(i)->active == false)
+			{
+				for (int j = 0; j < enemies->GetEnemiesPointer()->size() && nextSpell == false && spell->GetSpell(i)->state == true; j++)
+				{
+
+					print_vec2(player->GetPAttributes()->position);
+					print_vec2(spell->GetSpell(i)->rPosition);
+
+					if ((glm::ivec2)player->GetPAttributes()->position == spell->GetSpell(i)->rPosition)
+					{
+						nextSpell = true;
+
+						current_enemy->GetTurnSystem()->ComputeAttack(-spell->GetSpell(i)->speed);
+						current_enemy->GetActionHandler()->SetAction(NO_ACTION);
+						current_enemy->GetActionHandler()->Stop();
+
+
+
+						int dmg = player->GetStats()->GetHp()->Damage(glm::vec2(spell->GetSpell(i)->damage, spell->GetSpell(i)->damage));
+
+						PhysicalAttributes * e_attr = player->GetPAttributes();
+
+
+						glm::vec2 text_pos = e_attr->position *
+							e_attr->scale +
+							g_obj->GetScroller()->GetOffset();
+
+
+
+
+						text_pos.y -= 10;
+						text_pos.x -= 4;
+
+						char *buffer = new char[256];
+						_itoa(dmg, buffer, 10);
+						strcat(buffer, " DMG");
+
+						g_obj->GetTextObject()->Add(g_obj->GetFontList()->GetFont(),
+							buffer,
+							text_pos,
+							glm::vec4(1.0f, 0.0f, 0.0f, 1.0f), 20,
+							UP,
+							50);
+
+						spell->GetSpell(i)->state = false;
+					}
+				}
+			}
+		}
 
 
 	}
+
+
+
 
 
 }

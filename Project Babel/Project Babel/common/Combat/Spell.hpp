@@ -26,6 +26,8 @@ public:
 	std::string path;
 	glm::vec2 offset;
 	glm::vec2 finish;
+	glm::vec2 ipos;
+	glm::vec2 lpos;
 
 	inline Spell(int spellID, int damage, glm::vec2 position, glm::vec2 offset, glm::vec2 scale, float speed, int direction)
 		: damage(damage), position(position), scale(scale), speed(speed), direction(direction), offset(offset)
@@ -33,7 +35,20 @@ public:
 
 		if (spellID == FIREBALL)
 			path = "data/spells/fireball.png";
+		this->ipos = this->position;
+		this->m_sprite = new Sprite();
+		this->m_sprite->Load(path.c_str());
+		this->active = true;
+		this->state = true;
+	}
 
+	inline Spell(int spellID, int damage, glm::vec2 position, glm::vec2 last, glm::vec2 offset, glm::vec2 scale, float speed, int direction)
+		: damage(damage), position(position), scale(scale), speed(speed), direction(direction), offset(offset), lpos(last)
+	{
+
+		if (spellID == FIREBALL)
+			path = "data/spells/fireball.png";
+		this->ipos = this->position;
 		this->m_sprite = new Sprite();
 		this->m_sprite->Load(path.c_str());
 		this->active = true;
@@ -43,8 +58,9 @@ public:
 	inline glm::vec2 Operate(Controller *ctrl, ScreenUniformData * u_data, GLboolean **tiles)
 	{
 		rPosition = glm::ivec2((this->position - offset )/ this->scale);
+		glm::ivec2 initial = glm::ivec2((this->ipos - offset) / this->scale);
 
-		if (tiles[rPosition.x][rPosition.y] == 0)
+		if ((tiles[rPosition.x][rPosition.y] == 0 || rPosition == initial) && rPosition.x >= 0 && rPosition.y >=0 && !(rPosition == (glm::ivec2)lpos))
 		{
 
 			if (direction == UP)
