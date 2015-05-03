@@ -125,7 +125,7 @@ void EventHandler::Door(glm::vec2 position, Map *current_map, GameObject *g_obj)
 			break;
 			
 		}
-		if (e_map[(int)(position.x)][(int)(position.y) - 1] == OPENED_DOOR_BLOCK)
+		if (current_map->GetTilemap()->GetTiles()[(int)(position.x)][(int)(position.y) - 1] == OPENED_DOOR_BLOCK)
 		{
 			
 			current_map->GetTilemap()->GetTiles()[(int)(position.x)][(int)(position.y) - 1] = DOOR_BLOCK;

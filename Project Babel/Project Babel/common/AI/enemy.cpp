@@ -11,9 +11,13 @@ void Enemy::Init(EnemyData * data)
 	this->m_dir = new Direction();
 
 
-	this->LoadPhysicalAttributes();
 	
 	this->LoadStats(data);
+
+
+	this->LoadPhysicalAttributes();
+
+
 	this->LoadSprites(data);
 
 
@@ -35,7 +39,7 @@ void Enemy::Render(Controller * ctrl, ScreenUniformData * u_data, GameObject * g
 
 
 	this->last_position = this->p_attributes->position;
-	u_data->ApplyMatrix(Translation(p_attributes->position * p_attributes->scale + g_obj->GetScroller()->GetOffset())*
+	u_data->ApplyMatrix(Translation(p_attributes->position * (glm::vec2(p_attributes->scale.x / this->scale, p_attributes->scale.y / this->scale)) + g_obj->GetScroller()->GetOffset())*
 		Scale(p_attributes->scale));
 	//u_data->SetAmbientLight(color * (glm::abs(1.5f*glm::sin(glfwGetTime()*5.0f)) + 0.6f));
 
@@ -167,7 +171,7 @@ void Enemy::LoadPhysicalAttributes()
 
 	this->p_attributes = new PhysicalAttributes();
 	this->p_attributes->position = this->p_attributes->target = vec2_0;
-	this->p_attributes->scale = glm::vec2(32.0f,32.0f);
+	this->p_attributes->scale = glm::vec2(32.f * this->scale, 32.f * this->scale);
 	this->p_attributes->speed = 10.0f;
 	this->p_attributes->rotation_angle - 0.0f;
 
@@ -182,9 +186,17 @@ void Enemy::Update(GameObject * g_obj, GLfloat delta)
 
 
 	this->p_attributes->Update(delta);
-	g_obj->GetCollisionMap()->AddToList(glm::ivec2(this->p_attributes->target));
-	g_obj->GetCollisionMap()->GetTiles()[GLuint(this->p_attributes->target.x)][GLuint(this->p_attributes->target.y)] = 1;
-
+	for (int i = 0; i < this->scale; i++)
+		for (int j = 0; j < this->scale; j++)
+		{
+		g_obj->GetCollisionMap()->AddToList(glm::ivec2(this->p_attributes->target.x + i, this->p_attributes->target.y + j));
+		}
+	
+	for (int i = 0; i < this->scale; i++)
+		for (int j = 0; j < this->scale; j++)
+		{
+		g_obj->GetCollisionMap()->GetTiles()[GLuint(this->p_attributes->target.x + i)][GLuint(this->p_attributes->target.y + j)] = 1;
+		}
 }
 
 
@@ -252,6 +264,7 @@ void Enemy::LoadStats(EnemyData * data)
 
 
 	this->m_stats = new Stats();
+	this->scale = data->scale;
 	this->m_stats->Copy(data->m_stats);
 
 	this->SetChances(data);

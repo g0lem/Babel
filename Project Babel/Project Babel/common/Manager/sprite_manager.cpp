@@ -32,7 +32,7 @@ void SpriteManager::Init(GameObject * g_obj)
 	this->player = new Player();
 	this->player->Load(g_obj, this->map);
 
-	this->m_enemies = new EnemyManager(20+(rand()%3), this->map, g_obj, 0);
+	this->m_enemies = new EnemyManager(6+(rand()%3), this->map, g_obj, 0);
 
 	for (int i = 0; i < g_obj->GetItemList()->GetObjects().size(); i++)
 	{
@@ -82,16 +82,26 @@ void SpriteManager::Advance(GameObject * g_obj)
 
 
 		this->player->Advance(g_obj, this->map);
+		
+		this->m_enemies = new EnemyManager(1, this->map, g_obj, 3);
 
-		this->m_enemies = new EnemyManager(1, this->map, g_obj, 1);
+	
 	}
 	else
 	{
 		this->map->Init(g_obj);
-		this->player->Load(g_obj, this->map);
+		this->player->Advance(g_obj, this->map);
 
 		if (this->level == 2)
-		this->m_enemies = new EnemyManager(7, this->map, g_obj, 0);
+		{
+			this->m_enemies = new EnemyManager(7, this->map, g_obj, 0);
+			for (int i = 0; i < g_obj->GetItemList()->GetObjects().size(); i++)
+			{
+				if (g_obj->GetItemList()->GetObjects()[i]->item->id == CHEST_ID)
+					this->m_enemies->AddEnemies(this->map, g_obj, 2, glm::vec2(g_obj->GetItemList()->GetObjects()[i]->position.x, g_obj->GetItemList()->GetObjects()[i]->position.y + 1));
+			}
+
+		}
 	}
 
 	

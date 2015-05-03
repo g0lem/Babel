@@ -21,10 +21,15 @@ public:
 	Stats * m_stats;
 	
 	bool ranged;
+	bool boss;
 
 	int *chances;
 	int *items;
 	int num_drop;
+
+	int scale;
+
+
 
 };
 
@@ -35,6 +40,7 @@ class EnemyLoader
 
 
 	std::vector<EnemyData*>*data;
+
 
 	int type = 0;
 

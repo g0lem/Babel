@@ -654,9 +654,17 @@ void Combat::EnemyMovement(Controller * ctrl, GameObject * g_obj, Player * playe
 
 
 				attr->target = a_path->GetStep();
-				g_obj->GetCollisionMap()->AddToList(glm::ivec2(attr->target));
-				g_obj->GetCollisionMap()->GetTiles()[glm::ivec2(attr->target).x][glm::ivec2(attr->target).y] = 1;
 
+				for (int i = 0; i < enemy->scale; i++)
+					for (int j = 0; j < enemy->scale; j++)
+					{
+					g_obj->GetCollisionMap()->AddToList(glm::ivec2(attr->target.x+i, attr->target.y + j));
+					}
+				for (int i = 0; i < enemy->scale; i++)
+					for (int j = 0; j < enemy->scale; j++)
+					{
+					g_obj->GetCollisionMap()->GetTiles()[glm::ivec2(attr->target).x + i][glm::ivec2(attr->target).y+j] = 1;
+					}
 
 				if (a_handler->IsStopped())
 				{

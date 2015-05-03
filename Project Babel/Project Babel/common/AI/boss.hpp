@@ -37,6 +37,7 @@ public:
 	int *chances, *items;
 	int num_drop;
 	bool ranged;
+	int scale;
 
 	void SetChances(EnemyData *data);
 

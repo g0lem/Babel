@@ -5,8 +5,8 @@ void Boss::Init(EnemyData *data)
 {
 	this->turn_sys = new TurnSystem();
 	this->m_dir = new Direction();
-	this->LoadAttrib();
 	this->LoadStats(data);
+	this->LoadAttrib();
 	this->LoadSprites(data);
 
 	this->target_position = vec2_0;
@@ -21,11 +21,13 @@ void Boss::LoadSprites(EnemyData *data)
 {
 	this->m_sprite = data->m_sprites[0];
 }
+
+
 void Boss::LoadAttrib()
 {
 	this->p_attrib = new PhysicalAttributes();
 	this->p_attrib->position = this->p_attrib->target = vec2_0;
-	this->p_attrib->scale = glm::vec2(32.f, 32.f);
+	this->p_attrib->scale = glm::vec2(32.f * this->scale, 32.f * this->scale);
 	this->p_attrib->speed = 10.f;
 	this->p_attrib->rotation_angle = 0.f;
 }
@@ -33,6 +35,7 @@ void Boss::LoadAttrib()
 void Boss::LoadStats(EnemyData *data)
 {
 	this->m_stats = new Stats();
+	this->scale = data->scale;
 	this->m_stats->Copy(data->m_stats);
 	this->SetChances(data);
 }
@@ -82,9 +85,16 @@ void Boss::Update(GameObject * g_obj, GLfloat delta)
 
 
 	this->p_attrib->Update(delta);
-	g_obj->GetCollisionMap()->AddToList(glm::ivec2(this->p_attrib->target));
-	g_obj->GetCollisionMap()->GetTiles()[GLuint(this->p_attrib->target.x)][GLuint(this->p_attrib->target.y)] = 1;
-
+	for (int i = 0; i < this->scale; i++)
+		for (int j = 0; j < this->scale; j++)
+		{
+		g_obj->GetCollisionMap()->AddToList(glm::ivec2(this->p_attrib->target.x + i, this->p_attrib->target.y + j));
+		}
+	for (int i = 0; i < this->scale; i++)
+		for (int j = 0; j < this->scale; j++)
+		{
+		g_obj->GetCollisionMap()->GetTiles()[GLuint(this->p_attrib->target.x + i)][GLuint(this->p_attrib->target.y + j)] = 1;
+		}
 }
 
 
