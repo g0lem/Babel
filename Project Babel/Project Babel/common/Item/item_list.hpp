@@ -55,7 +55,8 @@ public:
 
 
 	GLboolean must_load = true;
-	GLboolean must_heal = false;
+	int heal = 0;
+	int xp = 0;
 	Item * weapon = NULL;
 	Item * armor = NULL;
 

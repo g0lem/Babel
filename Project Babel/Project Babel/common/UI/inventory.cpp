@@ -234,8 +234,16 @@ void Inventory::Render(Tooltip *t_tip, SoundManager *sm, Controller *ctrl, Scree
 				}
 				else if (g_obj->GetItemList()->GetInventory()[i]->type == 0)
 				{
-					g_obj->GetItemList()->must_heal = true;
-					g_obj->GetItemList()->DeleteFromInventory(i);
+					if (g_obj->GetItemList()->GetInventory()[i]->id == EnemyData::health_potion_12)
+					{
+						g_obj->GetItemList()->heal = 12;
+						g_obj->GetItemList()->DeleteFromInventory(i);
+					}
+					else if (g_obj->GetItemList()->GetInventory()[i]->id == EnemyData::health_potion_20)
+					{
+						g_obj->GetItemList()->heal = 20;
+						g_obj->GetItemList()->DeleteFromInventory(i);
+					}
 				}
 			}
 

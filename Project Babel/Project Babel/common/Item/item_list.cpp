@@ -108,12 +108,41 @@ void ItemList::LoadItems()
 	m_item->Init();
 	m_item->attack = glm::vec2(0, 0);
 	m_item->armor = 0;
+	m_item->type = 0;
+	m_item->attack_speed = 1.0f; 
+	m_item->id = EnemyData::item_types::health_potion_12;
+	m_item->item_name = "Health Potion 12";
+	this->list.push_back(m_item);
+	this->weapon = m_item;
+	this->armor = m_item;
+	
+
+	m_item = new Item;
+	m_item->Init();
+	m_item->attack = glm::vec2(0, 0);
+	m_item->armor = 0;
+	m_item->type = 0;
 	m_item->attack_speed = 1.0f;
-	m_item->item_name = "Health Potion";
+	m_item->item_name = "Health Potion 20";	
+	m_item->id = EnemyData::item_types::health_potion_20;
 	this->list.push_back(m_item);
 	this->weapon = m_item;
 	this->armor = m_item;
 
+
+
+	m_item = new Item;
+	m_item->Init();
+	m_item->attack = glm::vec2(0, 0);
+	m_item->armor = 0;
+	m_item->type = 0;
+	m_item->attack_speed = 1.0f;
+	m_item->item_name = "Experience Potion";
+	m_item->id = EnemyData::item_types::xp_potion_2;
+	this->list.push_back(m_item);
+	this->weapon = m_item;
+	this->armor = m_item;
+	
 
 	m_item = new Item;
 	m_item->Init();
@@ -122,8 +151,9 @@ void ItemList::LoadItems()
 	m_item->attack_speed = 1.0f;
 	m_item->attack = glm::vec2(2, 3);
 	m_item->item_name = "Hammer";
+	m_item->id = EnemyData::item_types::Hammer;
 	this->list.push_back(m_item);
-
+	
 
 	m_item = new Item;
 	m_item->Init();
@@ -131,25 +161,10 @@ void ItemList::LoadItems()
 	m_item->type = ITEM_TYPE_WEAPON;
 	m_item->attack_speed = 1.0f;
 	m_item->attack = glm::vec2(1, 2);
-	m_item->item_name = "Sword";;
+	m_item->item_name = "Sword"; 
+	m_item->id = EnemyData::item_types::Sword;
 	this->list.push_back(m_item);
-
-	m_item = new Item();
-	m_item->Init();
-	m_item->frame = 3;
-	m_item->id = CHAINS_ID;
-	m_item->type = ITEM_TYPE_TRAP;
-	m_item->item_name = "Chains";
-	this->list.push_back(m_item);
-
-	m_item = new Item();
-	m_item->Init();
-	m_item->frame = 4;
-	m_item->id = SPIKES_ID;
-	m_item->type = ITEM_TYPE_TRAP;
-	m_item->item_name = "Spikes";
-	m_item->attack = glm::vec2(10, 10);
-	this->list.push_back(m_item);
+	
 
 
 	m_item = new Item;
@@ -160,8 +175,10 @@ void ItemList::LoadItems()
 	m_item->attack = glm::vec2(4, 4);
 	m_item->item_name = "Epic Sword";
 	m_item->base_color = glm::vec4(0.58f, 0.f, 0.82f, 1.f);
-	this->list.push_back(m_item);
+	EnemyData::item_types::Epic_Sword;
 
+	this->list.push_back(m_item);
+	
 
 
 	m_item = new Item;
@@ -171,23 +188,25 @@ void ItemList::LoadItems()
 	m_item->armor = 2;
 	m_item->item_name = "Leather Armor";
 	this->list.push_back(m_item);
+	EnemyData::item_types::Leather_Armor_1;
 
 	m_item = new Item;
 	m_item->Init();
 	m_item->frame = 6;
 	m_item->type = ITEM_TYPE_ARMOR;
 	m_item->armor = 1;
-	m_item->item_name = "Leather Armor";
+	m_item->item_name = "Leather Armor";EnemyData::item_types::Leather_Armor_2;
 	this->list.push_back(m_item);
-
+	
 
 	m_item = new Item;
 	m_item->Init();
 	m_item->frame = 5;
 	m_item->type = ITEM_TYPE_ARMOR;
 	m_item->armor = 2;
-	m_item->item_name = "Plate Armor";
+	m_item->item_name = "Plate Armor";EnemyData::item_types::Plate_Armor_1;
 	this->list.push_back(m_item);
+	
 
 
 	m_item = new Item;
@@ -195,9 +214,9 @@ void ItemList::LoadItems()
 	m_item->frame = 5;
 	m_item->type = ITEM_TYPE_ARMOR;
 	m_item->armor = 3;
-	m_item->item_name = "Plate Armor";
+	m_item->item_name = "Plate Armor";EnemyData::item_types::Plate_Armor_2;
 	this->list.push_back(m_item);
-
+	
 
 
 	m_item = new Item;
@@ -205,8 +224,31 @@ void ItemList::LoadItems()
 	m_item->frame = 5;
 	m_item->type = ITEM_TYPE_ARMOR;
 	m_item->armor = 4;
-	m_item->item_name = "Epic Armor";
+	m_item->item_name = "Epic Armor";	EnemyData::item_types::Epic_Armor;
 	m_item->base_color = glm::vec4(0.58f, 0.f, 0.82f, 1.f);
+	this->list.push_back(m_item);
+
+
+
+
+	m_item = new Item();
+	m_item->Init();
+	m_item->frame = 3;
+	m_item->id = CHAINS_ID;
+	m_item->type = ITEM_TYPE_TRAP;
+	m_item->item_name = "Chains";
+	m_item->id = EnemyData::item_types::Chains;
+	this->list.push_back(m_item);
+	
+
+	m_item = new Item();
+	m_item->Init();
+	m_item->frame = 4;
+	m_item->id = SPIKES_ID;
+	m_item->type = ITEM_TYPE_TRAP;
+	m_item->item_name = "Spikes";
+	m_item->attack = glm::vec2(10, 10);
+	m_item->id = EnemyData::item_types::Spikes;
 	this->list.push_back(m_item);
 }
 

@@ -251,16 +251,24 @@ void Player::LoadItems(GameObject * g_obj)
 		this->items[ITEM_SLOT_ARMOR] = g_obj->GetItemList()->armor;
 		g_obj->GetItemList()->must_load = false;
 	}
-	if (g_obj->GetItemList()->must_heal)
+	if (g_obj->GetItemList()->heal!=0)
 	{
-		int temp = Rand(1, 4);
-		if (this->GetStats()->GetHp()->hp + temp > this->GetStats()->GetHp()->max_hp)
+		
+		if (this->GetStats()->GetHp()->hp + g_obj->GetItemList()->heal > this->GetStats()->GetHp()->max_hp)
 			this->GetStats()->GetHp()->hp = this->GetStats()->GetHp()->max_hp;
 		else
-			this->GetStats()->GetHp()->hp += Rand(1, 4);
-		g_obj->GetItemList()->must_heal = false;
+			this->GetStats()->GetHp()->hp += g_obj->GetItemList()->heal;
+		g_obj->GetItemList()->heal = 0;
 	}
+	if (g_obj->GetItemList()->xp != 0)
+	{
 
+		if (this->GetStats()->GetXp()->xp + g_obj->GetItemList()->xp > this->GetStats()->GetXp()->max_xp)
+			this->GetStats()->GetXp()->xp = this->GetStats()->GetXp()->max_xp;
+		else
+			this->GetStats()->GetXp()->xp += g_obj->GetItemList()->xp;
+		g_obj->GetItemList()->xp = 0;
+	}
 
 }
 

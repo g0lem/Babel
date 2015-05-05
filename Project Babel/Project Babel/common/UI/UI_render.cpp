@@ -46,12 +46,22 @@ void UIRender::Render(SoundManager *sm, Tooltip *tooltips, Controller *ctrl, Gam
 		//sm->PlaySound(MENUPRESSBUTTON);
 		g_obj->GetUIState()->GetMenuState()->SetState(NOT_ACTIVE);
 	}
-	
+
+	if (ctrl->GetKeyOnce(GLFW_KEY_I))
+	{
+		if (g_obj->GetUIState()->GetInventoryState()->GetState() == NOT_ACTIVE)
+			g_obj->GetUIState()->GetInventoryState()->SetState(ACTIVE);
+
+		else if (g_obj->GetUIState()->GetInventoryState()->GetState() == ACTIVE)
+			g_obj->GetUIState()->GetInventoryState()->SetState(NOT_ACTIVE);
+	}
 
 
 	if (g_obj->GetUIState()->GetMenuState()->GetState() == NOT_ACTIVE)
 	{
 		tooltips->GetTooltips()->at(tooltips->GetRenderingIndex())->renderstring = true;
+
+
 
 		if (g_obj->GetUIState()->GetInventoryState()->GetState() == ACTIVE)
 			this->inventory_r->Render(tooltips, sm, ctrl, this->GetScreenPointer(), g_obj, player_positon);
