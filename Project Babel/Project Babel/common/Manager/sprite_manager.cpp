@@ -222,10 +222,10 @@ void SpriteManager::Render(SoundManager * sm, Controller * ctrl, GameObject * g_
 		g_obj->GetScroller()->ComputeScreenLimits(ctrl, this->map->GetTilemap()->GetSize(), this->map->GetTilemap()->GetTileScale());
 		this->map->Render(ctrl, this->GetScreenPointer(), g_obj, player->GetPAttributes()->position);
 
-		g_obj->GetSpellManager()->Render(ctrl, this->GetScreenPointer(), g_obj->GetCollisionMap()->GetTiles());
+		g_obj->GetSpellManager()->Render(ctrl, this->GetScreenPointer(), g_obj->GetScroller()->GetOffset(), g_obj->GetCollisionMap()->GetTiles());
 		this->player->Render(sm, ctrl, this->GetScreenPointer(), g_obj, this->map);
 		this->m_enemies->Render(sm, ctrl, this->GetScreenPointer(), g_obj, this->map, this->m_enemies->GetType());
-		this->m_combat->Action(sm,ctrl, g_obj, this->player, this->m_enemies, this->map, this->m_enemies->GetType());
+		this->m_combat->Action(sm, ctrl, g_obj, this->player, this->m_enemies, this->map, this->m_enemies->GetType());
 
 	}
 
