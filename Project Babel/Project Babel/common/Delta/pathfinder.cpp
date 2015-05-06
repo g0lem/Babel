@@ -159,7 +159,6 @@ void Pathfinder::Init(GameObject *g_obj, glm::vec2 start, glm::vec2 finish, int 
 	this->map_size = g_obj->GetCollisionMap()->GetSize();
 
 
-	std::cout << "got it";
 	AdaptMap();
 
 
@@ -255,14 +254,7 @@ void Pathfinder::AdaptMap()
 
 		}
 
-	for (int i = 0; i < int(this->map_size.x / this->scale); i++)
-	{
-		for (int j = 0; j <int(this->map_size.y / this->scale); j++)
-		{
-			std::cout << (int)(map[i][j]);
-		}
-		std::cout << "\n";
-	}
+	
 
 }
 

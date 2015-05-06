@@ -105,8 +105,30 @@ void CollisionMap::CreateOutOfMap(Tilemap * map)
 
 	}
 
+	this->poland = new GLboolean*[this->size.x];
+	for (GLuint i = 0; i < this->size.x; i++)
+		this->poland[i] = new GLboolean[this->size.y];
+	
+	
+	
+	for (GLuint j = 0; j < this->size.y; j++)
+	{
 
 
+		for (GLuint i = 0; i < this->size.x; i++)
+
+
+		{
+
+
+			this->poland[i][j] = (map->GetTiles()[i][j] >= SOLID_LIMIT || map->GetTiles()[i][j] == DOOR_BLOCK);
+
+
+		}
+
+
+
+	}
 
 }
 

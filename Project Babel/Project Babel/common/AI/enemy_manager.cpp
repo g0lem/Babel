@@ -132,9 +132,14 @@ void EnemyManager::AddEnemies(GLuint num, Map * map, GameObject * g_obj, int typ
 
 		if (glm::distance(glm::vec2(map->GetRoomsPointer()[0][0]->GetInternalCenter()), t_pos) < 6.0f)
 			ok = false;
+
+		if (g_obj->GetCollisionMap()->AcquirePoland()[(int)(t_pos.x)][(int)(t_pos.y)] == true)
+			ok = false;
+
+
 		if (ok)
 		{
-
+			g_obj->GetCollisionMap()->AcquirePoland()[(int)(t_pos.x)][(int)(t_pos.y)] = true;
 			this->m_enemies[0].push_back(temp);
 		}
 	}

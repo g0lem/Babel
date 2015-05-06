@@ -386,6 +386,7 @@ void Map::AddTablets(GameObject *g_obj)
 		y = rand() % (tilemap->GetSize().y);
 		if (this->tilemap->GetTiles()[x][y] == 0)
 		{
+			g_obj->GetCollisionMap()->AcquirePoland()[(int)(x)][(int)(y)] = true;
 			g_obj->GetItemList()->SpawnObject(TABLET_ID, glm::vec2(x, y));
 			tablets_added++;
 		}
@@ -404,6 +405,7 @@ void Map::AddChests(GameObject *g_obj)
 		y = Rand(this->rooms->at(random)->GetOffset().y + 1, this->rooms->at(random)->GetEndOffset().y - 2);
 		if (this->tilemap->GetTiles()[x][y] == 0)
 		{
+			g_obj->GetCollisionMap()->AcquirePoland()[(int)(x)][(int)(y)] = true;
 			g_obj->GetItemList()->SpawnObject(CHEST_ID, glm::vec2(x, y));
 			tablets_added++;
 		}
@@ -422,6 +424,7 @@ void Map::AddStairs(GameObject *g_obj)
 		y = rand() % (tilemap->GetSize().y);
 		if (this->tilemap->GetTiles()[x][y] == 0)
 		{
+			g_obj->GetCollisionMap()->AcquirePoland()[(int)(x)][(int)(y)] = true;
 			g_obj->GetItemList()->SpawnObject(STAIRS_ID, (glm::vec2)(this->GetRoomsPointer()[0][1]->GetInternalCenter()));
 			tablets_added++;
 		}
@@ -450,7 +453,11 @@ void Map::Decorate(GameObject *g_obj)
 
 				g_obj->SpawnSolidObject(PILLAR_ID, glm::vec2(this->GetRoomsPointer()[0][i]->GetEndOffset() - 3));
 			}
-			else 
+			else if (g_obj->GetCollisionMap()->AcquirePoland()[(int)(this->GetRoomsPointer()[0][i]->GetInternalCenter().x)][(int)(this->GetRoomsPointer()[0][i]->GetInternalCenter().y)] == false 
+				&& g_obj->GetCollisionMap()->AcquirePoland()[(int)(this->GetRoomsPointer()[0][i]->GetInternalCenter().x - 1)][(int)(this->GetRoomsPointer()[0][i]->GetInternalCenter().y)] == false
+				&& g_obj->GetCollisionMap()->AcquirePoland()[(int)(this->GetRoomsPointer()[0][i]->GetInternalCenter().x + 1)][(int)(this->GetRoomsPointer()[0][i]->GetInternalCenter().y)] == false
+				&& g_obj->GetCollisionMap()->AcquirePoland()[(int)(this->GetRoomsPointer()[0][i]->GetInternalCenter().x)][(int)(this->GetRoomsPointer()[0][i]->GetInternalCenter().y + 1)] == false
+				&& g_obj->GetCollisionMap()->AcquirePoland()[(int)(this->GetRoomsPointer()[0][i]->GetInternalCenter().x)][(int)(this->GetRoomsPointer()[0][i]->GetInternalCenter().y - 1)] == false)
 			{
 				g_obj->SpawnSolidObject(PILLAR_ID, glm::vec2(this->GetRoomsPointer()[0][i]->GetInternalCenter()));
 
@@ -465,7 +472,15 @@ void Map::Decorate(GameObject *g_obj)
 			}
 		}
 		else
-			if (this->GetRoomsPointer()[0][i]->GetWidth() % 2 == 1 && this->GetRoomsPointer()[0][i]->GetHeight() % 2 == 1 && this->GetRoomsPointer()[0][i]->GetHeight() >= 7 && this->GetRoomsPointer()[0][i]->GetWidth() >= 7)
+			if (this->GetRoomsPointer()[0][i]->GetWidth() % 2 == 1 && this->GetRoomsPointer()[0][i]->GetHeight() % 2 == 1 && this->GetRoomsPointer()[0][i]->GetHeight() >= 7 && this->GetRoomsPointer()[0][i]->GetWidth() >= 7
+				&& g_obj->GetCollisionMap()->AcquirePoland()[(int)(this->GetRoomsPointer()[0][i]->GetInternalCenter().x)][(int)(this->GetRoomsPointer()[0][i]->GetInternalCenter().y)] == false
+				&& g_obj->GetCollisionMap()->AcquirePoland()[(int)(this->GetRoomsPointer()[0][i]->GetInternalCenter().x - 1)][(int)(this->GetRoomsPointer()[0][i]->GetInternalCenter().y)] == false
+				&& g_obj->GetCollisionMap()->AcquirePoland()[(int)(this->GetRoomsPointer()[0][i]->GetInternalCenter().x + 1)][(int)(this->GetRoomsPointer()[0][i]->GetInternalCenter().y)] == false
+				&& g_obj->GetCollisionMap()->AcquirePoland()[(int)(this->GetRoomsPointer()[0][i]->GetInternalCenter().x)][(int)(this->GetRoomsPointer()[0][i]->GetInternalCenter().y + 1)] == false
+				&& g_obj->GetCollisionMap()->AcquirePoland()[(int)(this->GetRoomsPointer()[0][i]->GetInternalCenter().x)][(int)(this->GetRoomsPointer()[0][i]->GetInternalCenter().y - 1)] == false
+				&& g_obj->GetCollisionMap()->AcquirePoland()[(int)(this->GetRoomsPointer()[0][i]->GetInternalCenter().x+1)][(int)(this->GetRoomsPointer()[0][i]->GetInternalCenter().y-1)] == false
+				&& g_obj->GetCollisionMap()->AcquirePoland()[(int)(this->GetRoomsPointer()[0][i]->GetInternalCenter().x-1)][(int)(this->GetRoomsPointer()[0][i]->GetInternalCenter().y-1)] == false
+				)
 			{
 
 			//g_obj->SpawnSolidObject(PILLAR_ID, glm::vec2(this->GetRoomsPointer()[0][i]->GetInternalCenter())); -- chest coords

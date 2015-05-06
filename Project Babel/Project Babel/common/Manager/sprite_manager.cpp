@@ -85,6 +85,7 @@ void SpriteManager::Advance(GameObject * g_obj)
 		
 		this->m_enemies = new EnemyManager(1, this->map, g_obj, 3);
 
+		m_enemies->AddEnemies(1, this->map, g_obj, 1);
 	
 	}
 	else

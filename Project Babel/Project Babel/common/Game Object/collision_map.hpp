@@ -11,6 +11,7 @@ class CollisionMap
 	GLboolean **tiles;
 	GLboolean **player_tiles;
 	GLboolean **visible_tiles;
+	GLboolean **poland;
 
 	std::vector<glm::ivec2>list;
 
@@ -34,6 +35,7 @@ public:
 	inline GLboolean **GetTiles(){ return this->tiles; }
 	inline GLboolean **GetPlayerTiles(){ return this->player_tiles; }
 	inline GLboolean **GetVisibleTiles(){ return this->visible_tiles; }
+	inline GLboolean **AcquirePoland(){ return this->poland; }
 };
 
 #endif
