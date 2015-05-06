@@ -48,7 +48,7 @@ class Player
 
 
 	void LoadSprites();
-	void LoadPhysicalAttributes(Map * current_tilemap);
+	void LoadPhysicalAttributes(Map * current_tilemap, GameObject *g_obj);
 	void LoadStats();
 	void LoadItems(GameObject * g_obj);
 	

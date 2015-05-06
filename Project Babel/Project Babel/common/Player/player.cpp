@@ -14,7 +14,7 @@ void Player::Load(GameObject * g_obj, Map * current_tilemap)
 
 
 	this->LoadSprites();
-	this->LoadPhysicalAttributes(current_tilemap);
+	this->LoadPhysicalAttributes(current_tilemap, g_obj);
 
 
 	this->a_path = new AutoPath();
@@ -40,7 +40,7 @@ void Player::Advance(GameObject * g_obj, Map * current_tilemap)
 {
 
 
-	this->LoadPhysicalAttributes(current_tilemap);
+	this->LoadPhysicalAttributes(current_tilemap, g_obj);
 	this->SetTarget(-1);
 
 	this->a_path = new AutoPath();
@@ -217,16 +217,19 @@ void Player::LoadSprites()
 
 
 
-void Player::LoadPhysicalAttributes(Map * current_tilemap)
+void Player::LoadPhysicalAttributes(Map * current_tilemap, GameObject *g_obj)
 {
 
 	this->attributes = new PhysicalAttributes();
 	this->attributes->scale = glm::vec2(32.0f, 32.0f);
 	
 	for (int i = 0; i < current_tilemap->GetRoomsPointer()[0].size();i++)
-		if (current_tilemap->GetTilemap()->GetTiles()[current_tilemap->GetRoomsPointer()[0][i]->GetInternalCenter().x][current_tilemap->GetRoomsPointer()[0][i]->GetInternalCenter().y] < SOLID_LIMIT)
-        	this->attributes->position = glm::vec2(current_tilemap->GetRoomsPointer()[0][i]->GetInternalCenter());
-	
+		if (current_tilemap->GetTilemap()->GetTiles()[current_tilemap->GetRoomsPointer()[0][i]->GetInternalCenter().x][current_tilemap->GetRoomsPointer()[0][i]->GetInternalCenter().y] < SOLID_LIMIT
+			&& g_obj->GetCollisionMap()->AcquirePoland()[current_tilemap->GetRoomsPointer()[0][i]->GetInternalCenter().x][current_tilemap->GetRoomsPointer()[0][i]->GetInternalCenter().y] == false)
+		{
+		this->attributes->position = glm::vec2(current_tilemap->GetRoomsPointer()[0][i]->GetInternalCenter());
+		g_obj->GetCollisionMap()->AcquirePoland()[current_tilemap->GetRoomsPointer()[0][i]->GetInternalCenter().x][current_tilemap->GetRoomsPointer()[0][i]->GetInternalCenter().y] = true;
+		}
 	
 	
 	this->attributes->target = this->attributes->position;
