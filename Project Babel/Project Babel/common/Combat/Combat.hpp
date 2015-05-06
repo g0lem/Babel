@@ -31,7 +31,7 @@ class Combat
 	void EnemyRelated(SoundManager *sm, Controller * ctrl, GameObject * g_obj, Player * player, EnemyManager * enemies, Map * map, int type);
 	void UpdateTurns(GameObject * g_obj, EnemyManager * enemies);
 
-
+	sf::Clock *t_clock;
 
 public:
 

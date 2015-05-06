@@ -55,13 +55,14 @@ public:
 		this->state = true;
 	}
 
-	inline glm::vec2 Operate(Controller *ctrl, ScreenUniformData * u_data, GLboolean **tiles)
+	inline glm::vec2 Operate(Controller *ctrl, ScreenUniformData * u_data, glm::vec2 offset,GLboolean **tiles)
 	{
 		rPosition = glm::ivec2((this->position - offset )/ this->scale);
 		glm::ivec2 initial = glm::ivec2((this->ipos - offset) / this->scale);
 
 		if ((tiles[rPosition.x][rPosition.y] == 0 || rPosition == initial) && rPosition.x >= 0 && rPosition.y >=0 && !(rPosition == (glm::ivec2)lpos))
 		{
+
 
 			if (direction == UP)
 				{
@@ -92,7 +93,6 @@ public:
 				rPosition.x++;
 				return position;
 			}
-
 			this->Render(u_data);
 		}
 		else
