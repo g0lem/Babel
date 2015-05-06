@@ -225,7 +225,7 @@ void Enemy::RenderHpBar(ScreenUniformData * u_data, GameObject * g_obj)
 
 
 
-	u_data->ApplyMatrix(Translation(p_attributes->position * p_attributes->scale + g_obj->GetScroller()->GetOffset()
+	u_data->ApplyMatrix(Translation(p_attributes->position * p_attributes->scale / (float)this->scale + g_obj->GetScroller()->GetOffset()
 		- glm::vec2(0, 1)*p_attributes->scale)*
 		Scale(p_attributes->scale*hp_factor));
 
@@ -239,7 +239,7 @@ void Enemy::RenderHpBar(ScreenUniformData * u_data, GameObject * g_obj)
 
 
 
-	u_data->ApplyMatrix(Translation(p_attributes->position * p_attributes->scale + g_obj->GetScroller()->GetOffset()
+	u_data->ApplyMatrix(Translation(p_attributes->position * p_attributes->scale / (float)this->scale + g_obj->GetScroller()->GetOffset()
 		- glm::vec2(0, 1)*p_attributes->scale + glm::vec2(hp_factor.x, 0.0f)*p_attributes->scale)*
 		Scale(p_attributes->scale*glm::vec2(1 - hp_factor.x, 1.0f)));
 

@@ -46,7 +46,7 @@ public:
 	
 	static inline bool Rectangle(glm::vec2 arg, glm::vec2 container, glm::vec2 scale){
 		if (arg.x >= container.x&&arg.y >= container.y)
-			if (arg.x < container.x + scale.x && arg.y < container.y + scale.y)
+			if (arg.x <= container.x + scale.x && arg.y <= container.y + scale.y)
 				return true;
 		return false;
 	}
