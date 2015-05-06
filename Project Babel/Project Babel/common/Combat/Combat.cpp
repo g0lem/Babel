@@ -642,6 +642,17 @@ void Combat::EnemyMovement(Controller * ctrl, GameObject * g_obj, Player * playe
 
 
 				a_path->Start(g_obj, enemy->GetPAttributes()->position, enemy->GetTargetPosition(), enemy->GetStats()->path_type);
+
+
+				if (enemy->scale == 1)
+				 {
+					a_path->Start(g_obj, enemy->GetPAttributes()->position, enemy->GetTargetPosition(), enemy->GetStats()->path_type);
+				 }
+				else
+			    {
+					a_path->Start(g_obj, enemy->GetPAttributes()->position, enemy->GetTargetPosition(), enemy->GetStats()->path_type, enemy->scale);
+				}
+
 				a_path->Reset();
 
 

@@ -469,6 +469,16 @@ void Map::Decorate(GameObject *g_obj)
 
 				g_obj->SpawnSolidObject(STATUE_ID, glm::vec2(this->GetRoomsPointer()[0][i]->GetInternalCenter().x, this->GetRoomsPointer()[0][i]->GetInternalCenter().y - 1));
 
+
+				g_obj->GetCollisionMap()->AcquirePoland()[(int)(this->GetRoomsPointer()[0][i]->GetInternalCenter().x)][(int)(this->GetRoomsPointer()[0][i]->GetInternalCenter().y)] = true;
+				g_obj->GetCollisionMap()->AcquirePoland()[(int)(this->GetRoomsPointer()[0][i]->GetInternalCenter().x - 1)][(int)(this->GetRoomsPointer()[0][i]->GetInternalCenter().y)] = true;
+				g_obj->GetCollisionMap()->AcquirePoland()[(int)(this->GetRoomsPointer()[0][i]->GetInternalCenter().x + 1)][(int)(this->GetRoomsPointer()[0][i]->GetInternalCenter().y)] = true;
+				g_obj->GetCollisionMap()->AcquirePoland()[(int)(this->GetRoomsPointer()[0][i]->GetInternalCenter().x)][(int)(this->GetRoomsPointer()[0][i]->GetInternalCenter().y + 1)] = true;
+				g_obj->GetCollisionMap()->AcquirePoland()[(int)(this->GetRoomsPointer()[0][i]->GetInternalCenter().x)][(int)(this->GetRoomsPointer()[0][i]->GetInternalCenter().y - 1)] = true;
+
+
+
+
 			}
 		}
 		else
@@ -498,6 +508,16 @@ void Map::Decorate(GameObject *g_obj)
 			//g_obj->SpawnSolidObject(PILLAR_ID, glm::vec2(this->GetRoomsPointer()[0][i]->GetInternalCenter().x, this->GetRoomsPointer()[0][i]->GetInternalCenter().y + 1));
 
 			g_obj->SpawnSolidObject(PILLAR_ID, glm::vec2(this->GetRoomsPointer()[0][i]->GetInternalCenter().x, this->GetRoomsPointer()[0][i]->GetInternalCenter().y - 1));
+
+
+
+			g_obj->GetCollisionMap()->AcquirePoland()[(int)(this->GetRoomsPointer()[0][i]->GetInternalCenter().x)][(int)(this->GetRoomsPointer()[0][i]->GetInternalCenter().y)] = true;
+			g_obj->GetCollisionMap()->AcquirePoland()[(int)(this->GetRoomsPointer()[0][i]->GetInternalCenter().x - 1)][(int)(this->GetRoomsPointer()[0][i]->GetInternalCenter().y)] = true;
+			g_obj->GetCollisionMap()->AcquirePoland()[(int)(this->GetRoomsPointer()[0][i]->GetInternalCenter().x + 1)][(int)(this->GetRoomsPointer()[0][i]->GetInternalCenter().y)] = true;
+			g_obj->GetCollisionMap()->AcquirePoland()[(int)(this->GetRoomsPointer()[0][i]->GetInternalCenter().x)][(int)(this->GetRoomsPointer()[0][i]->GetInternalCenter().y + 1)] = true;
+			g_obj->GetCollisionMap()->AcquirePoland()[(int)(this->GetRoomsPointer()[0][i]->GetInternalCenter().x)][(int)(this->GetRoomsPointer()[0][i]->GetInternalCenter().y - 1)] = true;
+			g_obj->GetCollisionMap()->AcquirePoland()[(int)(this->GetRoomsPointer()[0][i]->GetInternalCenter().x + 1)][(int)(this->GetRoomsPointer()[0][i]->GetInternalCenter().y - 1)] = true;
+			g_obj->GetCollisionMap()->AcquirePoland()[(int)(this->GetRoomsPointer()[0][i]->GetInternalCenter().x - 1)][(int)(this->GetRoomsPointer()[0][i]->GetInternalCenter().y - 1)] = true;
 
 
 			}

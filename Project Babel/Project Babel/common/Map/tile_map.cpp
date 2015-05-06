@@ -72,11 +72,11 @@ void Tilemap::GenerateBossRoom()
 
 			
 			f>>tiles[i][j];
-			
+			std::cout << (int)(tiles[i][j]);
 
 		}
+		
 		std::cout << "\n";
-
 
 
 	}
