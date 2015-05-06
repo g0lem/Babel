@@ -170,7 +170,7 @@ void Combat::PlayerAttack(SoundManager * sm, Controller * ctrl, GameObject * g_o
 			{
 				for (int j = 0; j < enemies->GetEnemiesPointer()->size() && nextSpell == false && spell->GetSpell(i)->state == true; j++)
 				{
-					if ((glm::ivec2)enemies->GetEnemiesPointer()[0][j]->GetPAttributes()->position == spell->GetSpell(i)->rPosition)
+					if ((glm::ivec2)enemies->GetEnemiesPointer()[0][j]->GetPAttributes()->position == spell->GetSpell(i)->rPosition || Contains::Rectangle((glm::vec2)spell->GetSpell(i)->rPosition, enemies->GetEnemiesPointer()[0][j]->GetPAttributes()->position * (float)enemies->GetEnemiesPointer()[0][j]->scale, enemies->GetEnemiesPointer()[0][j]->GetPAttributes()->scale))
 					{
 
 						nextSpell == true;
