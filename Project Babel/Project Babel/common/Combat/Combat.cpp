@@ -50,6 +50,24 @@ void Combat::SetPlayerTarget(Player * player, EnemyManager * enemies)
 
 
 		}
+		//else if (glm::distance(player->GetPAttributes()->position + glm::vec2(1, 0), enemies->GetEnemiesPointer()[0][i]->GetPAttributes()->position + glm::vec2(1, 0)) < MIN_DISTANCE || glm::distance(player->GetPAttributes()->position + glm::vec2(0, 1), enemies->GetEnemiesPointer()[0][i]->GetPAttributes()->position + glm::vec2(0, 1)) < MIN_DISTANCE)
+		//{
+
+		//	if (player->GetTarget() == NO_TARGET)
+		//		player->SetTarget(i);
+
+
+
+		//	if (player->GetActionHandler()->GetAction() == ATTACKING)
+		//	{
+		//		player->GetDirection()->Compute(DIR_TYPE_4, player->GetPAttributes()->position,
+		//			enemies->GetEnemiesPointer()[0][i]->GetPAttributes()->target);
+
+		//	}
+
+
+		//	break;
+		//}
 
 
 	}
@@ -219,7 +237,7 @@ void Combat::PlayerAttack(SoundManager * sm, Controller * ctrl, GameObject * g_o
 
 
 						glm::vec2 text_pos = e_attr->position *
-							e_attr->scale +
+							glm::vec2(32, 32)  +
 							g_obj->GetScroller()->GetOffset();
 
 
@@ -228,17 +246,35 @@ void Combat::PlayerAttack(SoundManager * sm, Controller * ctrl, GameObject * g_o
 						text_pos.y -= 10;
 						text_pos.x -= 4;
 
+						if (enemies->GetEnemiesPointer()[0][j]->scale == 2)
+						{
+
+						}
+
 						char *buffer = new char[256];
 						_itoa(dmg, buffer, 10);
 						strcat(buffer, " DMG");
 
-						g_obj->GetTextObject()->Add(g_obj->GetFontList()->GetFont(),
-							buffer,
-							text_pos,
-							glm::vec4(1.0f, 0.0f, 0.0f, 1.0f), 20,
-							UP,
-							50);
 
+						if (enemies->GetEnemiesPointer()[0][j]->scale == 2)
+						{
+							text_pos.y -= 10;
+
+							g_obj->GetTextObject()->Add(g_obj->GetFontList()->GetFont(),
+								buffer,
+								text_pos,
+								glm::vec4(1.0f, 0.0f, 0.0f, 1.0f), 35,
+								UP,
+								50);
+						}
+						else{
+							g_obj->GetTextObject()->Add(g_obj->GetFontList()->GetFont(),
+								buffer,
+								text_pos,
+								glm::vec4(1.0f, 0.0f, 0.0f, 1.0f), 20,
+								UP,
+								50);
+						}
 						spell->GetSpell(i)->state = false;
 
 					}
@@ -427,30 +463,46 @@ void Combat::EnemyAttack(SoundManager *sm, Controller * ctrl, GameObject * g_obj
 
 				int t_dir = -1;
 
-				if ((player->GetPAttributes()->position.x == current_enemy->GetPAttributes()->position.x && player->GetPAttributes()->position.y - current_enemy->GetPAttributes()->position.y < 3) && player->GetPAttributes()->position.y > current_enemy->GetPAttributes()->position.y)
+				if ((player->GetPAttributes()->position.x == current_enemy->GetPAttributes()->position.x && player->GetPAttributes()->position.y - current_enemy->GetPAttributes()->position.y < 10) && player->GetPAttributes()->position.y > current_enemy->GetPAttributes()->position.y)
 					t_dir = DOWN;
-				else if (player->GetPAttributes()->position.y == current_enemy->GetPAttributes()->position.y && player->GetPAttributes()->position.x - current_enemy->GetPAttributes()->position.x < 3 && player->GetPAttributes()->position.x > current_enemy->GetPAttributes()->position.x)
+				else if (player->GetPAttributes()->position.y == current_enemy->GetPAttributes()->position.y && player->GetPAttributes()->position.x - current_enemy->GetPAttributes()->position.x < 10 && player->GetPAttributes()->position.x > current_enemy->GetPAttributes()->position.x)
 					t_dir = RIGHT;
-				else if (player->GetPAttributes()->position.x == current_enemy->GetPAttributes()->position.x &&	current_enemy->GetPAttributes()->position.y - player->GetPAttributes()->position.y < 3 && player->GetPAttributes()->position.y < current_enemy->GetPAttributes()->position.y)
+				else if (player->GetPAttributes()->position.x == current_enemy->GetPAttributes()->position.x &&	current_enemy->GetPAttributes()->position.y - player->GetPAttributes()->position.y < 10 && player->GetPAttributes()->position.y < current_enemy->GetPAttributes()->position.y)
 					t_dir = UP;
-				else if (player->GetPAttributes()->position.y == current_enemy->GetPAttributes()->position.y &&  current_enemy->GetPAttributes()->position.x - player->GetPAttributes()->position.x < 3 && player->GetPAttributes()->position.x < current_enemy->GetPAttributes()->position.x)
+				else if (player->GetPAttributes()->position.y == current_enemy->GetPAttributes()->position.y &&  current_enemy->GetPAttributes()->position.x - player->GetPAttributes()->position.x < 10 && player->GetPAttributes()->position.x < current_enemy->GetPAttributes()->position.x)
 					t_dir = LEFT;
-				
+				else if ((player->GetPAttributes()->position.x == current_enemy->GetPAttributes()->position.x + (float)(current_enemy->scale - 1) && player->GetPAttributes()->position.y - current_enemy->GetPAttributes()->position.y < 10) && player->GetPAttributes()->position.y > current_enemy->GetPAttributes()->position.y)
+					t_dir = DOWN;
+				else if (player->GetPAttributes()->position.y  == current_enemy->GetPAttributes()->position.y + (float)(current_enemy->scale - 1) && player->GetPAttributes()->position.x - current_enemy->GetPAttributes()->position.x < 10 && player->GetPAttributes()->position.x > current_enemy->GetPAttributes()->position.x)
+					t_dir = RIGHT;
+				else if (player->GetPAttributes()->position.x == current_enemy->GetPAttributes()->position.x + (float)(current_enemy->scale - 1) && current_enemy->GetPAttributes()->position.y - player->GetPAttributes()->position.y < 10 && player->GetPAttributes()->position.y < current_enemy->GetPAttributes()->position.y)
+					t_dir = UP;
+				else if (player->GetPAttributes()->position.y  == current_enemy->GetPAttributes()->position.y + (float)(current_enemy->scale - 1) && current_enemy->GetPAttributes()->position.x - player->GetPAttributes()->position.x < 10 && player->GetPAttributes()->position.x < current_enemy->GetPAttributes()->position.x)
+					t_dir = LEFT;
+
 				if (t_dir > -1)
 				{
-
-
-					glm::vec2 half_screen_vector = GridPosition(glm::vec2(ctrl->GetWindowWidth(), ctrl->GetWindowHeight()) / 2.0f, current_enemy->GetPAttributes()->scale);
-
-
 					current_enemy->GetActionHandler()->SetAction(ATTACKING);
 					current_enemy->GetActionHandler()->Start();
-
-					glm::vec2 offset = half_screen_vector - current_enemy->GetPAttributes()->position * current_enemy->GetPAttributes()->scale;
 					nein = 1;
 
-					g_obj->GetSpellManager()->Add(new Spell(FIREBALL, 5, current_enemy->GetPAttributes()->position * current_enemy->GetPAttributes()->scale + g_obj->GetScroller()->GetOffset(),
+
+
+
+					if (t_dir == RIGHT)
+						g_obj->GetSpellManager()->Add(new Spell(FIREBALL, 1, (current_enemy->GetPAttributes()->position + glm::vec2(1, 0)*(float)(current_enemy->scale - 1)) * glm::vec2(32, 32) + g_obj->GetScroller()->GetOffset(),
 						player->GetPAttributes()->position, g_obj->GetScroller()->GetOffset(), current_enemy->GetPAttributes()->scale,
+						current_enemy->scale,
+						5.f, t_dir));
+					else if (t_dir == DOWN)
+						g_obj->GetSpellManager()->Add(new Spell(FIREBALL, 1, (current_enemy->GetPAttributes()->position + glm::vec2(0, 1)*(float)(current_enemy->scale - 1)) * glm::vec2(32, 32) + g_obj->GetScroller()->GetOffset(),
+						player->GetPAttributes()->position, g_obj->GetScroller()->GetOffset(), current_enemy->GetPAttributes()->scale,
+						current_enemy->scale,
+						5.f, t_dir));
+					else if (t_dir == UP || t_dir == LEFT)
+						g_obj->GetSpellManager()->Add(new Spell(FIREBALL, 1, current_enemy->GetPAttributes()->position * current_enemy->GetPAttributes()->scale / 2.f + g_obj->GetScroller()->GetOffset(),
+						player->GetPAttributes()->position, g_obj->GetScroller()->GetOffset(), current_enemy->GetPAttributes()->scale,
+						current_enemy->scale,
 						5.f, t_dir));
 				}
 
@@ -523,6 +575,7 @@ void Combat::EnemyAttack(SoundManager *sm, Controller * ctrl, GameObject * g_obj
 				for (int j = 0; j < enemies->GetEnemiesPointer()->size() && nextSpell == false && spell->GetSpell(i)->state == true; j++)
 				{
 
+					//if (Contains::Rectangle((glm::vec2)spell->GetSpell(i)->rPosition, player->GetPAttributes()->position, (float)current_enemy->scale*glm::vec2(32, 32)))
 					if ((glm::ivec2)player->GetPAttributes()->position == spell->GetSpell(i)->rPosition)
 					{
 						nextSpell = true;
@@ -571,6 +624,11 @@ void Combat::EnemyAttack(SoundManager *sm, Controller * ctrl, GameObject * g_obj
 					}
 					else
 					{
+						if (spell->GetSpell(i)->active == false)
+						{
+							current_enemy->GetTurnSystem()->ComputeAttack(-1);
+						}
+
 						current_enemy->GetActionHandler()->SetAction(NO_ACTION);
 						current_enemy->GetActionHandler()->Stop();
 
