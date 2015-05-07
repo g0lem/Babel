@@ -31,7 +31,7 @@ public:
 
 
 
-	inline GameRender(GameObject * g_obj){ this->Init(g_obj); }
+	inline GameRender(GameObject * g_obj, Tooltip *t_tip){ this->Init(g_obj, t_tip); }
 
 
 
@@ -43,12 +43,12 @@ public:
 
 
 
-	void Init(GameObject * g_obj);
+	void Init(GameObject * g_obj, Tooltip *t_tip);
 
 
 	bool GetDrawCode(){ return this->s_manager->s_screen->Update(); }
 
-	void Render(SoundManager * sm, Controller * ctrl, GameObject * g_obj);
+	void Render(SoundManager * sm, Controller * ctrl, GameObject * g_obj, Tooltip *t_tip);
 
 	inline SpriteManager *GetSpriteManager(){ return this->s_manager; }
 

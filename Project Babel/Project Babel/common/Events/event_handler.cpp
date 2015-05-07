@@ -150,6 +150,115 @@ void EventHandler::Door(glm::vec2 position, Map *current_map, GameObject *g_obj)
 }
 
 
+bool EventHandler::DoorToolTip(glm::vec2 position, Map *current_map, GameObject *g_obj, Tooltip *t_tip)
+{
+
+	int di[] = { -1, 1, 0, 0 };
+	int dj[] = { 0, 0, -1, 1 };
+
+	g_obj->door_position = vec2_0;
+
+	t_tip->UpdateStatus(DOOR_TOOL_TIP, false);
+	for (int k = 0; k < 4; k++)
+	{
+		
+		//open doors
+		if (current_map->GetTilemap()->GetTiles()[(int)(position.x) - 1][(int)(position.y)] == DOOR_BLOCK)
+		{
+			//g_obj->GetCollisionMap()->door_tip = new CollisionMap::tip("Press E to open door", glm::vec2(position.x - 1, position.y)*32);
+			t_tip->UpdateText(DOOR_TOOL_TIP, "Press E to open the door");
+		
+			g_obj->door_position = glm::vec2((position.x - 1) * 32, (position.y) * 32);
+			return true;
+			break;
+
+		}
+		if (current_map->GetTilemap()->GetTiles()[(int)(position.x) + 1][(int)(position.y)] == DOOR_BLOCK)
+		{
+
+			t_tip->UpdateText(DOOR_TOOL_TIP, "Press E to open the door");
+		
+			g_obj->door_position = glm::vec2((position.x + 1) * 32, (position.y) * 32);
+			return true;
+			break;
+		}
+		if (current_map->GetTilemap()->GetTiles()[(int)(position.x)][(int)(position.y) - 1] == DOOR_BLOCK)
+		{
+
+			t_tip->UpdateText(DOOR_TOOL_TIP, "Press E to open the door");
+			g_obj->door_position = glm::vec2((position.x ) * 32, (position.y- 1) * 32);
+			return true;
+			break;
+		}
+		if (current_map->GetTilemap()->GetTiles()[(int)(position.x)][(int)(position.y) + 1] == DOOR_BLOCK)
+		{
+
+			t_tip->UpdateText(DOOR_TOOL_TIP, "Press E to open the door");
+			g_obj->door_position = glm::vec2((position.x) * 32, (position.y + 1) * 32);
+			return true;
+			break;
+		}
+
+
+
+
+
+
+		//close doors
+		if (current_map->GetTilemap()->GetTiles()[(int)(position.x) - 1][(int)(position.y)] == OPENED_DOOR_BLOCK)
+		{
+
+			t_tip->UpdateText(DOOR_TOOL_TIP, "Press E to close the door");
+			g_obj->door_position = glm::vec2((position.x - 1) * 32, (position.y) * 32);
+			return true;
+
+			break;
+
+
+		}
+		if (current_map->GetTilemap()->GetTiles()[(int)(position.x) + 1][(int)(position.y)] == OPENED_DOOR_BLOCK)
+		{
+
+			t_tip->UpdateText(DOOR_TOOL_TIP, "Press E to close the door");
+			g_obj->door_position = glm::vec2((position.x + 1) * 32, (position.y) * 32);
+			return true;
+
+			break;
+
+		}
+		if (current_map->GetTilemap()->GetTiles()[(int)(position.x)][(int)(position.y) - 1] == OPENED_DOOR_BLOCK)
+		{
+
+			t_tip->UpdateText(DOOR_TOOL_TIP, "Press E to close the door");
+			g_obj->door_position = glm::vec2((position.x) * 32, (position.y - 1) * 32);
+			return true;
+
+			break;
+
+		}
+		if (current_map->GetTilemap()->GetTiles()[(int)(position.x)][(int)(position.y) + 1] == OPENED_DOOR_BLOCK)
+		{
+			t_tip->UpdateText(DOOR_TOOL_TIP, "Press E to close the door");
+			
+			g_obj->door_position = glm::vec2((position.x) * 32, (position.y + 1) * 32);
+		
+			return true;
+
+			break;
+
+		}
+
+
+
+	}
+
+	return false;
+
+}
+
+
+
+
  void EventHandler::AutomaticallyOpenDoor(glm::vec2 position, Map *current_map, GameObject *g_obj, glm::vec2 &door_pos)
 {
 	if (current_map->GetTilemap()->GetTiles()[(int)(position.x)][(int)(position.y)] == DOOR_BLOCK)

@@ -28,5 +28,7 @@ public:
 	static void EventHandler::DestroyDoor(glm::vec2 position, Map *&current_map, GameObject *g_obj);
 	static void DisplayTablet(int id);
 
+	bool DoorToolTip(glm::vec2 position, Map *current_map, GameObject *g_obj, Tooltip *t_tip);
+
 };
 

@@ -68,7 +68,7 @@ void Player::Advance(GameObject * g_obj, Map * current_tilemap)
 
 
 
-void Player::Render(SoundManager *sm, Controller * ctrl, ScreenUniformData * u_data, GameObject * g_obj, Map * current_map)
+void Player::Render(SoundManager *sm, Controller * ctrl, ScreenUniformData * u_data, GameObject * g_obj, Map * current_map, Tooltip *t_tip)
 {
 
 
@@ -103,7 +103,7 @@ void Player::Render(SoundManager *sm, Controller * ctrl, ScreenUniformData * u_d
 			Move::TileMove(ctrl, g_obj, attributes->target);
 
 		this->attributes->Update(ctrl->GetFpsPointer()->Delta());
-		this->HandleAutoPath(sm, ctrl, g_obj, current_map);
+		this->HandleAutoPath(sm, ctrl, g_obj, current_map, t_tip);
 
 
 
@@ -334,7 +334,7 @@ GLboolean Player::CheckAdvance(Controller * ctrl, GameObject * g_obj)
 }
 
 
-void Player::HandleAutoPath(SoundManager *sm, Controller * ctrl, GameObject * g_obj, Map *current_map)
+void Player::HandleAutoPath(SoundManager *sm, Controller * ctrl, GameObject * g_obj, Map *current_map, Tooltip *t_tip)
 {
 
 
@@ -343,6 +343,8 @@ void Player::HandleAutoPath(SoundManager *sm, Controller * ctrl, GameObject * g_
 	{
 		h_event->TriggerEvent(attributes->position, current_map, g_obj, this->GetStats());
 	}
+
+	h_event->DoorToolTip(attributes->position, current_map, g_obj, t_tip);
 
 	
 	EventHandler::AutomaticallyOpenDoor(this->last_pos_door, current_map, g_obj, this->last_pos_door);

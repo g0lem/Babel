@@ -42,7 +42,7 @@ class Player
 	
 
 
-	void HandleAutoPath(SoundManager *sm, Controller * ctrl, GameObject * g_obj, Map *current_map);
+	void HandleAutoPath(SoundManager *sm, Controller * ctrl, GameObject * g_obj, Map *current_map, Tooltip *t_tip);
 	GLboolean CheckAdvance(Controller * ctrl, GameObject * g_obj);
 
 
@@ -64,7 +64,7 @@ public:
 	void SetPosition(glm::vec2 position){ this->attributes->position = position; }
 	void Load(GameObject * g_obj, Map * current_tilemap);
 	void Advance(GameObject * g_obj, Map * current_tilemap);
-	void Render(SoundManager *sm, Controller * ctrl, ScreenUniformData *u_data, GameObject * g_obj, Map * current_map);
+	void Render(SoundManager *sm, Controller * ctrl, ScreenUniformData *u_data, GameObject * g_obj, Map * current_map, Tooltip *t_tip);
 	inline GLint GetTarget(){ return this->target; }
 	inline void SetTarget(GLint target){ this->target = target; }
 	inline PhysicalAttributes*GetPAttributes(){ return this->attributes; }

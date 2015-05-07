@@ -31,23 +31,23 @@ class SpriteManager : private Aaether2D
 
 public:
 	SplashScreen * s_screen;
-	inline SpriteManager(GameObject * g_obj){ this->Init(g_obj); }
+	inline SpriteManager(GameObject * g_obj, Tooltip *t_tip){ this->Init(g_obj, t_tip); }
 
 
 	inline ~SpriteManager(){ this->Clean(); }
 
-	void Advance(GameObject * g_obj);
+	void Advance(GameObject * g_obj, Tooltip *t_tip);
 
 	inline Player *GetPlayer(){ return this->player; }
 
 
-	void Init(GameObject * g_obj);
+	void Init(GameObject * g_obj, Tooltip *t_tip);
 
 
 	void Clean();
 
 
-	void Render(SoundManager * sm, Controller * ctrl, GameObject * g_obj);
+	void Render(SoundManager * sm, Controller * ctrl, GameObject * g_obj, Tooltip *t_tip);
 
 
 };

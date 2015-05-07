@@ -60,9 +60,10 @@
 #include "common/Map.hpp"
 #include "common/Delta.hpp"
 
-#include "common/Events.hpp"
+
 #include "common/AI.hpp"
 #include "common/UI.hpp"
+#include "common/Events.hpp"
 #include "common/Manager/font_manager.hpp"
 #include "common/Player.hpp"
 #include "common/Combat.hpp"

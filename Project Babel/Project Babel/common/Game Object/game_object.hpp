@@ -2,7 +2,13 @@
 
 
 #ifndef GAME_OBJECT_HPP
+
 #define GAME_OBJECT_HPP
+
+#define DOOR_TOOL_TIP 24
+
+
+
 struct untablet
 {
 	int frameText;
@@ -40,7 +46,7 @@ class GameObject
 	TextObject * t_object;
 	FontList * f_list;
 
-
+	
 	
 
 
@@ -50,7 +56,6 @@ public:
 	inline GameObject(){ this->Init(); }
 	inline ~GameObject(){ this->Clean(); }
 
-	
 
 	int unlockedtablets = 0;
 
@@ -89,6 +94,10 @@ public:
 	void Advance();
 
 	int boss_deal_damage=0;
+
+
+	glm::vec2 door_position = vec2_0;
+
 
 };
 

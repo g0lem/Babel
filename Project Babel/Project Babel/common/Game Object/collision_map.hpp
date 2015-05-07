@@ -16,6 +16,10 @@ class CollisionMap
 	std::vector<glm::ivec2>list;
 
 
+
+	
+
+
 public:
 
 
@@ -36,6 +40,9 @@ public:
 	inline GLboolean **GetPlayerTiles(){ return this->player_tiles; }
 	inline GLboolean **GetVisibleTiles(){ return this->visible_tiles; }
 	inline GLboolean **AcquirePoland(){ return this->poland; }
+
+
+	
 };
 
 #endif

@@ -5,7 +5,7 @@
 
 
 
-void SpriteManager::Init(GameObject * g_obj)
+void SpriteManager::Init(GameObject * g_obj, Tooltip *t_tip)
 {
 
 
@@ -34,6 +34,7 @@ void SpriteManager::Init(GameObject * g_obj)
 
 	this->m_enemies = new EnemyManager(20 + (rand() % 3), this->map, g_obj, 0);
 
+
 	for (int i = 0; i < g_obj->GetItemList()->GetObjects().size(); i++)
 	{
 		if (g_obj->GetItemList()->GetObjects()[i]->item->id == CHEST_ID)
@@ -61,7 +62,7 @@ void SpriteManager::Init(GameObject * g_obj)
 
 
 
-void SpriteManager::Advance(GameObject * g_obj)
+void SpriteManager::Advance(GameObject * g_obj, Tooltip *t_tip)
 {
 
 
@@ -197,15 +198,20 @@ void Update(Controller *ctrl, GameObject *g_obj)
 	}
 
 
+
 }
 
 
 
-void SpriteManager::Render(SoundManager * sm, Controller * ctrl, GameObject * g_obj)
+void SpriteManager::Render(SoundManager * sm, Controller * ctrl, GameObject * g_obj, Tooltip *t_tip)
 {
 
 	
 	this->BindRun(ctrl->GetWindowWidth(), ctrl->GetWindowHeight());
+
+
+	t_tip->Add(vec2_0, vec2_0, "Press E to close the door", 25, 0);
+
 
 
 	if (this->s_screen->Update() == false)
@@ -230,7 +236,7 @@ void SpriteManager::Render(SoundManager * sm, Controller * ctrl, GameObject * g_
 		this->map->Render(ctrl, this->GetScreenPointer(), g_obj, player->GetPAttributes()->position);
 
 		g_obj->GetSpellManager()->Render(ctrl, this->GetScreenPointer(), g_obj->GetScroller()->GetOffset() ,g_obj->GetCollisionMap()->GetTiles());
-		this->player->Render(sm, ctrl, this->GetScreenPointer(), g_obj, this->map);
+		this->player->Render(sm, ctrl, this->GetScreenPointer(), g_obj, this->map, t_tip);
 		this->m_enemies->Render(sm, ctrl, this->GetScreenPointer(), g_obj, this->map, this->m_enemies->GetType());
 		this->m_combat->Action(sm,ctrl, g_obj, this->player, this->m_enemies, this->map, this->m_enemies->GetType());
 
@@ -240,6 +246,36 @@ void SpriteManager::Render(SoundManager * sm, Controller * ctrl, GameObject * g_
 	this->GetScreenPointer()->ApplyMatrix(Translation(glm::vec2(0, 0))*Scale(ctrl->GetWindowSize()));
 	if (g_obj->GetPanelState()->hp == 0 && this->s_screen->Update() == true)
 		this->test->Render(0);
+
+
+	
+
+	if (g_obj->door_position != vec2_0)
+	{
+		if (this->player->GetEventHandler()->DoorToolTip(this->player->GetPAttributes()->position, this->map, g_obj, t_tip))
+		t_tip->UpdateStatus(DOOR_TOOL_TIP, true);
+		else
+		t_tip->UpdateStatus(DOOR_TOOL_TIP, false);
+
+		t_tip->UpdateOffset(DOOR_TOOL_TIP, 7.5);
+		t_tip->UpdateVoffset(DOOR_TOOL_TIP, 4);
+		t_tip->UpdatePosition(DOOR_TOOL_TIP, (g_obj->door_position+g_obj->GetScroller()->GetOffset()));
+		//t_tip->UpdatePosition(DOOR_TOOL_TIP, (glm::vec2(10000, 10000) + g_obj->GetScroller()->GetOffset()));
+
+		t_tip->UpdateStringLength(DOOR_TOOL_TIP, g_obj->GetFontList()->GetFont()->GetLength(t_tip->GetTooltips()->at(DOOR_TOOL_TIP)->string, 25));
+		t_tip->UpdateStringPosition(DOOR_TOOL_TIP, glm::vec2(g_obj->door_position.x + g_obj->GetScroller()->GetOffset().x + 9 + 15, ctrl->GetWindowHeight() - (g_obj->door_position.y + g_obj->GetScroller()->GetOffset().y + 25 + 15 + 2)));
+		
+		//t_tip->UpdateStringPosition(DOOR_TOOL_TIP, glm::vec2(ctrl->GetWindowWidth() / 2 + g_obj->GetScroller()->GetOffset().x, ctrl->GetWindowHeight() / 2 - g_obj->GetScroller()->GetOffset().y));
+
+		
+		
+		t_tip->UpdateSize(DOOR_TOOL_TIP,
+			glm::vec2(g_obj->GetFontList()->GetFont()->GetLength(t_tip->GetTooltips()->at(DOOR_TOOL_TIP)->string, 25)
+			+ t_tip->corner.x * 2 + t_tip->GetOffset(DOOR_TOOL_TIP), 25 + t_tip->corner.y + t_tip->GetVoffset(DOOR_TOOL_TIP)));
+
+	}
+
+
 
 
 

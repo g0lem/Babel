@@ -30,8 +30,9 @@ void Application::Init()
 
 	g_object = new GameObject();
 	sound_m = new SoundManager();
-	g_render = new GameRender(g_object);
+	
 	t_tip = new Tooltip();
+	g_render = new GameRender(g_object, t_tip);
 	ui = new UIHandler(t_tip);
 	f_m = new FontManager(g_object);
 
@@ -59,7 +60,7 @@ void Application::Run()
 
 
 
-		g_render->Render(sound_m, this, g_object);
+		g_render->Render(sound_m, this, g_object, t_tip);
 
 
 
