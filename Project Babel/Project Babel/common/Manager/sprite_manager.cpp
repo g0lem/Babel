@@ -99,13 +99,16 @@ void SpriteManager::Advance(GameObject * g_obj)
 		//this->m_enemies->AddEnemies(1, this->map, g_obj, 3);
 
 	}
-	else
+	else 
 	{
 		this->map->Init(g_obj);
 		this->player->Advance(g_obj, this->map);
 
 		if (this->level == 2)
-			this->m_enemies = new EnemyManager(7, this->map, g_obj, 0);
+		{
+			this->m_enemies = new EnemyManager(4, this->map, g_obj, 0);
+			this->m_enemies->AddEnemies(3, this->map, g_obj, 1);
+		}
 	}
 
 
