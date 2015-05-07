@@ -406,7 +406,123 @@ void Map::GenerateScore()
 
 		}
 
-	
+
+
+
+
+
+
+
+
+
+
+
+
+		for (int i = 0; i < this->tilemap->GetSize().x; i++)
+			for (int j = 0; j < this->tilemap->GetSize().y; j++)
+			{
+			for (int x = 0; x < 4; x++)
+			{
+				if (i + dx[x] >= 0 && i + dx[x] < this->tilemap->GetSize().y && j + dy[x] >= 0 && j + dy[x] < this->tilemap->GetSize().x)
+
+					walls[x] = this->tilemap->GetTiles()[i + dx[x]][j + dy[x]];
+
+
+				else
+					walls[x] = -3;
+
+			}
+
+			if (this->tilemap->GetTiles()[i][j] >= RIGHT_STONE_BLOCK && this->tilemap->GetTiles()[i][j] <= SE_BLOCK)
+			{
+				if (walls[1] >= SOLID_LIMIT)
+				{
+
+
+					if (walls[2] >= SOLID_LIMIT)
+					{
+						if (i - 1 >= 0)
+							if (walls[1] == UP_STONE_BLOCK && walls[2] == LEFT_STONE_BLOCK)
+								this->tilemap->GetTiles()[i][j] = CORNER_SW_BLOCK;
+
+						if (walls[1] == DOWN_STONE_BLOCK && walls[2] == RIGHT_STONE_BLOCK)
+							if (this->tilemap->GetTiles()[i + 1][j - 1] == FLOOR_BLOCK)
+								this->tilemap->GetTiles()[i][j] = SW_BLOCK;
+					}
+					if (walls[3] >= SOLID_LIMIT)
+					{
+						if (i - 1 >= 0 && j - 1 >= 0)
+						{
+							if (walls[1] == DOWN_STONE_BLOCK && walls[3] == LEFT_STONE_BLOCK)
+								this->tilemap->GetTiles()[i][j] = CORNER_NW_BLOCK;
+
+							if (walls[1] == UP_STONE_BLOCK && walls[3] == RIGHT_STONE_BLOCK)
+								this->tilemap->GetTiles()[i][j] = NW_BLOCK;
+
+						}
+					}
+
+
+				}
+
+				if (walls[0] >= SOLID_LIMIT)
+				{
+
+					if (walls[2] >= SOLID_LIMIT)
+					{
+						if (i - 1 >= 0)
+							if (walls[0] == UP_STONE_BLOCK && walls[2] == RIGHT_STONE_BLOCK )
+								this->tilemap->GetTiles()[i][j] = CORNER_SE_BLOCK;
+
+						if (walls[0] == DOWN_STONE_BLOCK && walls[2] == LEFT_STONE_BLOCK)
+							this->tilemap->GetTiles()[i][j] = SE_BLOCK;
+					}
+					if (walls[3] >= SOLID_LIMIT)
+					{
+
+						if (walls[0] == DOWN_STONE_BLOCK && walls[3] == RIGHT_STONE_BLOCK)
+							this->tilemap->GetTiles()[i][j] = CORNER_NE_BLOCK;
+
+						if (walls[0] == UP_STONE_BLOCK && walls[3] == LEFT_STONE_BLOCK)
+							this->tilemap->GetTiles()[i][j] = NE_BLOCK;
+					}
+
+
+
+					if (walls[1] >= SOLID_LIMIT)
+					{
+						if (this->tilemap->GetTiles()[i][j - 1] == FLOOR_BLOCK)
+							this->tilemap->GetTiles()[i][j] = DOWN_STONE_BLOCK;
+
+						if (this->tilemap->GetTiles()[i][j + 1] == FLOOR_BLOCK)
+							this->tilemap->GetTiles()[i][j] = UP_STONE_BLOCK;
+					}
+
+				}
+				if (walls[3] >= SOLID_LIMIT)
+				{
+					if (walls[2] >= SOLID_LIMIT)
+					{
+						if (i - 1 >= 0)
+							if (this->tilemap->GetTiles()[i - 1][j] == FLOOR_BLOCK)
+								this->tilemap->GetTiles()[i][j] = LEFT_STONE_BLOCK;
+
+						if (this->tilemap->GetTiles()[i + 1][j] == FLOOR_BLOCK)
+							this->tilemap->GetTiles()[i][j] = RIGHT_STONE_BLOCK;
+					}
+
+				}
+
+			}
+
+			
+
+			
+
+
+
+
+			}
 
 
 

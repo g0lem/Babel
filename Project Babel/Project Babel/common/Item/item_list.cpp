@@ -44,6 +44,27 @@ void ItemList::SpawnObject(int id, glm::vec2 position, glm::vec2 damage)
 	this->traps.push_back(obj);
 }
 
+bool ItemList::CheckTileForItem(glm::vec2 position)
+{
+	for (int i = 0; i < this->dropped_items.size(); i++)
+		if (this->dropped_items[i]->position == position)
+			return true;
+
+	return false;
+
+}
+
+bool ItemList::CheckTileForChest(glm::vec2 position)
+{
+	for (int i = 0; i < this->objectlist.size(); i++)
+		if (this->objectlist[i]->position == position && this->objectlist[i]->item->id == CHEST_ID)
+			return true;
+
+	return false;
+
+}
+
+
 
 void ItemList::ClearObjects()
 {

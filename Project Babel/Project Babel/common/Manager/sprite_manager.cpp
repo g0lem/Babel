@@ -108,6 +108,13 @@ void SpriteManager::Advance(GameObject * g_obj, Tooltip *t_tip)
 		if (this->level == 2)
 		{
 			this->m_enemies = new EnemyManager(4, this->map, g_obj, 0);
+
+			for (int i = 0; i < g_obj->GetItemList()->GetObjects().size(); i++)
+			{
+				if (g_obj->GetItemList()->GetObjects()[i]->item->id == CHEST_ID)
+					this->m_enemies->AddEnemies(this->map, g_obj, 2, glm::vec2(g_obj->GetItemList()->GetObjects()[i]->position.x, g_obj->GetItemList()->GetObjects()[i]->position.y + 1));
+			}
+			
 			this->m_enemies->AddEnemies(3, this->map, g_obj, 1);
 		}
 	}
@@ -246,6 +253,28 @@ void SpriteManager::Render(SoundManager * sm, Controller * ctrl, GameObject * g_
 	this->GetScreenPointer()->ApplyMatrix(Translation(glm::vec2(0, 0))*Scale(ctrl->GetWindowSize()));
 	if (g_obj->GetPanelState()->hp == 0 && this->s_screen->Update() == true)
 		this->test->Render(0);
+
+	
+
+	if (this->player->GetTarget() != NO_TARGET)
+	{
+		t_tip->UpdateText(DOOR_TOOL_TIP, "Press SPACE to attack");
+		t_tip->UpdateStatus(DOOR_TOOL_TIP, true);
+	}
+
+	if (g_obj->GetItemList()->CheckTileForItem(this->player->GetPAttributes()->position))
+	{
+		t_tip->UpdateText(DOOR_TOOL_TIP, "Press E to pick up an item");
+		t_tip->UpdateStatus(DOOR_TOOL_TIP, true);
+	}
+
+
+
+	if (g_obj->GetItemList()->CheckTileForChest(this->player->GetPAttributes()->position))
+	{
+		t_tip->UpdateText(DOOR_TOOL_TIP, "Press E to open a chest");
+		t_tip->UpdateStatus(DOOR_TOOL_TIP, true);
+	}
 
 
 	

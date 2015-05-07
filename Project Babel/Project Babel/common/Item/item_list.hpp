@@ -67,6 +67,10 @@ public:
 
 	void AddDroppedItem(int x, int y, Item *item);
 
+	bool CheckTileForItem(glm::vec2 position);
+
+	bool ItemList::CheckTileForChest(glm::vec2 position);
+
 	void AddtoInventory(Item *item);
 
 	int listed_name(std::string name);
