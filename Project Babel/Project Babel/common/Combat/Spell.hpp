@@ -28,9 +28,23 @@ public:
 	glm::vec2 finish;
 	glm::vec2 ipos;
 	glm::vec2 lpos;
+	int npcscale;
 
 	inline Spell(int spellID, int damage, glm::vec2 position, glm::vec2 offset, glm::vec2 scale, float speed, int direction)
 		: damage(damage), position(position), scale(scale), speed(speed), direction(direction), offset(offset)
+	{
+
+		if (spellID == FIREBALL)
+			path = "data/spells/fireball.png";
+		this->ipos = this->position;
+		this->m_sprite = new Sprite();
+		this->m_sprite->Load(path.c_str());
+		this->active = true;
+		this->state = true;
+	}
+
+	inline Spell(int spellID, int damage, glm::vec2 position, glm::vec2 offset, glm::vec2 scale,int npcscale, float speed, int direction)
+		: damage(damage), position(position), scale(scale), speed(speed), direction(direction), offset(offset), npcscale(npcscale)
 	{
 
 		if (spellID == FIREBALL)
@@ -102,6 +116,7 @@ public:
 		}
 		
 	}
+
 
 	inline void Render(ScreenUniformData * u_data)
 	{
