@@ -117,40 +117,41 @@ void EnemyLoader::Init()
 	temp = new EnemyData();
 	temp->num_dirs = 8;
 	temp->boss = false;
-	tex_str = new char*[3];
-	tex_str[0] = "frame1.png";
-	tex_str[1] = "frame2.png";
-	tex_str[2] = "frame3.png";
+	tex_str = new char*[4];
+	tex_str[0] = "1.png";
+	tex_str[1] = "2.png";
+	tex_str[2] = "3.png";
+	tex_str[3] = "4.png";
 
 	temp->num_frames = new GLuint[temp->num_dirs];
-	temp->num_frames[0] = 3;
-	temp->num_frames[1] = 3;
-	temp->num_frames[2] = 3;
-	temp->num_frames[3] = 3;
-	temp->num_frames[4] = 3;
-	temp->num_frames[5] = 3;
-	temp->num_frames[6] = 3;
-	temp->num_frames[7] = 3;
+	temp->num_frames[0] = 4;
+	temp->num_frames[1] = 4;
+	temp->num_frames[2] = 2;
+	temp->num_frames[3] = 2;
+	temp->num_frames[4] = 4;
+	temp->num_frames[5] = 4;
+	temp->num_frames[6] = 2;
+	temp->num_frames[7] = 2;
 
 
 
 	temp->m_sprites = new Sprite*[temp->num_dirs];
 	temp->m_sprites[0] = new Sprite();
-	temp->m_sprites[0]->Load(temp->num_frames[0], "data/sprites/hydra/back/", tex_str);
+	temp->m_sprites[0]->Load(temp->num_frames[0], "data/sprites/lamassu/back/", tex_str);
 	temp->m_sprites[1] = new Sprite();
-	temp->m_sprites[1]->Load(temp->num_frames[1], "data/sprites/hydra/front/", tex_str);
+	temp->m_sprites[1]->Load(temp->num_frames[1], "data/sprites/lamassu/front/", tex_str);
 	temp->m_sprites[2] = new Sprite();
-	temp->m_sprites[2]->Load(temp->num_frames[2], "data/sprites/hydra/left/", tex_str);
+	temp->m_sprites[2]->Load(temp->num_frames[2], "data/sprites/lamassu/left/", tex_str);
 	temp->m_sprites[3] = new Sprite();
-	temp->m_sprites[3]->Load(temp->num_frames[3], "data/sprites/hydra/right/", tex_str);
+	temp->m_sprites[3]->Load(temp->num_frames[3], "data/sprites/lamassu/right/", tex_str);
 	temp->m_sprites[4] = new Sprite();
-	temp->m_sprites[4]->Load(temp->num_frames[4], "data/sprites/hydra/back/", tex_str);
+	temp->m_sprites[4]->Load(temp->num_frames[4], "data/sprites/lamassu/back/", tex_str);
 	temp->m_sprites[5] = new Sprite();
-	temp->m_sprites[5]->Load(temp->num_frames[5], "data/sprites/hydra/front/", tex_str);
+	temp->m_sprites[5]->Load(temp->num_frames[5], "data/sprites/lamassu/front/", tex_str);
 	temp->m_sprites[6] = new Sprite();
-	temp->m_sprites[6]->Load(temp->num_frames[6], "data/sprites/hydra/left/", tex_str);
+	temp->m_sprites[6]->Load(temp->num_frames[6], "data/sprites/lamassu/left/", tex_str);
 	temp->m_sprites[7] = new Sprite();
-	temp->m_sprites[7]->Load(temp->num_frames[7], "data/sprites/hydra/right/", tex_str);
+	temp->m_sprites[7]->Load(temp->num_frames[7], "data/sprites/lamassu/right/", tex_str);
 	
 	
 	
@@ -158,7 +159,7 @@ void EnemyLoader::Init()
 	temp->m_stats = new Stats();
 	temp->m_stats->base_attack = glm::vec2(0.0f, 0.0f);
 	temp->m_stats->base_attack_speed = 1.0f;
-	temp->m_stats->base_movement_speed = 0.0f;
+	temp->m_stats->base_movement_speed = 1.0f;
 	temp->m_stats->GetHp()->Buff(30);
 
 	temp->ranged = true;
