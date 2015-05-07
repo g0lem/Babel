@@ -547,6 +547,21 @@ void Map::Decorate(GameObject *g_obj)
 
 }
 
+void Map::AddLevers(GameObject *g_obj)
+{
+
+	
+	g_obj->SpawnSolidObject(LEVER_ID, glm::vec2(15, 29));
+	g_obj->GetCollisionMap()->GetPlayerTiles()[15][29] = false;
+	g_obj->GetCollisionMap()->GetTiles()[15][29] = false;
+
+	g_obj->SpawnSolidObject(LEVER_ID, glm::vec2(16, 28));
+	g_obj->GetCollisionMap()->GetPlayerTiles()[16][28] = false;
+	g_obj->GetCollisionMap()->GetTiles()[16][28] = false;
+}
+
+
+
 
 
 /*

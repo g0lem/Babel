@@ -46,6 +46,7 @@ public:
 
 	inline 	std::vector<Room*>* GetRoomsPointer(){ return this->rooms; }
 
+	
 
 private:
 
@@ -89,6 +90,8 @@ private:
 	void AddStairs(GameObject *g_obj);
 
 	void AddChests(GameObject *g_obj);
+
+	void AddLevers(GameObject *g_obj);
 
 	void Decorate(GameObject *g_obj);
 

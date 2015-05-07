@@ -88,7 +88,7 @@ public:
 
 	void Advance();
 
-
+	int boss_deal_damage=0;
 
 };
 

@@ -628,6 +628,11 @@ void Combat::EnemyMovement(Controller * ctrl, GameObject * g_obj, Player * playe
 		EventHandler::DestroyDoor(attr->position, current_map, g_obj);
 
 
+		if (g_obj->boss_deal_damage != 0 && enemy->scale != 1)
+			enemy->GetStats()->GetHp()->Damage(glm::vec2(g_obj->boss_deal_damage, g_obj->boss_deal_damage));
+			
+
+
 
 		if (!enemy->GetTurnLogic()->IsUseless() && enemy->GetStats()->aggressive == true)
 		{

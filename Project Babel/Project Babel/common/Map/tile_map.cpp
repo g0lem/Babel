@@ -59,7 +59,7 @@ void Tilemap::GenerateBossRoom()
 	for (GLuint i = 0; i < this->size.x; i++)
 		this->tiles[i] = new GLint[this->size.y];
 
-
+	
 
 	for (GLuint j = 0; j < this->size.y; j++)
 	{
@@ -72,11 +72,11 @@ void Tilemap::GenerateBossRoom()
 
 			
 			f>>tiles[i][j];
-			std::cout << (int)(tiles[i][j]);
+			
 
 		}
 		
-		std::cout << "\n";
+	
 
 
 	}

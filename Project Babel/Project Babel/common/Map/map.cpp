@@ -120,13 +120,17 @@ void Map::GenerateBossRoom(GameObject *g_obj)
 	//this->AddRooms(1);
 	this->AddBossRoom();
 	
-
+	
 	
 	this->tilemap->GenerateBossRoom();
 
+	
 
 
 	g_obj->GetCollisionMap()->CreateOutOfMap(this->GetTilemap());
+
+
+	this->AddLevers(g_obj);
 
 
 	this->fog = new fog_of_war();

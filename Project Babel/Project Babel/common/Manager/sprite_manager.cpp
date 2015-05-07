@@ -83,7 +83,18 @@ void SpriteManager::Advance(GameObject * g_obj)
 
 		this->player->Advance(g_obj, this->map);
 
-		this->m_enemies = new EnemyManager(1, this->map, g_obj, 1);
+		this->player->GetPAttributes()->position = glm::vec2(17, 1);
+		this->player->GetPAttributes()->target = glm::vec2(17, 1);
+
+		this->m_enemies = new EnemyManager(1, this->map, g_obj, 3);
+
+		this->m_enemies->GetEnemiesPointer()[0][0]->GetPAttributes()->position = glm::vec2(17, 30);
+		this->m_enemies->GetEnemiesPointer()[0][0]->GetPAttributes()->target = glm::vec2(17, 30);
+		
+
+		
+		
+
 
 		//this->m_enemies->AddEnemies(1, this->map, g_obj, 3);
 

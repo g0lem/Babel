@@ -363,7 +363,7 @@ void ItemList::LoadSprites()
 	this->m_sprite->Load(7, "data/items/", tex_str);
 
 
-	char ** tex_str2 = new char*[10];
+	char ** tex_str2 = new char*[11];
 
 	tex_str2[0] = "tablet.png";
 	tex_str2[1] = "stairs.png";
@@ -375,10 +375,11 @@ void ItemList::LoadSprites()
 	tex_str2[7] = "pillar.png";
 	tex_str2[8] = "chest.png";
 	tex_str2[9] = "chest-opened.png";
+	tex_str2[10] = "lever.png";
 
 	this->s_objects= new Sprite();
 
-	this->s_objects->Load(10, "data/tiles/", tex_str2);
+	this->s_objects->Load(11, "data/tiles/", tex_str2);
 
 }
 

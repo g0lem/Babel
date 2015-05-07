@@ -248,6 +248,22 @@ void EventHandler::OpenChest(glm::vec2 position, Map *current_map, GameObject *g
 }
 
 
+void EventHandler::Lever(glm::vec2 position, Map *current_map, GameObject *g_obj)
+{
+	for (int i = 0; i < g_obj->GetItemList()->GetObjects().size(); i++)
+	{
+		if (g_obj->GetItemList()->GetObjects()[i]->position == position && g_obj->GetItemList()->GetObjects()[i]->item->id == LEVER_ID)
+		{
+			g_obj->boss_deal_damage = 10;
+		}
+			
+	}
+
+
+
+}
+
+
 void EventHandler::TriggerEvent(glm::vec2 position, Map *current_map, GameObject *g_obj, Stats *m_stats)
 {
 	//in g_obj e item_list-ul
@@ -259,7 +275,7 @@ void EventHandler::TriggerEvent(glm::vec2 position, Map *current_map, GameObject
 	this->OpenChest(position, current_map, g_obj);
 	this->PickUp(position, current_map, g_obj);
 	this->NextLvl(position, current_map, g_obj);
-
+	this->Lever(position, current_map, g_obj);
 
 	if (e_map[(int)(position.x)][(int)(position.y)] == 2)
 	{
