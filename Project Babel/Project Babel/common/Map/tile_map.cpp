@@ -50,7 +50,7 @@ void Tilemap::GenerateBossRoom()
 	this->size.y = 48;
 
 	std::ifstream f("boss_map.txt");
-
+	std::ofstream g("pls.txt");
 
 	this->boss_lvl = true;
 
@@ -72,11 +72,12 @@ void Tilemap::GenerateBossRoom()
 
 			
 			f>>tiles[i][j];
+			g << tiles[i][j]<<" ";
 			
 
 		}
 		
-	
+		g << "\n";
 
 
 	}

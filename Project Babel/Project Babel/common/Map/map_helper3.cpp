@@ -549,7 +549,7 @@ void Map::Decorate(GameObject *g_obj)
 
 void Map::AddLevers(GameObject *g_obj)
 {
-
+	//add levers
 	
 	g_obj->SpawnSolidObject(LEVER_ID, glm::vec2(15, 29));
 	g_obj->GetCollisionMap()->GetPlayerTiles()[15][29] = false;
@@ -558,6 +558,73 @@ void Map::AddLevers(GameObject *g_obj)
 	g_obj->SpawnSolidObject(LEVER_ID, glm::vec2(16, 28));
 	g_obj->GetCollisionMap()->GetPlayerTiles()[16][28] = false;
 	g_obj->GetCollisionMap()->GetTiles()[16][28] = false;
+
+
+	g_obj->SpawnSolidObject(LEVER_ID, glm::vec2(19, 28));
+	g_obj->GetCollisionMap()->GetPlayerTiles()[19][28] = false;
+	g_obj->GetCollisionMap()->GetTiles()[19][28] = false;
+
+
+	g_obj->SpawnSolidObject(LEVER_ID, glm::vec2(20, 29));
+	g_obj->GetCollisionMap()->GetPlayerTiles()[20][29] = false;
+	g_obj->GetCollisionMap()->GetTiles()[20][29] = false;
+
+	g_obj->SpawnSolidObject(LEVER_ID, glm::vec2(20, 32));
+	g_obj->GetCollisionMap()->GetPlayerTiles()[20][32] = false;
+	g_obj->GetCollisionMap()->GetTiles()[20][32] = false;
+
+
+	g_obj->SpawnSolidObject(LEVER_ID, glm::vec2(19, 33));
+	g_obj->GetCollisionMap()->GetPlayerTiles()[19][33] = false;
+	g_obj->GetCollisionMap()->GetTiles()[19][33] = false;
+
+
+	g_obj->SpawnSolidObject(LEVER_ID, glm::vec2(15, 32));
+	g_obj->GetCollisionMap()->GetPlayerTiles()[15][32] = false;
+	g_obj->GetCollisionMap()->GetTiles()[15][32] = false;
+
+
+	g_obj->SpawnSolidObject(LEVER_ID, glm::vec2(16, 33));
+	g_obj->GetCollisionMap()->GetPlayerTiles()[16][33] = false;
+	g_obj->GetCollisionMap()->GetTiles()[16][33] = false;
+
+
+	//solidify player tiles
+
+	for (int i = 0; i < 4; i++)
+	{
+
+
+
+
+		g_obj->SpawnSolidObject(PITT_ID, glm::vec2(16 + i, 29));
+		g_obj->GetCollisionMap()->GetTiles()[16+i][29] = false;
+
+		g_obj->SpawnSolidObject(PITT_ID, glm::vec2(16 + i, 32));
+		g_obj->GetCollisionMap()->GetTiles()[16 + i][32] = false;
+
+		g_obj->SpawnSolidObject(PITT_ID, glm::vec2(16, 29 + i));
+		g_obj->GetCollisionMap()->GetTiles()[16][29+i] = false;
+
+		g_obj->SpawnSolidObject(PITT_ID, glm::vec2(19, 29 + i));
+		g_obj->GetCollisionMap()->GetTiles()[19][29+i] = false;
+
+
+		
+
+
+	}
+
+	g_obj->GetItemList()->AddDroppedItem(13, 15, g_obj->GetItemList()->GetList()[EnemyData::item_types::Sword]);
+	g_obj->GetItemList()->AddDroppedItem(14, 15, g_obj->GetItemList()->GetList()[EnemyData::item_types::health_potion_20]);
+	g_obj->GetItemList()->AddDroppedItem(21, 15, g_obj->GetItemList()->GetList()[EnemyData::item_types::Leather_Armor_1]);
+	g_obj->GetItemList()->AddDroppedItem(22, 15, g_obj->GetItemList()->GetList()[EnemyData::item_types::health_potion_20]);
+
+	g_obj->GetItemList()->SpawnObject(CHEST_ID,glm::vec2(27, 21));
+	//g_obj->GetItemList()->AddDroppedItem(27, 21, g_obj->GetItemList()->GetList()[EnemyData::item_types::health_potion_20]);
+	g_obj->GetItemList()->SpawnObject(CHEST_ID, glm::vec2(8, 21));
+
+
 }
 
 
