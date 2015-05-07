@@ -629,8 +629,10 @@ void Combat::EnemyMovement(Controller * ctrl, GameObject * g_obj, Player * playe
 
 
 		if (g_obj->boss_deal_damage != 0 && enemy->scale != 1)
+		{
 			enemy->GetStats()->GetHp()->Damage(glm::vec2(g_obj->boss_deal_damage, g_obj->boss_deal_damage));
-			
+			g_obj->boss_deal_damage = 0;
+		}
 
 
 

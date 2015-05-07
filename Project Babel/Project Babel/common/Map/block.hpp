@@ -35,7 +35,8 @@ enum Blocks
 #define CHEST_ID 8
 #define OPENED_CHEST 9
 #define LEVER_ID 10
-
+#define LEVER_ID_ON 11
+#define PITT_ID 12
 
 //walls
 

@@ -29,7 +29,7 @@ void Move::TileMove(Controller* ctrl, GameObject * g_obj, glm::vec2 &position)
 			ok = false;
 			break;
 			}
-		if (ok && !g_obj->GetCollisionMap()->GetTiles()[GLuint(position.x)][GLuint(position.y - 1)])
+		if (ok && !g_obj->GetCollisionMap()->GetPlayerTiles()[GLuint(position.x)][GLuint(position.y - 1)])
 			position.y--;
 
 
@@ -54,7 +54,7 @@ void Move::TileMove(Controller* ctrl, GameObject * g_obj, glm::vec2 &position)
 			ok = false;
 			break;
 			}
-		if (ok && !g_obj->GetCollisionMap()->GetTiles()[GLuint(position.x)][GLuint(position.y + 1)])
+		if (ok && !g_obj->GetCollisionMap()->GetPlayerTiles()[GLuint(position.x)][GLuint(position.y + 1)])
 			position.y++;
 
 
@@ -78,7 +78,7 @@ void Move::TileMove(Controller* ctrl, GameObject * g_obj, glm::vec2 &position)
 			ok = false;
 			break;
 			}
-		if (ok && !g_obj->GetCollisionMap()->GetTiles()[GLuint(position.x - 1)][GLuint(position.y)])
+		if (ok && !g_obj->GetCollisionMap()->GetPlayerTiles()[GLuint(position.x - 1)][GLuint(position.y)])
 			position.x--;
 
 
@@ -104,7 +104,7 @@ void Move::TileMove(Controller* ctrl, GameObject * g_obj, glm::vec2 &position)
 			ok = false;
 			break;
 			}
-		if (ok && !g_obj->GetCollisionMap()->GetTiles()[GLuint(position.x + 1)][GLuint(position.y)])
+		if (ok && !g_obj->GetCollisionMap()->GetPlayerTiles()[GLuint(position.x + 1)][GLuint(position.y)])
 			position.x++;
 
 
