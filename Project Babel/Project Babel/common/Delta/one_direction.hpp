@@ -21,13 +21,13 @@ class Direction
 
 
 
-	GLuint last_dir;
+
 
 
 
 public:
 
-
+	GLuint last_dir;
 
 	inline Direction(){ this->Init(); }
 

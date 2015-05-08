@@ -42,7 +42,7 @@ GLvoid Font::Create(GLchar * texturePath, GLuint size)
 	glGenBuffers(1, &Text2DVertexBufferID);
 	glGenBuffers(1, &Text2DUVBufferID);
 
-	Init("Arial", "data/fonts/choco.ttf", 80);
+	Init("Arial", "data/fonts/Lato-Light.ttf", 80);
 	this->scale = glm::vec2(1, 1);
 }
 

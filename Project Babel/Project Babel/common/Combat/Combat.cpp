@@ -489,6 +489,7 @@ void Combat::EnemyAttack(SoundManager *sm, Controller * ctrl, GameObject * g_obj
 
 				if (t_dir > -1)
 				{
+					current_enemy->GetDirection()->last_dir = t_dir;
 					current_enemy->GetActionHandler()->SetAction(ATTACKING);
 					current_enemy->GetActionHandler()->Start();
 					nein = 1;
