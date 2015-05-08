@@ -27,6 +27,8 @@ public:
 	static void AutomaticallyOpenDoor(glm::vec2 position, Map *current_map, GameObject *g_obj, glm::vec2 &door_pos);
 	static void EventHandler::DestroyDoor(glm::vec2 position, Map *&current_map, GameObject *g_obj);
 	static void DisplayTablet(int id);
+	void ChestTip(glm::vec2 position, Map *current_map, GameObject *g_obj, Tooltip *t_tip);
+
 
 	bool DoorToolTip(glm::vec2 position, Map *current_map, GameObject *g_obj, Tooltip *t_tip);
 

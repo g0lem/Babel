@@ -167,7 +167,7 @@ bool EventHandler::DoorToolTip(glm::vec2 position, Map *current_map, GameObject 
 		{
 			//g_obj->GetCollisionMap()->door_tip = new CollisionMap::tip("Press E to open door", glm::vec2(position.x - 1, position.y)*32);
 			t_tip->UpdateText(DOOR_TOOL_TIP, "Press E to open the door");
-		
+			t_tip->UpdateStatus(DOOR_TOOL_TIP, true);
 			g_obj->door_position = glm::vec2((position.x - 1) * 32, (position.y) * 32);
 			return true;
 			break;
@@ -177,7 +177,7 @@ bool EventHandler::DoorToolTip(glm::vec2 position, Map *current_map, GameObject 
 		{
 
 			t_tip->UpdateText(DOOR_TOOL_TIP, "Press E to open the door");
-		
+			t_tip->UpdateStatus(DOOR_TOOL_TIP, true);
 			g_obj->door_position = glm::vec2((position.x + 1) * 32, (position.y) * 32);
 			return true;
 			break;
@@ -344,15 +344,49 @@ void EventHandler::NextLvl(glm::vec2 position, Map *current_map, GameObject *g_o
 void EventHandler::OpenChest(glm::vec2 position, Map *current_map, GameObject *g_obj)
 {
 	Item *item;
-	item = g_obj->GetItemList()->GetList()[rand() % g_obj->GetItemList()->GetList().size()];
+
+	GLuint v[] = {30, 30, 15, 15, 5, 5};
+	int c[] = { EnemyData::Hammer, EnemyData::Plate_Armor_2, EnemyData::Epic_Sword, EnemyData::Epic_Armor, EnemyData::Legendary_Sword, EnemyData::Legendary_Armor };
+
+	//item = g_obj->GetItemList()->GetList()[rand() % g_obj->GetItemList()->GetList().size()];
+	item = g_obj->GetItemList()->GetList()[c[Dice::Get(v, 6, 100)]];
 	for (int i = 0; i < g_obj->GetItemList()->GetObjects().size();i++)
 		if (g_obj->GetItemList()->GetObjects()[i]->position == position && g_obj->GetItemList()->GetObjects()[i]->item->id==CHEST_ID)
 	{
-		g_obj->GetItemList()->DeleteFromObjects(i);
+		//g_obj->GetItemList()->DeleteFromObjects(i);
 		g_obj->GetItemList()->AddDroppedItem((int)(position.x), (int)(position.y), item);
-		//g_obj->GetItemList()->GetObjects()[i]->item->id = OPENED_CHEST;
+		g_obj->GetItemList()->GetObjects()[i]->item->id = OPENED_CHEST;
 		this->Init(current_map, g_obj);
 	}
+
+}
+
+void EventHandler::ChestTip(glm::vec2 position, Map *current_map, GameObject *g_obj, Tooltip *t_tip)
+{
+	Item *item;
+
+	GLuint v[] = { 30, 30, 15, 15, 5, 5 };
+	int c[] = { EnemyData::Hammer, EnemyData::Plate_Armor_2, EnemyData::Epic_Sword, EnemyData::Epic_Armor, EnemyData::Legendary_Sword, EnemyData::Legendary_Armor };
+
+	//item = g_obj->GetItemList()->GetList()[rand() % g_obj->GetItemList()->GetList().size()];
+	item = g_obj->GetItemList()->GetList()[c[Dice::Get(v, 6, 100)]];
+	for (int i = 0; i < g_obj->GetItemList()->GetObjects().size(); i++)
+		if (g_obj->GetItemList()->GetObjects()[i]->position == position )
+		{
+		//g_obj->GetItemList()->DeleteFromObjects(i);
+		if (g_obj->GetItemList()->GetObjects()[i]->item->id == CHEST_ID)
+		{
+			t_tip->UpdateText(DOOR_TOOL_TIP, "Press e to open a chest");
+			t_tip->UpdateStatus(DOOR_TOOL_TIP, true);
+		}
+		
+		if (g_obj->GetItemList()->GetObjects()[i]->item->id == TABLET_ID)
+		{
+			t_tip->UpdateText(DOOR_TOOL_TIP, "Press e to pick up a tablet");
+			t_tip->UpdateStatus(DOOR_TOOL_TIP, true);
+		}
+
+		}
 
 }
 

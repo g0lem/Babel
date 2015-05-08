@@ -27,6 +27,8 @@ class SpriteManager : private Aaether2D
 	float alpha = 1.f;
 
 
+	bool WASD_hint;
+
 	Combat * m_combat;
 
 public:

@@ -11,7 +11,7 @@ void SpriteManager::Init(GameObject * g_obj, Tooltip *t_tip)
 
 	this->BindCreate("data/shaders/2d_vert.txt", "data/shaders/2d_frag.txt");
 
-
+	this->WASD_hint = true;
 	this->level = 1;
 
 	this->map = new Map();
@@ -270,6 +270,7 @@ void SpriteManager::Render(SoundManager * sm, Controller * ctrl, GameObject * g_
 			this->s_screen->SkipFrame();
 			t_tip->UpdateStatus(DOOR_TOOL_TIP, true);
 			
+			
 		}
 		sw = false;
 	}
@@ -303,11 +304,17 @@ void SpriteManager::Render(SoundManager * sm, Controller * ctrl, GameObject * g_
 
 	}
 
-	t_tip->UpdateText(DOOR_TOOL_TIP, "Use WASD or the mouse to move");
 	t_tip->UpdateStatus(DOOR_TOOL_TIP, true);
 
-	
+	if (ctrl->GetKey(GLFW_KEY_W))
+		this->WASD_hint = false;
 
+	if (this->WASD_hint)
+	t_tip->UpdateText(DOOR_TOOL_TIP, "Use WASD or the mouse to move");
+	else
+		t_tip->UpdateText(DOOR_TOOL_TIP, " ");
+
+	
 	if (this->player->GetTarget() != NO_TARGET)
 	{
 		t_tip->UpdateText(DOOR_TOOL_TIP, "Press SPACE to attack");
@@ -320,7 +327,7 @@ void SpriteManager::Render(SoundManager * sm, Controller * ctrl, GameObject * g_
 		
 	}
 
-
+	this->player->GetEventHandler()->ChestTip(this->player->GetPAttributes()->position, this->map, g_obj, t_tip);
 
 	if (g_obj->GetItemList()->CheckTileForChest(this->player->GetPAttributes()->position))
 	{
@@ -330,10 +337,13 @@ void SpriteManager::Render(SoundManager * sm, Controller * ctrl, GameObject * g_
 	
 	this->player->GetEventHandler()->DoorToolTip(this->player->GetPAttributes()->position, this->map, g_obj, t_tip);
 
-		
-			
+	if (g_obj->GetUIState()->GetInventoryState()->GetState() == ACTIVE)
+		t_tip->UpdateText(DOOR_TOOL_TIP, "Right click to equip or use an item");
+
 	
-	
+	if (t_tip->GetTooltips()[0][DOOR_TOOL_TIP]->string[0] == ' ')
+		t_tip->UpdateStatus(DOOR_TOOL_TIP, false);
+	else
 	t_tip->UpdateStatus(DOOR_TOOL_TIP, true);
 
 	t_tip->UpdateStringPosition(DOOR_TOOL_TIP, glm::vec2(this->player->GetPAttributes()->position.x * this->player->GetPAttributes()->scale.x + g_obj->GetScroller()->GetOffset().x - (g_obj->GetFontList()->GetFont()->GetLength(t_tip->GetTooltips()->at(DOOR_TOOL_TIP)->string, 20) / 2), ctrl->GetWindowHeight() - (this->player->GetPAttributes()->position.y * this->player->GetPAttributes()->scale.y + g_obj->GetScroller()->GetOffset().y - ctrl->GetWindowHeight() / 3)));
@@ -350,6 +360,16 @@ void SpriteManager::Render(SoundManager * sm, Controller * ctrl, GameObject * g_
 	t_tip->UpdateSize(DOOR_TOOL_TIP,
 			glm::vec2(g_obj->GetFontList()->GetFont()->GetLength(t_tip->GetTooltips()->at(DOOR_TOOL_TIP)->string, 20)
 				+ t_tip->corner.x * 2 + t_tip->GetOffset(DOOR_TOOL_TIP), 20 + t_tip->corner.y + t_tip->GetVoffset(DOOR_TOOL_TIP)));
+
+
+
+
+
+
+
+
+
+
 
 	//if (g_obj->door_position != vec2_0)
 	//{
