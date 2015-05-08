@@ -62,8 +62,8 @@ void Inventory::LoadItems(Tooltip *t_tip)
 {
 	m_inventory = new Button*[16];
 
-	t_tip->Add(vec2_0, glm::vec2(60, 30), "Weapon", 25, 0);
-	t_tip->Add(vec2_0, glm::vec2(60, 30), "Armor", 25, 0);
+	t_tip->Add(vec2_0, glm::vec2(60, 30), "Weapon", 20, 0);
+	t_tip->Add(vec2_0, glm::vec2(60, 30), "Armor", 20, 0);
 
 	for (int i = 0; i < 16; i++)
 	{
@@ -74,7 +74,7 @@ void Inventory::LoadItems(Tooltip *t_tip)
 
 		m_inventory[i] = new Button(m_prop);
 
-		t_tip->Add(m_prop->position, glm::vec2(60, 30), "", 25, 0);
+		t_tip->Add(m_prop->position, glm::vec2(60, 30), "", 20, 0);
 
 
 	}
@@ -287,15 +287,17 @@ void Inventory::Render(Tooltip *t_tip, SoundManager *sm, Controller *ctrl, Scree
 
 					t_tip->UpdateText(INVENTORY_START + i, temp_name);
 				}
-				t_tip->UpdateOffset(INVENTORY_START + i, 7.5);
-				t_tip->UpdateVoffset(INVENTORY_START + i, 4);
+
+				
+				t_tip->UpdateOffset(INVENTORY_START+i, 15);
+				t_tip->UpdateVoffset(INVENTORY_START + i, 8);
 				t_tip->UpdateSize(INVENTORY_START + i, 
-					glm::vec2(g_obj->GetFontList()->GetFont()->GetLength(t_tip->GetTooltips()->at(INVENTORY_START + i)->string, 25)
-					+ t_tip->corner.x * 2 + t_tip->GetOffset(INVENTORY_START + 1), -g_obj->GetFontList()->GetFont()->GetHeight(t_tip->GetTooltips()->at(INVENTORY_START + i)->string, 25) +
+					glm::vec2(g_obj->GetFontList()->GetFont()->GetLength(t_tip->GetTooltips()->at(INVENTORY_START + i)->string, 20)
+					+ t_tip->corner.x * 2 + t_tip->GetOffset(INVENTORY_START + 1), -g_obj->GetFontList()->GetFont()->GetHeight(t_tip->GetTooltips()->at(INVENTORY_START + i)->string, 20) +
 					25 + t_tip->corner.y + t_tip->GetVoffset(INVENTORY_START + i)));
-				t_tip->UpdateStringHeight(INVENTORY_START + i, (-g_obj->GetFontList()->GetFont()->GetHeight(t_tip->GetTooltips()->at(INVENTORY_START + i)->string, 25)) / 25 + 1);
-				t_tip->UpdateStringPosition(INVENTORY_START + i, glm::vec2(ctrl->GetMousePosition().x + 9.f + 15.f, ctrl->GetWindowHeight() - (ctrl->GetMousePosition().y + 25 + 15 + 2)));
-				t_tip->UpdateStringLength(INVENTORY_START + i, g_obj->GetFontList()->GetFont()->GetLength(t_tip->GetTooltips()->at(INVENTORY_START + i)->string, 25));
+				t_tip->UpdateStringHeight(INVENTORY_START + i, (-g_obj->GetFontList()->GetFont()->GetHeight(t_tip->GetTooltips()->at(INVENTORY_START + i)->string, 20)) / 20 + 1 + 0.5);
+				t_tip->UpdateStringPosition(INVENTORY_START + i, glm::vec2(t_tip->GetOffset(INVENTORY_START+i) + ctrl->GetMousePosition().x  + 15.f, ctrl->GetWindowHeight() - (t_tip->GetVoffset(INVENTORY_START+i) + ctrl->GetMousePosition().y + 20 + 15 + 3)));
+				t_tip->UpdateStringLength(INVENTORY_START + i, g_obj->GetFontList()->GetFont()->GetLength(t_tip->GetTooltips()->at(INVENTORY_START + i)->string, 20));
 				t_tip->UpdatePosition(INVENTORY_START + i, ctrl->GetMousePosition());
 			}
 

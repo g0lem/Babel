@@ -306,7 +306,7 @@ void SpriteManager::Render(SoundManager * sm, Controller * ctrl, GameObject * g_
 
 	t_tip->UpdateStatus(DOOR_TOOL_TIP, true);
 
-	if (ctrl->GetKey(GLFW_KEY_W))
+	if (ctrl->GetKey(GLFW_KEY_W) || ctrl->GetKey(GLFW_KEY_A) || ctrl->GetKey(GLFW_KEY_S) || ctrl->GetKey(GLFW_KEY_D) || ctrl->GetMouseButton(GLFW_MOUSE_BUTTON_1))
 		this->WASD_hint = false;
 
 	if (this->WASD_hint)

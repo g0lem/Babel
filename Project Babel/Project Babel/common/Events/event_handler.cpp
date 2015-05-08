@@ -317,6 +317,9 @@ void EventHandler::PickUp(glm::vec2 position, Map *current_map, GameObject *g_ob
 			
 			if (g_obj->GetItemList()->GetInventory().size() < 16 && g_obj->GetItemList()->GetDroppedItems()[i]->position.x == position.x && g_obj->GetItemList()->GetDroppedItems()[i]->position.y == position.y)
 			{
+				
+
+
 				g_obj->GetItemList()->AddtoInventory(g_obj->GetItemList()->GetDroppedItems()[i]->item);
 				
 				g_obj->GetItemList()->DeleteFromDroppedList(i);

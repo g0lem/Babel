@@ -48,7 +48,7 @@ void PanelRender::LoadButtonsSprite(Tooltip *t_tip)
 	m_prop->color = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
 	m_prop->position = vec2_0;
 
-	t_tip->Add(m_prop->position, glm::vec2(60, 30), "Menu", 45, 0);
+	t_tip->Add(m_prop->position, glm::vec2(60, 30), "Menu", 40, 0);
 
 	a_button[0] = new Button(m_prop);
 
@@ -78,11 +78,11 @@ void PanelRender::LoadButtonsSprite(Tooltip *t_tip)
 
 
 	}
-	t_tip->Add(m_prop->position, glm::vec2(144, 53), "Menu", 45, 0);
-	t_tip->Add(m_prop->position, glm::vec2(144, 53), "Stats", 45, 0);
-	t_tip->Add(m_prop->position, glm::vec2(144, 53), "Story", 45, 0);
-	t_tip->Add(m_prop->position, glm::vec2(144, 53), "Inventory", 45, 0);
-	t_tip->Add(m_prop->position, glm::vec2(144, 53), "Pass Turn", 45, 0);
+	t_tip->Add(m_prop->position, glm::vec2(144, 53), "Menu", 40, 0);
+	t_tip->Add(m_prop->position, glm::vec2(144, 53), "Stats", 40, 0);
+	t_tip->Add(m_prop->position, glm::vec2(144, 53), "Story", 40, 0);
+	t_tip->Add(m_prop->position, glm::vec2(144, 53), "Inventory", 40, 0);
+	t_tip->Add(m_prop->position, glm::vec2(144, 53), "Pass Turn", 40, 0);
 
 	this->spell_skin = new Sprite();
 	this->spell_skin->Load("data/UI/SpellFrame.png");
