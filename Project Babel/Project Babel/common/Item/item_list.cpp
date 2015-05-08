@@ -250,6 +250,14 @@ void ItemList::LoadItems()
 	this->list.push_back(m_item);
 
 
+	m_item = new Item();
+	m_item->Init();
+	m_item->frame = 7;
+	m_item->type = ITEM_TYPE_SCROLL;
+	m_item->item_name = "Scroll";
+	m_item->attack = glm::vec2(0, 0);
+	m_item->id = EnemyData::item_types::Scroll;
+	this->list.push_back(m_item);
 
 
 	m_item = new Item();
@@ -293,7 +301,7 @@ void ItemList::LoadItems()
 	m_item->base_color = glm::vec4(0.9f, 0.49f, 0.13f, 1.f);
 	this->list.push_back(m_item);
 
-
+	
 
 }
 
@@ -392,7 +400,7 @@ std::string ItemList::NameGenerator(std::string type)
 
 void ItemList::LoadSprites()
 {
-	char ** tex_str = new char*[7];
+	char ** tex_str = new char*[8];
 
 	tex_str[0] = "potion.png";
 	tex_str[1] = "hammer.png";
@@ -401,11 +409,11 @@ void ItemList::LoadSprites()
 	tex_str[4] = "spikes-icon.png";
 	tex_str[5] = "iron-chestplate.png";
 	tex_str[6] = "leather-chestplate-2.png";
-
+	tex_str[7] = "scroll.png";
 
 	this->m_sprite = new Sprite();
 
-	this->m_sprite->Load(7, "data/items/", tex_str);
+	this->m_sprite->Load(8, "data/items/", tex_str);
 
 
 	char ** tex_str2 = new char*[13];

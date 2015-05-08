@@ -13,7 +13,7 @@
 #define ITEM_TYPE_WEAPON 1
 #define ITEM_TYPE_ARMOR 2
 #define ITEM_TYPE_TRAP 3
-
+#define ITEM_TYPE_SCROLL 4
 
 
 #define ITEM_SLOT_WEAPON 0

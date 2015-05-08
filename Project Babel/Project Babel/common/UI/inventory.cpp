@@ -111,7 +111,7 @@ void Inventory::LoadItems(Tooltip *t_tip)
 	a_button[0] = new Button(m1_prop);
 
 
-	t_tip->Add(vec2_0, vec2_0, "da", 25, 0);
+	t_tip->Add(vec2_0, vec2_0, "da", 20, 0);
 }
 
 void Inventory::RenderStaticItems(Controller *ctrl, ScreenUniformData *u_data, GameObject *g_obj)
