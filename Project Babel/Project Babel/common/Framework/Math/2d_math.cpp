@@ -51,7 +51,7 @@ glm::mat3 Rotation(GLfloat alpha)
 	tr[0].x = cos(alpha);
 	tr[0].y = sin(alpha);
 
-	tr[1].x = -sin(alpha);
+	tr[1].x = sin(alpha);
 	tr[1].y = cos(alpha);
 
 

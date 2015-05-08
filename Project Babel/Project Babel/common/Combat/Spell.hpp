@@ -306,7 +306,15 @@ public:
 	inline void Render(ScreenUniformData * u_data)
 	{
 		u_data->SetAmbientLight();
-		u_data->ApplyMatrix(Translation(this->position)*Scale(this->scale));
+		if (direction == UP)
+			u_data->ApplyMatrix(Translation(this->position + glm::vec2(32, 32)*(float)npcscale)*Scale(this->scale)*Rotation((3*3.14159265359 / 2)));
+		else if (direction == DOWN)
+			u_data->ApplyMatrix(Translation(this->position)*Scale(this->scale)*Rotation((3.14159265359 / 2)));
+		else if (direction == LEFT)
+			u_data->ApplyMatrix(Translation(this->position + glm::vec2(32, 32)*(float)npcscale)*Scale(this->scale)*Rotation(3.14159265359));
+		else if (direction == RIGHT)
+			u_data->ApplyMatrix(Translation(this->position)*Scale(this->scale));
+		
 		this->m_sprite->Render(0);
 	}
 
