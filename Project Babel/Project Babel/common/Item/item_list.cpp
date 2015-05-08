@@ -271,6 +271,32 @@ void ItemList::LoadItems()
 	m_item->attack = glm::vec2(10, 10);
 	m_item->id = EnemyData::item_types::Spikes;
 	this->list.push_back(m_item);
+
+
+	m_item = new Item();
+	m_item->Init();
+	m_item->frame = 4;
+	
+	m_item->type = ITEM_TYPE_TRAP;
+	m_item->item_name = "Legendary Sword";
+	m_item->attack = glm::vec2(10, 10);
+	m_item->id = EnemyData::item_types::Legendary_Armor;
+	this->list.push_back(m_item);
+
+
+
+	m_item = new Item();
+	m_item->Init();
+	m_item->frame = 4;
+
+	m_item->type = ITEM_TYPE_TRAP;
+	m_item->item_name = "Lengendary Sword";
+	m_item->attack = glm::vec2(10, 10);
+	m_item->id = EnemyData::item_types::Legendary_Sword;
+	this->list.push_back(m_item);
+
+
+
 }
 
 int ItemList::listed_name(std::string name)

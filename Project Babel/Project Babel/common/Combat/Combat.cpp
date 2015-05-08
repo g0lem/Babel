@@ -326,8 +326,9 @@ void Combat::PlayerRelated(SoundManager * sm, Controller *ctrl, GameObject * g_o
 	if (player->GetTarget() == NO_TARGET)
 	{
 		this->CheckPlayerMoveAbility(player, enemies);
-		this->SetPlayerTarget(player, enemies);
 	}
+	this->SetPlayerTarget(player, enemies);
+	
 	this->PlayerAttack(sm, ctrl, g_obj, player, enemies, map, type);
 
 
@@ -822,9 +823,8 @@ void Combat::EnemyRelated(SoundManager *sm, Controller * ctrl, GameObject * g_ob
 	this->SortThingsOut(player, enemies);
 	this->SetEnemyTarget(player, enemies);
 	this->AquireEnemyTarget(player, enemies);
-	this->EnemyAttack(sm, ctrl, g_obj, player, enemies, type);
 	this->EnemyMovement(ctrl, g_obj, player, enemies, map, type);
-
+	this->EnemyAttack(sm, ctrl, g_obj, player, enemies, type);
 
 }
 

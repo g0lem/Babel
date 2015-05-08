@@ -218,10 +218,8 @@ void SpriteManager::Render(SoundManager * sm, Controller * ctrl, GameObject * g_
 
 
 	
-
-
-    t_tip->UpdateText(DOOR_TOOL_TIP, "Use WASD or the mouse to move");
-	
+	t_tip->UpdateText(DOOR_TOOL_TIP, "Use WASD or the mouse to move");
+	t_tip->UpdateStatus(DOOR_TOOL_TIP, true);
 
 
 
@@ -279,13 +277,13 @@ void SpriteManager::Render(SoundManager * sm, Controller * ctrl, GameObject * g_
 	if (this->player->GetTarget() != NO_TARGET)
 	{
 		t_tip->UpdateText(DOOR_TOOL_TIP, "Press SPACE to attack");
-		t_tip->UpdateStatus(DOOR_TOOL_TIP, true);
+	
 	}
 
 	if (g_obj->GetItemList()->CheckTileForItem(this->player->GetPAttributes()->position))
 	{
 		t_tip->UpdateText(DOOR_TOOL_TIP, "Press E to pick up an item");
-		t_tip->UpdateStatus(DOOR_TOOL_TIP, true);
+		
 	}
 
 
@@ -293,15 +291,17 @@ void SpriteManager::Render(SoundManager * sm, Controller * ctrl, GameObject * g_
 	if (g_obj->GetItemList()->CheckTileForChest(this->player->GetPAttributes()->position))
 	{
 		t_tip->UpdateText(DOOR_TOOL_TIP, "Press E to open a chest");
-		t_tip->UpdateStatus(DOOR_TOOL_TIP, true);
-	}
-	
-	if (this->player->GetEventHandler()->DoorToolTip(this->player->GetPAttributes()->position, this->map, g_obj, t_tip))
-	{
 		
-			t_tip->UpdateStatus(DOOR_TOOL_TIP, true);
 	}
 	
+	this->player->GetEventHandler()->DoorToolTip(this->player->GetPAttributes()->position, this->map, g_obj, t_tip);
+
+		
+			
+	
+	
+	t_tip->UpdateStatus(DOOR_TOOL_TIP, true);
+
 	t_tip->UpdateStringPosition(DOOR_TOOL_TIP, glm::vec2(this->player->GetPAttributes()->position.x * this->player->GetPAttributes()->scale.x + g_obj->GetScroller()->GetOffset().x - (g_obj->GetFontList()->GetFont()->GetLength(t_tip->GetTooltips()->at(DOOR_TOOL_TIP)->string, 25) / 2), ctrl->GetWindowHeight() - (this->player->GetPAttributes()->position.y * this->player->GetPAttributes()->scale.y + g_obj->GetScroller()->GetOffset().y - ctrl->GetWindowHeight() / 3)));
 	t_tip->UpdatePosition(DOOR_TOOL_TIP, glm::vec2(this->player->GetPAttributes()->position.x * this->player->GetPAttributes()->scale.x + g_obj->GetScroller()->GetOffset().x - (g_obj->GetFontList()->GetFont()->GetLength(t_tip->GetTooltips()->at(DOOR_TOOL_TIP)->string, 25) / 2) - 20, (this->player->GetPAttributes()->position.y * this->player->GetPAttributes()->scale.y + g_obj->GetScroller()->GetOffset().y - ctrl->GetWindowHeight() / 3 - 40)));
 

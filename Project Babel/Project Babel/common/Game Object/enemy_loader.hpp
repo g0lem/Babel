@@ -11,7 +11,7 @@ public:
 	{
 		health_potion_12, health_potion_20, xp_potion_2, Hammer, Sword, Epic_Sword,
 		Leather_Armor_1, Leather_Armor_2 ,Plate_Armor_1 , Plate_Armor_2, 
-		Epic_Armor, Scroll, Chains, Spikes, Nothing
+		Epic_Armor, Scroll, Chains, Spikes, Legendary_Armor, Legendary_Sword, Nothing
 	};
 
 
