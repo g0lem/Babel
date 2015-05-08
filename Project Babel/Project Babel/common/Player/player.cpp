@@ -32,7 +32,7 @@ void Player::Load(GameObject * g_obj, Map * current_tilemap)
 	this->LoadStats();
 	this->last_pos_door = vec2_0;
 
-
+	trigger = false;
 
 }
 
@@ -152,11 +152,31 @@ void Player::Render(SoundManager *sm, Controller * ctrl, ScreenUniformData * u_d
 			this->m_sprite[4]->Render(m_dir->Compute(DIR_TYPE_4, attributes->position, attributes->target));
 
 
-		if (ctrl->GetKeyOnce(GLFW_KEY_X))
+		if (ctrl->GetKeyOnce(GLFW_KEY_X) && trigger == false)
 		{
 			g_obj->GetSpellManager()->Add(new Spell(FIREBALL, 10, GridPosition(attributes->position*attributes->scale + g_obj->GetScroller()->GetOffset(), attributes->scale),
 				g_obj->GetScroller()->GetOffset(),attributes->scale,
 				5.f, frame));
+
+		}
+		else if (trigger == true && ctrl->GetKey(GLFW_KEY_X))
+		{
+			g_obj->GetSpellManager()->Add(new Spell(FIREBALL, 10, GridPosition(attributes->position*attributes->scale + g_obj->GetScroller()->GetOffset(), attributes->scale),
+				g_obj->GetScroller()->GetOffset(), attributes->scale,
+				5.f, 0, glm::vec3(0, 1.f, 1.f)));
+			g_obj->GetSpellManager()->Add(new Spell(FIREBALL, 10, GridPosition(attributes->position*attributes->scale + g_obj->GetScroller()->GetOffset(), attributes->scale),
+				g_obj->GetScroller()->GetOffset(), attributes->scale,
+				5.f, 1, glm::vec3(0, 1.f, 1.f)));
+			g_obj->GetSpellManager()->Add(new Spell(FIREBALL, 10, GridPosition(attributes->position*attributes->scale + g_obj->GetScroller()->GetOffset(), attributes->scale),
+				g_obj->GetScroller()->GetOffset(), attributes->scale,
+				5.f, 2, glm::vec3(0, 1.f, 1.f)));
+			g_obj->GetSpellManager()->Add(new Spell(FIREBALL, 10, GridPosition(attributes->position*attributes->scale + g_obj->GetScroller()->GetOffset(), attributes->scale),
+				g_obj->GetScroller()->GetOffset(), attributes->scale,
+				5.f, 3, glm::vec3(0, 1.f, 1.f)));
+		}
+		else if (ctrl->GetKeyOnce(GLFW_KEY_END))
+		{
+			trigger = !trigger;
 		}
 
 
