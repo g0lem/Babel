@@ -101,6 +101,8 @@ public:
 
 	int scale;
 
+	float fall = 1;
+
 	void SetChances(EnemyData * data);
 
 

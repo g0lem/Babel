@@ -15,6 +15,9 @@ void EnemyManager::Render(SoundManager *sm, Controller * ctrl, ScreenUniformData
 	g_obj->GetCollisionMap()->ResetList();
 
 
+	
+
+
 	for (GLuint i = 0; i < this->m_enemies->size(); i++)
 	{
 
@@ -23,9 +26,13 @@ void EnemyManager::Render(SoundManager *sm, Controller * ctrl, ScreenUniformData
 			&& compare_vec2(this->m_enemies[0][i]->GetPAttributes()->position, glm::vec2(g_obj->GetScroller()->GetEndLimit())) == V_LESSER)
 		{
 
+			if (ctrl->GetKey(GLFW_KEY_Y))
+			{
+				m_enemies[0][i]->fall += 1;
+			}
 
-
-
+			if (m_enemies[0][i]->GetPAttributes()->scale.x - m_enemies[0][i]->fall <= 0)
+                 m_enemies[0][i]->GetStats()->GetHp()->hp = 0;
 
 			glm::ivec2 e_pos = glm::ivec2(this->m_enemies[0][i]->GetPAttributes()->position);
 			if (map->GetFogofWar()->GetFogMartix()[(int)(e_pos.x)][(int)(e_pos.y)] < 0.50f)
