@@ -58,7 +58,7 @@ void Application::Run()
 
 		this->Enable();
 
-
+		g_object->GetUIState()->Update(sound_m, this);
 
 		g_render->Render(sound_m, this, g_object, t_tip);
 

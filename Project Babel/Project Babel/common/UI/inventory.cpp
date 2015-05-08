@@ -109,6 +109,9 @@ void Inventory::LoadItems(Tooltip *t_tip)
 	m1_prop->size = armor_slot_size;
 	m1_prop->color = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
 	a_button[0] = new Button(m1_prop);
+
+
+	t_tip->Add(vec2_0, vec2_0, "da", 25, 0);
 }
 
 void Inventory::RenderStaticItems(Controller *ctrl, ScreenUniformData *u_data, GameObject *g_obj)
@@ -250,7 +253,7 @@ void Inventory::Render(Tooltip *t_tip, SoundManager *sm, Controller *ctrl, Scree
 
 			if (g_obj->GetUIState()->GetInventoryState()->GetButtonStates()[i] == HOVER)
 			{
-
+				t_tip->UpdateStatus(DOOR_TOOL_TIP, false);
 				t_tip->UpdateStatus(INVENTORY_START + i, true);
 				t_tip->UpdateText(INVENTORY_START + i, g_obj->GetItemList()->GetInventory()[i]->item_name);
 				t_tip->UpdateOffset(INVENTORY_START + i, 7.5);
@@ -309,6 +312,7 @@ void Inventory::Render(Tooltip *t_tip, SoundManager *sm, Controller *ctrl, Scree
 
 		if (g_obj->GetUIState()->GetInventoryState()->GetButtonStates()[17] == HOVER)
 		{
+			t_tip->UpdateStatus(DOOR_TOOL_TIP, false);
 			t_tip->UpdateStatus(WEAPON, true);
 			t_tip->UpdateText(WEAPON, weapon_item->item_name);
 			t_tip->UpdateOffset(WEAPON, 7.5);
@@ -357,6 +361,7 @@ void Inventory::Render(Tooltip *t_tip, SoundManager *sm, Controller *ctrl, Scree
 
 	if (g_obj->GetUIState()->GetInventoryState()->GetButtonStates()[18] == HOVER)
 	{
+		t_tip->UpdateStatus(DOOR_TOOL_TIP, false);
 		t_tip->UpdateStatus(ARMOR, true);
 		t_tip->UpdateText(ARMOR, armor_item->item_name);
 		t_tip->UpdateOffset(ARMOR, 7.5);

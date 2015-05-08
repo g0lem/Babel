@@ -41,7 +41,8 @@ void SpriteManager::Init(GameObject * g_obj, Tooltip *t_tip)
 			this->m_enemies->AddEnemies(this->map, g_obj, 2, glm::vec2(g_obj->GetItemList()->GetObjects()[i]->position.x, g_obj->GetItemList()->GetObjects()[i]->position.y + 1));
 	}
 
-
+	
+	
 
 	this->m_effects = new EffectsHandler();
 
@@ -50,7 +51,6 @@ void SpriteManager::Init(GameObject * g_obj, Tooltip *t_tip)
 	this->font->Create("data/fonts/arial.ttf", 48);
 
 	this->m_combat = new Combat();
-
 
 
 	this->UnbindCreate();
@@ -220,7 +220,11 @@ void SpriteManager::Render(SoundManager * sm, Controller * ctrl, GameObject * g_
 	
 
 
-	t_tip->Add(vec2_0, vec2_0, "Press E to close the door", 25, 0);
+    t_tip->UpdateText(DOOR_TOOL_TIP, "Use WASD or the mouse to move");
+	
+
+
+
 
 	bool sw = true;
 	
@@ -233,6 +237,7 @@ void SpriteManager::Render(SoundManager * sm, Controller * ctrl, GameObject * g_
 		if (ctrl->GetKeyOnce(GLFW_KEY_ENTER) == 1)
 		{
 			this->s_screen->SkipFrame();
+			t_tip->UpdateStatus(DOOR_TOOL_TIP, true);
 			
 		}
 		sw = false;
@@ -292,7 +297,9 @@ void SpriteManager::Render(SoundManager * sm, Controller * ctrl, GameObject * g_
 	}
 
 
-	
+	t_tip->UpdateStringPosition(DOOR_TOOL_TIP, glm::vec2(this->player->GetPAttributes()->position.x * this->player->GetPAttributes()->scale.x + g_obj->GetScroller()->GetOffset().x - (g_obj->GetFontList()->GetFont()->GetLength(t_tip->GetTooltips()->at(DOOR_TOOL_TIP)->string, 25) / 2), ctrl->GetWindowHeight() - (this->player->GetPAttributes()->position.y * this->player->GetPAttributes()->scale.y + g_obj->GetScroller()->GetOffset().y - ctrl->GetWindowHeight() / 3)));
+	t_tip->UpdatePosition(DOOR_TOOL_TIP, glm::vec2(this->player->GetPAttributes()->position.x * this->player->GetPAttributes()->scale.x + g_obj->GetScroller()->GetOffset().x - (g_obj->GetFontList()->GetFont()->GetLength(t_tip->GetTooltips()->at(DOOR_TOOL_TIP)->string, 25) / 2) - 20, (this->player->GetPAttributes()->position.y * this->player->GetPAttributes()->scale.y + g_obj->GetScroller()->GetOffset().y - ctrl->GetWindowHeight() / 3 - 40)));
+
 
 	if (g_obj->door_position != vec2_0)
 	{
@@ -303,12 +310,14 @@ void SpriteManager::Render(SoundManager * sm, Controller * ctrl, GameObject * g_
 
 		t_tip->UpdateOffset(DOOR_TOOL_TIP, 7.5);
 		t_tip->UpdateVoffset(DOOR_TOOL_TIP, 4);
-		t_tip->UpdatePosition(DOOR_TOOL_TIP, (g_obj->door_position+g_obj->GetScroller()->GetOffset()));
+		//t_tip->UpdatePosition(DOOR_TOOL_TIP, (g_obj->door_position+g_obj->GetScroller()->GetOffset()));
+		t_tip->UpdatePosition(DOOR_TOOL_TIP, glm::vec2(this->player->GetPAttributes()->position.x * this->player->GetPAttributes()->scale.x + g_obj->GetScroller()->GetOffset().x - (g_obj->GetFontList()->GetFont()->GetLength(t_tip->GetTooltips()->at(DOOR_TOOL_TIP)->string, 25) / 2) - 20, (this->player->GetPAttributes()->position.y * this->player->GetPAttributes()->scale.y + g_obj->GetScroller()->GetOffset().y - ctrl->GetWindowHeight() / 3 - 40)));
 		//t_tip->UpdatePosition(DOOR_TOOL_TIP, (glm::vec2(10000, 10000) + g_obj->GetScroller()->GetOffset()));
-
+	
 		t_tip->UpdateStringLength(DOOR_TOOL_TIP, g_obj->GetFontList()->GetFont()->GetLength(t_tip->GetTooltips()->at(DOOR_TOOL_TIP)->string, 25));
-		t_tip->UpdateStringPosition(DOOR_TOOL_TIP, glm::vec2(g_obj->door_position.x + g_obj->GetScroller()->GetOffset().x + 9 + 15, ctrl->GetWindowHeight() - (g_obj->door_position.y + g_obj->GetScroller()->GetOffset().y + 25 + 15 + 2)));
-		
+		//t_tip->UpdateStringPosition(DOOR_TOOL_TIP, glm::vec2(g_obj->door_position.x + g_obj->GetScroller()->GetOffset().x + 9 + 15, ctrl->GetWindowHeight() - (g_obj->door_position.y + g_obj->GetScroller()->GetOffset().y + 25 + 15 + 2)));
+		t_tip->UpdateStringPosition(DOOR_TOOL_TIP, glm::vec2(this->player->GetPAttributes()->position.x * this->player->GetPAttributes()->scale.x + g_obj->GetScroller()->GetOffset().x - (g_obj->GetFontList()->GetFont()->GetLength(t_tip->GetTooltips()->at(DOOR_TOOL_TIP)->string, 25)/2), ctrl->GetWindowHeight() - (this->player->GetPAttributes()->position.y * this->player->GetPAttributes()->scale.y + g_obj->GetScroller()->GetOffset().y - ctrl->GetWindowHeight() / 3)));
+
 		//t_tip->UpdateStringPosition(DOOR_TOOL_TIP, glm::vec2(ctrl->GetWindowWidth() / 2 + g_obj->GetScroller()->GetOffset().x, ctrl->GetWindowHeight() / 2 - g_obj->GetScroller()->GetOffset().y));
 		//t_tip->UpdateStringPosition(DOOR_TOOL_TIP, glm::vec2(g_obj->GetScroller()->GetOffset().x + 9 + 15 + 100, ctrl->GetWindowHeight() - (g_obj->GetScroller()->GetOffset().y + 25 + 15 + 2 + 100)));
 
