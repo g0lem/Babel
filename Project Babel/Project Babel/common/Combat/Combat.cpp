@@ -91,7 +91,7 @@ void Combat::PlayerAttack(SoundManager * sm, Controller * ctrl, GameObject * g_o
 
 	if (player->GetTarget() > NO_TARGET &&
 		player->GetActionHandler()->GetAction() == ATTACKING &&
-		player->GetActionHandler()->HasReachedLifetime(TIME_FOR_ACTION))
+		player->GetActionHandler()->HasReachedLifetime(TIME_FOR_ACTION) && spell->SpellActive() == false)
 	{
 
 

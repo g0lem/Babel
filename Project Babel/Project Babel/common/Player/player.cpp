@@ -162,7 +162,7 @@ void Player::Render(SoundManager *sm, Controller * ctrl, ScreenUniformData * u_d
 				this->GetActionHandler()->Stop();
 
 
-				g_obj->GetSpellManager()->Add(new Spell(FIREBALL, 10, GridPosition(attributes->position*attributes->scale + g_obj->GetScroller()->GetOffset(), attributes->scale),
+				g_obj->GetSpellManager()->Add(new Spell(FIREBALL, 1, GridPosition(attributes->position*attributes->scale + g_obj->GetScroller()->GetOffset(), attributes->scale),
 					g_obj->GetScroller()->GetOffset(), attributes->scale,
 					5.f, frame, true));
 			}

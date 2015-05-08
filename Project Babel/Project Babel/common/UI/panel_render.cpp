@@ -88,7 +88,7 @@ void PanelRender::LoadButtonsSprite(Tooltip *t_tip)
 
 	}
 	t_tip->Add(m_prop->position, glm::vec2(144, 53), "Menu", 45, 0);
-	t_tip->Add(m_prop->position, glm::vec2(144, 53), "Inspect", 45, 0);
+	t_tip->Add(m_prop->position, glm::vec2(144, 53), "Stats", 45, 0);
 	t_tip->Add(m_prop->position, glm::vec2(144, 53), "Story", 45, 0);
 	t_tip->Add(m_prop->position, glm::vec2(144, 53), "Inventory", 45, 0);
 	t_tip->Add(m_prop->position, glm::vec2(144, 53), "Pass Turn", 45, 0);
