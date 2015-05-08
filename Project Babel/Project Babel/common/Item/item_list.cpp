@@ -278,7 +278,7 @@ void ItemList::LoadItems()
 	m_item->frame = 4;
 	
 	m_item->type = ITEM_TYPE_TRAP;
-	m_item->item_name = "Legendary Sword";
+	m_item->item_name = "Legendary Armor";
 	m_item->attack = glm::vec2(10, 10);
 	m_item->id = EnemyData::item_types::Legendary_Armor;
 	this->list.push_back(m_item);

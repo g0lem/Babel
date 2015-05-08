@@ -442,10 +442,10 @@ void Map::GenerateScore()
 					if (walls[2] >= SOLID_LIMIT)
 					{
 						if (i - 1 >= 0)
-							if (walls[1] == UP_STONE_BLOCK && walls[2] == LEFT_STONE_BLOCK)
+							if ((walls[1] == UP_STONE_BLOCK || walls[1] == CORNER_SE_BLOCK || walls[1] == NE_BLOCK) && (walls[2] == LEFT_STONE_BLOCK || walls[2] == CORNER_NW_BLOCK || walls[2] == NE_BLOCK))
 								this->tilemap->GetTiles()[i][j] = CORNER_SW_BLOCK;
 
-						if (walls[1] == DOWN_STONE_BLOCK && walls[2] == RIGHT_STONE_BLOCK)
+						if ((walls[1] == DOWN_STONE_BLOCK || walls[1] == SE_BLOCK || walls[1] == CORNER_NE_BLOCK) && (walls[2] == RIGHT_STONE_BLOCK || walls[2] == NW_BLOCK || walls[2] == CORNER_NE_BLOCK))
 							if (this->tilemap->GetTiles()[i + 1][j - 1] == FLOOR_BLOCK)
 								this->tilemap->GetTiles()[i][j] = SW_BLOCK;
 					}
@@ -453,10 +453,10 @@ void Map::GenerateScore()
 					{
 						if (i - 1 >= 0 && j - 1 >= 0)
 						{
-							if (walls[1] == DOWN_STONE_BLOCK && walls[3] == LEFT_STONE_BLOCK)
+							if ((walls[1] == DOWN_STONE_BLOCK || walls[1] == CORNER_NE_BLOCK || walls[1] == SE_BLOCK) && (walls[3] == LEFT_STONE_BLOCK || walls[3] == CORNER_SW_BLOCK || walls[3] == SE_BLOCK))
 								this->tilemap->GetTiles()[i][j] = CORNER_NW_BLOCK;
 
-							if (walls[1] == UP_STONE_BLOCK && walls[3] == RIGHT_STONE_BLOCK)
+							if ((walls[1] == UP_STONE_BLOCK || walls[1] == CORNER_SE_BLOCK || walls[1] == NE_BLOCK) && (walls[3] == RIGHT_STONE_BLOCK || walls[3] == CORNER_SE_BLOCK || walls[3] == SW_BLOCK))
 								this->tilemap->GetTiles()[i][j] = NW_BLOCK;
 
 						}
@@ -471,19 +471,19 @@ void Map::GenerateScore()
 					if (walls[2] >= SOLID_LIMIT)
 					{
 						if (i - 1 >= 0)
-							if (walls[0] == UP_STONE_BLOCK && walls[2] == RIGHT_STONE_BLOCK )
+							if ((walls[0] == UP_STONE_BLOCK || walls[0] == CORNER_SW_BLOCK || walls[0] == NW_BLOCK)  && (walls[2] == RIGHT_STONE_BLOCK || walls[2] == CORNER_NE_BLOCK || walls[2] == NW_BLOCK) )
 								this->tilemap->GetTiles()[i][j] = CORNER_SE_BLOCK;
 
-						if (walls[0] == DOWN_STONE_BLOCK && walls[2] == LEFT_STONE_BLOCK)
+						if ((walls[0] == DOWN_STONE_BLOCK || walls[0] == SW_BLOCK || walls[0] == CORNER_NW_BLOCK) && (walls[2] == LEFT_STONE_BLOCK || walls[2] == NE_BLOCK || walls[2] == CORNER_NW_BLOCK ))
 							this->tilemap->GetTiles()[i][j] = SE_BLOCK;
 					}
 					if (walls[3] >= SOLID_LIMIT)
 					{
 
-						if (walls[0] == DOWN_STONE_BLOCK && walls[3] == RIGHT_STONE_BLOCK)
+						if ((walls[0] == DOWN_STONE_BLOCK || walls[0] == CORNER_NW_BLOCK || walls[0] == SW_BLOCK) && (walls[3] == RIGHT_STONE_BLOCK || walls[3] == CORNER_SE_BLOCK || walls[3] == SW_BLOCK))
 							this->tilemap->GetTiles()[i][j] = CORNER_NE_BLOCK;
 
-						if (walls[0] == UP_STONE_BLOCK && walls[3] == LEFT_STONE_BLOCK)
+						if ((walls[0] == UP_STONE_BLOCK || walls[0] == CORNER_SW_BLOCK || walls[0] == NW_BLOCK) && (walls[3] == LEFT_STONE_BLOCK || walls[3] == CORNER_SW_BLOCK || walls[3] == SE_BLOCK))
 							this->tilemap->GetTiles()[i][j] = NE_BLOCK;
 					}
 
