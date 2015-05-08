@@ -40,7 +40,7 @@ class Player
 	Item **items;
 	bool created;
 	
-
+	
 
 	void HandleAutoPath(SoundManager *sm, Controller * ctrl, GameObject * g_obj, Map *current_map, Tooltip *t_tip);
 	GLboolean CheckAdvance(Controller * ctrl, GameObject * g_obj);

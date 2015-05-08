@@ -217,42 +217,57 @@ void SpriteManager::Render(SoundManager * sm, Controller * ctrl, GameObject * g_
 	this->BindRun(ctrl->GetWindowWidth(), ctrl->GetWindowHeight());
 
 
+	
+
+
 	t_tip->Add(vec2_0, vec2_0, "Press E to close the door", 25, 0);
 
-
+	bool sw = true;
+	
 
 	if (this->s_screen->Update() == false)
 	{
 
-
+		this->test->Render(2);
 		this->s_screen->Render(ctrl, this->GetScreenPointer());
 		if (ctrl->GetKeyOnce(GLFW_KEY_ENTER) == 1)
+		{
 			this->s_screen->SkipFrame();
-
-
+			
+		}
+		sw = false;
 	}
 	else
 	{
-
-
-		g_obj->GetScroller()->ComputeScreenLimits(ctrl, this->map->GetTilemap()->GetSize(), this->map->GetTilemap()->GetTileScale());
-
-		Update(ctrl, g_obj);
+		//this->GetScreenPointer()->ApplyMatrix(Translation(glm::vec2(0, 0))*Scale(ctrl->GetWindowSize()));
+		//if (g_obj->GetPanelState()->hp == 0 && this->s_screen->Update() == true)
 
 		g_obj->GetScroller()->ComputeScreenLimits(ctrl, this->map->GetTilemap()->GetSize(), this->map->GetTilemap()->GetTileScale());
-		this->map->Render(ctrl, this->GetScreenPointer(), g_obj, player->GetPAttributes()->position);
 
-		g_obj->GetSpellManager()->Render(ctrl, this->GetScreenPointer(), g_obj->GetScroller()->GetOffset() ,g_obj->GetCollisionMap()->GetTiles());
-		this->player->Render(sm, ctrl, this->GetScreenPointer(), g_obj, this->map, t_tip);
-		this->m_enemies->Render(sm, ctrl, this->GetScreenPointer(), g_obj, this->map, this->m_enemies->GetType());
-		this->m_combat->Action(sm,ctrl, g_obj, this->player, this->m_enemies, this->map, this->m_enemies->GetType());
+			Update(ctrl, g_obj);
+		
+		g_obj->GetScroller()->ComputeScreenLimits(ctrl, this->map->GetTilemap()->GetSize(), this->map->GetTilemap()->GetTileScale());
+
+		if (this->player->GetStats()->GetHp()->hp > 0)
+
+		{
+			
+
+			
+			this->map->Render(ctrl, this->GetScreenPointer(), g_obj, player->GetPAttributes()->position);
+
+			g_obj->GetSpellManager()->Render(ctrl, this->GetScreenPointer(), g_obj->GetScroller()->GetOffset(), g_obj->GetCollisionMap()->GetTiles());
+			this->player->Render(sm, ctrl, this->GetScreenPointer(), g_obj, this->map, t_tip);
+			this->m_enemies->Render(sm, ctrl, this->GetScreenPointer(), g_obj, this->map, this->m_enemies->GetType());
+			this->m_combat->Action(sm, ctrl, g_obj, this->player, this->m_enemies, this->map, this->m_enemies->GetType());
+
+			sw = false;
+		}
+
 
 	}
 
 
-	this->GetScreenPointer()->ApplyMatrix(Translation(glm::vec2(0, 0))*Scale(ctrl->GetWindowSize()));
-	if (g_obj->GetPanelState()->hp == 0 && this->s_screen->Update() == true)
-		this->test->Render(0);
 
 	
 
@@ -295,6 +310,7 @@ void SpriteManager::Render(SoundManager * sm, Controller * ctrl, GameObject * g_
 		t_tip->UpdateStringPosition(DOOR_TOOL_TIP, glm::vec2(g_obj->door_position.x + g_obj->GetScroller()->GetOffset().x + 9 + 15, ctrl->GetWindowHeight() - (g_obj->door_position.y + g_obj->GetScroller()->GetOffset().y + 25 + 15 + 2)));
 		
 		//t_tip->UpdateStringPosition(DOOR_TOOL_TIP, glm::vec2(ctrl->GetWindowWidth() / 2 + g_obj->GetScroller()->GetOffset().x, ctrl->GetWindowHeight() / 2 - g_obj->GetScroller()->GetOffset().y));
+		//t_tip->UpdateStringPosition(DOOR_TOOL_TIP, glm::vec2(g_obj->GetScroller()->GetOffset().x + 9 + 15 + 100, ctrl->GetWindowHeight() - (g_obj->GetScroller()->GetOffset().y + 25 + 15 + 2 + 100)));
 
 		
 		
@@ -305,7 +321,15 @@ void SpriteManager::Render(SoundManager * sm, Controller * ctrl, GameObject * g_
 	}
 
 
+	std::cout << this->player->GetStats()->GetHp()->hp << "\n";
 
+	if (sw == true)
+	{
+		this->player->Render(sm, ctrl, this->GetScreenPointer(), g_obj, this->map, t_tip);
+		this->GetScreenPointer()->ApplyMatrix(Translation(glm::vec2(0, 0))*Scale(ctrl->GetWindowSize()));
+		
+		this->test->Render(0);
+	}
 
 
 	this->UnbindRun();

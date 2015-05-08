@@ -16,7 +16,7 @@ void Move::TileMove(Controller* ctrl, GameObject * g_obj, glm::vec2 &position)
 
 
 
-	if ((ctrl->GetKeyOnce(GLFW_KEY_W) || ctrl->GetKeyOnce(GLFW_KEY_UP)) && position.y > 0)
+	if ((ctrl->GetKey(GLFW_KEY_W) || ctrl->GetKey(GLFW_KEY_UP)) && position.y > 0)
 	{
 
 
@@ -37,10 +37,10 @@ void Move::TileMove(Controller* ctrl, GameObject * g_obj, glm::vec2 &position)
 	}
 
 
+	else
 
 
-
-	if ((ctrl->GetKeyOnce(GLFW_KEY_S) || ctrl->GetKeyOnce(GLFW_KEY_DOWN)) && position.y < glm::vec2(g_obj->GetCollisionMap()->GetSize()).y)
+	if ((ctrl->GetKey(GLFW_KEY_S) || ctrl->GetKey(GLFW_KEY_DOWN)) && position.y < glm::vec2(g_obj->GetCollisionMap()->GetSize()).y)
 	{
 
 
@@ -62,8 +62,8 @@ void Move::TileMove(Controller* ctrl, GameObject * g_obj, glm::vec2 &position)
 
 	}
 
-
-	if ((ctrl->GetKeyOnce(GLFW_KEY_A) || ctrl->GetKeyOnce(GLFW_KEY_LEFT)) && position.x > 0)
+	else
+	if ((ctrl->GetKey(GLFW_KEY_A) || ctrl->GetKey(GLFW_KEY_LEFT)) && position.x > 0)
 	{
 
 
@@ -88,8 +88,8 @@ void Move::TileMove(Controller* ctrl, GameObject * g_obj, glm::vec2 &position)
 	}
 
 
-
-	if ((ctrl->GetKeyOnce(GLFW_KEY_D) || ctrl->GetKeyOnce(GLFW_KEY_RIGHT)) && position.x < glm::vec2(g_obj->GetCollisionMap()->GetSize()).x)
+	else
+	if ((ctrl->GetKey(GLFW_KEY_D) || ctrl->GetKey(GLFW_KEY_RIGHT)) && position.x < glm::vec2(g_obj->GetCollisionMap()->GetSize()).x)
 	{
 
 
