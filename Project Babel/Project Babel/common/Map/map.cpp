@@ -623,6 +623,8 @@ void Map::Render(Controller * ctrl, ScreenUniformData * u_data, Sprite * m_sprit
 
 		if (item_list->GetDroppedItems()[i]->item->item_name == "Epic Armor" || item_list->GetDroppedItems()[i]->item->item_name == "Epic Sword")
 			u_data->SetAmbientLight(item_list->GetDroppedItems()[i]->item->color);
+		if (item_list->GetDroppedItems()[i]->item->item_name == "Legendary Armor" || item_list->GetDroppedItems()[i]->item->item_name == "Legendary Sword")
+			u_data->SetAmbientLight(item_list->GetDroppedItems()[i]->item->color);
 
 		u_data->ApplyMatrix(Translation(glm::vec2(x * this->tilemap->GetTileScale().x + 8, y * this->tilemap->GetTileScale().y + 8) + offset)*Scale(glm::vec2(this->tilemap->GetTileScale().x/2, this->tilemap->GetTileScale().y/2)));
 		item_list->GetSprite()->Render(item_list->GetDroppedItems()[i]->item->frame);

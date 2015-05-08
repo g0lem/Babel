@@ -275,24 +275,22 @@ void ItemList::LoadItems()
 
 	m_item = new Item();
 	m_item->Init();
-	m_item->frame = 4;
-	
-	m_item->type = ITEM_TYPE_TRAP;
+	m_item->frame = 5;
+	m_item->type = ITEM_TYPE_ARMOR;
 	m_item->item_name = "Legendary Armor";
-	m_item->attack = glm::vec2(10, 10);
+	m_item->armor = 8;
 	m_item->id = EnemyData::item_types::Legendary_Armor;
+	m_item->base_color = glm::vec4(0.9f, 0.49f, 0.13f, 1.f);
 	this->list.push_back(m_item);
-
-
 
 	m_item = new Item();
 	m_item->Init();
-	m_item->frame = 4;
-
-	m_item->type = ITEM_TYPE_TRAP;
-	m_item->item_name = "Lengendary Sword";
+	m_item->frame = 2;
+	m_item->type = ITEM_TYPE_WEAPON;
+	m_item->item_name = "Legendary Sword";
 	m_item->attack = glm::vec2(10, 10);
 	m_item->id = EnemyData::item_types::Legendary_Sword;
+	m_item->base_color = glm::vec4(0.9f, 0.49f, 0.13f, 1.f);
 	this->list.push_back(m_item);
 
 

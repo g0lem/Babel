@@ -278,6 +278,10 @@ void Combat::PlayerAttack(SoundManager * sm, Controller * ctrl, GameObject * g_o
 						spell->GetSpell(i)->state = false;
 
 					}
+
+					g_obj->GetTurnSystem()->ComputeAttack(-1.f);
+					player->GetActionHandler()->SetAction(NO_ACTION);
+					player->GetActionHandler()->Stop();
 				}
 			}
 		}

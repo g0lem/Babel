@@ -87,6 +87,7 @@ public:
 
 	GLvoid Print(const GLchar * text, glm::vec3 color, GLint x, GLint y, GLint size);
 	GLfloat GetLength(const GLchar * text, GLint size);
+	float GetHeight(const char *text, int size);
 	GLvoid Clean();
 
 

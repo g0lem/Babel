@@ -33,11 +33,28 @@ public:
 	glm::vec2 lpos;
 	int npcscale;
 	glm::vec2 maxd;
-
+	bool player;
 	glm::vec3 goku;
 
 	inline Spell(int spellID, int damage, glm::vec2 position, glm::vec2 offset, glm::vec2 scale, float speed, int direction)
 		: damage(damage), position(position), scale(scale), speed(speed), direction(direction), offset(offset)
+	{
+
+		if (spellID == FIREBALL)
+			path = "data/spells/fireball.png";
+		this->ipos = this->position;
+		this->m_sprite = new Sprite();
+		this->m_sprite->Load(path.c_str());
+		npcscale = 1;
+		player = false;
+		this->active = true;
+		this->state = true;
+		goku = glm::vec3(1, 1, 1);
+		maxd = glm::vec2(5, 5);
+	}
+
+	inline Spell(int spellID, int damage, glm::vec2 position, glm::vec2 offset, glm::vec2 scale, float speed, int direction, bool player)
+		: damage(damage), position(position), scale(scale), speed(speed), direction(direction), offset(offset), player(player)
 	{
 
 		if (spellID == FIREBALL)
@@ -62,7 +79,7 @@ public:
 		this->m_sprite = new Sprite();
 		this->m_sprite->Load(path.c_str());
 		npcscale = 1;
-
+		player = false;
 		this->active = true;
 		this->state = true;
 		maxd = glm::vec2(5, 5);
@@ -79,6 +96,7 @@ public:
 		this->m_sprite->Load(path.c_str());
 		this->active = true;
 		this->state = true;
+		player = false;
 		goku = glm::vec3(1, 1, 1);
 		maxd = glm::vec2(5, 5);
 	}
@@ -95,6 +113,7 @@ public:
 		this->active = true;
 		this->state = true;
 		goku = glm::vec3(1, 1, 1);
+		player = false;
 		npcscale = 1;
 		maxd = glm::vec2(5, 5);
 	}
@@ -126,8 +145,8 @@ public:
 
 		bool check = true;
 
-		print_vec2(rPosition);
-		print_vec2(initial);
+		//print_vec2(rPosition);
+		//print_vec2(initial);
 
 		if (npcscale == 1)
 		{

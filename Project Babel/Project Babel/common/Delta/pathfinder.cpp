@@ -228,7 +228,7 @@ void Pathfinder::AdaptMap()
 
 	
 	this->map = new GLboolean*[int(this->map_size.x / this->scale)];
-	std::cout << "Intrat";
+	//std::cout << "Intrat";
 	for (int i = 0; i < int(this->map_size.x / this->scale); i++)
 	{
 		this->map[i] = new GLboolean[int(this->map_size.y / this->scale)];

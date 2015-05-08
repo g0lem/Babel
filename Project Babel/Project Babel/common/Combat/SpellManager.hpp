@@ -27,6 +27,16 @@ public:
 	inline void UpdateOffset(glm::vec2 offset){
 		offset = offset;
 	}
+
+	inline bool SpellActive()
+	{
+		for (int i = 0; i < m_spells->size(); i++)
+		{
+			if (this->m_spells->at(i)->player == true)
+				return true;
+		}
+		return false;
+	}
 	
 	void Render(Controller *ctrl, ScreenUniformData *u_data, glm::vec2 offset, GLboolean **tiles)
 	{

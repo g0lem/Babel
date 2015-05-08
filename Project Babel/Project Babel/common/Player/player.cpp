@@ -151,13 +151,21 @@ void Player::Render(SoundManager *sm, Controller * ctrl, ScreenUniformData * u_d
 		else
 			this->m_sprite[4]->Render(m_dir->Compute(DIR_TYPE_4, attributes->position, attributes->target));
 
+		printf("%.2f \n", g_obj->GetTurnSystem()->GetTurns());
 
 		if (ctrl->GetKeyOnce(GLFW_KEY_X) && trigger == false)
 		{
-			g_obj->GetSpellManager()->Add(new Spell(FIREBALL, 10, GridPosition(attributes->position*attributes->scale + g_obj->GetScroller()->GetOffset(), attributes->scale),
-				g_obj->GetScroller()->GetOffset(),attributes->scale,
-				5.f, frame));
+			if (this->GetActionHandler()->GetAction() != ATTACKING){
 
+				g_obj->GetTurnSystem()->ComputeAttack(1.f);
+				this->GetActionHandler()->SetAction(ATTACKING);
+				this->GetActionHandler()->Stop();
+
+
+				g_obj->GetSpellManager()->Add(new Spell(FIREBALL, 10, GridPosition(attributes->position*attributes->scale + g_obj->GetScroller()->GetOffset(), attributes->scale),
+					g_obj->GetScroller()->GetOffset(), attributes->scale,
+					5.f, frame, true));
+			}
 		}
 		else if (trigger == true && ctrl->GetKey(GLFW_KEY_X))
 		{

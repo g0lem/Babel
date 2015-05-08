@@ -182,6 +182,8 @@ void Inventory::Render(Tooltip *t_tip, SoundManager *sm, Controller *ctrl, Scree
 			
 			if (g_obj->GetItemList()->GetInventory()[i]->item_name == "Epic Sword" || g_obj->GetItemList()->GetInventory()[i]->item_name == "Epic Armor")
 				u_data->SetAmbientLight(g_obj->GetItemList()->GetInventory()[i]->color);
+			else if (g_obj->GetItemList()->GetInventory()[i]->item_name == "Legendary Sword" || g_obj->GetItemList()->GetInventory()[i]->item_name == "Legendary Armor")
+				u_data->SetAmbientLight(g_obj->GetItemList()->GetInventory()[i]->color);
 			else
 				u_data->SetAmbientLight();
 			
@@ -256,11 +258,28 @@ void Inventory::Render(Tooltip *t_tip, SoundManager *sm, Controller *ctrl, Scree
 				t_tip->UpdateStatus(DOOR_TOOL_TIP, false);
 				t_tip->UpdateStatus(INVENTORY_START + i, true);
 				t_tip->UpdateText(INVENTORY_START + i, g_obj->GetItemList()->GetInventory()[i]->item_name);
+				if (g_obj->GetItemList()->GetInventory()[i]->type == ITEM_TYPE_WEAPON){
+
+					char *temp_name, *itemp;
+
+					temp_name = new char[256];
+					itemp = new char[256];
+
+					_itoa(g_obj->GetItemList()->GetInventory()[i]->attack.x, itemp, 10);
+
+					strcpy(temp_name, g_obj->GetItemList()->GetInventory()[i]->item_name);
+					strcat(temp_name, "énDamage ");
+					strcat(temp_name, itemp);
+
+					t_tip->UpdateText(INVENTORY_START + i, temp_name);
+				}
 				t_tip->UpdateOffset(INVENTORY_START + i, 7.5);
 				t_tip->UpdateVoffset(INVENTORY_START + i, 4);
 				t_tip->UpdateSize(INVENTORY_START + i, 
 					glm::vec2(g_obj->GetFontList()->GetFont()->GetLength(t_tip->GetTooltips()->at(INVENTORY_START + i)->string, 25)
-					+ t_tip->corner.x * 2 + t_tip->GetOffset(INVENTORY_START + 1), 25 + t_tip->corner.y + t_tip->GetVoffset(INVENTORY_START + i)));
+					+ t_tip->corner.x * 2 + t_tip->GetOffset(INVENTORY_START + 1), -g_obj->GetFontList()->GetFont()->GetHeight(t_tip->GetTooltips()->at(INVENTORY_START + i)->string, 25) +
+					25 + t_tip->corner.y + t_tip->GetVoffset(INVENTORY_START + i)));
+				t_tip->UpdateStringHeight(INVENTORY_START + i, (-g_obj->GetFontList()->GetFont()->GetHeight(t_tip->GetTooltips()->at(INVENTORY_START + i)->string, 25)) / 25 + 1);
 				t_tip->UpdateStringPosition(INVENTORY_START + i, glm::vec2(ctrl->GetMousePosition().x + 9.f + 15.f, ctrl->GetWindowHeight() - (ctrl->GetMousePosition().y + 25 + 15 + 2)));
 				t_tip->UpdateStringLength(INVENTORY_START + i, g_obj->GetFontList()->GetFont()->GetLength(t_tip->GetTooltips()->at(INVENTORY_START + i)->string, 25));
 				t_tip->UpdatePosition(INVENTORY_START + i, ctrl->GetMousePosition());
@@ -291,6 +310,8 @@ void Inventory::Render(Tooltip *t_tip, SoundManager *sm, Controller *ctrl, Scree
 		w_position = box_position + glm::vec2(32, 68) + glm::vec2(11, 0) + glm::vec2(5, 6);
 
 		if (g_obj->GetItemList()->weapon->item_name == "Epic Sword")
+			u_data->SetAmbientLight(g_obj->GetItemList()->weapon->color);
+		else if (g_obj->GetItemList()->weapon->item_name == "Legendary Sword")
 			u_data->SetAmbientLight(g_obj->GetItemList()->weapon->color);
 		else
 			u_data->SetAmbientLight(glm::vec3(1.f, 1.f, 1.f));
@@ -343,6 +364,8 @@ void Inventory::Render(Tooltip *t_tip, SoundManager *sm, Controller *ctrl, Scree
 	a_position = box_position + glm::vec2(129, 69) + glm::vec2(5, 0) + glm::vec2(5, 6);
 	u_data->ApplyMatrix(Translation(a_position)*Scale(a_scale));
 	if (g_obj->GetItemList()->armor->item_name == "Epic Armor")
+		u_data->SetAmbientLight(g_obj->GetItemList()->armor->color);
+	else if (g_obj->GetItemList()->armor->item_name == "Legendary Armor")
 		u_data->SetAmbientLight(g_obj->GetItemList()->armor->color);
 	else
 		u_data->SetAmbientLight(glm::vec3(1.f, 1.f, 1.f));

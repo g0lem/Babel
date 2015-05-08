@@ -75,15 +75,15 @@ void EnemyLoader::Init()
 	
 
 
-	temp->chances[0] = 24;  temp->items[0] = EnemyData::item_types::health_potion_12;
-	temp->chances[1] = 10; temp->items[1] = EnemyData::item_types::health_potion_12;
-	temp->chances[2] = 10;  temp->items[2] = EnemyData::item_types::health_potion_12;
-	temp->chances[3] = 5; temp->items[3] = EnemyData::item_types::Sword;
-	temp->chances[4] = 3;  temp->items[4] = EnemyData::item_types::Hammer;
-	temp->chances[5] = 5; temp->items[5] = EnemyData::item_types::Leather_Armor_1;
-	temp->chances[6] = 3;  temp->items[6] = EnemyData::item_types::Plate_Armor_1;
-	temp->chances[7] = 1; temp->items[7] = EnemyData::item_types::Epic_Sword;
-	temp->chances[8] = 1; temp->items[8] = EnemyData::item_types::Epic_Armor;
+	temp->chances[0] = 24;  temp->items[0] = EnemyData::item_types::Legendary_Sword;
+	temp->chances[1] = 10; temp->items[1] = EnemyData::item_types::Legendary_Sword;
+	temp->chances[2] = 10;  temp->items[2] = EnemyData::item_types::Legendary_Sword;
+	temp->chances[3] = 5; temp->items[3] = EnemyData::item_types::Legendary_Sword;
+	temp->chances[4] = 3;  temp->items[4] = EnemyData::item_types::Legendary_Sword;
+	temp->chances[5] = 5; temp->items[5] = EnemyData::item_types::Legendary_Sword;
+	temp->chances[6] = 3;  temp->items[6] = EnemyData::item_types::Legendary_Sword;
+	temp->chances[7] = 1; temp->items[7] = EnemyData::item_types::Legendary_Sword;
+	temp->chances[8] = 1; temp->items[8] = EnemyData::item_types::Legendary_Sword;
 	temp->chances[9] = 38; temp->items[9] = EnemyData::item_types::Nothing;
 
 

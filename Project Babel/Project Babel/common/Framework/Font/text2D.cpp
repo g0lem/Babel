@@ -65,46 +65,60 @@ GLvoid Font::Print(const GLchar * text, GLint x, GLint y, GLint size){
 		GLchar character = text[i];
 		texture_glyph_t *glyph = texture_font_get_glyph(font, character);
 
-		float x0 = x3 + glyph->offset_x / scale.x;
-		float y0 = y + glyph->offset_y / scale.y;
-		float x1 = x0 + glyph->width / scale.x;
-		float y1 = y0 - glyph->height / scale.y;
+		if (text[i] == 'é')
+		{
+			i++;
+			if (text[i] == 'n')
+			{
+				ny -= size;
+				x3 = x;
+			}
 
-		float u0 = glyph->s0;
-		float v0 = glyph->t0;
-		float u1 = glyph->s1;
-		float v1 = glyph->t1;
+		}
+		else
+		{
 
+			float x0 = x3 + glyph->offset_x / scale.x;
+			float y0 = ny + glyph->offset_y / scale.y;
+			float x1 = x0 + glyph->width / scale.x;
+			float y1 = y0 - glyph->height / scale.y;
 
-		glm::vec2 vertex_up_left = glm::vec2(x0, y0);
-		glm::vec2 vertex_up_right = glm::vec2(x0, y1);
-		glm::vec2 vertex_down_left = glm::vec2(x1, y1);
-		glm::vec2 vertex_down_right = glm::vec2(x1, y0);
-
-		vertices.push_back(vertex_up_left);
-		vertices.push_back(vertex_down_left);
-		vertices.push_back(vertex_up_right);
-
-		vertices.push_back(vertex_up_left);
-		vertices.push_back(vertex_down_left);
-		vertices.push_back(vertex_down_right);
-
-
-		glm::vec2 uv_up_left = glm::vec2(u0, v0);
-		glm::vec2 uv_up_right = glm::vec2(u0, v1);
-		glm::vec2 uv_down_left = glm::vec2(u1, v1);
-		glm::vec2 uv_down_right = glm::vec2(u1, v0);
-
-		UVs.push_back(uv_up_left);
-		UVs.push_back(uv_down_left);
-		UVs.push_back(uv_up_right);
-
-		UVs.push_back(uv_up_left);
-		UVs.push_back(uv_down_left);
-		UVs.push_back(uv_down_right);
+			float u0 = glyph->s0;
+			float v0 = glyph->t0;
+			float u1 = glyph->s1;
+			float v1 = glyph->t1;
 
 
-		x3 += glyph->advance_x / scale.x;
+			glm::vec2 vertex_up_left = glm::vec2(x0, y0);
+			glm::vec2 vertex_up_right = glm::vec2(x0, y1);
+			glm::vec2 vertex_down_left = glm::vec2(x1, y1);
+			glm::vec2 vertex_down_right = glm::vec2(x1, y0);
+
+			vertices.push_back(vertex_up_left);
+			vertices.push_back(vertex_down_left);
+			vertices.push_back(vertex_up_right);
+
+			vertices.push_back(vertex_up_left);
+			vertices.push_back(vertex_down_left);
+			vertices.push_back(vertex_down_right);
+
+
+			glm::vec2 uv_up_left = glm::vec2(u0, v0);
+			glm::vec2 uv_up_right = glm::vec2(u0, v1);
+			glm::vec2 uv_down_left = glm::vec2(u1, v1);
+			glm::vec2 uv_down_right = glm::vec2(u1, v0);
+
+			UVs.push_back(uv_up_left);
+			UVs.push_back(uv_down_left);
+			UVs.push_back(uv_up_right);
+
+			UVs.push_back(uv_up_left);
+			UVs.push_back(uv_down_left);
+			UVs.push_back(uv_down_right);
+
+
+			x3 += glyph->advance_x / scale.x;
+		}
 	}
 
 
@@ -138,16 +152,67 @@ GLfloat Font::GetLength(const GLchar * text, GLint size)
 
 	texture_font_t * font = this->GetFontIndex(size);
 
+	int x3 = 0;
 	int x = 0;
+	int ny = 0;
 
 	for (GLuint i = 0; i < length; i++)
 	{
 		GLchar character = text[i];
 		texture_glyph_t *glyph = texture_font_get_glyph(font, character);
-		x += glyph->advance_x;
+
+		if (text[i] == 'é')
+		{
+			i++;
+			if (text[i] == 'n')
+			{
+				ny -= size;
+				if (x3 > x)
+					x = x3;
+
+				x3 = 0;
+			}
+
+		}
+		else
+			x3 += glyph->advance_x;
 	}
 
-	return x;
+	if (x3 > x)
+		return x3;
+	else
+		return x;
+}
+
+float Font::GetHeight(const GLchar * text, GLint size)
+{
+	GLuint length = strlen(text);
+
+	texture_font_t * font = this->GetFontIndex(size);
+
+	int x3 = 0;
+	int ny = 0;
+
+	for (GLuint i = 0; i < length; i++)
+	{
+		GLchar character = text[i];
+		texture_glyph_t *glyph = texture_font_get_glyph(font, character);
+
+		if (text[i] == 'é')
+		{
+			i++;
+			if (text[i] == 'n')
+			{
+				ny -= size;
+				x3 = 0;
+			}
+
+		}
+		else
+			x3 += glyph->advance_x;
+	}
+
+	return ny;
 }
 
 

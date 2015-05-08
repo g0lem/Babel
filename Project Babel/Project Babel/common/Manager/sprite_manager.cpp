@@ -202,6 +202,40 @@ void Update(Controller *ctrl, GameObject *g_obj)
 			//	g_obj->GetItemList()->GetList()[i]->color.z += 0.03f;
 
 		}
+		if (g_obj->GetItemList()->GetList()[i]->item_name == "Legendary Sword" || g_obj->GetItemList()->GetList()[i]->item_name == "Legendary Armor")
+		{
+			if (g_obj->GetItemList()->GetList()[i]->color.x < g_obj->GetItemList()->GetList()[i]->base_color.x)
+				gX = true;
+			if (g_obj->GetItemList()->GetList()[i]->color.y < g_obj->GetItemList()->GetList()[i]->base_color.y)
+				gY = true;
+			if(g_obj->GetItemList()->GetList()[i]->color.z < g_obj->GetItemList()->GetList()[i]->base_color.z)
+			{
+				gZ= true;
+			}
+			if (g_obj->GetItemList()->GetList()[i]->color.x > 0.95f)
+				gX = false;
+			if (g_obj->GetItemList()->GetList()[i]->color.y > 0.61f)
+				gY = false;
+			if( g_obj->GetItemList()->GetList()[i]->color.z > 0.10f)
+			{
+				gZ = false;
+			}
+
+			if (gX == false)
+				g_obj->GetItemList()->GetList()[i]->color.x -= 0.04f*ctrl->GetFpsPointer()->Delta() * 40;
+			else
+				g_obj->GetItemList()->GetList()[i]->color.x += 0.04f*ctrl->GetFpsPointer()->Delta() * 80;
+			if (gY == false)
+				g_obj->GetItemList()->GetList()[i]->color.y -= 0.04f*ctrl->GetFpsPointer()->Delta() * 40;
+			else
+				g_obj->GetItemList()->GetList()[i]->color.y += 0.04f*ctrl->GetFpsPointer()->Delta() * 80;
+			if (gZ == false)
+			{
+				g_obj->GetItemList()->GetList()[i]->color.z -= 0.04f*ctrl->GetFpsPointer()->Delta() * 40;
+			}
+			else
+				g_obj->GetItemList()->GetList()[i]->color.z += 0.04f*ctrl->GetFpsPointer()->Delta() * 80;
+		}
 	}
 
 
@@ -346,7 +380,7 @@ void SpriteManager::Render(SoundManager * sm, Controller * ctrl, GameObject * g_
 	//}
 
 
-	std::cout << this->player->GetStats()->GetHp()->hp << "\n";
+	//std::cout << this->player->GetStats()->GetHp()->hp << "\n";
 
 	if (sw == true)
 	{
