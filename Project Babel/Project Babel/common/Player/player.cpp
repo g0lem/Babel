@@ -356,7 +356,7 @@ void Player::HandleAutoPath(SoundManager *sm, Controller * ctrl, GameObject * g_
 
 	
 	if (CheckAdvance(ctrl, g_obj))
-	if (ctrl->GetMouseButtonOnce(GLFW_MOUSE_BUTTON_LEFT))
+	if (ctrl->GetMouseButtonOnce(GLFW_MOUSE_BUTTON_LEFT) && this->GetActionHandler()->GetAction() != ATTACKING)
 	{
 
 		this->last_wanted_position = Move::GetMapPosition(g_obj, ctrl->GetMousePosition(), attributes->scale);

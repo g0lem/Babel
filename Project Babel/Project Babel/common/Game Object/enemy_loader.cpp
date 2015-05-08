@@ -94,10 +94,10 @@ void EnemyLoader::Init()
 
 
 	temp->m_stats = new Stats();
-	temp->m_stats->base_attack = glm::vec2(1.0f, 2.0f);
+	temp->m_stats->base_attack = glm::vec2(0.0f, 0.0f);
 	temp->m_stats->base_attack_speed = 1.0f;
 	temp->m_stats->base_movement_speed = 1.0f;
-	temp->m_stats->GetHp()->Buff(7);
+	temp->m_stats->GetHp()->Buff(300);
 	
 	temp->m_stats->path_type = PATH_WITH_DOORS;
 
