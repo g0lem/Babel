@@ -323,9 +323,11 @@ void Combat::CheckPlayerMoveAbility(Player * player, EnemyManager * enemies)
 void Combat::PlayerRelated(SoundManager * sm, Controller *ctrl, GameObject * g_obj, Player * player, EnemyManager * enemies, Map * map, int type)
 {
 
-
-	this->CheckPlayerMoveAbility(player, enemies);
-	this->SetPlayerTarget(player, enemies);
+	if (player->GetTarget() == NO_TARGET)
+	{
+		this->CheckPlayerMoveAbility(player, enemies);
+		this->SetPlayerTarget(player, enemies);
+	}
 	this->PlayerAttack(sm, ctrl, g_obj, player, enemies, map, type);
 
 
