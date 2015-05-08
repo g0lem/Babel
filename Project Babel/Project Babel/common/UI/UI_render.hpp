@@ -15,6 +15,8 @@ class UIRender : public Aaether2D
 
 	MenuRender * menu_r;
 
+	StatsRender * stat_r;
+
 	public:
 
 

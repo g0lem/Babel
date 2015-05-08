@@ -12,9 +12,11 @@ void UIRender::Init(char * vertex_shader, char * fragment_shader, Tooltip *toolt
 
 
 	this->panel_r = new PanelRender(tooltips);
+	this->stat_r = new StatsRender();
 	this->inventory_r = new Inventory(tooltips);
 	this->menu_r = new MenuRender();
 	this->story_r = new StoryRender();
+
 	
 
 
@@ -56,6 +58,15 @@ void UIRender::Render(SoundManager *sm, Tooltip *tooltips, Controller *ctrl, Gam
 			g_obj->GetUIState()->GetInventoryState()->SetState(NOT_ACTIVE);
 	}
 
+	if (ctrl->GetKeyOnce(GLFW_KEY_C))
+	{
+		if (g_obj->GetUIState()->GetStatState()->GetState() == NOT_ACTIVE)
+			g_obj->GetUIState()->GetStatState()->SetState(ACTIVE);
+
+		else if (g_obj->GetUIState()->GetStatState()->GetState() == ACTIVE)
+			g_obj->GetUIState()->GetStatState()->SetState(NOT_ACTIVE);
+	}
+
 
 	if (g_obj->GetUIState()->GetMenuState()->GetState() == NOT_ACTIVE)
 	{
@@ -80,6 +91,17 @@ void UIRender::Render(SoundManager *sm, Tooltip *tooltips, Controller *ctrl, Gam
 			this->story_r->GetMover()->Reset();
 			this->story_r->storybox_position = glm::vec2(ctrl->GetWindowWidth() / 2 + ctrl->GetWindowWidth() / 4, ctrl->GetWindowHeight() / 2 - ctrl->GetWindowHeight() / 4);
 		}
+
+
+		if (g_obj->GetUIState()->GetStatState()->GetState() == ACTIVE)
+			this->stat_r->Render(ctrl, this->GetScreenPointer(), g_obj);
+		else
+		{
+			this->stat_r->GetMover()->Reset();
+			this->stat_r->position = glm::vec2(ctrl->GetWindowWidth() / 6, ctrl->GetWindowHeight() / 2 - ctrl->GetWindowHeight() / 4);
+
+		}
+
 
 		this->panel_r->Render(sm, tooltips, ctrl, this->GetScreenPointer(), g_obj);
 

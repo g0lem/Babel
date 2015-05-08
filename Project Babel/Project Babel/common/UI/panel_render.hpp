@@ -36,12 +36,13 @@ public:
 class PanelRender
 {
 
-	Sprite * button_skins, *top_skins, *stat_skin;
+	Sprite * button_skins, *top_skins;
+
+	Sprite *spell_skin;
 
 	Button ** a_button;
 	Button ** top_buttons;
-	Button * stat_button;
-	UI_mover * mover;
+	Button * spell_button;
 
 	glm::vec2 wireframe_position;
 	glm::vec2 wireframe_size;
@@ -55,10 +56,8 @@ class PanelRender
 	glm::vec2 hp_bar_position;
 	glm::vec2 hp_bar_size;
 
-
-	glm::vec2 stat_position;
-	glm::vec2 stat_size;
-
+	glm::vec2 spell_position;
+	glm::vec2 spell_size;
 
 	void LoadButtons(Tooltip *t_tip);
 	void LoadButtonsSprite(Tooltip *t_tip);
@@ -67,6 +66,7 @@ class PanelRender
 
 public:
 
+	
 
 	inline PanelRender(Tooltip *t_tip) { this->Init(t_tip); }
 	void Init(Tooltip *t_tip);

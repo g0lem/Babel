@@ -17,18 +17,9 @@ void PanelRender::Init(Tooltip *t_tip)
 	hp_bar_position = glm::vec2(514, 41);
 	hp_bar_size = glm::vec2(314, 20);
 
-	this->stat_position = glm::vec2(0);
-	this->stat_size = glm::vec2(226, 213);
-	this->stat_skin = new Sprite();
-	char **tex_str = new char*[1];
-	tex_str[0] = "stats.png";
-	this->stat_skin->Load(1, "data/UI/",tex_str);
-	
-	Property * m_prop = new Property();
-	m_prop->size = glm::vec2(0);
-	m_prop->color = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
-	this->stat_button = new Button(m_prop);
-	this->mover = new UI_mover();
+
+	spell_position = glm::vec2(0);
+	spell_size = glm::vec2(50);
 
 
 	LoadButtonsSprite(t_tip);
@@ -92,6 +83,15 @@ void PanelRender::LoadButtonsSprite(Tooltip *t_tip)
 	t_tip->Add(m_prop->position, glm::vec2(144, 53), "Story", 45, 0);
 	t_tip->Add(m_prop->position, glm::vec2(144, 53), "Inventory", 45, 0);
 	t_tip->Add(m_prop->position, glm::vec2(144, 53), "Pass Turn", 45, 0);
+
+	this->spell_skin = new Sprite();
+	this->spell_skin->Load("data/UI/SpellFrame.png");
+
+	m_prop = new Property();
+	m_prop->size = glm::vec2(50, 50);
+	m_prop->color = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
+	m_prop->position = vec2_0;
+	spell_button = new Button(m_prop);
 }
 
 void PanelRender::Update(Tooltip *t_tip, Controller *ctrl, GameObject * g_obj)
@@ -100,13 +100,14 @@ void PanelRender::Update(Tooltip *t_tip, Controller *ctrl, GameObject * g_obj)
 
 
 	wireframe_position = glm::vec2((ctrl->GetWindowWidth() - wireframe_size.x) / 2, 0);
-	a_button[0]->GetProperties()->position = glm::vec2((ctrl->GetWindowWidth() - wireframe_size.x) / 2 + 459, 11);
+	a_button[0]->GetProperties()->position = glm::vec2((ctrl->GetWindowWidth() - wireframe_size.x) / 2 + 459 , 11);
 
 
-	top_buttons[0]->GetProperties()->position = glm::vec2((ctrl->GetWindowWidth() - wireframe_size.x) / 2 + 340, 9);
-	top_buttons[1]->GetProperties()->position = glm::vec2((ctrl->GetWindowWidth() - wireframe_size.x) / 2 + 394, 9);
-	top_buttons[2]->GetProperties()->position = glm::vec2(a_button[0]->GetProperties()->position.x + 54, 9);
-	top_buttons[3]->GetProperties()->position = glm::vec2(top_buttons[2]->GetProperties()->position.x + 54, 9);
+	top_buttons[0]->GetProperties()->position = glm::vec2((ctrl->GetWindowWidth() - wireframe_size.x) / 2 + 340 , 9);
+	top_buttons[1]->GetProperties()->position = glm::vec2((ctrl->GetWindowWidth() - wireframe_size.x) / 2 + 394 , 9);
+	top_buttons[2]->GetProperties()->position = glm::vec2(a_button[0]->GetProperties()->position.x + 54 , 9);
+	top_buttons[3]->GetProperties()->position = glm::vec2(top_buttons[2]->GetProperties()->position.x + 54 , 9);
+	spell_button->GetProperties()->position = glm::vec2((ctrl->GetWindowWidth()/2.f) - spell_size.x / 2.f, ctrl->GetWindowHeight() - 75);
 
 	if (ctrl->HasBeenResized())
 	{
@@ -121,6 +122,9 @@ void PanelRender::Update(Tooltip *t_tip, Controller *ctrl, GameObject * g_obj)
 			delete g_obj->GetUIState()->GetInterHandler()->GetInters()[0][i + 2];
 			g_obj->GetUIState()->GetInterHandler()->GetInters()[0][i + 2] = NULL;
 		}
+
+		delete g_obj->GetUIState()->GetInterHandler()->GetInters()[0][7];
+		g_obj->GetUIState()->GetInterHandler()->GetInters()[0][7] = NULL;
 
 		ctrl->SetResized(false);
 
@@ -147,7 +151,14 @@ void PanelRender::Update(Tooltip *t_tip, Controller *ctrl, GameObject * g_obj)
 		g_obj->GetUIState()->GetInterHandler()->GetInters()[0][i + 2] = g;
 		}
 
-
+	if (!g_obj->GetUIState()->GetInterHandler()->GetInters()[0][7])
+	{
+		Golem *g = new Golem();
+		g->id = RECT;
+		g->position = spell_button->GetProperties()->position;
+		g->size = glm::vec2(50, 50);
+		g_obj->GetUIState()->GetInterHandler()->GetInters()[0][7] = g;
+	}
 
 
 
@@ -208,7 +219,7 @@ void PanelRender::Render(SoundManager *sm, Tooltip *t_tip, Controller *ctrl, Scr
 	}
 
 
-	if (g_obj->GetStatState()->GetState() == ACTIVE)
+	/*if (g_obj->GetStatState()->GetState() == ACTIVE)
 	{
 		u_data->SetAmbientLight(glm::vec4(1.f, 1.f, 1.f, 1.f));
 		u_data->ApplyMatrix(Translation(this->stat_position)*Scale(this->stat_size));
@@ -221,7 +232,7 @@ void PanelRender::Render(SoundManager *sm, Tooltip *t_tip, Controller *ctrl, Scr
 	if (glm::distance(position, this->stat_position) > 0)
 		this->stat_position = position;
 
-	}
+	}*/
 
 	for (int i = 0; i < 4; i++)//BUTTONS
 	{
@@ -232,13 +243,34 @@ void PanelRender::Render(SoundManager *sm, Tooltip *t_tip, Controller *ctrl, Scr
 
 
 	}
+	if (g_obj->spellsize > 0){
 
+		this->spell_button->Render(ctrl, u_data, spell_skin, 0, 0);
+		u_data->ApplyMatrix(Translation(spell_button->GetProperties()->position + glm::vec2(9, 9))*Scale(g_obj->spellsize)*Rotation(0));
+		g_obj->spellsprite->Render(g_obj->spellframe);
+	}
 
+	if (g_obj->cooldown > 0)
+	{
+
+		
+		g_obj->spellPOS.x = spell_button->GetProperties()->position.x + 10;
+		g_obj->spellPOS.y = ctrl->GetWindowHeight() - spell_button->GetProperties()->position.y - 38;
+	}
 
 
 	{//INVENTARY AND STORY
+		if (g_obj->GetUIState()->GetPanelState()->GetButtonsState()[0] == PRESSED || (g_obj->GetUIState()->GetStatState()->GetButtonState()[0] == PRESSED && g_obj->GetUIState()->GetStatState()->GetState() == ACTIVE))
+		{
+			g_obj->GetUIState()->GetStatState()->SetState(!g_obj->GetUIState()->GetStatState()->GetState());
 
 
+			if (g_obj->GetUIState()->GetInterHandler()->GetInters()[0][8] != NULL)
+			{
+				delete g_obj->GetUIState()->GetInterHandler()->GetInters()[0][8];
+				g_obj->GetUIState()->GetInterHandler()->GetInters()[0][8] = NULL;
+			}
+		}
 
 		if (g_obj->GetUIState()->GetInventoryState()->GetButtonStates()[16] == PRESSED &&
 			g_obj->GetUIState()->GetInventoryState()->GetState())
@@ -316,6 +348,13 @@ void PanelRender::Render(SoundManager *sm, Tooltip *t_tip, Controller *ctrl, Scr
 
 		}
 
+		if (g_obj->GetUIState()->GetSpellState()->GetState() == PRESSED)
+		{
+			g_obj->GetItemList()->AddtoInventory(g_obj->GetItemList()->scroll);
+			g_obj->GetItemList()->scroll = new Item();
+			g_obj->GetItemList()->must_load = true;
+		}
+
 		if (g_obj->GetUIState()->GetPanelState()->GetButtonsState()[1] == HOVER)
 		{
 			t_tip->UpdateStatus(DOOR_TOOL_TIP, false);
@@ -383,15 +422,6 @@ void PanelRender::Render(SoundManager *sm, Tooltip *t_tip, Controller *ctrl, Scr
 		else
 			t_tip->UpdateStatus(2, false);
 
-
-
-		if (g_obj->GetUIState()->GetPanelState()->GetButtonsState()[0] == PRESSED)
-		{
-
-			//sm->PlaySound(MENUPRESSBUTTON);
-			g_obj->GetStatState()->SetState(!g_obj->GetStatState()->GetState());
-
-		}
 
 	}
 

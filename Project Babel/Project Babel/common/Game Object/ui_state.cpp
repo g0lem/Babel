@@ -22,6 +22,10 @@ void UIState::Init()
 	this->p_state = new panel_state();
 
 	this->s_state = new StoryState();
+
+	this->spell_State = new SpellState();
+
+	this->stat_state = new StatState();
 }
 
 

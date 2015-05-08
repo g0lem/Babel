@@ -55,10 +55,12 @@ public:
 
 
 	GLboolean must_load = true;
+	GLboolean must_scroll = false;
 	int heal = 0;
 	int xp = 0;
 	Item * weapon = NULL;
 	Item * armor = NULL;
+	Item *scroll = NULL;
 
 	std::string NameGenerator(std::string type);
 

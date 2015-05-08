@@ -35,6 +35,15 @@ void FontManager::Render(Controller * ctrl, GameObject * g_obj, Tooltip *t_tip)
 
 	this->p_text->Render(ctrl, this, g_obj);
 
+	this->SetColor(0, 0, 0);
+
+	if (g_obj->cooldown > 0){
+		char * temp = new char[256], *temp2 = new char[256];
+		strcpy(temp, "CD: ");
+		_itoa(g_obj->cooldown, temp2, 10);
+		strcat(temp, temp2);
+		g_obj->GetFontList()->GetFont()->Print(temp, g_obj->spellPOS.x, g_obj->spellPOS.y + 9, 12);
+	}
 	this->SetColor(0.f, 0.f, 0.f);
 	if (t_tip->GetTooltips()->at(t_tip->GetRenderingIndex())->renderstring == true)
 		t_tip->RenderText(g_obj, this, ctrl);

@@ -24,8 +24,15 @@ void GameObject::Init()
 	this->sp_manager = new SpellManager();
 	this->floor_c = 1;
 	this->level_i = 1;
+	this->spellPOS = glm::vec2(0);
+	this->spellsprite = new Sprite();
+	this->spellsprite->Load("data/UI/SpellFrame.png");
+	this->spellframe = 0;
+	this->spellsize = 0;
+	this->cooldown = 0;
+	this->StatPositions = new std::vector<glm::vec2*>;
+
 	u_t =new  std::vector < untablet* > ;
-	this->s_state = new StatState();
 
 }
 

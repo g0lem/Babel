@@ -9,6 +9,8 @@ class StatState
 	GLint col_id;
 	GLint x_state;
 
+	int *button;
+
 
 public:
 
@@ -19,6 +21,8 @@ public:
 	inline void SetColID(GLint col_id){ this->col_id = col_id; }
 	inline StatState(){ this->Init(); }
 	void Init();
+
+	int *GetButtonState(){ return this->button; }
 
 
 

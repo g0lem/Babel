@@ -11,7 +11,15 @@
 void Player::Load(GameObject * g_obj, Map * current_tilemap)
 {
 
+	this->items = new Item*[6];
+	this->items[0] = NULL;
+	this->items[1] = NULL;
+	this->items[2] = NULL;
+	this->items[3] = NULL;
+	this->items[4] = NULL;
+	this->items[5] = NULL;
 
+	this->scroll = new Item();
 
 	this->LoadSprites();
 	this->LoadPhysicalAttributes(current_tilemap, g_obj);
@@ -29,7 +37,7 @@ void Player::Load(GameObject * g_obj, Map * current_tilemap)
 	this->able_to_move = false;
 	created = false;
 	this->LoadItems(g_obj);
-	this->LoadStats();
+	this->LoadStats(g_obj);
 	this->last_pos_door = vec2_0;
 
 	trigger = false;
@@ -151,20 +159,27 @@ void Player::Render(SoundManager *sm, Controller * ctrl, ScreenUniformData * u_d
 		else
 			this->m_sprite[4]->Render(m_dir->Compute(DIR_TYPE_4, attributes->position, attributes->target));
 
-		printf("%.2f \n", g_obj->GetTurnSystem()->GetTurns());
 
-		if (ctrl->GetKeyOnce(GLFW_KEY_X) && trigger == false)
+
+		if (ctrl->GetKeyOnce(GLFW_KEY_X) && trigger == false && g_obj->cooldown == 0)
 		{
-			if (this->GetActionHandler()->GetAction() != ATTACKING){
 
-				g_obj->GetTurnSystem()->ComputeAttack(1.f);
-				this->GetActionHandler()->SetAction(ATTACKING);
-				this->GetActionHandler()->Stop();
+			if (this->GetActionHandler()->GetAction() != ATTACKING && this->scroll->spell > -1)
+			{
 
 
-				g_obj->GetSpellManager()->Add(new Spell(FIREBALL, 1, GridPosition(attributes->position*attributes->scale + g_obj->GetScroller()->GetOffset(), attributes->scale),
-					g_obj->GetScroller()->GetOffset(), attributes->scale,
-					5.f, frame, true));
+					g_obj->GetTurnSystem()->ComputeAttack(1.f);
+					this->GetActionHandler()->SetAction(ATTACKING);
+					this->GetActionHandler()->Stop();
+
+
+
+					g_obj->GetSpellManager()->Add(new Spell(this->scroll->spell, 1, GridPosition(attributes->position*attributes->scale + g_obj->GetScroller()->GetOffset(), attributes->scale),
+						g_obj->GetScroller()->GetOffset(), attributes->scale,
+						5.f, frame, true));
+
+					g_obj->cooldown = 8;
+				
 			}
 		}
 		else if (trigger == true && ctrl->GetKey(GLFW_KEY_X))
@@ -186,8 +201,10 @@ void Player::Render(SoundManager *sm, Controller * ctrl, ScreenUniformData * u_d
 		{
 			trigger = !trigger;
 		}
-
-
+		else if (g_obj->cooldown != 0)
+		{
+			g_obj->cooldown -= g_obj->GetTurnSystem()->GetTurns();
+		}
 
 		this->UpdateUI(g_obj);
 		
@@ -273,13 +290,13 @@ void Player::LoadPhysicalAttributes(Map * current_tilemap, GameObject *g_obj)
 
 void Player::LoadItems(GameObject * g_obj)
 {
-
+	
 	
 	if (g_obj->GetItemList()->must_load)
 	{
-		this->items = new Item*[3];
 		this->items[ITEM_SLOT_WEAPON] = g_obj->GetItemList()->weapon;
 		this->items[ITEM_SLOT_ARMOR] = g_obj->GetItemList()->armor;
+		this->items[ITEM_SLOT_SPELL] = g_obj->GetItemList()->scroll;
 		g_obj->GetItemList()->must_load = false;
 	}
 	if (g_obj->GetItemList()->heal!=0)
@@ -299,6 +316,11 @@ void Player::LoadItems(GameObject * g_obj)
 		else
 			this->GetStats()->GetXp()->xp += g_obj->GetItemList()->xp;
 		g_obj->GetItemList()->xp = 0;
+	}
+	if (g_obj->GetItemList()->must_scroll)
+	{
+		this->scroll = g_obj->GetItemList()->scroll;
+		g_obj->GetItemList()->must_scroll = false;
 	}
 
 }
@@ -428,7 +450,7 @@ void Player::HandleAutoPath(SoundManager *sm, Controller * ctrl, GameObject * g_
 
 
 
-void Player::LoadStats()
+void Player::LoadStats(GameObject *g_obj)
 {
 
 	//Player Stats
@@ -438,7 +460,7 @@ void Player::LoadStats()
 	this->m_stats->base_attack = glm::vec2(3, 3);
 	this->m_stats->GetXp()->max_xp = 4;
 	this->m_stats->GetXp()->xp = 0;
-
+	g_obj->playerStats = m_stats;
 
 }
 
