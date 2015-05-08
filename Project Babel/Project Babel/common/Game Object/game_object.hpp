@@ -39,7 +39,7 @@ class GameObject
 
 	UIState * ui_state;
 	panel_state * p_state;
-
+	StatState * s_state;
 
 
 	EnemyLoader * e_loader;
@@ -70,6 +70,9 @@ public:
 	inline TextObject * GetTextObject(){ return this->t_object; }
 	inline FontList * GetFontList(){ return this->f_list; }
 	inline SpellManager * GetSpellManager(){ return this->sp_manager; }
+	inline StatState * GetStatState(){ return this->s_state; }
+
+
 
 	char *hp;
 	char *xp;

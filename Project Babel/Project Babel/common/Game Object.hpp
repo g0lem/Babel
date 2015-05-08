@@ -10,6 +10,7 @@
 #include "Game Object/ui_intersect.hpp"
 #include "Game Object/inventory_state.hpp"
 #include "Game Object/story_state.hpp"
+#include "Game Object/stat_state.hpp"
 #include "Game Object/tab_state.hpp"
 #include "Game Object/menu_state.hpp"
 #include "Game Object/ui_state.hpp"

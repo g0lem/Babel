@@ -305,6 +305,9 @@
     <ClCompile Include="common\AI\boss.cpp">
       <Filter>common\AI</Filter>
     </ClCompile>
+    <ClCompile Include="common\Game Object\stat_state.cpp">
+      <Filter>common\Game Object</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h">
@@ -564,6 +567,9 @@
     </ClInclude>
     <ClInclude Include="common\AI\boss.hpp">
       <Filter>common\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="common\Game Object\stat_state.hpp">
+      <Filter>common\Game Object</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
