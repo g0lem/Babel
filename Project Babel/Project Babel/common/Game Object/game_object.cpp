@@ -25,6 +25,7 @@ void GameObject::Init()
 	this->floor_c = 1;
 	this->level_i = 1;
 	u_t =new  std::vector < untablet* > ;
+	this->s_state = new StatState();
 
 }
 

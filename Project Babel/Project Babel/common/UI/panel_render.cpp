@@ -17,7 +17,18 @@ void PanelRender::Init(Tooltip *t_tip)
 	hp_bar_position = glm::vec2(514, 41);
 	hp_bar_size = glm::vec2(314, 20);
 
-
+	this->stat_position = glm::vec2(0);
+	this->stat_size = glm::vec2(226, 213);
+	this->stat_skin = new Sprite();
+	char **tex_str = new char*[1];
+	tex_str[0] = "stats.png";
+	this->stat_skin->Load(1, "data/UI/",tex_str);
+	
+	Property * m_prop = new Property();
+	m_prop->size = glm::vec2(0);
+	m_prop->color = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
+	this->stat_button = new Button(m_prop);
+	this->mover = new UI_mover();
 
 
 	LoadButtonsSprite(t_tip);
@@ -197,8 +208,20 @@ void PanelRender::Render(SoundManager *sm, Tooltip *t_tip, Controller *ctrl, Scr
 	}
 
 
+	if (g_obj->GetStatState()->GetState() == ACTIVE)
+	{
+		u_data->SetAmbientLight(glm::vec4(1.f, 1.f, 1.f, 1.f));
+		u_data->ApplyMatrix(Translation(this->stat_position)*Scale(this->stat_size));
+		this->stat_skin->Render(0);
+	
+
+	glm::vec2 position = this->mover->GetTranslation(ctrl, this->stat_position, this->stat_size);
 
 
+	if (glm::distance(position, this->stat_position) > 0)
+		this->stat_position = position;
+
+	}
 
 	for (int i = 0; i < 4; i++)//BUTTONS
 	{
@@ -366,6 +389,7 @@ void PanelRender::Render(SoundManager *sm, Tooltip *t_tip, Controller *ctrl, Scr
 		{
 
 			//sm->PlaySound(MENUPRESSBUTTON);
+			g_obj->GetStatState()->SetState(!g_obj->GetStatState()->GetState());
 
 		}
 

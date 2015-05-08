@@ -1,269 +1,10 @@
-﻿Build started 5/7/2015 11:56:36 PM.
-     1>Project "C:\Users\ZexonPrime\Desktop\the-correct-one\trunk\Project Babel\Project Babel\Project Babel.vcxproj" on node 2 (Build target(s)).
+﻿Build started 5/8/2015 10:13:53 PM.
+     1>Project "C:\Users\Aaether\Desktop\the-correct-one\Project Babel\Project Babel\Project Babel.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I..\..\Dependencies\include /I"..\..\Dependencies\include\freetype-gl\\" /I.\ /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _CRT_SECURE_NO_WARNINGS /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yc"common.hpp" /Fp"Debug\Project Babel.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt common.cpp
-         common.cpp
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\framework\math\2d_math.hpp(17): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\framework\math\2d_math.hpp(82): warning C4244: 'argument' : conversion from 'double' to 'GLfloat', possible loss of data
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\framework\sound\sound_manager.hpp(7): warning C4005: 'MAX_SOUNDS' : macro redefinition
-                 c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\framework\sound\sound_manager.hpp(6) : see previous definition of 'MAX_SOUNDS'
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\stats\hp.hpp(25): warning C4244: 'argument' : conversion from 'float' to 'GLuint', possible loss of data
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\turns\turn.hpp(30): warning C4244: '=' : conversion from 'double' to 'GLfloat', possible loss of data
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\effects\effects_handler.hpp(22): warning C4244: '-=' : conversion from 'GLdouble' to 'float', possible loss of data
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\effects\effects_handler.hpp(31): warning C4244: '+=' : conversion from 'GLdouble' to 'float', possible loss of data
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\effects\effects_handler.hpp(46): warning C4244: '+=' : conversion from 'GLdouble' to 'float', possible loss of data
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\effects\effects_handler.hpp(48): warning C4244: '-=' : conversion from 'GLdouble' to 'float', possible loss of data
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\effects\effects_handler.hpp(64): warning C4244: '*=' : conversion from 'GLdouble' to 'float', possible loss of data
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\effects\effects_handler.hpp(76): warning C4244: '-=' : conversion from 'GLdouble' to 'float', possible loss of data
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\effects\effects_handler.hpp(77): warning C4244: 'argument' : conversion from 'float' to 'GLint', possible loss of data
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\combat\spell.hpp(119): warning C4244: '-=' : conversion from 'GLdouble' to 'float', possible loss of data
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\combat\spell.hpp(123): warning C4244: '+=' : conversion from 'GLdouble' to 'float', possible loss of data
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\combat\spell.hpp(134): warning C4244: '-=' : conversion from 'GLdouble' to 'float', possible loss of data
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\combat\spell.hpp(138): warning C4244: '+=' : conversion from 'GLdouble' to 'float', possible loss of data
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\combat\spell.hpp(196): warning C4244: '-=' : conversion from 'GLdouble' to 'float', possible loss of data
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\combat\spell.hpp(222): warning C4244: '+=' : conversion from 'GLdouble' to 'float', possible loss of data
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\combat\spell.hpp(247): warning C4244: '-=' : conversion from 'GLdouble' to 'float', possible loss of data
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\combat\spell.hpp(273): warning C4244: '+=' : conversion from 'GLdouble' to 'float', possible loss of data
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\combat\spellmanager.hpp(33): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\game object\ui_state.hpp(6): warning C4005: 'NOT_ACTIVE' : macro redefinition
-                 c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\game object\menu_state.hpp(3) : see previous definition of 'NOT_ACTIVE'
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\map\room.hpp(64): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\map\room.hpp(64): warning C4018: '<=' : signed/unsigned mismatch
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\delta\pathfinder.hpp(28): warning C4244: 'return' : conversion from 'int' to 'GLfloat', possible loss of data
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\ui\floating_text.hpp(29): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\ui\floating_text.hpp(48): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\ui\floating_text.hpp(58): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\ui\ui_helper.hpp(291): warning C4244: 'argument' : conversion from 'float' to 'GLint', possible loss of data
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\ui\ui_helper.hpp(354): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\ui\panel_render.hpp(22): warning C4244: 'argument' : conversion from 'float' to 'GLint', possible loss of data
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\ui\panel_render.hpp(23): warning C4244: 'argument' : conversion from 'float' to 'GLint', possible loss of data
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\ui\panel_render.hpp(26): warning C4244: 'argument' : conversion from 'float' to 'GLint', possible loss of data
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\ui\panel_render.hpp(27): warning C4244: 'argument' : conversion from 'float' to 'GLint', possible loss of data
-         D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I..\..\Dependencies\include /I"..\..\Dependencies\include\freetype-gl\\" /I.\ /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _CRT_SECURE_NO_WARNINGS /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"common.hpp" /Fp"Debug\Project Babel.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt common\AI\boss.cpp common\AI\enemy.cpp common\AI\enemy_manager.cpp common\Combat\Combat.cpp common\Combat\Spell.cpp common\Combat\SpellManager.cpp common\Delta\animation.cpp common\Delta\auto_path.cpp common\Delta\movement.cpp common\Delta\one_direction.cpp common\Delta\pathfinder.cpp common\Delta\physical_attributes.cpp common\Effects\effects_handler.cpp common\Events\event_handler.cpp common\Framework\Controls\controls.cpp common\Framework\Font\text2D.cpp common\Framework\Font\text_render.cpp common\Framework\Math\2d_math.cpp common\Framework\Math\dice.cpp common\Framework\Shader\shader.cpp common\Framework\Sound\sound_manager.cpp common\Framework\Sprite\2d.cpp common\Framework\Sprite\sprite.cpp common\Framework\Sprite\uniform_2d.cpp common\Framework\Texture\texture.cpp "common\Game Object\TextObject.cpp" "common\Game Object\character_panel_state.cpp" "common\Game Object\collision_map.cpp" "common\Game Object\enemy_loader.cpp" "common\Game Object\game_object.cpp" "common\Game Object\inventory_state.cpp" "common\Game Object\menu_state.cpp" "common\Game Object\miscellaneous.cpp" "common\Game Object\panel_state.cpp" "common\Game Object\scroller.cpp" "common\Game Object\story_state.cpp" "common\Game Object\ui_intersect.cpp" "common\Game Object\ui_state.cpp" common\Item\item.cpp common\Item\item_list.cpp common\Item\item_types.cpp common\Manager\font_manager.cpp common\Manager\game_render.cpp common\Manager\sprite_manager.cpp common\Map\fog_of_war.cpp common\Map\graph.cpp common\Map\map.cpp common\Map\map_helper1.cpp common\Map\map_helper2.cpp common\Map\map_helper3.cpp common\Map\room.cpp common\Map\tile_map.cpp common\Player\player.cpp common\Stats\hp.cpp common\Stats\stats.cpp common\Turns\turn.cpp common\UI\UI_handler.cpp common\UI\UI_render.cpp common\UI\floating_text.cpp common\UI\inventory.cpp common\UI\menu_item.cpp common\UI\menu_render.cpp common\UI\panel_render.cpp common\UI\story_render.cpp common\UI\ui_helper.cpp common\UI\ui_mover.cpp "common\Window Handler\application.cpp" common\splash_screen.cpp common\stats\xp.cpp main.cpp
-         main.cpp
-         xp.cpp
-         splash_screen.cpp
-         application.cpp
-         ui_mover.cpp
-         ui_helper.cpp
-         story_render.cpp
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\ui\story_render.cpp(179): warning C4018: '<' : signed/unsigned mismatch
+         D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I..\..\Dependencies\include /I"..\..\Dependencies\include\freetype-gl\\" /I.\ /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _CRT_SECURE_NO_WARNINGS /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"common.hpp" /Fp"Debug\Project Babel.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt common\UI\panel_render.cpp
          panel_render.cpp
-         menu_render.cpp
-         menu_item.cpp
-         inventory.cpp
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\ui\inventory.cpp(176): warning C4018: '<' : signed/unsigned mismatch
-         floating_text.cpp
-         UI_render.cpp
-         UI_handler.cpp
-         turn.cpp
-         stats.cpp
-         hp.cpp
-         player.cpp
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\player\player.cpp(105): warning C4244: 'argument' : conversion from 'GLdouble' to 'GLfloat', possible loss of data
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\player\player.cpp(127): warning C4244: 'argument' : conversion from 'GLdouble' to 'GLfloat', possible loss of data
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\player\player.cpp(135): warning C4244: 'argument' : conversion from 'GLdouble' to 'GLfloat', possible loss of data
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\player\player.cpp(226): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\player\player.cpp(383): warning C4244: 'argument' : conversion from 'GLdouble' to 'GLfloat', possible loss of data
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\player\player.cpp(425): warning C4244: '=' : conversion from 'float' to 'GLint', possible loss of data
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\player\player.cpp(426): warning C4244: '=' : conversion from 'float' to 'GLint', possible loss of data
-         tile_map.cpp
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\map\tile_map.cpp(17): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\map\tile_map.cpp(22): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\map\tile_map.cpp(26): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\map\tile_map.cpp(59): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\map\tile_map.cpp(64): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\map\tile_map.cpp(68): warning C4018: '<' : signed/unsigned mismatch
-         room.cpp
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\map\room.cpp(11): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\map\room.cpp(13): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\map\room.cpp(46): warning C4244: '=' : conversion from 'GLfloat' to 'GLuint', possible loss of data
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\map\room.cpp(48): warning C4244: '=' : conversion from 'GLfloat' to 'GLuint', possible loss of data
-         Generating Code...
-         Compiling...
-         map_helper3.cpp
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\map\map_helper3.cpp(31): warning C4018: '<=' : signed/unsigned mismatch
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\map\map_helper3.cpp(75): warning C4018: '<=' : signed/unsigned mismatch
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\map\map_helper3.cpp(149): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\map\map_helper3.cpp(330): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\map\map_helper3.cpp(334): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\map\map_helper3.cpp(439): warning C4018: '<' : signed/unsigned mismatch
-         map_helper2.cpp
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\map\map_helper2.cpp(16): warning C4244: 'initializing' : conversion from 'int' to 'GLfloat', possible loss of data
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\map\map_helper2.cpp(89): warning C4018: '>' : signed/unsigned mismatch
-         map_helper1.cpp
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\map\map_helper1.cpp(168): warning C4244: 'argument' : conversion from 'GLuint' to 'GLfloat', possible loss of data
-         map.cpp
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\map\map.cpp(495): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\map\map.cpp(497): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\map\map.cpp(498): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\map\map.cpp(520): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\map\map.cpp(522): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\map\map.cpp(523): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\map\map.cpp(539): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\map\map.cpp(541): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\map\map.cpp(542): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\map\map.cpp(613): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\map\map.cpp(615): warning C4018: '<' : signed/unsigned mismatch
-         graph.cpp
-         fog_of_war.cpp
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\map\fog_of_war.cpp(176): warning C4805: '==' : unsafe mix of type 'GLboolean' and type 'bool' in operation
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\map\fog_of_war.cpp(199): warning C4805: '==' : unsafe mix of type 'GLboolean' and type 'bool' in operation
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\map\fog_of_war.cpp(226): warning C4805: '==' : unsafe mix of type 'GLboolean' and type 'bool' in operation
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\map\fog_of_war.cpp(251): warning C4805: '==' : unsafe mix of type 'GLboolean' and type 'bool' in operation
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\map\fog_of_war.cpp(326): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\map\fog_of_war.cpp(327): warning C4018: '<' : signed/unsigned mismatch
-         sprite_manager.cpp
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\manager\sprite_manager.cpp(38): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\manager\sprite_manager.cpp(161): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\manager\sprite_manager.cpp(189): warning C4244: '-=' : conversion from 'GLdouble' to 'float', possible loss of data
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\manager\sprite_manager.cpp(191): warning C4244: '+=' : conversion from 'GLdouble' to 'float', possible loss of data
-         game_render.cpp
-         font_manager.cpp
-         item_types.cpp
-         item_list.cpp
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\item\item_list.cpp(257): warning C4018: '<' : signed/unsigned mismatch
-         item.cpp
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\item\item.cpp(94): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\item\item.cpp(101): warning C4244: '=' : conversion from 'GLuint' to 'GLfloat', possible loss of data
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\item\item.cpp(102): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\item\item.cpp(103): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\item\item.cpp(104): warning C4244: '=' : conversion from 'GLuint' to 'GLfloat', possible loss of data
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\item\item.cpp(105): warning C4244: '=' : conversion from 'GLuint' to 'GLfloat', possible loss of data
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\item\item.cpp(106): warning C4244: '=' : conversion from 'GLuint' to 'GLfloat', possible loss of data
-         ui_state.cpp
-         ui_intersect.cpp
-         story_state.cpp
-         scroller.cpp
-         panel_state.cpp
-         miscellaneous.cpp
-         menu_state.cpp
-         inventory_state.cpp
-         Generating Code...
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\combat\spell.hpp(300): warning C4715: 'Spell::Operate' : not all control paths return a value
-         Compiling...
-         game_object.cpp
-         enemy_loader.cpp
-         collision_map.cpp
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\game object\collision_map.cpp(29): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\game object\collision_map.cpp(34): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\game object\collision_map.cpp(38): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\game object\collision_map.cpp(57): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\game object\collision_map.cpp(62): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\game object\collision_map.cpp(66): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\game object\collision_map.cpp(84): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\game object\collision_map.cpp(89): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\game object\collision_map.cpp(93): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\game object\collision_map.cpp(109): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\game object\collision_map.cpp(114): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\game object\collision_map.cpp(118): warning C4018: '<' : signed/unsigned mismatch
-         character_panel_state.cpp
-         TextObject.cpp
-         texture.cpp
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\framework\texture\texture.cpp(61): warning C4244: '=' : conversion from 'GLfloat' to 'BYTE', possible loss of data
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\framework\texture\texture.cpp(62): warning C4244: '=' : conversion from 'GLfloat' to 'BYTE', possible loss of data
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\framework\texture\texture.cpp(63): warning C4244: '=' : conversion from 'GLfloat' to 'BYTE', possible loss of data
-         uniform_2d.cpp
-         sprite.cpp
-         2d.cpp
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\framework\sprite\2d.cpp(52): warning C4244: 'argument' : conversion from 'GLuint' to 'const GLfloat', possible loss of data
-         sound_manager.cpp
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\framework\sound\sound_manager.cpp(174): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\framework\sound\sound_manager.cpp(182): warning C4018: '<' : signed/unsigned mismatch
-         shader.cpp
-         dice.cpp
-         2d_math.cpp
-         text_render.cpp
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\framework\font\text_render.cpp(59): warning C4244: 'argument' : conversion from 'GLuint' to 'GLfloat', possible loss of data
-         text2D.cpp
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\framework\font\text2d.cpp(26): warning C4244: 'argument' : conversion from 'int' to 'const float', possible loss of data
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\framework\font\text2d.cpp(33): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\framework\font\text2d.cpp(57): warning C4244: 'initializing' : conversion from 'GLint' to 'float', possible loss of data
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\framework\font\text2d.cpp(59): warning C4244: 'initializing' : conversion from 'GLint' to 'float', possible loss of data
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\framework\font\text2d.cpp(147): warning C4244: '+=' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\framework\font\text2d.cpp(150): warning C4244: 'return' : conversion from 'int' to 'GLfloat', possible loss of data
-         controls.cpp
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\framework\controls\controls.cpp(74): warning C4805: '==' : unsafe mix of type 'GLboolean' and type 'bool' in operation
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\framework\controls\controls.cpp(120): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\framework\controls\controls.cpp(210): warning C4244: '=' : conversion from 'GLdouble' to 'GLfloat', possible loss of data
-         event_handler.cpp
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\events\event_handler.cpp(32): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\events\event_handler.cpp(38): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\events\event_handler.cpp(315): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\events\event_handler.cpp(333): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\events\event_handler.cpp(348): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\events\event_handler.cpp(362): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\events\event_handler.cpp(394): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\events\event_handler.cpp(415): warning C4018: '<' : signed/unsigned mismatch
-         effects_handler.cpp
-         physical_attributes.cpp
-         pathfinder.cpp
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\delta\pathfinder.cpp(30): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\delta\pathfinder.cpp(34): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\delta\pathfinder.cpp(73): warning C4244: '=' : conversion from 'float' to 'GLint', possible loss of data
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\delta\pathfinder.cpp(74): warning C4244: '=' : conversion from 'float' to 'GLint', possible loss of data
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\delta\pathfinder.cpp(77): warning C4244: '=' : conversion from 'float' to 'GLint', possible loss of data
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\delta\pathfinder.cpp(78): warning C4244: '=' : conversion from 'float' to 'GLint', possible loss of data
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\delta\pathfinder.cpp(178): warning C4244: '=' : conversion from 'float' to 'GLint', possible loss of data
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\delta\pathfinder.cpp(179): warning C4244: '=' : conversion from 'float' to 'GLint', possible loss of data
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\delta\pathfinder.cpp(182): warning C4244: '=' : conversion from 'float' to 'GLint', possible loss of data
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\delta\pathfinder.cpp(183): warning C4244: '=' : conversion from 'float' to 'GLint', possible loss of data
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\delta\pathfinder.cpp(243): warning C4805: '==' : unsafe mix of type 'GLboolean' and type 'bool' in operation
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\delta\pathfinder.cpp(266): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\delta\pathfinder.cpp(277): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\delta\pathfinder.cpp(340): warning C4244: '=' : conversion from 'double' to 'GLfloat', possible loss of data
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\delta\pathfinder.cpp(367): warning C4018: '<' : signed/unsigned mismatch
-         Generating Code...
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\delta\pathfinder.cpp(391): warning C4715: 'Pathfinder::FindBestNode' : not all control paths return a value
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\framework\controls\controls.cpp(110): warning C4715: 'Controller::CreateWindow' : not all control paths return a value
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\framework\font\text2d.cpp(38): warning C4715: 'Font::GetFontIndex' : not all control paths return a value
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\framework\math\dice.cpp(23): warning C4715: 'Dice::Get' : not all control paths return a value
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\framework\sound\sound_manager.cpp(177): warning C4715: 'SoundManager::GetSoundIndex' : not all control paths return a value
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\framework\sound\sound_manager.cpp(186): warning C4715: 'SoundManager::GetMusicIndex' : not all control paths return a value
-         Compiling...
-         one_direction.cpp
-         movement.cpp
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\delta\movement.cpp(142): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\delta\movement.cpp(144): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
-         auto_path.cpp
-         animation.cpp
-         SpellManager.cpp
-         Spell.cpp
-         Combat.cpp
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\combat\combat.cpp(148): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\combat\combat.cpp(183): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\combat\combat.cpp(189): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\combat\combat.cpp(197): warning C4805: '==' : unsafe mix of type 'int' and type 'bool' in operation
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\combat\combat.cpp(197): warning C4553: '==' : operator has no effect; did you intend '='?
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\combat\combat.cpp(233): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\combat\combat.cpp(443): warning C4805: '==' : unsafe mix of type 'GLboolean' and type 'bool' in operation
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\combat\combat.cpp(460): warning C4805: '==' : unsafe mix of type 'GLboolean' and type 'bool' in operation
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\combat\combat.cpp(569): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\combat\combat.cpp(575): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\combat\combat.cpp(697): warning C4805: '==' : unsafe mix of type 'GLboolean' and type 'bool' in operation
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\combat\combat.cpp(725): warning C4018: '<' : signed/unsigned mismatch
-         enemy_manager.cpp
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\ai\enemy_manager.cpp(116): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\ai\enemy_manager.cpp(136): warning C4805: '==' : unsafe mix of type 'GLboolean' and type 'bool' in operation
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\ai\enemy_manager.cpp(196): warning C4244: 'argument' : conversion from 'float' to 'GLuint', possible loss of data
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\ai\enemy_manager.cpp(197): warning C4018: '>' : signed/unsigned mismatch
-         enemy.cpp
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\ai\enemy.cpp(50): warning C4244: 'argument' : conversion from 'GLdouble' to 'GLfloat', possible loss of data
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\ai\enemy.cpp(52): warning C4244: 'argument' : conversion from 'GLdouble' to 'GLfloat', possible loss of data
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\ai\enemy.cpp(56): warning C4244: 'argument' : conversion from 'GLdouble' to 'GLfloat', possible loss of data
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\ai\enemy.cpp(63): warning C4805: '==' : unsafe mix of type 'GLboolean' and type 'bool' in operation
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\ai\enemy.cpp(70): warning C4244: 'argument' : conversion from 'GLdouble' to 'GLfloat', possible loss of data
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\ai\enemy.cpp(176): warning C4552: '-' : operator has no effect; expected operator with side-effect
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\ai\enemy.cpp(209): warning C4805: '==' : unsafe mix of type 'GLboolean' and type 'bool' in operation
-         boss.cpp
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\ai\boss.cpp(75): warning C4244: 'argument' : conversion from 'GLdouble' to 'float', possible loss of data
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\ai\boss.cpp(105): warning C4805: '==' : unsafe mix of type 'GLboolean' and type 'bool' in operation
-         Generating Code...
-     1>c:\users\zexonprime\desktop\the-correct-one\trunk\project babel\project babel\common\delta\one_direction.cpp(126): warning C4715: 'Direction::Compute' : not all control paths return a value
-       ResourceCompile:
-         C:\Program Files (x86)\Windows Kits\8.1\bin\x86\rc.exe /D _UNICODE /D UNICODE /l"0x0409" /nologo /fo"Debug\icon.res" icon.rc 
        Link:
-         D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\ZexonPrime\Desktop\the-correct-one\trunk\Project Babel\Debug\Project Babel.exe" /INCREMENTAL /NOLOGO /LIBPATH:..\..\Dependencies\lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib "freetype-gl.lib" glu32.lib opengl32.lib "sfml-system-d.lib" "sfml-system.lib" "sfml-audio-d.lib" "sfml-audio.lib" openAL32.lib RocketDebugger.lib Shell.lib RocketControls.lib RocketCore.lib FreeImaged.lib freetype.lib glfw3.lib glew32.lib SQLite.lib winmm.lib AntTweakBar.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\ZexonPrime\Desktop\the-correct-one\trunk\Project Babel\Debug\Project Babel.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\ZexonPrime\Desktop\the-correct-one\trunk\Project Babel\Debug\Project Babel.lib" /MACHINE:X86 Debug\icon.res
+         D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Aaether\Desktop\the-correct-one\Project Babel\Debug\Project Babel.exe" /INCREMENTAL /NOLOGO /LIBPATH:..\..\Dependencies\lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib "freetype-gl.lib" glu32.lib opengl32.lib "sfml-system-d.lib" "sfml-system.lib" "sfml-audio-d.lib" "sfml-audio.lib" openAL32.lib RocketDebugger.lib Shell.lib RocketControls.lib RocketCore.lib FreeImaged.lib freetype.lib glfw3.lib glew32.lib SQLite.lib winmm.lib AntTweakBar.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Aaether\Desktop\the-correct-one\Project Babel\Debug\Project Babel.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Aaether\Desktop\the-correct-one\Project Babel\Debug\Project Babel.lib" /MACHINE:X86 Debug\icon.res
          Debug\common.obj
          Debug\boss.obj
          Debug\enemy.obj
@@ -299,6 +40,7 @@
          Debug\miscellaneous.obj
          Debug\panel_state.obj
          Debug\scroller.obj
+         Debug\stat_state.obj
          Debug\story_state.obj
          Debug\TextObject.obj
          Debug\ui_intersect.obj
@@ -342,35 +84,39 @@
      1>LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
          Generating code
          Finished generating code
-     1>freetype.lib(autofit.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(autofit.obj)' or at 'C:\Users\ZexonPrime\Desktop\the-correct-one\trunk\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
-     1>freetype.lib(bdf.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(bdf.obj)' or at 'C:\Users\ZexonPrime\Desktop\the-correct-one\trunk\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
-     1>freetype.lib(cff.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(cff.obj)' or at 'C:\Users\ZexonPrime\Desktop\the-correct-one\trunk\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
-     1>freetype.lib(ftbase.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(ftbase.obj)' or at 'C:\Users\ZexonPrime\Desktop\the-correct-one\trunk\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
-     1>freetype.lib(ftbitmap.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(ftbitmap.obj)' or at 'C:\Users\ZexonPrime\Desktop\the-correct-one\trunk\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
-     1>freetype.lib(ftdebug.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(ftdebug.obj)' or at 'C:\Users\ZexonPrime\Desktop\the-correct-one\trunk\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
-     1>freetype.lib(ftglyph.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(ftglyph.obj)' or at 'C:\Users\ZexonPrime\Desktop\the-correct-one\trunk\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
-     1>freetype.lib(ftgzip.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(ftgzip.obj)' or at 'C:\Users\ZexonPrime\Desktop\the-correct-one\trunk\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
-     1>freetype.lib(ftinit.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(ftinit.obj)' or at 'C:\Users\ZexonPrime\Desktop\the-correct-one\trunk\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
-     1>freetype.lib(ftlzw.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(ftlzw.obj)' or at 'C:\Users\ZexonPrime\Desktop\the-correct-one\trunk\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
-     1>freetype.lib(ftstroke.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(ftstroke.obj)' or at 'C:\Users\ZexonPrime\Desktop\the-correct-one\trunk\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
-     1>freetype.lib(ftsystem.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(ftsystem.obj)' or at 'C:\Users\ZexonPrime\Desktop\the-correct-one\trunk\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
-     1>freetype.lib(smooth.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(smooth.obj)' or at 'C:\Users\ZexonPrime\Desktop\the-correct-one\trunk\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
-     1>freetype.lib(ftlcdfil.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(ftlcdfil.obj)' or at 'C:\Users\ZexonPrime\Desktop\the-correct-one\trunk\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
-     1>freetype.lib(pcf.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(pcf.obj)' or at 'C:\Users\ZexonPrime\Desktop\the-correct-one\trunk\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
-     1>freetype.lib(pfr.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(pfr.obj)' or at 'C:\Users\ZexonPrime\Desktop\the-correct-one\trunk\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
-     1>freetype.lib(psaux.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(psaux.obj)' or at 'C:\Users\ZexonPrime\Desktop\the-correct-one\trunk\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
-     1>freetype.lib(pshinter.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(pshinter.obj)' or at 'C:\Users\ZexonPrime\Desktop\the-correct-one\trunk\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
-     1>freetype.lib(psmodule.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(psmodule.obj)' or at 'C:\Users\ZexonPrime\Desktop\the-correct-one\trunk\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
-     1>freetype.lib(raster.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(raster.obj)' or at 'C:\Users\ZexonPrime\Desktop\the-correct-one\trunk\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
-     1>freetype.lib(sfnt.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(sfnt.obj)' or at 'C:\Users\ZexonPrime\Desktop\the-correct-one\trunk\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
-     1>freetype.lib(truetype.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(truetype.obj)' or at 'C:\Users\ZexonPrime\Desktop\the-correct-one\trunk\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
-     1>freetype.lib(type1.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(type1.obj)' or at 'C:\Users\ZexonPrime\Desktop\the-correct-one\trunk\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
-     1>freetype.lib(type1cid.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(type1cid.obj)' or at 'C:\Users\ZexonPrime\Desktop\the-correct-one\trunk\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
-     1>freetype.lib(type42.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(type42.obj)' or at 'C:\Users\ZexonPrime\Desktop\the-correct-one\trunk\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
-     1>freetype.lib(winfnt.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(winfnt.obj)' or at 'C:\Users\ZexonPrime\Desktop\the-correct-one\trunk\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
-         Project Babel.vcxproj -> C:\Users\ZexonPrime\Desktop\the-correct-one\trunk\Project Babel\Debug\Project Babel.exe
-     1>Done Building Project "C:\Users\ZexonPrime\Desktop\the-correct-one\trunk\Project Babel\Project Babel\Project Babel.vcxproj" (Build target(s)).
+     1>SQLite.lib(sqlite3.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'SQLite.lib(sqlite3.obj)' or at 'C:\Users\Aaether\Desktop\the-correct-one\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
+     1>freetype-gl.lib(texture-atlas.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype-gl.lib(texture-atlas.obj)' or at 'C:\Users\Aaether\Desktop\the-correct-one\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
+     1>freetype-gl.lib(texture-font.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype-gl.lib(texture-font.obj)' or at 'C:\Users\Aaether\Desktop\the-correct-one\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
+     1>freetype-gl.lib(vector.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype-gl.lib(vector.obj)' or at 'C:\Users\Aaether\Desktop\the-correct-one\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
+     1>freetype.lib(autofit.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(autofit.obj)' or at 'C:\Users\Aaether\Desktop\the-correct-one\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
+     1>freetype.lib(bdf.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(bdf.obj)' or at 'C:\Users\Aaether\Desktop\the-correct-one\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
+     1>freetype.lib(cff.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(cff.obj)' or at 'C:\Users\Aaether\Desktop\the-correct-one\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
+     1>freetype.lib(ftbase.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(ftbase.obj)' or at 'C:\Users\Aaether\Desktop\the-correct-one\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
+     1>freetype.lib(ftbitmap.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(ftbitmap.obj)' or at 'C:\Users\Aaether\Desktop\the-correct-one\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
+     1>freetype.lib(ftdebug.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(ftdebug.obj)' or at 'C:\Users\Aaether\Desktop\the-correct-one\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
+     1>freetype.lib(ftglyph.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(ftglyph.obj)' or at 'C:\Users\Aaether\Desktop\the-correct-one\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
+     1>freetype.lib(ftgzip.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(ftgzip.obj)' or at 'C:\Users\Aaether\Desktop\the-correct-one\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
+     1>freetype.lib(ftinit.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(ftinit.obj)' or at 'C:\Users\Aaether\Desktop\the-correct-one\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
+     1>freetype.lib(ftlzw.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(ftlzw.obj)' or at 'C:\Users\Aaether\Desktop\the-correct-one\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
+     1>freetype.lib(ftstroke.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(ftstroke.obj)' or at 'C:\Users\Aaether\Desktop\the-correct-one\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
+     1>freetype.lib(ftsystem.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(ftsystem.obj)' or at 'C:\Users\Aaether\Desktop\the-correct-one\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
+     1>freetype.lib(smooth.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(smooth.obj)' or at 'C:\Users\Aaether\Desktop\the-correct-one\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
+     1>freetype.lib(ftlcdfil.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(ftlcdfil.obj)' or at 'C:\Users\Aaether\Desktop\the-correct-one\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
+     1>freetype.lib(pcf.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(pcf.obj)' or at 'C:\Users\Aaether\Desktop\the-correct-one\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
+     1>freetype.lib(pfr.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(pfr.obj)' or at 'C:\Users\Aaether\Desktop\the-correct-one\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
+     1>freetype.lib(psaux.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(psaux.obj)' or at 'C:\Users\Aaether\Desktop\the-correct-one\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
+     1>freetype.lib(pshinter.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(pshinter.obj)' or at 'C:\Users\Aaether\Desktop\the-correct-one\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
+     1>freetype.lib(psmodule.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(psmodule.obj)' or at 'C:\Users\Aaether\Desktop\the-correct-one\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
+     1>freetype.lib(raster.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(raster.obj)' or at 'C:\Users\Aaether\Desktop\the-correct-one\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
+     1>freetype.lib(sfnt.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(sfnt.obj)' or at 'C:\Users\Aaether\Desktop\the-correct-one\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
+     1>freetype.lib(truetype.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(truetype.obj)' or at 'C:\Users\Aaether\Desktop\the-correct-one\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
+     1>freetype.lib(type1.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(type1.obj)' or at 'C:\Users\Aaether\Desktop\the-correct-one\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
+     1>freetype.lib(type1cid.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(type1cid.obj)' or at 'C:\Users\Aaether\Desktop\the-correct-one\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
+     1>freetype.lib(type42.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(type42.obj)' or at 'C:\Users\Aaether\Desktop\the-correct-one\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
+     1>freetype.lib(winfnt.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'freetype.lib(winfnt.obj)' or at 'C:\Users\Aaether\Desktop\the-correct-one\Project Babel\Debug\vc120.pdb'; linking object as if no debug info
+         Project Babel.vcxproj -> C:\Users\Aaether\Desktop\the-correct-one\Project Babel\Debug\Project Babel.exe
+     1>Done Building Project "C:\Users\Aaether\Desktop\the-correct-one\Project Babel\Project Babel\Project Babel.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:11.13
+Time Elapsed 00:00:09.43
