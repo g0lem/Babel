@@ -30,7 +30,7 @@ void GameObject::Init()
 	this->spellframe = 0;
 	this->spellsize = 0;
 	this->cooldown = 0;
-	this->StatPositions = new std::vector<glm::vec2*>;
+	this->StatPositions = new std::vector<StatText>;
 
 	u_t =new  std::vector < untablet* > ;
 

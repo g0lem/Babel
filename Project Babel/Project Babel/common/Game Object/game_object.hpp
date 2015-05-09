@@ -7,6 +7,19 @@
 
 #define DOOR_TOOL_TIP 24
 
+struct StatText
+{
+	char *text;
+	glm::vec2 pos;
+	int size;
+
+	StatText(char *text, glm::vec2 pos, int size)
+		:
+		text(text), pos(pos), size(size)
+	{
+
+	}
+};
 
 
 struct untablet
@@ -76,7 +89,7 @@ public:
 	inline SpellManager * GetSpellManager(){ return this->sp_manager; }
 
 
-	std::vector<glm::vec2*> *StatPositions;
+	std::vector<StatText> *StatPositions;
 
 	char *hp;
 	char *xp;
