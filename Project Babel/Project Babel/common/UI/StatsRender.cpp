@@ -9,6 +9,7 @@ void StatsRender::Init(GameObject *g_obj)
 	
 	for (int i = 0; i < 6; i++)
 	{
+
 		g_obj->StatPositions->push_back(StatText("", glm::vec2(20, 20*i), 20));
 	}
 
@@ -61,17 +62,7 @@ void StatsRender::RenderStaticItems(Controller *ctrl, ScreenUniformData *u_data,
 void StatsRender::Update(GameObject *g_obj)
 {
 	
-	//char *temp = new char[256], *ito = new char[256];
-
-	//strcpy(temp, "HP: ");
-	//
-	//	g_obj->StatPositions->at(0).text = ;
-	//	g_obj->StatPositions->at(1).text = ;
-	//	g_obj->StatPositions->at(2).text = ;
-	//	g_obj->StatPositions->at(3).text = ;
-	//	g_obj->StatPositions->at(4).text = ;
-	//	g_obj->StatPositions->at(5).text = ;
-
+	
 
 	this->exit[0]->GetProperties()->position = this->position + glm::vec2(182, 12);
 }
@@ -92,7 +83,7 @@ void StatsRender::Render(Controller *ctrl, ScreenUniformData *u_data, GameObject
 
 	g_obj->GetUIState()->GetStatState()->GetButtonState()[0] = UI_helper::GetButtonAction(ctrl, this->exit[0]->GetProperties());
 	this->exit[0]->Render(ctrl, u_data, this->skins, 1, g_obj->GetUIState()->GetStatState()->GetButtonState()[0]);
-
+	g_obj->statpos = this->position;
 
 
 }

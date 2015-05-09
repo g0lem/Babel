@@ -31,6 +31,7 @@ void GameObject::Init()
 	this->spellsize = 0;
 	this->cooldown = 0;
 	this->StatPositions = new std::vector<StatText>;
+	this->statpos2 = new std::vector<char*>;
 
 	u_t =new  std::vector < untablet* > ;
 

@@ -262,6 +262,7 @@ void Inventory::Render(Tooltip *t_tip, SoundManager *sm, Controller *ctrl, Scree
 					g_obj->spellsprite = temp;
 					g_obj->spellframe = 0;
 					g_obj->spellsize = 32;
+					g_obj->spelldamage = g_obj->GetItemList()->scroll->attack.x;
 					g_obj->GetItemList()->DeleteFromInventory(i);
 				}
 			}

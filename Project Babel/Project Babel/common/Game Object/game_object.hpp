@@ -72,7 +72,11 @@ public:
 	glm::vec2 spellPOS;
 	inline GameObject(){ this->Init(); }
 	inline ~GameObject(){ this->Clean(); }
+	std::vector<char*> *statpos2;
+	glm::vec2 statpos;
 
+	bool statrender = 0;
+	float spelldamage = 0;
 
 	int unlockedtablets = 0;
 

@@ -97,11 +97,15 @@ void UIRender::Render(SoundManager *sm, Tooltip *tooltips, Controller *ctrl, Gam
 
 
 		if (g_obj->GetUIState()->GetStatState()->GetState() == ACTIVE)
+		{
 			this->stat_r->Render(ctrl, this->GetScreenPointer(), g_obj);
+			g_obj->statrender = true;
+		}
 		else
 		{
 			this->stat_r->GetMover()->Reset();
 			this->stat_r->position = glm::vec2(ctrl->GetWindowWidth() / 6, ctrl->GetWindowHeight() / 2 - ctrl->GetWindowHeight() / 4);
+			g_obj->statrender = false;
 
 		}
 

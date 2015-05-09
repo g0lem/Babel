@@ -174,7 +174,7 @@ void Player::Render(SoundManager *sm, Controller * ctrl, ScreenUniformData * u_d
 
 
 
-					g_obj->GetSpellManager()->Add(new Spell(this->scroll->spell, 1, GridPosition(attributes->position*attributes->scale + g_obj->GetScroller()->GetOffset(), attributes->scale),
+					g_obj->GetSpellManager()->Add(new Spell(this->scroll->spell, this->scroll->attack.x, GridPosition(attributes->position*attributes->scale + g_obj->GetScroller()->GetOffset(), attributes->scale),
 						g_obj->GetScroller()->GetOffset(), attributes->scale,
 						5.f, frame, true));
 

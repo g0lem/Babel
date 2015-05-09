@@ -203,7 +203,7 @@ void ItemList::LoadItems()
 	m_item->type = ITEM_TYPE_SCROLL;
 	m_item->item_name = "Scroll";
 	m_item->spell = FIREBALL;
-	m_item->attack = glm::vec2(0, 0);
+	m_item->attack = glm::vec2(9, 0);
 	m_item->id = EnemyData::item_types::Scroll;
 	this->list.push_back(m_item);
 
