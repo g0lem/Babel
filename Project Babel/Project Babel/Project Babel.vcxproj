@@ -78,6 +78,7 @@
     <ClCompile Include="common\UI\menu_item.cpp" />
     <ClCompile Include="common\UI\menu_render.cpp" />
     <ClCompile Include="common\UI\panel_render.cpp" />
+    <ClCompile Include="common\UI\StatsRender.cpp" />
     <ClCompile Include="common\UI\story_render.cpp" />
     <ClCompile Include="common\UI\UI_handler.cpp" />
     <ClCompile Include="common\UI\ui_helper.cpp" />
@@ -166,6 +167,7 @@
     <ClInclude Include="common\UI\menu_item.hpp" />
     <ClInclude Include="common\UI\menu_render.hpp" />
     <ClInclude Include="common\UI\panel_render.hpp" />
+    <ClInclude Include="common\UI\StatsRender.hpp" />
     <ClInclude Include="common\UI\story_render.hpp" />
     <ClInclude Include="common\UI\UI_handler.hpp" />
     <ClInclude Include="common\UI\ui_helper.hpp" />
