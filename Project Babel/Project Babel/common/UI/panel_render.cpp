@@ -469,7 +469,7 @@ void PanelRender::Render(SoundManager *sm, Tooltip *t_tip, Controller *ctrl, Scr
 		_itoa(g_obj->GetPanelState()->max_hp, buffer2, 10);
 		strcat(buffer, buffer2);
 		g_obj->hp = buffer;
-		g_obj->hp_pos = hp_bar_position + glm::vec2(0, 15 + 1/2.f);
+		g_obj->hp_pos = hp_bar_position + hp_bar_size + glm::vec2(5, 15 + 1 / 2.f - hp_bar_size.y + 4);
 
 		glm::vec2 xp_factor = glm::vec2(GLfloat(g_obj->GetPanelState()->xp) / GLfloat(g_obj->GetPanelState()->max_xp), 1.0f);
 		u_data->ApplyMatrix(Translation(this->xp_bar_position + glm::vec2(this->xp_bar_size.x - (this->xp_bar_size*xp_factor).x, 0))
@@ -484,7 +484,7 @@ void PanelRender::Render(SoundManager *sm, Tooltip *t_tip, Controller *ctrl, Scr
 		_itoa(g_obj->GetPanelState()->max_xp, buffer2, 10);
 		strcat(buffer, buffer2);
 		g_obj->xp = buffer;
-		g_obj->xp_pos = xp_bar_position  + glm::vec2(xp_bar_size.x - 2.f, 15 + 1/2.f) - glm::vec2(g_obj->GetFontList()->GetFont()->GetLength(buffer, 30) + 7.5, 0);
+		g_obj->xp_pos = xp_bar_position - glm::vec2(g_obj->GetFontList()->GetFont()->GetLength(buffer, 30) + 7.5, -20);
 
 
 

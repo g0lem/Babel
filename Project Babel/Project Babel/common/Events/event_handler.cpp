@@ -402,7 +402,7 @@ void EventHandler::Lever(glm::vec2 position, Map *current_map, GameObject *g_obj
 		if (g_obj->GetItemList()->GetObjects()[i]->position == position && g_obj->GetItemList()->GetObjects()[i]->item->id == LEVER_ID)
 		{
 			g_obj->GetItemList()->GetObjects()[i]->item->id = LEVER_ID_ON;
-			g_obj->boss_deal_damage = 10;
+			g_obj->boss_deal_damage = 20;
 		}
 			
 	}

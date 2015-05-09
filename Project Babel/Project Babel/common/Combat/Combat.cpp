@@ -158,7 +158,7 @@ void Combat::PlayerAttack(SoundManager * sm, Controller * ctrl, GameObject * g_o
 
 
 			text_pos.y -= 10;
-			text_pos.x -= 4;
+			text_pos.x -= 10;
 
 			char *buffer = new char[256];
 			_itoa(dmg, buffer, 10);
@@ -167,7 +167,7 @@ void Combat::PlayerAttack(SoundManager * sm, Controller * ctrl, GameObject * g_o
 			g_obj->GetTextObject()->Add(g_obj->GetFontList()->GetFont(),
 				buffer,
 				text_pos,
-				glm::vec4(1.0f, 0.0f, 0.0f, 1.0f), 20,
+				glm::vec4(1.0f, 0.0f, 0.0f, 1.0f), 15,
 				UP,
 				50);
 
@@ -244,12 +244,13 @@ void Combat::PlayerAttack(SoundManager * sm, Controller * ctrl, GameObject * g_o
 
 
 						text_pos.y -= 10;
-						text_pos.x -= 4;
+						text_pos.x -= 10;
 
 						if (enemies->GetEnemiesPointer()[0][j]->scale == 2)
 						{
 
 						}
+						
 
 						char *buffer = new char[256];
 						_itoa(dmg, buffer, 10);

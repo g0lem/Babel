@@ -649,5 +649,19 @@ void Map::AddPotions()
 }
 
 */
-
+void Map::AddScrolls(GameObject *g_obj)
+{
+	int x, y;
+	int potions_added = 0, potions = 100;
+	while (potions_added < 1)
+	{
+		x = rand() % (this->tilemap->GetSize().x);
+		y = rand() % (this->tilemap->GetSize().y);
+		if (this->tilemap->GetTiles()[x][y] == 0)
+		{
+			g_obj->GetItemList()->AddDroppedItem(x, y, g_obj->GetItemList()->GetList()[EnemyData::Scroll]);
+			potions_added++;
+		}
+	}
+}
 
