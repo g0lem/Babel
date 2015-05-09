@@ -39,7 +39,7 @@ public:
 
 	void ComplexDecoration();
 
-
+	void AddScrolls(GameObject *g_obj);
 	inline Tilemap * GetTilemap(){ return this->tilemap; }
 
 	inline fog_of_war *GetFogofWar(){ return this->fog; }

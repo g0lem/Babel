@@ -377,7 +377,7 @@ void ItemList::LoadSprites()
 	tex_str2[8] = "chest.png";
 	tex_str2[9] = "chest-opened.png";
 	tex_str2[10] = "lever.png";
-	tex_str2[11] = "lever.png";
+	tex_str2[11] = "lever-active.png";
 	tex_str2[12] = "pitt.png";
 
 	this->s_objects= new Sprite();

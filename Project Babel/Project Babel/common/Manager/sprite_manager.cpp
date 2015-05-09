@@ -108,7 +108,7 @@ void SpriteManager::Advance(GameObject * g_obj, Tooltip *t_tip)
 		if (this->level == 2)
 		{
 			this->m_enemies = new EnemyManager(4, this->map, g_obj, 0);
-
+			this->map->AddScrolls(g_obj);
 			for (int i = 0; i < g_obj->GetItemList()->GetObjects().size(); i++)
 			{
 				if (g_obj->GetItemList()->GetObjects()[i]->item->id == CHEST_ID)
