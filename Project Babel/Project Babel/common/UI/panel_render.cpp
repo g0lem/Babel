@@ -189,9 +189,11 @@ void PanelRender::Render(SoundManager *sm, Tooltip *t_tip, Controller *ctrl, Scr
 		{
 			t_tip->UpdateStatus(DOOR_TOOL_TIP, false);
 			t_tip->UpdateStatus(0, true);
-			t_tip->UpdateSize(0, glm::vec2(g_obj->GetFontList()->GetFont()->GetLength(t_tip->GetTooltips()->at(0)->string, 45) + t_tip->corner.x * 2 + t_tip->GetOffset(0), 45 + t_tip->corner.y));			
-			t_tip->UpdateStringLength(0, g_obj->GetFontList()->GetFont()->GetLength(t_tip->GetTooltips()->at(0)->string, 45));
-			t_tip->UpdateStringPosition(0, glm::vec2(ctrl->GetMousePosition().x + 12.f / 2.f + 15.f + 1 / 2.f, ctrl->GetWindowHeight() - (ctrl->GetMousePosition().y + 45 + 13 / 2.f + 1)));
+			//t_tip->UpdateSize(0, glm::vec2(g_obj->GetFontList()->GetFont()->GetLength(t_tip->GetTooltips()->at(0)->string, 40) + t_tip->corner.x * 2 + t_tip->GetOffset(0), 40 + t_tip->corner.y));			
+			t_tip->UpdateSize(0, glm::vec2(g_obj->GetFontList()->GetFont()->GetLength(t_tip->GetTooltips()->at(0)->string, 40) + t_tip->corner.x * 2 + 5, 40 + t_tip->corner.y));
+
+			t_tip->UpdateStringLength(0, g_obj->GetFontList()->GetFont()->GetLength(t_tip->GetTooltips()->at(0)->string, 40));
+			t_tip->UpdateStringPosition(0, glm::vec2(10 + ctrl->GetMousePosition().x + 12.f / 2.f + 15.f + 1 / 2.f, ctrl->GetWindowHeight() - (5 + ctrl->GetMousePosition().y + 40 + 13 / 2.f + 1)));
 			t_tip->UpdatePosition(0, ctrl->GetMousePosition());
 		}
 		else
@@ -295,10 +297,15 @@ void PanelRender::Render(SoundManager *sm, Tooltip *t_tip, Controller *ctrl, Scr
 			t_tip->UpdateStatus(DOOR_TOOL_TIP, false);
 			t_tip->UpdateStatus(4, true);
 			t_tip->UpdatePosition(4, ctrl->GetMousePosition());
-			t_tip->UpdateSize(4, glm::vec2(g_obj->GetFontList()->GetFont()->GetLength(t_tip->GetTooltips()->at(4)->string, 45) + t_tip->corner.x * 2 + t_tip->GetOffset(4), 45 + t_tip->corner.y));
+			t_tip->UpdateOffset(4, 10);
+			t_tip->UpdateVoffset(4, 6);
+			t_tip->UpdateSize(4, glm::vec2(g_obj->GetFontList()->GetFont()->GetLength(t_tip->GetTooltips()->at(4)->string, 40) + t_tip->corner.x * 2 + t_tip->GetOffset(4), 40 + t_tip->corner.y));
 
-			t_tip->UpdateStringPosition(4, glm::vec2(ctrl->GetMousePosition().x + 12.f / 2.f + 15.f + 1 / 2.f, ctrl->GetWindowHeight() - (ctrl->GetMousePosition().y + 45 + 13 / 2.f + 1)));
-			t_tip->UpdateStringLength(4, g_obj->GetFontList()->GetFont()->GetLength(t_tip->GetTooltips()->at(4)->string, 45));
+			t_tip->UpdateStringPosition(4, glm::vec2(10 + ctrl->GetMousePosition().x + 12.f / 2.f + 15.f + 1 / 2.f, ctrl->GetWindowHeight() - (10 + ctrl->GetMousePosition().y + 40 + 13 / 2.f + 1)));
+			t_tip->UpdateStringLength(4, g_obj->GetFontList()->GetFont()->GetLength(t_tip->GetTooltips()->at(4)->string, 40));
+
+			
+
 		}
 		else
 			t_tip->UpdateStatus(4, false);
@@ -360,9 +367,15 @@ void PanelRender::Render(SoundManager *sm, Tooltip *t_tip, Controller *ctrl, Scr
 			t_tip->UpdateStatus(DOOR_TOOL_TIP, false);
 			t_tip->UpdateStatus(3, true);
 			t_tip->UpdatePosition(3, ctrl->GetMousePosition());
-			t_tip->UpdateSize(3, glm::vec2(g_obj->GetFontList()->GetFont()->GetLength(t_tip->GetTooltips()->at(3)->string, 45) + t_tip->corner.x * 2 + t_tip->GetOffset(3), 45 + t_tip->corner.y));
-			t_tip->UpdateStringPosition(3, glm::vec2(ctrl->GetMousePosition().x + 12.f / 2.f + 15.f + 1 / 2.f, ctrl->GetWindowHeight() - (ctrl->GetMousePosition().y + 45 + 13 / 2.f + 1)));
-			t_tip->UpdateStringLength(3, g_obj->GetFontList()->GetFont()->GetLength(t_tip->GetTooltips()->at(3)->string, 45));
+			
+
+			t_tip->UpdateOffset(3, 10);
+			t_tip->UpdateVoffset(3, 6);
+			t_tip->UpdateSize(3, glm::vec2(g_obj->GetFontList()->GetFont()->GetLength(t_tip->GetTooltips()->at(4)->string, 40) + t_tip->corner.x * 2 + t_tip->GetOffset(4), 40 + t_tip->corner.y));
+
+			t_tip->UpdateStringPosition(3, glm::vec2(40 + ctrl->GetMousePosition().x + 12.f / 2.f + 15.f + 1 / 2.f, ctrl->GetWindowHeight() - (10 + ctrl->GetMousePosition().y + 40 + 13 / 2.f + 1)));
+			t_tip->UpdateStringLength(3, g_obj->GetFontList()->GetFont()->GetLength(t_tip->GetTooltips()->at(4)->string, 40));
+
 		}
 		else
 			t_tip->UpdateStatus(3, false);
@@ -393,9 +406,15 @@ void PanelRender::Render(SoundManager *sm, Tooltip *t_tip, Controller *ctrl, Scr
 			t_tip->UpdateStatus(DOOR_TOOL_TIP, false);
 			t_tip->UpdateStatus(5, true);
 			t_tip->UpdatePosition(5, ctrl->GetMousePosition());
-			t_tip->UpdateSize(5, glm::vec2(g_obj->GetFontList()->GetFont()->GetLength(t_tip->GetTooltips()->at(5)->string, 45) + t_tip->corner.x * 2 + t_tip->GetOffset(5), 45 + t_tip->corner.y));
-			t_tip->UpdateStringPosition(5, glm::vec2(ctrl->GetMousePosition().x + 12.f / 2.f + 15.f + 1 / 2.f, ctrl->GetWindowHeight() - (ctrl->GetMousePosition().y + 45 + 13/2.f + 1)));
-			t_tip->UpdateStringLength(5, g_obj->GetFontList()->GetFont()->GetLength(t_tip->GetTooltips()->at(5)->string, 45));
+			
+
+			t_tip->UpdateOffset(5, 10);
+			t_tip->UpdateVoffset(5, 6);
+			t_tip->UpdateSize(5, glm::vec2(g_obj->GetFontList()->GetFont()->GetLength(t_tip->GetTooltips()->at(4)->string, 40) + t_tip->corner.x * 2 + t_tip->GetOffset(4), 40 + t_tip->corner.y));
+
+			t_tip->UpdateStringPosition(5, glm::vec2(10 + ctrl->GetMousePosition().x + 12.f / 2.f + 15.f + 1 / 2.f, ctrl->GetWindowHeight() - (10 + ctrl->GetMousePosition().y + 40 + 13 / 2.f + 1)));
+			t_tip->UpdateStringLength(5, g_obj->GetFontList()->GetFont()->GetLength(t_tip->GetTooltips()->at(4)->string, 40));
+
 		}
 		else
 			t_tip->UpdateStatus(5, false);
@@ -415,9 +434,15 @@ void PanelRender::Render(SoundManager *sm, Tooltip *t_tip, Controller *ctrl, Scr
 			t_tip->UpdateStatus(DOOR_TOOL_TIP, false);
 			t_tip->UpdateStatus(2, true);
 			t_tip->UpdatePosition(2, ctrl->GetMousePosition());
-			t_tip->UpdateSize(2, glm::vec2(g_obj->GetFontList()->GetFont()->GetLength(t_tip->GetTooltips()->at(2)->string, 45) + t_tip->corner.x * 2 + t_tip->GetOffset(2), 45 + t_tip->corner.y));
-			t_tip->UpdateStringPosition(2, glm::vec2(ctrl->GetMousePosition().x + 12.f / 2.f + 15.f + 1 / 2.f, ctrl->GetWindowHeight() - (ctrl->GetMousePosition().y + 45 + 13 / 2.f + 1)));
-			t_tip->UpdateStringLength(2, g_obj->GetFontList()->GetFont()->GetLength(t_tip->GetTooltips()->at(2)->string, 45));
+			
+
+			t_tip->UpdateOffset(2, 10);
+			t_tip->UpdateVoffset(2, 6);
+			t_tip->UpdateSize(2, glm::vec2(g_obj->GetFontList()->GetFont()->GetLength(t_tip->GetTooltips()->at(4)->string, 40) + t_tip->corner.x * 2 + t_tip->GetOffset(4), 40 + t_tip->corner.y));
+
+			t_tip->UpdateStringPosition(2, glm::vec2(40 + ctrl->GetMousePosition().x + 12.f / 2.f + 15.f + 1 / 2.f, ctrl->GetWindowHeight() - (10 + ctrl->GetMousePosition().y + 40 + 13 / 2.f + 1)));
+			t_tip->UpdateStringLength(2, g_obj->GetFontList()->GetFont()->GetLength(t_tip->GetTooltips()->at(4)->string, 40));
+
 		}
 		else
 			t_tip->UpdateStatus(2, false);
