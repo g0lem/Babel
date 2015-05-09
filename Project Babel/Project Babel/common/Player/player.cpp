@@ -161,7 +161,7 @@ void Player::Render(SoundManager *sm, Controller * ctrl, ScreenUniformData * u_d
 
 
 
-		if (ctrl->GetKeyOnce(GLFW_KEY_X) && trigger == false && g_obj->cooldown == 0)
+		if (ctrl->GetKeyOnce(GLFW_KEY_1) && trigger == false && g_obj->cooldown == 0)
 		{
 
 			if (this->GetActionHandler()->GetAction() != ATTACKING && this->scroll->spell > -1)
@@ -182,7 +182,7 @@ void Player::Render(SoundManager *sm, Controller * ctrl, ScreenUniformData * u_d
 				
 			}
 		}
-		else if (trigger == true && ctrl->GetKey(GLFW_KEY_X))
+		else if (trigger == true && ctrl->GetKey(GLFW_KEY_1))
 		{
 			g_obj->GetSpellManager()->Add(new Spell(FIREBALL, 10, GridPosition(attributes->position*attributes->scale + g_obj->GetScroller()->GetOffset(), attributes->scale),
 				g_obj->GetScroller()->GetOffset(), attributes->scale,

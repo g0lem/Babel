@@ -23,37 +23,56 @@ void SplashScreen::Load()
 	char **textures = new char*[NUM_SCREENS];
 	textures[0] = "1st.png";
 	textures[1] = "logo1.png";
-	textures[2] = "logo1.png";
-	textures[3] = "3rd.png";
+	textures[2] = "play.png";
+	textures[3] = "2.PNG";
 
 	m_screen->Load(NUM_SCREENS, "data/SplashScreen/", textures);
 	for (int i = 0; i < NUM_SCREENS - 2  ; i++)
 	{
 		splash *t_splash = new splash();
-		t_splash->alpha = 0;
+		t_splash->alpha = 1;
 		t_splash->turn = true;
-		t_splash->type = 1;
+		t_splash->type = 0;
 		t_splash->finished = false;
-		t_splash->speed = 1;
+		t_splash->speed = 0.5;
 		m_screens->push_back(t_splash);
 	}
 
-	splash *t_splash = new splash();
-	t_splash->alpha = 1;
-	t_splash->turn = true;
-	t_splash->type = 0;
-	t_splash->finished = false;
-	t_splash->speed = 1;
-	m_screens->push_back(t_splash);
 
-	t_splash = new splash();
+
+
+	splash * t_splash = new splash();
 	t_splash->alpha = 1;
 	t_splash->turn = true;
 	t_splash->type = 2;
 	t_splash->finished = false;
-	t_splash->speed = 1;
+	t_splash->speed = 0.5;
 	m_screens->push_back(t_splash);
 	
+	t_splash = new splash();
+	t_splash->alpha = 0;
+	t_splash->turn = true;
+	t_splash->type = 1;
+	t_splash->finished = false;
+	t_splash->speed = 0.5;
+	m_screens->push_back(t_splash);
+}
+
+inline void SplashScreen::add()
+{
+	m_screen = new Sprite();
+
+	char **textures = new char*[1];
+	textures[0] = "3.PNG";
+
+	splash * t_splash = new splash();
+	t_splash->alpha = 1;
+	t_splash->turn = true;
+	t_splash->type = 2;
+	t_splash->finished = false;
+	t_splash->speed = 0.5;
+	m_screens->push_back(t_splash);
+
 }
 
 bool SplashScreen::Update()

@@ -3,11 +3,11 @@
 
 
 
-void UIHandler::Init(Tooltip *t_tip)
+void UIHandler::Init(GameObject *g_obj, Tooltip *t_tip)
 {
 
 
-	this->ui_render = new UIRender("data/shaders/2d_vert.txt", "data/shaders/2d_frag.txt", t_tip);
+	this->ui_render = new UIRender("data/shaders/2d_vert.txt", "data/shaders/2d_frag.txt", g_obj, t_tip);
 
 
 

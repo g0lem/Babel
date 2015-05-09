@@ -32,6 +32,11 @@ void GameObject::Init()
 	this->cooldown = 0;
 	this->StatPositions = new std::vector<StatText>;
 	this->statpos2 = new std::vector<char*>;
+	for (int i = 0; i < 6; i++)
+	{
+
+		this->StatPositions->push_back(StatText("", glm::vec2(20, 20 * i), 20));
+	}
 
 	u_t =new  std::vector < untablet* > ;
 
@@ -48,7 +53,7 @@ void GameObject::Advance()
 
 	this->GetItemList()->ClearObjects();
 	this->GetItemList()->ClearDroppedItems(); 
-
+	this->triggerstats = false;
 }
 
 

@@ -19,14 +19,21 @@ public:
 
 	void Render(Controller *ctrl, TextRender *tr, GameObject *g_obj)
 	{
-		tr->SetColor(0.1f, 0.1f, 0.1f);
-
-		g_obj->GetFontList()->GetFont()->Print(g_obj->hp, g_obj->hp_pos.x, ctrl->GetWindowHeight() - g_obj->hp_pos.y, 30);
-		g_obj->GetFontList()->GetFont()->Print(g_obj->xp, g_obj->xp_pos.x, ctrl->GetWindowHeight() - g_obj->xp_pos.y, 30);
-
 		tr->SetColor(1.f, 1.f, 1.f);
+
+		char *temp = new char[256];
+		strcpy(temp, "HP: ");
+		strcat(temp, g_obj->hp);
+
+		g_obj->GetFontList()->GetFont()->Print(temp, g_obj->hp_pos.x, ctrl->GetWindowHeight() - g_obj->hp_pos.y, 24);
+		temp = new char[256];
+		strcpy(temp, "XP: ");
+		strcat(temp, g_obj->xp);
+		g_obj->GetFontList()->GetFont()->Print(temp, g_obj->xp_pos.x - 40, ctrl->GetWindowHeight() - g_obj->xp_pos.y, 24);
+
+		/*tr->SetColor(1.f, 1.f, 1.f);
 		g_obj->GetFontList()->GetFont()->Print(g_obj->level, g_obj->level_pos.x, ctrl->GetWindowHeight() - g_obj->level_pos.y, 30);
-		g_obj->GetFontList()->GetFont()->Print(g_obj->floor, g_obj->floor_pos.x, ctrl->GetWindowHeight() - g_obj->floor_pos.y, 30);
+		g_obj->GetFontList()->GetFont()->Print(g_obj->floor, g_obj->floor_pos.x, ctrl->GetWindowHeight() - g_obj->floor_pos.y, 30)*/
 	}
 
 

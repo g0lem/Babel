@@ -12,7 +12,7 @@ void Map::LoadSprites()
 
 
 
-	char ** tex_str = new char*[24];
+	char ** tex_str = new char*[28];
 	tex_str[FLOOR_BLOCK] = "floor.png";
 	tex_str[FLOOR_BLOCK1] = "floor-2.png";
 	tex_str[FLOOR_BLOCK2] = "floor-3.png";
@@ -39,17 +39,21 @@ void Map::LoadSprites()
 	tex_str[SE_BLOCK] = "se.png";
 
 
-	tex_str[DOOR_UP] = "door-up.png";
-	tex_str[DOOR_DOWN] = "door-down.png";
-	tex_str[DOOR_RIGHT] = "door-right.png";
-	tex_str[DOOR_LEFT] = "door-left.png";
+	tex_str[PITT_UP] = "pit-N.png";
+	tex_str[PITT_DOWN] = "pit-S.png";
+	tex_str[PITT_RIGHT] = "pit-E.png";
+	tex_str[PITT_LEFT] = "pit-W.png";
+	tex_str[PITT_NE] = "pit-NE.png";
+	tex_str[PITT_NW] = "pit-NW.png";
+	tex_str[PITT_SE] = "pit-SE.png";
+	tex_str[PITT_SW] = "pit-SW.png";
 
 	tex_str[BROKEN_DOOR] = "broken-door.png";
 
 	//tex_str[18] = "wall.png";
 
 
-	this->m_sprite->Load(24, "data/tiles/", tex_str);
+	this->m_sprite->Load(28, "data/tiles/", tex_str);
 
 
 	
@@ -85,7 +89,7 @@ void Map::BossSprites()
 
 
 
-	char ** tex_str = new char*[24];
+	char ** tex_str = new char*[28];
 	tex_str[FLOOR_BLOCK] = "floor.png";
 	tex_str[FLOOR_BLOCK1] = "floor-2.png";
 	tex_str[FLOOR_BLOCK2] = "floor-3.png";
@@ -112,17 +116,24 @@ void Map::BossSprites()
 	tex_str[SE_BLOCK] = "se.png";
 
 
-	tex_str[DOOR_UP] = "door-up.png";
-	tex_str[DOOR_DOWN] = "door-down.png";
-	tex_str[DOOR_RIGHT] = "door-right.png";
-	tex_str[DOOR_LEFT] = "door-left.png";
+	tex_str[PITT_UP] = "pit-N.png";
+	tex_str[PITT_DOWN] = "pit-S.png";
+	tex_str[PITT_RIGHT] = "pit-E.png";
+	tex_str[PITT_LEFT] = "pit-W.png";
+	tex_str[PITT_NE] = "pit-NE.png";
+	tex_str[PITT_NW] = "pit-NW.png";
+	tex_str[PITT_SE] = "pit-SE.png";
+	tex_str[PITT_SW] = "pit-SW.png";
 
 	tex_str[BROKEN_DOOR] = "broken-door.png";
 
 	//tex_str[18] = "wall.png";
 
 
-	this->m_sprite->Load(24, "data/tiles/", tex_str);
+	//tex_str[18] = "wall.png";
+
+
+	this->m_sprite->Load(28, "data/tiles/", tex_str);
 
 
 

@@ -1,9 +1,8 @@
 #include <common.hpp>
 
 
-int x = 1;
 
-void UIRender::Init(char * vertex_shader, char * fragment_shader, Tooltip *tooltips)
+void UIRender::Init(char * vertex_shader, char * fragment_shader, GameObject *g_obj, Tooltip *tooltips)
 {
 
 
@@ -15,7 +14,7 @@ void UIRender::Init(char * vertex_shader, char * fragment_shader, Tooltip *toolt
 	this->inventory_r = new Inventory(tooltips);
 	this->menu_r = new MenuRender();
 	this->story_r = new StoryRender();
-
+	this->stat_r = new StatsRender(g_obj);
 	
 
 
@@ -29,11 +28,6 @@ void UIRender::Init(char * vertex_shader, char * fragment_shader, Tooltip *toolt
 
 void UIRender::Render(SoundManager *sm, Tooltip *tooltips, Controller *ctrl, GameObject *g_obj, glm::vec2 player_positon)
 {
-	if (x == 1)
-	{
-		this->stat_r = new StatsRender(g_obj);
-		x = 0;
-	}
 
 	this->BindRun(ctrl->GetWindowWidth(), ctrl->GetWindowHeight());
 
@@ -48,7 +42,7 @@ void UIRender::Render(SoundManager *sm, Tooltip *tooltips, Controller *ctrl, Gam
 
 	if (g_obj->GetUIState()->GetMenuState()->GetButtonStates()[0] == PRESSED && g_obj->GetUIState()->GetMenuState()->GetState() == ACTIVE)
 	{
-		//sm->PlaySound(MENUPRESSBUTTON);
+		sm->PlaySound(MENUPRESSBUTTON);
 		g_obj->GetUIState()->GetMenuState()->SetState(NOT_ACTIVE);
 	}
 
@@ -69,6 +63,8 @@ void UIRender::Render(SoundManager *sm, Tooltip *tooltips, Controller *ctrl, Gam
 		else if (g_obj->GetUIState()->GetStatState()->GetState() == ACTIVE)
 			g_obj->GetUIState()->GetStatState()->SetState(NOT_ACTIVE);
 	}
+	if (ctrl->GetKeyOnce(GLFW_KEY_Q))
+		g_obj->GetTurnSystem()->Wait();
 
 
 	if (g_obj->GetUIState()->GetMenuState()->GetState() == NOT_ACTIVE)

@@ -198,7 +198,7 @@ void Inventory::Render(Tooltip *t_tip, SoundManager *sm, Controller *ctrl, Scree
 				if (g_obj->GetItemList()->GetInventory()[i]->type == ITEM_TYPE_WEAPON && this->EquippedWeapon == false)
 				{
 
-					//sm->PlaySound(EQUIPITEM);
+					sm->PlaySound(EQUIPITEM);
 
 					this->weapon = g_obj->GetItemList()->GetSprite();
 					this->WeaponFrame = g_obj->GetItemList()->GetInventory()[i]->frame;
@@ -215,7 +215,7 @@ void Inventory::Render(Tooltip *t_tip, SoundManager *sm, Controller *ctrl, Scree
 				}
 				else if (g_obj->GetItemList()->GetInventory()[i]->type == ITEM_TYPE_ARMOR && this->EquippedArmor == false)
 				{
-					//sm->PlaySound(EQUIPITEM);
+					sm->PlaySound(EQUIPITEM);
 
 					this->armor = g_obj->GetItemList()->GetSprite();
 					this->ArmorFrame = g_obj->GetItemList()->GetInventory()[i]->frame;
@@ -288,13 +288,28 @@ void Inventory::Render(Tooltip *t_tip, SoundManager *sm, Controller *ctrl, Scree
 
 					t_tip->UpdateText(INVENTORY_START + i, temp_name);
 				}
+				else if (g_obj->GetItemList()->GetInventory()[i]->type == ITEM_TYPE_ARMOR)
+				{
+					char *temp_name, *itemp;
+
+					temp_name = new char[256];
+					itemp = new char[256];
+
+					_itoa(g_obj->GetItemList()->GetInventory()[i]->armor, itemp, 10);
+
+					strcpy(temp_name, g_obj->GetItemList()->GetInventory()[i]->item_name);
+					strcat(temp_name, "énArmor ");
+					strcat(temp_name, itemp);
+
+					t_tip->UpdateText(INVENTORY_START + i, temp_name);
+				}
 
 				
 				t_tip->UpdateOffset(INVENTORY_START+i, 15);
 				t_tip->UpdateVoffset(INVENTORY_START + i, 8);
 				t_tip->UpdateSize(INVENTORY_START + i, 
 					glm::vec2(g_obj->GetFontList()->GetFont()->GetLength(t_tip->GetTooltips()->at(INVENTORY_START + i)->string, 20)
-					+ t_tip->corner.x * 2 + t_tip->GetOffset(INVENTORY_START + 1), -g_obj->GetFontList()->GetFont()->GetHeight(t_tip->GetTooltips()->at(INVENTORY_START + i)->string, 20) +
+					+ t_tip->corner.x * 2 + t_tip->GetOffset(INVENTORY_START + i), -g_obj->GetFontList()->GetFont()->GetHeight(t_tip->GetTooltips()->at(INVENTORY_START + i)->string, 20) +
 					25 + t_tip->corner.y + t_tip->GetVoffset(INVENTORY_START + i)));
 				t_tip->UpdateStringHeight(INVENTORY_START + i, (-g_obj->GetFontList()->GetFont()->GetHeight(t_tip->GetTooltips()->at(INVENTORY_START + i)->string, 20)) / 20 + 1 + 0.5);
 				t_tip->UpdateStringPosition(INVENTORY_START + i, glm::vec2(t_tip->GetOffset(INVENTORY_START+i) + ctrl->GetMousePosition().x  + 15.f, ctrl->GetWindowHeight() - (t_tip->GetVoffset(INVENTORY_START+i) + ctrl->GetMousePosition().y + 20 + 15 + 3)));
@@ -338,7 +353,7 @@ void Inventory::Render(Tooltip *t_tip, SoundManager *sm, Controller *ctrl, Scree
 
 		if (g_obj->GetUIState()->GetInventoryState()->GetButtonStates()[17] == PRESSED)
 		{
-			//sm->PlaySound(EQUIPITEM);
+			sm->PlaySound(EQUIPITEM);
 
 			this->EquippedWeapon = false;
 			this->w_color = glm::vec4(1.f, 1.f, 1.f, 1.f);
@@ -352,14 +367,27 @@ void Inventory::Render(Tooltip *t_tip, SoundManager *sm, Controller *ctrl, Scree
 		{
 			t_tip->UpdateStatus(DOOR_TOOL_TIP, false);
 			t_tip->UpdateStatus(WEAPON, true);
-			t_tip->UpdateText(WEAPON, weapon_item->item_name);
-			t_tip->UpdateOffset(WEAPON, 7.5);
-			t_tip->UpdateVoffset(WEAPON, 4);
+			char *temp_name, *itemp;
+
+			temp_name = new char[256];
+			itemp = new char[256];
+
+			_itoa(weapon_item->attack.x, itemp, 10);
+
+			strcpy(temp_name, weapon_item->item_name);
+			strcat(temp_name, "énDamage ");
+			strcat(temp_name, itemp);
+
+
+			t_tip->UpdateOffset(WEAPON, 15);
+			t_tip->UpdateVoffset(WEAPON, 8);
 			t_tip->UpdateSize(WEAPON,
-				glm::vec2(g_obj->GetFontList()->GetFont()->GetLength(t_tip->GetTooltips()->at(WEAPON)->string, 25)
-				+ t_tip->corner.x * 2 + t_tip->GetOffset(WEAPON), 25 + t_tip->corner.y + t_tip->GetVoffset(WEAPON)));
-			t_tip->UpdateStringPosition(WEAPON, glm::vec2(ctrl->GetMousePosition().x + 9.f + 15.f, ctrl->GetWindowHeight() - (ctrl->GetMousePosition().y + 25 + 15 + 2)));
-			t_tip->UpdateStringLength(WEAPON, g_obj->GetFontList()->GetFont()->GetLength(t_tip->GetTooltips()->at(WEAPON)->string, 25));
+				glm::vec2(g_obj->GetFontList()->GetFont()->GetLength(t_tip->GetTooltips()->at(WEAPON)->string, 20)
+				+ t_tip->corner.x * 2 + t_tip->GetOffset(WEAPON), -g_obj->GetFontList()->GetFont()->GetHeight(t_tip->GetTooltips()->at(WEAPON)->string, 20) +
+				25 + t_tip->corner.y + t_tip->GetVoffset(WEAPON)));
+			t_tip->UpdateStringHeight(WEAPON, (-g_obj->GetFontList()->GetFont()->GetHeight(t_tip->GetTooltips()->at(WEAPON)->string, 20)) / 20 + 1 + 0.5);
+			t_tip->UpdateStringPosition(WEAPON, glm::vec2(t_tip->GetOffset(WEAPON) + ctrl->GetMousePosition().x + 15.f, ctrl->GetWindowHeight() - (t_tip->GetVoffset(WEAPON) + ctrl->GetMousePosition().y + 20 + 15 + 3)));
+			t_tip->UpdateStringLength(WEAPON, g_obj->GetFontList()->GetFont()->GetLength(t_tip->GetTooltips()->at(WEAPON)->string, 20));
 			t_tip->UpdatePosition(WEAPON, ctrl->GetMousePosition());
 
 		}
@@ -390,7 +418,7 @@ void Inventory::Render(Tooltip *t_tip, SoundManager *sm, Controller *ctrl, Scree
 
 	if (g_obj->GetUIState()->GetInventoryState()->GetButtonStates()[18] == PRESSED)
 	{
-	//sm->PlaySound(EQUIPITEM);
+	sm->PlaySound(EQUIPITEM);
 
 	this->EquippedArmor = false;
 	this->a_scale = vec2_0;
@@ -403,14 +431,26 @@ void Inventory::Render(Tooltip *t_tip, SoundManager *sm, Controller *ctrl, Scree
 	{
 		t_tip->UpdateStatus(DOOR_TOOL_TIP, false);
 		t_tip->UpdateStatus(ARMOR, true);
-		t_tip->UpdateText(ARMOR, armor_item->item_name);
-		t_tip->UpdateOffset(ARMOR, 7.5);
-		t_tip->UpdateVoffset(ARMOR, 4);
+		char *temp_name, *itemp;
+
+		temp_name = new char[256];
+		itemp = new char[256];
+
+		_itoa(armor_item->armor, itemp, 10);
+
+		strcpy(temp_name, armor_item->item_name);
+		strcat(temp_name, "énArmor ");
+		strcat(temp_name, itemp);
+		t_tip->UpdateText(ARMOR, temp_name);
+		t_tip->UpdateOffset(ARMOR, 15);
+		t_tip->UpdateVoffset(ARMOR, 8);
 		t_tip->UpdateSize(ARMOR,
-			glm::vec2(g_obj->GetFontList()->GetFont()->GetLength(t_tip->GetTooltips()->at(ARMOR)->string, 25)
-			+ t_tip->corner.x * 2 + t_tip->GetOffset(ARMOR), 25 + t_tip->corner.y + t_tip->GetVoffset(ARMOR)));
-		t_tip->UpdateStringPosition(ARMOR, glm::vec2(ctrl->GetMousePosition().x + 9.f + 15.f, ctrl->GetWindowHeight() - (ctrl->GetMousePosition().y + 25 + 15 + 2)));
-		t_tip->UpdateStringLength(ARMOR, g_obj->GetFontList()->GetFont()->GetLength(t_tip->GetTooltips()->at(ARMOR)->string, 25));
+			glm::vec2(g_obj->GetFontList()->GetFont()->GetLength(t_tip->GetTooltips()->at(ARMOR)->string, 20)
+			+ t_tip->corner.x * 2 + t_tip->GetOffset(ARMOR), -g_obj->GetFontList()->GetFont()->GetHeight(t_tip->GetTooltips()->at(ARMOR)->string, 20) +
+			25 + t_tip->corner.y + t_tip->GetVoffset(ARMOR)));
+		t_tip->UpdateStringHeight(ARMOR, (-g_obj->GetFontList()->GetFont()->GetHeight(t_tip->GetTooltips()->at(ARMOR)->string, 20)) / 20 + 1 + 0.5);
+		t_tip->UpdateStringPosition(ARMOR, glm::vec2(t_tip->GetOffset(ARMOR) + ctrl->GetMousePosition().x + 15.f, ctrl->GetWindowHeight() - (t_tip->GetVoffset(ARMOR) + ctrl->GetMousePosition().y + 20 + 15 + 3)));
+		t_tip->UpdateStringLength(ARMOR, g_obj->GetFontList()->GetFont()->GetLength(t_tip->GetTooltips()->at(ARMOR)->string, 20));
 		t_tip->UpdatePosition(ARMOR, ctrl->GetMousePosition());
 	}
 	

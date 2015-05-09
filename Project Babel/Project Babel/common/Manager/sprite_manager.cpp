@@ -258,8 +258,11 @@ void SpriteManager::Render(SoundManager * sm, Controller * ctrl, GameObject * g_
 
 
 	bool sw = true;
-	
-
+	if (ctrl->freeze == true)
+	{
+		//s_screen->add();
+		ctrl->freeze = false;
+	}
 	if (this->s_screen->Update() == false)
 	{
 
@@ -296,7 +299,7 @@ void SpriteManager::Render(SoundManager * sm, Controller * ctrl, GameObject * g_
 			g_obj->GetSpellManager()->Render(ctrl, this->GetScreenPointer(), g_obj->GetScroller()->GetOffset(), g_obj->GetCollisionMap()->GetTiles());
 			this->player->Render(sm, ctrl, this->GetScreenPointer(), g_obj, this->map, t_tip);
 			this->m_enemies->Render(sm, ctrl, this->GetScreenPointer(), g_obj, this->map, this->m_enemies->GetType());
-			this->m_combat->Action(sm, ctrl, g_obj, this->player, this->m_enemies, this->map, this->m_enemies->GetType());
+			this->m_combat->Action(s_screen,sm, ctrl, g_obj, this->player, this->m_enemies, this->map, this->m_enemies->GetType());
 
 			sw = false;
 		}

@@ -32,7 +32,7 @@ void SoundManager::Init()
 void SoundManager::loadSounds(char** path)
 {
 
-	/*path[0] = "data/media/sounds/ambience1.flac";
+	path[0] = "data/media/sounds/ambience1.flac";
 	path[1] = "data/media/sounds/ambience2.wav";
 	path[2] = "data/media/sounds/ambience3.flac";
 	path[3] = "data/media/sounds/ambience4.wav";
@@ -63,7 +63,7 @@ void SoundManager::loadSounds(char** path)
 	AddSound(path[11], "Scorpion Attack");
 	AddSound(path[12], "Scorpion Die");
 	AddSound(path[13], "Walksound");
-	AddSound(path[14], "Hydra Attack");*/
+	AddSound(path[14], "Hydra Attack");
 
 }
 
@@ -73,7 +73,7 @@ void SoundManager::loadMusic(char** path)
 
 
 
-	/*musicpath[0] = "data/media/music/spooky.ogg";
+	musicpath[0] = "data/media/music/spooky.ogg";
 	musicpath[1] = "data/media/music/hills.ogg";
 	musicpath[2] = "data/media/music/tut3.ogg";
 
@@ -82,8 +82,7 @@ void SoundManager::loadMusic(char** path)
 
 	AddMusic(musicpath[0], "Spooky Scary Skeletons");
 	AddMusic(musicpath[1], "Green Hills");
-	AddMusic(musicpath[2], "Tutorial 3");*/
-
+	AddMusic(musicpath[2], "Tutorial 3");
 
 
 

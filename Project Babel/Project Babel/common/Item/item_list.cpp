@@ -201,7 +201,7 @@ void ItemList::LoadItems()
 	m_item = new Item();
 	m_item->frame = 7;
 	m_item->type = ITEM_TYPE_SCROLL;
-	m_item->item_name = "Scroll";
+	m_item->item_name = "Scroll of Fireball";
 	m_item->spell = FIREBALL;
 	m_item->attack = glm::vec2(9, 0);
 	m_item->id = EnemyData::item_types::Scroll;
@@ -376,8 +376,8 @@ void ItemList::LoadSprites()
 	tex_str2[7] = "pillar.png";
 	tex_str2[8] = "chest.png";
 	tex_str2[9] = "chest-opened.png";
-	tex_str2[10] = "lever.png";
-	tex_str2[11] = "lever-active.png";
+	tex_str2[10] = "switch.png";
+	tex_str2[11] = "switch-active.png";
 	tex_str2[12] = "pitt.png";
 
 	this->s_objects= new Sprite();

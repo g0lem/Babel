@@ -108,7 +108,7 @@ class Controller
 
 public:
 
-
+	bool freeze = false;
 
 
 	inline GLboolean HasBeenResized(){ return this->has_been_resized; }

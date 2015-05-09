@@ -77,7 +77,7 @@ public:
 
 	bool statrender = 0;
 	float spelldamage = 0;
-
+	bool triggerstats = false;
 	int unlockedtablets = 0;
 
 	inline UIState * GetUIState(){ return this->ui_state; }

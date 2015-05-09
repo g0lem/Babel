@@ -41,6 +41,8 @@ public:
 
 	inline int GetCurrentFrame(){ return this->currentFrame; }
 
+	inline void add();
+
 	inline void SkipFrame(){ 
 			this->m_screens->at(currentFrame)->speed *= 5;
 		 }

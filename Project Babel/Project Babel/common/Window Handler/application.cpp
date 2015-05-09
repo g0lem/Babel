@@ -33,7 +33,7 @@ void Application::Init()
 	
 	t_tip = new Tooltip();
 	g_render = new GameRender(g_object, t_tip);
-	ui = new UIHandler(t_tip);
+	ui = new UIHandler(g_object, t_tip);
 	f_m = new FontManager(g_object);
 
 

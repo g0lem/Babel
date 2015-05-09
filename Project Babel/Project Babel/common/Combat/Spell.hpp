@@ -126,19 +126,19 @@ public:
 
 		if (direction == UP)
 		{
-			maxd = (glm::vec2)initial + glm::vec2(-5, -5);
+			maxd = (glm::vec2)initial + glm::vec2(-8, -8);
 		}
 		else if (direction == DOWN)
 		{
-			maxd = (glm::vec2)initial + glm::vec2(5, +5);
+			maxd = (glm::vec2)initial + glm::vec2(8, +8);
 		}
 		else if (direction == LEFT)
 		{
-			maxd = (glm::vec2)initial + glm::vec2(-5, -5);
+			maxd = (glm::vec2)initial + glm::vec2(-8, -8);
 		}
 		else if (direction == RIGHT)
 		{
-			maxd = (glm::vec2)initial + glm::vec2(5, 5);
+			maxd = (glm::vec2)initial + glm::vec2(8, 8);
 		}
 
 

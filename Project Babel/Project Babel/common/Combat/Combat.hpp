@@ -18,9 +18,9 @@ class Combat
 
 
 	void SetPlayerTarget(Player * player, EnemyManager * enemies);
-	void PlayerAttack(SoundManager * sm, Controller * ctrl, GameObject * g_obj, Player * player, EnemyManager *enemies, Map *current_map, int type);
+	void PlayerAttack(SplashScreen *sc, SoundManager * sm, Controller * ctrl, GameObject * g_obj, Player * player, EnemyManager *enemies, Map *current_map, int type);
 	void CheckPlayerMoveAbility(Player * player, EnemyManager * enemies);
-	void PlayerRelated(SoundManager * sm, Controller * ctrl, GameObject * g_obj, Player * player, EnemyManager * enemies, Map * map, int type);
+	void PlayerRelated(SplashScreen *sc, SoundManager * sm, Controller * ctrl, GameObject * g_obj, Player * player, EnemyManager * enemies, Map * map, int type);
 
 
 	void SortThingsOut(Player * player, EnemyManager * enemies);
@@ -45,7 +45,7 @@ public:
 
 
 
-	void Action(SoundManager * sm,
+	void Action(SplashScreen *sc, SoundManager * sm,
 		Controller * ctrl,
 		GameObject * g_obj, 
 		Player * player,

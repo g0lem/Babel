@@ -21,11 +21,11 @@ class UIRender : public Aaether2D
 
 
 		
-		inline UIRender(char * vertex_shader, char * fragment_shader, Tooltip *tooltips){ this->Init(vertex_shader, fragment_shader, tooltips); }
+		inline UIRender(char * vertex_shader, char * fragment_shader, GameObject *g_obj, Tooltip *tooltips){ this->Init(vertex_shader, fragment_shader, g_obj,tooltips); }
 
 
 
-		void Init(char * vertex_shader, char * fragment_shader, Tooltip *tooltips);
+		void Init(char * vertex_shader, char * fragment_shader, GameObject *g_obj, Tooltip *tooltips);
 
 
 

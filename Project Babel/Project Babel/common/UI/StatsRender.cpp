@@ -7,11 +7,7 @@ void StatsRender::Init(GameObject *g_obj)
 	this->size = glm::vec2(226, 213);
 	this->position = glm::vec2( 50, 30);
 	
-	for (int i = 0; i < 6; i++)
-	{
 
-		g_obj->StatPositions->push_back(StatText("", glm::vec2(20, 20*i), 20));
-	}
 
 	LoadSprites();
 	LoadButtons();

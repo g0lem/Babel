@@ -79,7 +79,7 @@ void Combat::SetPlayerTarget(Player * player, EnemyManager * enemies)
 
 
 
-void Combat::PlayerAttack(SoundManager * sm, Controller * ctrl, GameObject * g_obj, Player * player, EnemyManager *enemies, Map *current_map, int type)
+void Combat::PlayerAttack(SplashScreen *sc, SoundManager * sm, Controller * ctrl, GameObject * g_obj, Player * player, EnemyManager *enemies, Map *current_map, int type)
 {
 
 	Item *item;
@@ -130,6 +130,11 @@ void Combat::PlayerAttack(SoundManager * sm, Controller * ctrl, GameObject * g_o
 				}
 				enemies->GetEnemiesPointer()[0][player->GetTarget()]->GetStats()->GetHp()->Damage(player->GetItems()[ITEM_SLOT_WEAPON]->attack);
 				player->GetEventHandler()->Init(current_map, g_obj);
+
+				if (enemies->GetEnemiesPointer()[0][player->GetTarget()]->scale == 2)
+				{
+					ctrl->freeze = true;
+				}
 			}
 
 
@@ -173,7 +178,7 @@ void Combat::PlayerAttack(SoundManager * sm, Controller * ctrl, GameObject * g_o
 
 
 
-			//sm->PlaySound(ATTACK2);
+			sm->PlaySound(ATTACK2);
 
 
 		}
@@ -217,6 +222,11 @@ void Combat::PlayerAttack(SoundManager * sm, Controller * ctrl, GameObject * g_o
 
 							enemies->GetEnemiesPointer()[0][j]->GetStats()->GetHp()->Damage(glm::vec2(spell->GetSpell(i)->damage, spell->GetSpell(i)->damage));
 							player->GetEventHandler()->Init(current_map, g_obj);
+
+							if (enemies->GetEnemiesPointer()[0][j]->scale == 2)
+							{
+								ctrl->freeze = true;
+							}
 						}
 
 						if (player->GetStats()->GetXp()->xp >= player->GetStats()->GetXp()->max_xp)
@@ -239,7 +249,6 @@ void Combat::PlayerAttack(SoundManager * sm, Controller * ctrl, GameObject * g_o
 						glm::vec2 text_pos = e_attr->position *
 							glm::vec2(32, 32)  +
 							g_obj->GetScroller()->GetOffset();
-
 
 
 
@@ -325,7 +334,7 @@ void Combat::CheckPlayerMoveAbility(Player * player, EnemyManager * enemies)
 
 
 
-void Combat::PlayerRelated(SoundManager * sm, Controller *ctrl, GameObject * g_obj, Player * player, EnemyManager * enemies, Map * map, int type)
+void Combat::PlayerRelated(SplashScreen *sc, SoundManager * sm, Controller *ctrl, GameObject * g_obj, Player * player, EnemyManager * enemies, Map * map, int type)
 {
 
 	if (player->GetTarget() == NO_TARGET)
@@ -334,7 +343,7 @@ void Combat::PlayerRelated(SoundManager * sm, Controller *ctrl, GameObject * g_o
 	}
 	this->SetPlayerTarget(player, enemies);
 	
-	this->PlayerAttack(sm, ctrl, g_obj, player, enemies, map, type);
+	this->PlayerAttack(sc, sm, ctrl, g_obj, player, enemies, map, type);
 
 
 }
@@ -497,19 +506,37 @@ void Combat::EnemyAttack(SoundManager *sm, Controller * ctrl, GameObject * g_obj
 
 
 
-
-					if (t_dir == RIGHT)
-						g_obj->GetSpellManager()->Add(new Spell(FIREBALL, 1, (current_enemy->GetPAttributes()->position + glm::vec2(1, 0)*(float)(current_enemy->scale - 1)) * glm::vec2(32, 32) + g_obj->GetScroller()->GetOffset(),
+					if (enemies->GetEnemiesPointer()[0][i]->scale == 1 && enemies->GetEnemiesPointer()[0][i]->ranged == true)
+					{
+						g_obj->GetSpellManager()->Add(new Spell(FIREBALL, 5, (current_enemy->GetPAttributes()->position + glm::vec2(0, 0))* current_enemy->GetPAttributes()->scale  + g_obj->GetScroller()->GetOffset(),
+							player->GetPAttributes()->position, g_obj->GetScroller()->GetOffset(), current_enemy->GetPAttributes()->scale,
+							current_enemy->scale,
+							5.f, 0));
+						g_obj->GetSpellManager()->Add(new Spell(FIREBALL, 5, (current_enemy->GetPAttributes()->position+glm::vec2(0, 0)) * current_enemy->GetPAttributes()->scale  + g_obj->GetScroller()->GetOffset(),
+							player->GetPAttributes()->position, g_obj->GetScroller()->GetOffset(), current_enemy->GetPAttributes()->scale,
+							current_enemy->scale,
+							5.f, 1));
+						g_obj->GetSpellManager()->Add(new Spell(FIREBALL, 5, (current_enemy->GetPAttributes()->position +glm::vec2(0, 0))* current_enemy->GetPAttributes()->scale  + g_obj->GetScroller()->GetOffset(),
+							player->GetPAttributes()->position, g_obj->GetScroller()->GetOffset(), current_enemy->GetPAttributes()->scale,
+							current_enemy->scale,
+							5.f, 2));
+						g_obj->GetSpellManager()->Add(new Spell(FIREBALL, 5, (current_enemy->GetPAttributes()->position + glm::vec2(0, 0))* current_enemy->GetPAttributes()->scale  + g_obj->GetScroller()->GetOffset(),
+							player->GetPAttributes()->position, g_obj->GetScroller()->GetOffset(), current_enemy->GetPAttributes()->scale,
+							current_enemy->scale,
+							5.f, 3));
+					}
+					else if (t_dir == RIGHT)
+						g_obj->GetSpellManager()->Add(new Spell(FIREBALL, 10, (current_enemy->GetPAttributes()->position + glm::vec2(1, 0)*(float)(current_enemy->scale - 1)) * glm::vec2(32, 32) + g_obj->GetScroller()->GetOffset(),
 						player->GetPAttributes()->position, g_obj->GetScroller()->GetOffset(), current_enemy->GetPAttributes()->scale,
 						current_enemy->scale,
 						5.f, t_dir));
 					else if (t_dir == DOWN)
-						g_obj->GetSpellManager()->Add(new Spell(FIREBALL, 1, (current_enemy->GetPAttributes()->position + glm::vec2(0, 1)*(float)(current_enemy->scale - 1)) * glm::vec2(32, 32) + g_obj->GetScroller()->GetOffset(),
+						g_obj->GetSpellManager()->Add(new Spell(FIREBALL, 10, (current_enemy->GetPAttributes()->position + glm::vec2(0, 1)*(float)(current_enemy->scale - 1)) * glm::vec2(32, 32) + g_obj->GetScroller()->GetOffset(),
 						player->GetPAttributes()->position, g_obj->GetScroller()->GetOffset(), current_enemy->GetPAttributes()->scale,
 						current_enemy->scale,
 						5.f, t_dir));
 					else if (t_dir == UP || t_dir == LEFT)
-						g_obj->GetSpellManager()->Add(new Spell(FIREBALL, 1, current_enemy->GetPAttributes()->position * current_enemy->GetPAttributes()->scale / 2.f + g_obj->GetScroller()->GetOffset(),
+						g_obj->GetSpellManager()->Add(new Spell(FIREBALL, 10, current_enemy->GetPAttributes()->position * current_enemy->GetPAttributes()->scale / 2.f + g_obj->GetScroller()->GetOffset(),
 						player->GetPAttributes()->position, g_obj->GetScroller()->GetOffset(), current_enemy->GetPAttributes()->scale,
 						current_enemy->scale,
 						5.f, t_dir));
@@ -557,11 +584,11 @@ void Combat::EnemyAttack(SoundManager *sm, Controller * ctrl, GameObject * g_obj
 			_itoa(dmg, buffer, 10);
 			strcat(buffer, " DMG");
 			if (type == 0)
-				//sm->PlaySound(SCORPIONATTACK);
+				sm->PlaySound(SCORPIONATTACK);
 				if (type == 1)
-					//sm->PlaySound(HYDRAATTACK);
+					sm->PlaySound(HYDRAATTACK);
 					if (type == 2)
-						//sm->PlaySound(HYDRAATTACK);
+						sm->PlaySound(HYDRAATTACK);
 
 
 						g_obj->GetTextObject()->Add(g_obj->GetFontList()->GetFont(),
@@ -837,12 +864,12 @@ void Combat::EnemyRelated(SoundManager *sm, Controller * ctrl, GameObject * g_ob
 
 
 
-void Combat::Action(SoundManager * sm, Controller * ctrl, GameObject * g_obj, Player * player, EnemyManager * enemies, Map * map, int type)
+void Combat::Action(SplashScreen *sc, SoundManager * sm, Controller * ctrl, GameObject * g_obj, Player * player, EnemyManager * enemies, Map * map, int type)
 {
 
 
 
-	this->PlayerRelated(sm, ctrl, g_obj, player, enemies, map, type);
+	this->PlayerRelated(sc, sm, ctrl, g_obj, player, enemies, map, type);
 	this->EnemyRelated(sm, ctrl, g_obj, player, enemies, map, type);
 
 

@@ -203,7 +203,7 @@ void PanelRender::Render(SoundManager *sm, Tooltip *t_tip, Controller *ctrl, Scr
 
 		if (g_obj->GetUIState()->GetPanelState()->GetState() == PRESSED)
 		{
-			//sm->PlaySound(MENUPRESSBUTTON);
+			sm->PlaySound(MENUPRESSBUTTON);
 			g_obj->GetUIState()->GetMenuState()->SetState(!g_obj->GetUIState()->GetMenuState()->GetState());
 			t_tip->UpdateStatus(0, g_obj->GetUIState()->GetMenuState()->GetState());
 		}
@@ -279,7 +279,7 @@ void PanelRender::Render(SoundManager *sm, Tooltip *t_tip, Controller *ctrl, Scr
 		{
 
 
-			//sm->PlaySound(MENUPRESSBUTTON);
+			sm->PlaySound(MENUPRESSBUTTON);
 
 			g_obj->GetUIState()->GetInventoryState()->SetState(NOT_ACTIVE);
 
@@ -315,7 +315,7 @@ void PanelRender::Render(SoundManager *sm, Tooltip *t_tip, Controller *ctrl, Scr
 		if (g_obj->GetUIState()->GetPanelState()->GetButtonsState()[2] == PRESSED)
 		{
 
-			//sm->PlaySound(MENUPRESSBUTTON);
+			sm->PlaySound(MENUPRESSBUTTON);
 
 
 			g_obj->GetUIState()->GetInventoryState()->SetState(!g_obj->GetUIState()->GetInventoryState()->GetState());
@@ -340,7 +340,7 @@ void PanelRender::Render(SoundManager *sm, Tooltip *t_tip, Controller *ctrl, Scr
 
 
 
-			//sm->PlaySound(MENUPRESSBUTTON);
+			sm->PlaySound(MENUPRESSBUTTON);
 
 
 
@@ -385,7 +385,7 @@ void PanelRender::Render(SoundManager *sm, Tooltip *t_tip, Controller *ctrl, Scr
 		if (g_obj->GetUIState()->GetPanelState()->GetButtonsState()[1] == PRESSED)
 		{
 
-			//sm->PlaySound(MENUPRESSBUTTON);
+			sm->PlaySound(MENUPRESSBUTTON);
 
 
 			g_obj->GetUIState()->GetStoryState()->SetState(!g_obj->GetUIState()->GetStoryState()->GetState());
@@ -423,7 +423,7 @@ void PanelRender::Render(SoundManager *sm, Tooltip *t_tip, Controller *ctrl, Scr
 		if (g_obj->GetUIState()->GetPanelState()->GetButtonsState()[3] == PRESSED)
 		{
 
-			//sm->PlaySound(MENUPRESSBUTTON);
+			sm->PlaySound(MENUPRESSBUTTON);
 
 
 			g_obj->GetTurnSystem()->Wait();
