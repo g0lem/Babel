@@ -212,11 +212,11 @@ void Update(Controller *ctrl, GameObject *g_obj)
 			{
 				gZ= true;
 			}
-			if (g_obj->GetItemList()->GetList()[i]->color.x > 0.95f)
+			if (g_obj->GetItemList()->GetList()[i]->color.x > 0.94f)
 				gX = false;
-			if (g_obj->GetItemList()->GetList()[i]->color.y > 0.61f)
+			if (g_obj->GetItemList()->GetList()[i]->color.y > 0.75f)
 				gY = false;
-			if( g_obj->GetItemList()->GetList()[i]->color.z > 0.10f)
+			if( g_obj->GetItemList()->GetList()[i]->color.z > 0.05f)
 			{
 				gZ = false;
 			}
@@ -252,7 +252,7 @@ void SpriteManager::Render(SoundManager * sm, Controller * ctrl, GameObject * g_
 
 
 	
-	t_tip->UpdateText(DOOR_TOOL_TIP, "Use WASD or the mouse to move");
+	t_tip->UpdateText(DOOR_TOOL_TIP, "Use W,A,S,D or the mouse to move");
 	t_tip->UpdateStatus(DOOR_TOOL_TIP, true);
 
 
@@ -303,7 +303,7 @@ void SpriteManager::Render(SoundManager * sm, Controller * ctrl, GameObject * g_
 
 	}
 
-	t_tip->UpdateText(DOOR_TOOL_TIP, "Use WASD or the mouse to move");
+	t_tip->UpdateText(DOOR_TOOL_TIP, "Use W,A,S,D or the mouse to move");
 	t_tip->UpdateStatus(DOOR_TOOL_TIP, true);
 
 	

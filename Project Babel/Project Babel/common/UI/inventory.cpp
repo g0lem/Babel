@@ -250,6 +250,20 @@ void Inventory::Render(Tooltip *t_tip, SoundManager *sm, Controller *ctrl, Scree
 						g_obj->GetItemList()->DeleteFromInventory(i);
 					}
 				}
+				else if (g_obj->GetItemList()->GetInventory()[i]->type == ITEM_TYPE_SCROLL)
+				{
+
+					g_obj->GetItemList()->scroll = g_obj->GetItemList()->GetInventory()[i];
+					g_obj->GetItemList()->must_scroll = true;
+
+					Sprite * temp = new Sprite();
+					temp->Load("data/spells/diagonal.png");
+
+					g_obj->spellsprite = temp;
+					g_obj->spellframe = 0;
+					g_obj->spellsize = 32;
+					g_obj->GetItemList()->DeleteFromInventory(i);
+				}
 			}
 
 

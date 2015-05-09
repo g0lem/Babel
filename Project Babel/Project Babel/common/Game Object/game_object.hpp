@@ -27,7 +27,6 @@ class GameObject
 	CollisionMap * c_map;
 
 
-
 	Miscellaneous * m_misc;
 	ItemList *m_list;
 	SpellManager *sp_manager;
@@ -39,7 +38,6 @@ class GameObject
 
 	UIState * ui_state;
 	panel_state * p_state;
-	StatState * s_state;
 
 
 	EnemyLoader * e_loader;
@@ -53,6 +51,12 @@ class GameObject
 public:
     bool rebuild;
 
+	Stats * playerStats;
+	Sprite * spellsprite;
+	int spellframe;
+	int spellsize;
+	int cooldown;
+	glm::vec2 spellPOS;
 	inline GameObject(){ this->Init(); }
 	inline ~GameObject(){ this->Clean(); }
 
@@ -70,9 +74,9 @@ public:
 	inline TextObject * GetTextObject(){ return this->t_object; }
 	inline FontList * GetFontList(){ return this->f_list; }
 	inline SpellManager * GetSpellManager(){ return this->sp_manager; }
-	inline StatState * GetStatState(){ return this->s_state; }
 
 
+	std::vector<glm::vec2*> *StatPositions;
 
 	char *hp;
 	char *xp;

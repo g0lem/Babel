@@ -14,13 +14,14 @@
 #define ITEM_TYPE_ARMOR 2
 #define ITEM_TYPE_TRAP 3
 #define ITEM_TYPE_SCROLL 4
-
+#define ITEM_TYPE_SPELL 5
 
 #define ITEM_SLOT_WEAPON 0
 #define ITEM_SLOT_GLOVES 1
 #define ITEM_SLOT_ARMOR 2
 #define ITEM_SLOT_RING1 3
 #define ITEM_SLOT_RING2 4
+#define ITEM_SLOT_SPELL 5
 
 
 

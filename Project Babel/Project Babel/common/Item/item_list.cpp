@@ -17,8 +17,7 @@ void ItemList::Init()
 
 void ItemList::AddPotions()
 {
-	Item *new_item = new Item;
-	new_item->Init();
+	Item *new_item = new Item();
 	this->list.push_back(new_item);
 
 
@@ -78,55 +77,9 @@ void ItemList::ClearDroppedItems()
 
 void ItemList::LoadItems()
 {
-	//this->AddPotions();
 
-   
-
-	/*Item *new_item = new Item;
-	read_names();
-
-
-	sqlite3 *db;
-	sqlite3_stmt *res;
-
-	if (sqlite3_open("itest.db", &db))
-		sqlite3_close(db);
-
+	Item * m_item = new Item();
 	
-
-
-
-	sqlite3_prepare_v2(db, "SELECT * FROM ITEMS", 128, &res, NULL);
-
-	sqlite3_step(res);
-
-	srand(time(NULL));
-
-
-	while (sqlite3_step(res) == SQLITE_ROW)
-	{
-		    new_item->frame = sqlite3_column_int(res, 0);
-			new_item->attack_speed = Rand(sqlite3_column_int(res, 2), sqlite3_column_int(res, 3));
-			new_item->attack.x = sqlite3_column_int(res, 4);
-			new_item->attack.y = sqlite3_column_int(res, 5);
-			new_item->armor = Rand(sqlite3_column_int(res, 6), sqlite3_column_int(res, 7));
-			new_item->dodge = Rand(sqlite3_column_int(res, 8), sqlite3_column_int(res, 9));
-			new_item->level = Rand(sqlite3_column_int(res, 10), sqlite3_column_int(res, 11));
-		
-			this->list.push_back(new_item);
-
-
-		new_item = new Item;
-	}
-	
-
-	sqlite3_finalize(res);
-	sqlite3_close(db);*/
-
-
-
-	Item * m_item = new Item;
-	m_item->Init();
 	m_item->attack = glm::vec2(0, 0);
 	m_item->armor = 0;
 	m_item->type = 0;
@@ -138,8 +91,8 @@ void ItemList::LoadItems()
 	this->armor = m_item;
 	
 
-	m_item = new Item;
-	m_item->Init();
+	m_item = new Item();
+	
 	m_item->attack = glm::vec2(0, 0);
 	m_item->armor = 0;
 	m_item->type = 0;
@@ -152,8 +105,8 @@ void ItemList::LoadItems()
 
 
 
-	m_item = new Item;
-	m_item->Init();
+	m_item = new Item();
+	
 	m_item->attack = glm::vec2(0, 0);
 	m_item->armor = 0;
 	m_item->type = 0;
@@ -165,8 +118,8 @@ void ItemList::LoadItems()
 	this->armor = m_item;
 	
 
-	m_item = new Item;
-	m_item->Init();
+	m_item = new Item();
+	
 	m_item->frame = 1;
 	m_item->type = ITEM_TYPE_WEAPON;
 	m_item->attack_speed = 1.0f;
@@ -176,8 +129,8 @@ void ItemList::LoadItems()
 	this->list.push_back(m_item);
 	
 
-	m_item = new Item;
-	m_item->Init();
+	m_item = new Item();
+	
 	m_item->frame = 2;
 	m_item->type = ITEM_TYPE_WEAPON;
 	m_item->attack_speed = 1.0f;
@@ -188,8 +141,8 @@ void ItemList::LoadItems()
 	
 
 
-	m_item = new Item;
-	m_item->Init();
+	m_item = new Item();
+	
 	m_item->frame = 2;
 	m_item->type = ITEM_TYPE_WEAPON;
 	m_item->attack_speed = 1.0f;
@@ -202,8 +155,7 @@ void ItemList::LoadItems()
 	
 
 
-	m_item = new Item;
-	m_item->Init();
+	m_item = new Item();
 	m_item->frame = 6;
 	m_item->type = ITEM_TYPE_ARMOR;
 	m_item->armor = 2;
@@ -211,8 +163,7 @@ void ItemList::LoadItems()
 	this->list.push_back(m_item);
 	EnemyData::item_types::Leather_Armor_1;
 
-	m_item = new Item;
-	m_item->Init();
+	m_item = new Item();
 	m_item->frame = 6;
 	m_item->type = ITEM_TYPE_ARMOR;
 	m_item->armor = 1;
@@ -220,8 +171,7 @@ void ItemList::LoadItems()
 	this->list.push_back(m_item);
 	
 
-	m_item = new Item;
-	m_item->Init();
+	m_item = new Item();
 	m_item->frame = 5;
 	m_item->type = ITEM_TYPE_ARMOR;
 	m_item->armor = 2;
@@ -230,8 +180,7 @@ void ItemList::LoadItems()
 	
 
 
-	m_item = new Item;
-	m_item->Init();
+	m_item = new Item();
 	m_item->frame = 5;
 	m_item->type = ITEM_TYPE_ARMOR;
 	m_item->armor = 3;
@@ -240,8 +189,7 @@ void ItemList::LoadItems()
 	
 
 
-	m_item = new Item;
-	m_item->Init();
+	m_item = new Item();
 	m_item->frame = 5;
 	m_item->type = ITEM_TYPE_ARMOR;
 	m_item->armor = 4;
@@ -251,17 +199,17 @@ void ItemList::LoadItems()
 
 
 	m_item = new Item();
-	m_item->Init();
 	m_item->frame = 7;
 	m_item->type = ITEM_TYPE_SCROLL;
 	m_item->item_name = "Scroll";
+	m_item->spell = FIREBALL;
 	m_item->attack = glm::vec2(0, 0);
 	m_item->id = EnemyData::item_types::Scroll;
 	this->list.push_back(m_item);
 
 
 	m_item = new Item();
-	m_item->Init();
+	
 	m_item->frame = 3;
 	m_item->id = CHAINS_ID;
 	m_item->type = ITEM_TYPE_TRAP;
@@ -271,7 +219,7 @@ void ItemList::LoadItems()
 	
 
 	m_item = new Item();
-	m_item->Init();
+	
 	m_item->frame = 4;
 	m_item->id = SPIKES_ID;
 	m_item->type = ITEM_TYPE_TRAP;
@@ -282,7 +230,7 @@ void ItemList::LoadItems()
 
 
 	m_item = new Item();
-	m_item->Init();
+	
 	m_item->frame = 5;
 	m_item->type = ITEM_TYPE_ARMOR;
 	m_item->item_name = "Legendary Armor";
@@ -292,7 +240,7 @@ void ItemList::LoadItems()
 	this->list.push_back(m_item);
 
 	m_item = new Item();
-	m_item->Init();
+	
 	m_item->frame = 2;
 	m_item->type = ITEM_TYPE_WEAPON;
 	m_item->item_name = "Legendary Sword";

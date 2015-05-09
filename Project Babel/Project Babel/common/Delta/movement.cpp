@@ -123,7 +123,7 @@ void Move::UpdateScroller(Controller * ctrl, GameObject * g_obj, glm::vec2 posit
 	glm::vec2 half_screen_vector = GridPosition(glm::vec2(ctrl->GetWindowWidth(), ctrl->GetWindowHeight()) / 2.0f, scale);
 
 
-	g_obj->GetScroller()->SetOffset(half_screen_vector - position*scale);
+	g_obj->GetScroller()->SetOffset(half_screen_vector - position*scale );
 
 
 }

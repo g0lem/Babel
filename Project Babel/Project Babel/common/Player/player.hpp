@@ -32,6 +32,7 @@ class Player
 
 	sf::Clock *t_clock;
 
+	Item *scroll;
 
 	ActionHandler * a_handler;
 	glm::vec2 last_wanted_position;
@@ -49,7 +50,7 @@ class Player
 
 	void LoadSprites();
 	void LoadPhysicalAttributes(Map * current_tilemap, GameObject *g_obj);
-	void LoadStats();
+	void LoadStats(GameObject *g_obj);
 	void LoadItems(GameObject * g_obj);
 	
 
@@ -58,7 +59,6 @@ class Player
 
 
 public:
-
 
 
 	void SetPosition(glm::vec2 position){ this->attributes->position = position; }

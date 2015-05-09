@@ -27,6 +27,11 @@ class UIState
 
 	UI_intersect * inter_handler;
 
+	StatState * stat_state;
+
+	SpellState * spell_State;
+
+
 
 	void ProcessKeys(SoundManager *sm, Controller * ctrl);
 
@@ -49,6 +54,9 @@ public:
 	inline InventoryState *GetInventoryState(){ return this->i_state; }
 
 	inline StoryState *GetStoryState(){ return this->s_state; }
+
+	inline StatState *GetStatState(){ return this->stat_state; }
+	inline SpellState *GetSpellState(){ return this->spell_State; }
 
 	void Init();
 
